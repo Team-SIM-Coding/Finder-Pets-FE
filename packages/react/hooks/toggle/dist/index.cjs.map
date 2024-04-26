@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/index.ts", "../src/useToggle.ts"],
+  "sourcesContent": ["export type { ToggleProps, UseToggleReturn } from \"./types\";\nexport { useToggle } from \"./useToggle\";\n", "import { useCallback, useState } from \"react\";\nimport { ToggleProps, UseToggleReturn } from \"./types\";\n\nexport const useToggle = ({\n  isSelected = false,\n}: ToggleProps): UseToggleReturn => {\n  const [toggle, setToggle] = useState<boolean>(isSelected);\n\n  const handleToggle = useCallback(() => {\n    setToggle((prevState) => !prevState);\n  }, []);\n\n  return {\n    isSelected: toggle,\n    setSelected: setToggle,\n    toggle: handleToggle,\n  };\n};\n"],
+  "mappings": "yaAAA,IAAAA,EAAA,GAAAC,EAAAD,EAAA,eAAAE,IAAA,eAAAC,EAAAH,GCAA,IAAAI,EAAsC,iBAGzBC,EAAY,CAAC,CACxB,WAAAC,EAAa,EACf,IAAoC,CAClC,GAAM,CAACC,EAAQC,CAAS,KAAI,YAAkBF,CAAU,EAElDG,KAAe,eAAY,IAAM,CACrCD,EAAWE,GAAc,CAACA,CAAS,CACrC,EAAG,CAAC,CAAC,EAEL,MAAO,CACL,WAAYH,EACZ,YAAaC,EACb,OAAQC,CACV,CACF",
+  "names": ["src_exports", "__export", "useToggle", "__toCommonJS", "import_react", "useToggle", "isSelected", "toggle", "setToggle", "handleToggle", "prevState"]
+}

@@ -1,0 +1,2 @@
+import{useState as g}from"react";var m=u=>{let{isDisabled:n=!1,isInvalid:t=!1,isReadOnly:i=!1,isRequired:d=!1,defaultValue:e,value:s,onChange:a,...p}=u,l=s!==void 0&&a!==void 0,[c,f]=g(e!=null?e:""),I=r=>{l?a(r):f(r.target.value)},o=l?s:c;return{inputProps:{...p,defaultValue:e,value:o,onChange:I,disabled:n,readOnly:i,"data-disabled":n,"data-invalid":t,"aria-invalid":t,"aria-required":d},valueCount:o.toString().length}};export{m as useInput};
+//# sourceMappingURL=index.js.map

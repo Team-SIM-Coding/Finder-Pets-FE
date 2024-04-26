@@ -1,0 +1,19 @@
+{
+  "name": "finder-pets-fe",
+  "workspaces": [
+    "packages/**/*",
+    "services/**/*"
+  ],
+  "scripts": {
+    "build": "nx build",
+    "graph": "nx run-many --target=build --graph",
+    "dev:all": "yarn dev & yarn dev:packages",
+    "dev": "nx run-many --target=serve --all",
+    "dev:packages": "nx run-many --target=dev --projects='@design-system/react-components-*,@design-system/react-hooks-*'"
+  },
+  "devDependencies": {
+    "nx": "^18.2.1",
+    "typescript": "^5.4.3"
+  },
+  "packageManager": "yarn@4.1.1"
+}

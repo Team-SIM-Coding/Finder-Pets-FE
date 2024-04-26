@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/index.ts", "../src/useSelect.ts"],
+  "sourcesContent": ["export type {\n  UseSelectProps,\n  UseSelectReturn,\n} from \"./types\";\n\nexport { useSelect } from \"./useSelect\";\n", "import { UseSelectProps, UseSelectReturn } from \"./types\";\n\nexport const useSelect = (props: UseSelectProps): UseSelectReturn => {\n  const {\n    isDisabled = false,\n    isInvalid = false,\n    isRequired = false,\n    ...rest\n  } = props;\n\n  return {\n    selectProps: {\n      ...rest,\n      disabled: isDisabled,\n      \"data-disabled\": isDisabled,\n      \"data-invalid\": isInvalid,\n      \"aria-invalid\": isInvalid,\n      \"aria-required\": isRequired,\n    },\n  };\n};\n"],
+  "mappings": "yaAAA,IAAAA,EAAA,GAAAC,EAAAD,EAAA,eAAAE,IAAA,eAAAC,EAAAH,GCEO,IAAMI,EAAaC,GAA2C,CACnE,GAAM,CACJ,WAAAC,EAAa,GACb,UAAAC,EAAY,GACZ,WAAAC,EAAa,GACb,GAAGC,CACL,EAAIJ,EAEJ,MAAO,CACL,YAAa,CACX,GAAGI,EACH,SAAUH,EACV,gBAAiBA,EACjB,eAAgBC,EAChB,eAAgBA,EAChB,gBAAiBC,CACnB,CACF,CACF",
+  "names": ["src_exports", "__export", "useSelect", "__toCommonJS", "useSelect", "props", "isDisabled", "isInvalid", "isRequired", "rest"]
+}

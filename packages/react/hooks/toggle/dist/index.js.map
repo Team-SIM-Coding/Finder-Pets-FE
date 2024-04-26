@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/useToggle.ts"],
+  "sourcesContent": ["import { useCallback, useState } from \"react\";\nimport { ToggleProps, UseToggleReturn } from \"./types\";\n\nexport const useToggle = ({\n  isSelected = false,\n}: ToggleProps): UseToggleReturn => {\n  const [toggle, setToggle] = useState<boolean>(isSelected);\n\n  const handleToggle = useCallback(() => {\n    setToggle((prevState) => !prevState);\n  }, []);\n\n  return {\n    isSelected: toggle,\n    setSelected: setToggle,\n    toggle: handleToggle,\n  };\n};\n"],
+  "mappings": "AAAA,OAAS,eAAAA,EAAa,YAAAC,MAAgB,QAG/B,IAAMC,EAAY,CAAC,CACxB,WAAAC,EAAa,EACf,IAAoC,CAClC,GAAM,CAACC,EAAQC,CAAS,EAAIJ,EAAkBE,CAAU,EAElDG,EAAeN,EAAY,IAAM,CACrCK,EAAWE,GAAc,CAACA,CAAS,CACrC,EAAG,CAAC,CAAC,EAEL,MAAO,CACL,WAAYH,EACZ,YAAaC,EACb,OAAQC,CACV,CACF",
+  "names": ["useCallback", "useState", "useToggle", "isSelected", "toggle", "setToggle", "handleToggle", "prevState"]
+}
