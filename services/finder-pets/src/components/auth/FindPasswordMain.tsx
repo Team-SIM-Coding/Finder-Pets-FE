@@ -10,7 +10,7 @@ const FindPasswordMain = () => {
 
   return (
     <>
-      <Spacing height="20px" />
+      <Spacing height="40px" />
       {!isFoundPassword && (
         <>
           <InputField label="아이디" />

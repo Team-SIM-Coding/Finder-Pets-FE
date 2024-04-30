@@ -10,7 +10,7 @@ const ResetPasswordMain = () => {
 
   return (
     <>
-      <Spacing height="20px" />
+      <Spacing height="40px" />
       {!isResetPassword && (
         <>
           <InputField label="아이디" />

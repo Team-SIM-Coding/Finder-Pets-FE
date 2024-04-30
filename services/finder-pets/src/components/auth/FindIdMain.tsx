@@ -11,7 +11,7 @@ const FindIdMain = () => {
 
   return (
     <>
-      <Spacing height="20px" />
+      <Spacing height="40px" />
       {!isFoundId && (
         <>
           <InputField label="이름" />
