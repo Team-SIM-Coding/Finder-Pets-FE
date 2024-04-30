@@ -2,6 +2,7 @@ import { vars } from "@design-system/themes";
 import { style } from "@vanilla-extract/css";
 
 export const container = style({
+  height: "100dvh",
   padding: "20px",
 });
 
@@ -16,6 +17,7 @@ export const mainWrap = style({
 
 export const footerWrap = style({
   width: "100%",
+  marginTop: "auto",
 });
 
 export const inputStyle = style({

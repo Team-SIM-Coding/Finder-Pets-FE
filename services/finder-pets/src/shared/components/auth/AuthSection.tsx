@@ -13,7 +13,7 @@ interface Props {
 const AuthSection = ({ header, main, footer }: Props) => {
   return (
     <section className={s.container}>
-      <Flex align={"center"} direction={"column"}>
+      <Flex align={"center"} direction={"column"} style={{ height: "100%" }}>
         <header>{header}</header>
         <main className={s.mainWrap}>{main}</main>
         <footer className={s.footerWrap}>{footer}</footer>

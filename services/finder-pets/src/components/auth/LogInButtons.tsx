@@ -9,10 +9,10 @@ import Spacing from "@/shared/components/Spacing";
 const LogInButtons = () => {
   return (
     <>
-      <Spacing height="40px" />
       <FindAndResetButtons />
       <LinkButton href="/register" text="회원가입" className={s.whiteButton} />
       <Button className={s.defaultButton}>로그인</Button>
+      <Spacing height="40px" />
     </>
   );
 };
