@@ -2,24 +2,20 @@ import { vars } from "@design-system/themes";
 import { style } from "@vanilla-extract/css";
 
 export const container = style({
-  marginTop: "20px",
   padding: "20px",
 });
 
 export const headerTitle = style({
-  marginTop: "12px",
   fontSize: "24px",
   textAlign: "center",
 });
 
 export const mainWrap = style({
   width: "100%",
-  marginTop: "20px",
 });
 
 export const footerWrap = style({
   width: "100%",
-  marginTop: "20px",
 });
 
 export const inputStyle = style({

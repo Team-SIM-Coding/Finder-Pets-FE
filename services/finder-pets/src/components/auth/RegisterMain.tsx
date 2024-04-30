@@ -1,8 +1,10 @@
+import Spacing from "@/shared/components/Spacing";
 import InputField from "@/shared/components/auth/InputField";
 
 const RegisterMain = () => {
   return (
     <>
+      <Spacing height="20px" />
       <InputField label="아이디" validationMessages={["이메일을 형식에 맞게 입력해주세요."]} />
       <InputField
         label="비밀번호"
@@ -20,6 +22,7 @@ const RegisterMain = () => {
         label="휴대폰 번호"
         validationMessages={["휴대폰 번호를 정확하게 입력해주세요. (- 포함)"]}
       />
+      <Spacing height="20px" />
     </>
   );
 };

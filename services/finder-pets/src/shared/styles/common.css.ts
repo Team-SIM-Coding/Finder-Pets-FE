@@ -1,5 +1,7 @@
 import { vars } from "@design-system/themes";
-import { style } from "@vanilla-extract/css";
+import { createVar, style } from "@vanilla-extract/css";
+
+export const spacingHeightVar = createVar();
 
 export const defaultButton = style({
   width: "100%",
@@ -25,4 +27,9 @@ export const whiteButton = style({
 export const linkTextButton = style({
   color: "black",
   textDecoration: "none",
+});
+
+export const spacingStyle = style({
+  width: "100%",
+  height: spacingHeightVar,
 });

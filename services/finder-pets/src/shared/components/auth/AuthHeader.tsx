@@ -1,3 +1,4 @@
+import Spacing from "../Spacing";
 import * as s from "./AuthStyle.css";
 
 import Image from "next/image";
@@ -10,6 +11,7 @@ const AuthHeader = ({ title }: Props) => {
   return (
     <>
       <Image src="/images/finder-pets-logo.png" width={200} height={50} alt="로고 이미지" />
+      <Spacing height="20px" />
       <h1 className={s.headerTitle}>{title}</h1>
     </>
   );
