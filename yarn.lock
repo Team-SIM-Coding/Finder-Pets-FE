@@ -283,7 +283,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@design-system/react-components-button@workspace:packages/react/components/button":
+"@design-system/react-components-button@workspace:^, @design-system/react-components-button@workspace:packages/react/components/button":
   version: 0.0.0-use.local
   resolution: "@design-system/react-components-button@workspace:packages/react/components/button"
   dependencies:
@@ -309,7 +309,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@design-system/react-components-input@workspace:packages/react/components/input":
+"@design-system/react-components-input@workspace:^, @design-system/react-components-input@workspace:packages/react/components/input":
   version: 0.0.0-use.local
   resolution: "@design-system/react-components-input@workspace:packages/react/components/input"
   dependencies:
@@ -335,7 +335,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@design-system/react-components-layout@workspace:packages/react/components/layout":
+"@design-system/react-components-layout@workspace:^, @design-system/react-components-layout@workspace:packages/react/components/layout":
   version: 0.0.0-use.local
   resolution: "@design-system/react-components-layout@workspace:packages/react/components/layout"
   dependencies:
@@ -3570,6 +3570,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "finder-pets@workspace:services/finder-pets"
   dependencies:
+    "@design-system/react-components-button": "workspace:^"
+    "@design-system/react-components-input": "workspace:^"
+    "@design-system/react-components-layout": "workspace:^"
     "@design-system/themes": "workspace:^"
     "@tanstack/react-query": "npm:^5.29.0"
     "@tanstack/react-query-next-experimental": "npm:^5.8.4"

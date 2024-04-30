@@ -1,7 +1,7 @@
 import * as React from "react";
 import { forwardRef, Ref } from "react";
 import { HeadingProps } from "./types";
-import * as clsx from "clsx";
+import { clsx } from "clsx";
 import { BaseStyle, StyleSprinkles } from "../core/style.css";
 import { extractSprinkleProps } from "../utils/properties";
 import { textStyle } from "./style.css";

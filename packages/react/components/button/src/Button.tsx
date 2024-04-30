@@ -23,6 +23,7 @@ const Button = (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
     rightIcon,
     isLoading,
     children,
+    className,
     style,
   } = props;
 
@@ -36,7 +37,7 @@ const Button = (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
     <button
       {...buttonProps}
       ref={ref}
-      className={clsx([buttonStyle({ size, variant })])}
+      className={clsx([buttonStyle({ size, variant }), className])}
       style={{
         ...assignInlineVars({
           [enableColorVariant]: endableColor,

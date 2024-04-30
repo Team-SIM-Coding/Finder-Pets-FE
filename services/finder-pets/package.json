@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@design-system/react-components-button": "workspace:^",
+    "@design-system/react-components-input": "workspace:^",
+    "@design-system/react-components-layout": "workspace:^",
     "@design-system/themes": "workspace:^",
     "@tanstack/react-query": "^5.29.0",
     "@tanstack/react-query-next-experimental": "^5.8.4",

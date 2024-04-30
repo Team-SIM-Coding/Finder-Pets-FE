@@ -10,8 +10,6 @@ globalStyle("html, body", {
   maxWidth: "100vw",
   minHeight: "100vh",
 
-  backgroundColor: "var(--gray-50)",
-
   fontFamily: `
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
