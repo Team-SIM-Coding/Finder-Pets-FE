@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Spacing from "../Spacing";
 import * as s from "./AuthStyle.css";
 
@@ -10,7 +11,9 @@ interface Props {
 const AuthHeader = ({ title }: Props) => {
   return (
     <>
-      <Image src="/images/finder-pets-logo.png" width={200} height={50} alt="로고 이미지" />
+      <Link href="/">
+        <Image src="/images/finder-pets-logo.png" width={200} height={50} alt="로고 이미지" />
+      </Link>
       <Spacing height="20px" />
       <h1 className={s.headerTitle}>{title}</h1>
     </>
