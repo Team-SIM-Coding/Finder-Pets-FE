@@ -1,5 +1,4 @@
 import InputField from "@/shared/components/auth/InputField";
-import RegisterButton from "./RegisterButton";
 
 const RegisterMain = () => {
   return (
@@ -21,7 +20,6 @@ const RegisterMain = () => {
         label="휴대폰 번호"
         validationMessages={["휴대폰 번호를 정확하게 입력해주세요. (- 포함)"]}
       />
-      <RegisterButton />
     </>
   );
 };
