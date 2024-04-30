@@ -1,7 +1,7 @@
 import * as s from "./AuthStyle.css";
 
 interface Props {
-  text: string;
+  text: string | undefined;
 }
 
 const ValidationMessage = ({ text }: Props) => {

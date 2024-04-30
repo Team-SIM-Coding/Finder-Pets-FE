@@ -1,8 +1,8 @@
 import ValidationMessage from "./ValidationMessage";
 
 interface Props {
-  firstMessage: string;
-  secondMessage?: string;
+  firstMessage?: string | undefined;
+  secondMessage?: string | undefined;
 }
 
 const ValidationMessages = ({ firstMessage, secondMessage }: Props) => {

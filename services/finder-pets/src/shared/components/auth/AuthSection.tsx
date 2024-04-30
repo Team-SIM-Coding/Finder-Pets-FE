@@ -16,7 +16,7 @@ const AuthSection = ({ header, main, footer }: Props) => {
       <Flex align={"center"} direction={"column"}>
         <header>{header}</header>
         <main className={s.mainWrap}>{main}</main>
-        <footer>{footer}</footer>
+        <footer className={s.footerWrap}>{footer}</footer>
       </Flex>
     </section>
   );

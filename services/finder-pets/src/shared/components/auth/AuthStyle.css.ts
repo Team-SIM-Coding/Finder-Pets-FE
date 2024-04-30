@@ -17,6 +17,11 @@ export const mainWrap = style({
   marginTop: "20px",
 });
 
+export const footerWrap = style({
+  width: "100%",
+  marginTop: "20px",
+});
+
 export const inputStyle = style({
   width: "100%",
   height: "40px",
