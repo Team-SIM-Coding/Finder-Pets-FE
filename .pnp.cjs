@@ -4447,6 +4447,7 @@ const RAW_RUNTIME_STATE =
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:4835bf47ac88bab542b31dd75e73291a5582f5a964a4e3acc01e9f4e54d2e1a73b076b61ed080b4b1123e994327061be88c7ce75bbc3443455dc1e99fe1f5a24#npm:18.3.1"],\
           ["react-hook-form", "virtual:256fae25011fdfce9e26f7d331c93e795c855a7f2c09218599529022b9d70f0b5bf94978e08f1e0ab1f3a552c24e8b1a44e0fccd953733093f3f5e598fca4160#npm:7.51.3"],\
+          ["react-icons", "virtual:256fae25011fdfce9e26f7d331c93e795c855a7f2c09218599529022b9d70f0b5bf94978e08f1e0ab1f3a552c24e8b1a44e0fccd953733093f3f5e598fca4160#npm:5.2.0"],\
           ["react-intersection-observer", "virtual:256fae25011fdfce9e26f7d331c93e795c855a7f2c09218599529022b9d70f0b5bf94978e08f1e0ab1f3a552c24e8b1a44e0fccd953733093f3f5e598fca4160#npm:9.8.2"],\
           ["swiper", "npm:11.1.1"],\
           ["typescript", "patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"],\
@@ -6721,6 +6722,28 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/__virtual__/react-hook-form-virtual-189122ee83/5/.yarn/berry/cache/react-hook-form-npm-7.51.3-09119fadb3-10c0.zip/node_modules/react-hook-form/",\
         "packageDependencies": [\
           ["react-hook-form", "virtual:256fae25011fdfce9e26f7d331c93e795c855a7f2c09218599529022b9d70f0b5bf94978e08f1e0ab1f3a552c24e8b1a44e0fccd953733093f3f5e598fca4160#npm:7.51.3"],\
+          ["@types/react", "npm:18.3.0"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-icons", [\
+      ["npm:5.2.0", {\
+        "packageLocation": "../../../../.yarn/berry/cache/react-icons-npm-5.2.0-a5a82320b5-10c0.zip/node_modules/react-icons/",\
+        "packageDependencies": [\
+          ["react-icons", "npm:5.2.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:256fae25011fdfce9e26f7d331c93e795c855a7f2c09218599529022b9d70f0b5bf94978e08f1e0ab1f3a552c24e8b1a44e0fccd953733093f3f5e598fca4160#npm:5.2.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-icons-virtual-fab26b61e5/5/.yarn/berry/cache/react-icons-npm-5.2.0-a5a82320b5-10c0.zip/node_modules/react-icons/",\
+        "packageDependencies": [\
+          ["react-icons", "virtual:256fae25011fdfce9e26f7d331c93e795c855a7f2c09218599529022b9d70f0b5bf94978e08f1e0ab1f3a552c24e8b1a44e0fccd953733093f3f5e598fca4160#npm:5.2.0"],\
           ["@types/react", "npm:18.3.0"],\
           ["react", "npm:18.3.1"]\
         ],\

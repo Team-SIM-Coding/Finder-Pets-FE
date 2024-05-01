@@ -3,6 +3,8 @@ import "@/shared/styles";
 import React from "react";
 
 import type { Metadata } from "next";
+import NavBarTop from "@/shared/components/NavBarTop";
+import NavBarBottom from "@/shared/components/NavBarBottom";
 
 export const metadata: Metadata = {
   title: "찾아줄개",
@@ -12,7 +14,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <NavBarTop />
+        {children}
+        <NavBarBottom />
+      </body>
     </html>
   );
 }
