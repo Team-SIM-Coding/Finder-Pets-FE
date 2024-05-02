@@ -3,6 +3,10 @@ import { createVar, style } from "@vanilla-extract/css";
 
 export const spacingHeightVar = createVar();
 
+export const sectionStyle = style({
+  margin: "60px 0px",
+});
+
 export const subHeader = style({
   fontSize: "20px",
   fontWeight: "bold",

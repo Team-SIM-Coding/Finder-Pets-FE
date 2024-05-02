@@ -359,7 +359,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@design-system/react-components-select@workspace:packages/react/components/select":
+"@design-system/react-components-select@workspace:^, @design-system/react-components-select@workspace:packages/react/components/select":
   version: 0.0.0-use.local
   resolution: "@design-system/react-components-select@workspace:packages/react/components/select"
   dependencies:
@@ -3573,6 +3573,7 @@ __metadata:
     "@design-system/react-components-button": "workspace:^"
     "@design-system/react-components-input": "workspace:^"
     "@design-system/react-components-layout": "workspace:^"
+    "@design-system/react-components-select": "workspace:^"
     "@design-system/themes": "workspace:^"
     "@tanstack/react-query": "npm:^5.29.0"
     "@tanstack/react-query-next-experimental": "npm:^5.8.4"

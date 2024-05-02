@@ -1,9 +1,5 @@
 import { style } from "@vanilla-extract/css";
 
-export const mainSection = style({
-  margin: "60px 0px",
-});
-
 export const titleWrap = style({
   padding: "10px",
 });
