@@ -1,11 +1,17 @@
+import * as cs from "@/shared/styles/common.css";
+
+import TabMenuBar from "@/shared/components/tab/TabMenuBar";
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
-      <div style={{ display: "flex" }}>
-        <div>탭1</div>
-        <div>탭2</div>
-      </div>
+    <section className={cs.sectionStyle}>
+      <TabMenuBar
+        firstTab="기다림의 끝에서"
+        secondTab="안전한 품으로"
+        firstPath="/finder/lost"
+        secondPath="/finder/sighted"
+      />
       {children}
-    </div>
+    </section>
   );
 }
