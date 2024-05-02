@@ -10,17 +10,17 @@ const FilterMenuBar = () => {
     <Flex justify="space-between" align="center" className={s.filterMenuWrap}>
       <div>
         <SelectTab>
-          <option value="" disabled selected>
+          <option value="all" selected>
             모든 지역
           </option>
         </SelectTab>
         <SelectTab>
-          <option value="" disabled selected>
+          <option value="all" selected>
             모든 동물
           </option>
         </SelectTab>
         <SelectTab>
-          <option value="" disabled selected>
+          <option value="all" selected>
             모든 품종
           </option>
         </SelectTab>
