@@ -1,4 +1,3 @@
-import { f } from "@/shared/styles/functions";
 import { vars } from "@design-system/themes";
 import { style } from "@vanilla-extract/css";
 

@@ -1,0 +1,74 @@
+[
+  {
+    "pet_id": 1,
+    "lost_date": "2024.04.01",
+    "lost_price": "경기도 안산시 단원구 와동",
+    "latitude": 37,
+    "longitude": 48,
+    "animal": "강아지",
+    "kind": "도베르만",
+    "gender": "수컷",
+    "weight": 14,
+    "color": "검정색",
+    "age": 5,
+    "is_neutering": true,
+    "character": "공격적인 성향",
+    "phone": "010-0000-0001",
+    "description": "산책 도중에 잠깐 떨어져 있었는데, 잃어버렸어요. 도와주세요",
+    "created_at": "2024.04.02",
+    "user_id": "1",
+    "my_pet_id": "1",
+    "images": [
+      { "image_id": "1", "image_url": "/images/pet1.jpeg" },
+      { "image_id": "2", "image_url": "/images/pet2.jpeg" }
+    ]
+  },
+  {
+    "pet_id": 2,
+    "lost_date": "2024.04.02",
+    "lost_price": "경기도 안산시 단원구 와동",
+    "latitude": 37,
+    "longitude": 48,
+    "animal": "강아지",
+    "kind": "도베르만",
+    "gender": "수컷",
+    "weight": 14,
+    "color": "검정색",
+    "age": 5,
+    "is_neutering": false,
+    "character": "공격적인 성향",
+    "phone": "010-0000-0002",
+    "description": "산책 도중에 잠깐 떨어져 있었는데, 잃어버렸어요. 도와주세요",
+    "created_at": "2024.04.03",
+    "user_id": "2",
+    "my_pet_id": "2",
+    "images": [
+      { "image_id": "1", "image_url": "/images/pet2.jpeg" },
+      { "image_id": "2", "image_url": "/images/pet1.jpeg" }
+    ]
+  },
+  {
+    "pet_id": 3,
+    "lost_date": "2024.04.02",
+    "lost_price": "경기도 안산시 단원구 와동",
+    "latitude": 37,
+    "longitude": 48,
+    "animal": "강아지",
+    "kind": "도베르만",
+    "gender": "수컷",
+    "weight": 14,
+    "color": "검정색",
+    "age": 5,
+    "is_neutering": false,
+    "character": "공격적인 성향",
+    "phone": "010-0000-0002",
+    "description": "산책 도중에 잠깐 떨어져 있었는데, 잃어버렸어요. 도와주세요",
+    "created_at": "2024.04.03",
+    "user_id": "2",
+    "my_pet_id": "2",
+    "images": [
+      { "image_id": "1", "image_url": "/images/pet3.jpeg" },
+      { "image_id": "2", "image_url": "/images/pet1.jpeg" }
+    ]
+  }
+]

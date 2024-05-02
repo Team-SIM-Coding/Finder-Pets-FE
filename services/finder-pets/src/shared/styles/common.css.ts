@@ -3,6 +3,16 @@ import { createVar, style } from "@vanilla-extract/css";
 
 export const spacingHeightVar = createVar();
 
+export const subHeader = style({
+  fontSize: "20px",
+  fontWeight: "bold",
+});
+
+export const thirdHeader = style({
+  fontSize: "18px",
+  fontWeight: "600",
+});
+
 export const defaultButton = style({
   width: "100%",
   height: "50px",
