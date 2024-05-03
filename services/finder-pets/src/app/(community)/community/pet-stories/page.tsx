@@ -1,5 +1,14 @@
+import ListBox from "@/components/list/ListBox";
+
 const PetStories = () => {
-  return <div>반려이야기</div>;
+  return (
+    <section>
+      <ListBox />
+      <ListBox />
+      <ListBox />
+      <ListBox />
+    </section>
+  );
 };
 
 export default PetStories;

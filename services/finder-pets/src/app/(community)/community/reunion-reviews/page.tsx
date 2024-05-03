@@ -1,5 +1,15 @@
+import ListBox from "@/components/list/ListBox";
+
 const ReUnionReviews = () => {
-  return <div>재회 후기</div>;
+  return (
+    <section>
+      <ListBox />
+      <ListBox />
+      <ListBox />
+      <ListBox />
+      <ListBox />
+    </section>
+  );
 };
 
 export default ReUnionReviews;

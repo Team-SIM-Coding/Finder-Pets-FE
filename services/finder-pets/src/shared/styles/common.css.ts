@@ -14,7 +14,7 @@ export const sectionStyle = style([
 export const layoutSectionStyle = style([
   f.pRelative,
   {
-    margin: "150px 0px",
+    margin: "136px 0px",
   },
 ]);
 

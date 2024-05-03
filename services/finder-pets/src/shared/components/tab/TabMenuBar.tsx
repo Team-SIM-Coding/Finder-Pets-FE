@@ -23,17 +23,17 @@ const TabMenuBar = ({ firstTab, secondTab, firstPath, secondPath }: Props) => {
     });
   };
 
-  const lostPathColor = getPathStyle("/finder/lost");
-  const sightedPathColor = getPathStyle("/finder/sighted");
+  const firstPathColor = getPathStyle(firstPath);
+  const secondPathColor = getPathStyle(secondPath);
 
   return (
     <Flex align="center" className={s.tabMenuWrap}>
-      <Link href={firstPath} className={s.tabBox} style={lostPathColor}>
+      <Link href={firstPath} className={s.tabBox} style={firstPathColor}>
         <div>
           <span>{firstTab}</span>
         </div>
       </Link>
-      <Link href={secondPath} className={s.tabBox} style={sightedPathColor}>
+      <Link href={secondPath} className={s.tabBox} style={secondPathColor}>
         <div>
           <span>{secondTab}</span>
         </div>
