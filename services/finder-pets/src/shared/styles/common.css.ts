@@ -4,14 +4,17 @@ import { f } from "./functions";
 
 export const spacingHeightVar = createVar();
 
-export const sectionStyle = style({
-  margin: "60px 0px",
-});
+export const sectionStyle = style([
+  f.pRelative,
+  {
+    margin: "70px 0px",
+  },
+]);
 
 export const layoutSectionStyle = style([
   f.pRelative,
   {
-    margin: "60px 0px",
+    margin: "150px 0px",
   },
 ]);
 
