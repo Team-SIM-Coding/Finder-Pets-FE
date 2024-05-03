@@ -15,6 +15,13 @@ interface Props {
   secondPath: string;
 }
 
+const TAB_MENU_BAR_INCLUDES_PATHS = [
+  "/finder/lost",
+  "/finder/sighted",
+  "/community/reunion-reviews",
+  "/community/pet-stories",
+];
+
 const TabMenuBar = ({ firstTab, secondTab, firstPath, secondPath }: Props) => {
   const path = usePathname();
   const getPathStyle = (currentPath: string) => {
@@ -25,6 +32,8 @@ const TabMenuBar = ({ firstTab, secondTab, firstPath, secondPath }: Props) => {
 
   const firstPathColor = getPathStyle(firstPath);
   const secondPathColor = getPathStyle(secondPath);
+
+  if (!TAB_MENU_BAR_INCLUDES_PATHS.includes(path)) return null;
 
   return (
     <Flex align="center" className={s.tabMenuWrap}>
