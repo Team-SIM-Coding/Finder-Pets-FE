@@ -31,7 +31,7 @@ const MainInfoBox = ({ title }: Props) => {
           <IoIosArrowForward className={s.iconStyle} />
         </Flex>
       </Flex>
-      <MainSwiperBox items={items} isOnlyImage={false} />
+      <MainSwiperBox items={items} />
     </article>
   );
 };

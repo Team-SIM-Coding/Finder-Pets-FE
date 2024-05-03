@@ -6,19 +6,20 @@ import "./Swiper.css";
 import SwiperCore from "swiper";
 import { Navigation, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import MainItemBox from "@/components/home/MainItemBox";
-import { LostPets } from "@/shared/types/pet";
+import { PetImage } from "@/shared/types/pet";
+import ImageBox from "./ImageBox";
+import Spacing from "../Spacing";
 
 interface Props {
-  items: LostPets[];
+  images: PetImage[];
 }
 
-const MainSwiperBox = ({ items }: Props) => {
+const ImageSwiperBox = ({ images }: Props) => {
   SwiperCore.use([Navigation, Scrollbar]);
 
   return (
     <article>
+      <Spacing height="12px" />
       <Swiper
         spaceBetween={8}
         loop={true}
@@ -39,9 +40,9 @@ const MainSwiperBox = ({ items }: Props) => {
           },
         }}
       >
-        {items?.map((item, index) => (
+        {images?.map((image, index) => (
           <SwiperSlide key={index}>
-            <MainItemBox item={item} />
+            <ImageBox image={image} width={320} height={214} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -49,4 +50,4 @@ const MainSwiperBox = ({ items }: Props) => {
   );
 };
 
-export default MainSwiperBox;
+export default ImageSwiperBox;

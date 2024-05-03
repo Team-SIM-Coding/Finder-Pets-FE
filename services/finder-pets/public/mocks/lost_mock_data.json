@@ -20,7 +20,8 @@
     "my_pet_id": "1",
     "images": [
       { "image_id": "1", "image_url": "/images/pet1.jpeg" },
-      { "image_id": "2", "image_url": "/images/pet2.jpeg" }
+      { "image_id": "2", "image_url": "/images/pet2.jpeg" },
+      { "image_id": "3", "image_url": "/images/pet3.jpeg" }
     ]
   },
   {
@@ -44,7 +45,8 @@
     "my_pet_id": "2",
     "images": [
       { "image_id": "1", "image_url": "/images/pet2.jpeg" },
-      { "image_id": "2", "image_url": "/images/pet1.jpeg" }
+      { "image_id": "2", "image_url": "/images/pet1.jpeg" },
+      { "image_id": "3", "image_url": "/images/pet3.jpeg" }
     ]
   },
   {
@@ -68,7 +70,8 @@
     "my_pet_id": "2",
     "images": [
       { "image_id": "1", "image_url": "/images/pet3.jpeg" },
-      { "image_id": "2", "image_url": "/images/pet1.jpeg" }
+      { "image_id": "2", "image_url": "/images/pet1.jpeg" },
+      { "image_id": "3", "image_url": "/images/pet3.jpeg" }
     ]
   }
 ]

@@ -18,6 +18,10 @@ export const layoutSectionStyle = style([
   },
 ]);
 
+export const detailSectionStyle = style({
+  padding: "0 10px",
+});
+
 export const subHeader = style({
   fontSize: "20px",
   fontWeight: "bold",
