@@ -33,3 +33,24 @@ export const ValidationMessageStyle = style({
   fontSize: "10px",
   color: vars.colors.$scale.red[900],
 });
+
+export const myMenuLinkWrap = style({
+  color: "black",
+  textDecoration: "none",
+});
+
+export const myMenuLinkBox = style({
+  padding: "8px 0",
+  margin: "0 20px",
+  borderBottom: "1px solid #E9E9E9",
+});
+
+export const myMenuLinkText = style({
+  fontSize: "20px",
+  fontWeight: "bold",
+});
+
+export const myMenuArrowIcon = style({
+  width: "30px",
+  height: "30px",
+});
