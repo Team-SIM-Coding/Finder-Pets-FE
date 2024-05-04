@@ -3,6 +3,9 @@
 import SightedDetailDescription from "@/components/sighted/SightedDetailDescription";
 import SightedDetailMainHeaderLeft from "@/components/sighted/SightedDetailMainHeaderLeft";
 import SightedDetailMainHeaderRight from "@/components/sighted/SightedDetailMainHeaderRight";
+import CommentWriter from "@/shared/components/comments/CommentWriter";
+import CommentsList from "@/shared/components/comments/CommentsList";
+import CommentsSection from "@/shared/components/comments/CommentsSection";
 import DetailHeader from "@/shared/components/detail/DetailHeader";
 import DetailMain from "@/shared/components/detail/DetailMain";
 import DetailMainHeader from "@/shared/components/detail/DetailMainHeader";
@@ -40,6 +43,9 @@ const SightedDetail = () => {
           images={<ImageSwiperBox images={items[0]?.images} />}
           description={<SightedDetailDescription />}
         />
+      }
+      comments={
+        <CommentsSection comment_count={2} comments={<CommentsList />} writer={<CommentWriter />} />
       }
     />
   );
