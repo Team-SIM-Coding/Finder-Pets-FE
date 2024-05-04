@@ -19,6 +19,8 @@ const NAVBAR_EXCLUSION_PATHS = [
   "/find-id",
   "/find-password",
   "/reset-password",
+  "/my-menu/profile",
+  "/my-menu/my-pets",
 ];
 
 const NAVBAR_ICON_LIST = [
