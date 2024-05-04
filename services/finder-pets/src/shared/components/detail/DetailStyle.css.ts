@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 
 export const detailSection = style({
   margin: "60px 0 ",
-  padding: "12px",
+  padding: "0 12px",
 });
 
 export const detailHeader = style({
@@ -25,6 +25,10 @@ export const detailDescriptionText = style({
   width: "76%",
   fontSize: "12px",
   textAlign: "right",
+});
+
+export const detailDescriptionTextBox = style({
+  fontSize: "12px",
 });
 
 export const detailDateText = style({

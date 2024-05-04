@@ -3,6 +3,7 @@
 import ShelterDetailDescription from "@/components/shelter/ShelterDetailDescription";
 import ShelterDetailMainHeaderLeft from "@/components/shelter/ShelterDetailMainHeaderLeft";
 import ShelterDetailMainHeaderRight from "@/components/shelter/ShelterDetailMainHeaderRight";
+import Spacing from "@/shared/components/Spacing";
 import DetailHeader from "@/shared/components/detail/DetailHeader";
 import DetailMain from "@/shared/components/detail/DetailMain";
 import DetailMainHeader from "@/shared/components/detail/DetailMainHeader";
@@ -26,10 +27,13 @@ const ShelterDetail = () => {
       main={
         <DetailMain
           header={
-            <DetailMainHeader
-              left={<ShelterDetailMainHeaderLeft info="이기영 수의과 병원" />}
-              right={<ShelterDetailMainHeaderRight info="2024.04.03" />}
-            />
+            <>
+              <DetailMainHeader
+                left={<ShelterDetailMainHeaderLeft info="이기영 수의과 병원" />}
+                right={<ShelterDetailMainHeaderRight info="2024.04.03" />}
+              />
+              <Spacing height="12px" />
+            </>
           }
           images={<ImageSwiperBox images={items[0]?.images} />}
           description={<ShelterDetailDescription />}

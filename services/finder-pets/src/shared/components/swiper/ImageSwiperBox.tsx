@@ -3,12 +3,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./Swiper.css";
 
+import { PetImage } from "@/shared/types/pet";
 import SwiperCore from "swiper";
 import { Navigation, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { PetImage } from "@/shared/types/pet";
 import ImageBox from "./ImageBox";
-import Spacing from "../Spacing";
 
 interface Props {
   images: PetImage[];
@@ -19,7 +18,7 @@ const ImageSwiperBox = ({ images }: Props) => {
 
   return (
     <article>
-      <Spacing height="12px" />
+      {/* <Spacing height="12px" /> */}
       <Swiper
         spaceBetween={8}
         loop={true}

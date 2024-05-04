@@ -11,13 +11,6 @@ export const sectionStyle = style([
   },
 ]);
 
-export const layoutSectionStyle = style([
-  f.pRelative,
-  {
-    margin: "136px 0px",
-  },
-]);
-
 export const detailSectionStyle = style({
   padding: "0 10px",
 });
