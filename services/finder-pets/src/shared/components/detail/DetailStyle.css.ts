@@ -11,6 +11,11 @@ export const detailHeader = style({
   fontWeight: "bold",
 });
 
+export const detailSubHeader = style({
+  fontSize: "20px",
+  fontWeight: "700",
+});
+
 export const detailMainHeader = style({
   padding: "8px 0",
 });
@@ -29,6 +34,7 @@ export const detailDescriptionText = style({
 
 export const detailDescriptionTextBox = style({
   fontSize: "12px",
+  lineHeight: "16px",
 });
 
 export const detailDateText = style({
