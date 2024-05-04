@@ -7,7 +7,15 @@ interface Props {
 }
 
 const LostDetailMainHeaderLeft = ({ user_image, user_name, create_at }: Props) => {
-  return <UserAndCreateAt user_image={user_image} user_name={user_name} create_at={create_at} />;
+  return (
+    <UserAndCreateAt
+      user_image={user_image}
+      user_name={user_name}
+      width={48}
+      height={48}
+      create_at={create_at}
+    />
+  );
 };
 
 export default LostDetailMainHeaderLeft;

@@ -1,3 +1,4 @@
+import { f } from "@/shared/styles/functions";
 import { style } from "@vanilla-extract/css";
 
 export const commentTitleText = style({
@@ -28,4 +29,42 @@ export const commentTextWrap = style({
 export const iconStyle = style({
   width: "24px",
   height: "24px",
+});
+
+export const commentWriterWrap = style([f.pRelative]);
+
+export const commentWriterTextArea = style({
+  width: "100%",
+  height: "160px",
+  padding: "32px 8px",
+  outline: "none",
+});
+
+export const commentWriterUserInfo = style([
+  f.pAbsolute,
+  {
+    top: "8px",
+    padding: "8px",
+  },
+]);
+
+export const commentRegisterButtonWrap = style([
+  f.pAbsolute,
+  {
+    bottom: "28px",
+    right: "1px",
+    width: "52px",
+    height: "30px",
+    padding: "4px 8px",
+    backgroundColor: "white",
+    borderTop: "1px solid #CBCBCB",
+    borderLeft: "1px solid #CBCBCB",
+    textAlign: "center",
+  },
+]);
+
+export const commentRegisterButton = style({
+  border: "none",
+  outline: "none",
+  backgroundColor: "transparent",
 });

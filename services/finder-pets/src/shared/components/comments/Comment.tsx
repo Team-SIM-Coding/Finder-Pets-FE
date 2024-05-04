@@ -16,7 +16,13 @@ const Comment = ({ user_image, user_name, created_at, comment }: Props) => {
   return (
     <div className={s.commentWrap}>
       <Flex justify="space-between" align="center">
-        <UserAndCreateAt user_image={user_image} user_name={user_name} create_at={created_at} />
+        <UserAndCreateAt
+          user_image={user_image}
+          user_name={user_name}
+          create_at={created_at}
+          width={48}
+          height={48}
+        />
         <CiMenuKebab className={s.iconStyle} />
       </Flex>
       <div className={s.commentTextWrap}>

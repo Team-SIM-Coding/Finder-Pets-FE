@@ -3,6 +3,7 @@
 import LostDetailDescription from "@/components/lost/LostDetailDescription";
 import LostDetailMainHeaderLeft from "@/components/lost/LostDetailMainHeaderLeft";
 import LostDetailMainHeaderRight from "@/components/lost/LostDetailMainHeaderRight";
+import CommentWriter from "@/shared/components/comments/CommentWriter";
 import CommentsList from "@/shared/components/comments/CommentsList";
 import CommentsSection from "@/shared/components/comments/CommentsSection";
 import DetailHeader from "@/shared/components/detail/DetailHeader";
@@ -44,7 +45,7 @@ const LostDetail = () => {
         />
       }
       comments={
-        <CommentsSection comment_count={2} comments={<CommentsList />} writer={<div></div>} />
+        <CommentsSection comment_count={2} comments={<CommentsList />} writer={<CommentWriter />} />
       }
     />
   );
