@@ -3,6 +3,8 @@
 import LostDetailDescription from "@/components/lost/LostDetailDescription";
 import LostDetailMainHeaderLeft from "@/components/lost/LostDetailMainHeaderLeft";
 import LostDetailMainHeaderRight from "@/components/lost/LostDetailMainHeaderRight";
+import CommentsList from "@/shared/components/comments/CommentsList";
+import CommentsSection from "@/shared/components/comments/CommentsSection";
 import DetailHeader from "@/shared/components/detail/DetailHeader";
 import DetailMain from "@/shared/components/detail/DetailMain";
 import DetailMainHeader from "@/shared/components/detail/DetailMainHeader";
@@ -40,6 +42,9 @@ const LostDetail = () => {
           images={<ImageSwiperBox images={items[0]?.images} />}
           description={<LostDetailDescription />}
         />
+      }
+      comments={
+        <CommentsSection comment_count={2} comments={<CommentsList />} writer={<div></div>} />
       }
     />
   );
