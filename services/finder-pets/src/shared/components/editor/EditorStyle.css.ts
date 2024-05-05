@@ -102,3 +102,17 @@ export const editorSelectStyle = style([
     textAlign: "center",
   },
 ]);
+
+export const editorCheckBoxWrap = style({
+  height: "40px",
+});
+
+export const editorCheckBoxLabelWrap = style({
+  width: "120px",
+  marginRight: "24px",
+  textAlign: "left",
+});
+
+export const editorCheckBoxInputWrap = style({
+  marginRight: "24px",
+});

@@ -46,7 +46,11 @@ const NAVBAR_ICON_LIST = [
 const NavBarBottom = () => {
   const path = usePathname();
 
-  if (NAVBAR_EXCLUSION_PATHS.includes(path)) return null;
+  const shouldExclude = NAVBAR_EXCLUSION_PATHS.some((excludedPath) =>
+    path.startsWith(excludedPath),
+  );
+
+  if (shouldExclude) return null;
 
   return (
     <section className={s.navBottomSection}>
