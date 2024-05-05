@@ -15,6 +15,12 @@ export const detailSectionStyle = style({
   padding: "0 10px",
 });
 
+export const headerStyle = style({
+  marginLeft: "12px",
+  fontSize: "24px",
+  fontWeight: "bold",
+});
+
 export const subHeader = style({
   fontSize: "20px",
   fontWeight: "bold",

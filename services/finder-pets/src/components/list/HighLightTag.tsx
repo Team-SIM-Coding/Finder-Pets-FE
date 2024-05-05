@@ -6,11 +6,13 @@ import { assignInlineVars } from "@vanilla-extract/dynamic";
 interface Props {
   text: string;
   color: string;
+  width?: string;
 }
 
-const HighLightTag = ({ text, color }: Props) => {
+const HighLightTag = ({ text, color, width = "60px" }: Props) => {
   const styleVars = assignInlineVars({
     [s.highLightColor]: color,
+    [s.hightLightTagWidth]: width,
   });
 
   return (

@@ -1,6 +1,7 @@
 import { createVar, style } from "@vanilla-extract/css";
 
 export const highLightColor = createVar();
+export const hightLightTagWidth = createVar();
 
 export const listBoxWrap = style({
   padding: "10px 0",
@@ -18,7 +19,7 @@ export const listInfoBoxWrap = style({
 });
 
 export const highLightTagStyle = style({
-  width: "60px",
+  width: hightLightTagWidth,
   padding: "4px 6px",
   marginRight: "4px",
   border: `1px solid ${highLightColor}`,
