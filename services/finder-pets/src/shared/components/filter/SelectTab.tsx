@@ -5,10 +5,11 @@ import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
+  className?: string;
 }
 
-const SelectTab = ({ children }: Props) => {
-  return <Select className={s.selectStyle}>{children}</Select>;
+const SelectTab = ({ children, className }: Props) => {
+  return <Select className={className || s.selectStyle}>{children}</Select>;
 };
 
 export default SelectTab;

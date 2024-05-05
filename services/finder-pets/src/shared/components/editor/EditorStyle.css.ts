@@ -48,3 +48,57 @@ export const imageRegisterFormFileInput = style({
   height: "150px",
   opacity: 0,
 });
+
+export const labelStyle = style({
+  width: "60px",
+  fontSize: "14px",
+});
+
+export const editorInputLabel = style([labelStyle]);
+
+export const editorTextareaLabel = style([
+  labelStyle,
+  {
+    alignSelf: "flex-start",
+    marginTop: "12px",
+  },
+]);
+
+export const editorTextBoxDefault = style({
+  marginLeft: "8px",
+  border: "1px solid #DCD6D6",
+  borderRadius: "4px",
+});
+
+export const editorTextAreaStyle = style([
+  editorTextBoxDefault,
+  {
+    flex: 1,
+    height: "150px",
+  },
+]);
+
+export const editorInputMediumStyle = style([
+  editorTextBoxDefault,
+  {
+    flex: 1,
+    height: "40px",
+  },
+]);
+
+export const editorInputSmallStyle = style([
+  editorTextBoxDefault,
+  {
+    width: "108px",
+    height: "40px",
+  },
+]);
+
+export const editorSelectStyle = style([
+  editorTextBoxDefault,
+  {
+    width: "108px",
+    height: "40px",
+    textAlign: "center",
+  },
+]);
