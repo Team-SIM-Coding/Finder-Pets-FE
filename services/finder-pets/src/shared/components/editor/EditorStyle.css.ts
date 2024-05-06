@@ -78,6 +78,14 @@ export const editorTextAreaStyle = style([
   },
 ]);
 
+export const editorTextAreaLargeStyle = style([
+  editorTextBoxDefault,
+  {
+    flex: 1,
+    height: "350px",
+  },
+]);
+
 export const editorInputMediumStyle = style([
   editorTextBoxDefault,
   {
