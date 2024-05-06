@@ -2,27 +2,27 @@ import * as es from "@/shared/components/editor/EditorStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
-import Spacing from "@/shared/components/Spacing";
 import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";
 import EditorInputField from "@/shared/components/editor/EditorInputField";
+import Spacing from "@/shared/components/Spacing";
 import { LostPets } from "@/shared/types/pet";
 import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
 import EditorCheckBoxField from "@/shared/components/editor/EditorCheckBoxField";
 import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
-import MyPetProfileButton from "./MyPetProfileButton";
+import MyPetRegisterButton from "./MyPetRegisterButton";
 
 interface Props {
   pet_info: LostPets;
 }
 
-const MyPetProfileMain = ({ pet_info }: Props) => {
+const MyPetRegisterMain = ({ pet_info }: Props) => {
   return (
     <div>
       <EditorImageRegisterForm />
       <EditorInputField label="이름" className={es.editorInputMediumStyle} />
       <Spacing height="12px" />
       <Flex>
-        <EditorInputField label="성별" className={es.editorInputSmallStyle} />
+        <EditorInputField label="생일" className={es.editorInputSmallStyle} />
         <EditorInputField label="입양일" className={es.editorInputSmallStyle} />
       </Flex>
       <Spacing height="12px" />
@@ -62,10 +62,10 @@ const MyPetProfileMain = ({ pet_info }: Props) => {
       <Spacing height="12px" />
       <EditorTextAreaField label="소개" className={es.editorTextAreaStyle} />
       <Spacing height="12px" />
-      <MyPetProfileButton />
+      <MyPetRegisterButton />
       <Spacing height="24px" />
     </div>
   );
 };
 
-export default MyPetProfileMain;
+export default MyPetRegisterMain;

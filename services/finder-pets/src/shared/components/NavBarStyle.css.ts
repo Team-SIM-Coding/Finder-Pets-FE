@@ -72,3 +72,9 @@ export const searchIcon = style([
     top: "10px",
   },
 ]);
+
+export const myPetRegisterButton = style({
+  padding: "4px 8px",
+  backgroundColor: "transparent",
+  borderRadius: "4px",
+});
