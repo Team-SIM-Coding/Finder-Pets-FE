@@ -283,7 +283,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@design-system/react-components-button@workspace:packages/react/components/button":
+"@design-system/react-components-button@workspace:^, @design-system/react-components-button@workspace:packages/react/components/button":
   version: 0.0.0-use.local
   resolution: "@design-system/react-components-button@workspace:packages/react/components/button"
   dependencies:
@@ -309,7 +309,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@design-system/react-components-input@workspace:packages/react/components/input":
+"@design-system/react-components-input@workspace:^, @design-system/react-components-input@workspace:packages/react/components/input":
   version: 0.0.0-use.local
   resolution: "@design-system/react-components-input@workspace:packages/react/components/input"
   dependencies:
@@ -335,7 +335,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@design-system/react-components-layout@workspace:packages/react/components/layout":
+"@design-system/react-components-layout@workspace:^, @design-system/react-components-layout@workspace:packages/react/components/layout":
   version: 0.0.0-use.local
   resolution: "@design-system/react-components-layout@workspace:packages/react/components/layout"
   dependencies:
@@ -359,7 +359,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@design-system/react-components-select@workspace:packages/react/components/select":
+"@design-system/react-components-select@workspace:^, @design-system/react-components-select@workspace:packages/react/components/select":
   version: 0.0.0-use.local
   resolution: "@design-system/react-components-select@workspace:packages/react/components/select"
   dependencies:
@@ -3570,6 +3570,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "finder-pets@workspace:services/finder-pets"
   dependencies:
+    "@design-system/react-components-button": "workspace:^"
+    "@design-system/react-components-input": "workspace:^"
+    "@design-system/react-components-layout": "workspace:^"
+    "@design-system/react-components-select": "workspace:^"
     "@design-system/themes": "workspace:^"
     "@tanstack/react-query": "npm:^5.29.0"
     "@tanstack/react-query-next-experimental": "npm:^5.8.4"
@@ -3586,6 +3590,7 @@ __metadata:
     react: "npm:^18"
     react-dom: "npm:^18"
     react-hook-form: "npm:^7.51.3"
+    react-icons: "npm:^5.2.0"
     react-intersection-observer: "npm:^9.8.1"
     swiper: "npm:^11.1.1"
     typescript: "npm:^5"
@@ -5601,6 +5606,15 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
   checksum: 10c0/dd7dfc8514df19a13b7647b3faebdcb1329723afb52454626496eeaa657323d42bab12dc85e6b77d758a166c6427fa87f13c5bd9f5f78666c682e8263117e297
+  languageName: node
+  linkType: hard
+
+"react-icons@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "react-icons@npm:5.2.0"
+  peerDependencies:
+    react: "*"
+  checksum: 10c0/bd9176b1aa6ddaa99b2abea2cecb523443b39a470912725e12da0b478697312fdefb55daaee921cf28bd9d76f580f0fa879d127c8f63fa1ca4516d44817eb6f4
   languageName: node
   linkType: hard
 

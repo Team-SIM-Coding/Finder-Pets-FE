@@ -13,6 +13,7 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
     "prettier",
   ],
   plugins: ["react", "@typescript-eslint", "react-hooks", "jsx-a11y"],
@@ -24,6 +25,7 @@ module.exports = {
     "react/display-name": "off",
     "no-empty-function": "off",
     "@typescript-eslint/no-empty-function": ["off"],
+    "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
