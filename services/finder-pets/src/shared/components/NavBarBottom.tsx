@@ -21,6 +21,8 @@ const NAVBAR_EXCLUSION_PATHS = [
   "/reset-password",
   "/my-menu/profile",
   "/my-menu/my-pets",
+  "/finder/register",
+  "/community/register",
 ];
 
 const NAVBAR_ICON_LIST = [

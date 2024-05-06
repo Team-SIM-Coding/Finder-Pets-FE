@@ -8,7 +8,7 @@ import { Button } from "@design-system/react-components-button";
 const FinderRegisterButton = () => {
   return (
     <>
-      <Button className={cs.defaultButton}>등록하기</Button>;
+      <Button className={cs.defaultButton}>등록하기</Button>
       <Spacing height="24px" />
     </>
   );
