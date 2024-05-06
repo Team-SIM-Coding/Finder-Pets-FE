@@ -6,12 +6,13 @@ import { Button } from "@design-system/react-components-button";
 
 import { PiPencilSimpleBold } from "react-icons/pi";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const WRITE_BUTTON_INCLUDES_PATHS = [
   "/finder/lost",
-  "finder/sighted",
-  "community/reunion-reviews",
-  "community/pet-stories",
+  "/finder/sighted",
+  "/community/reunion-reviews",
+  "/community/pet-stories",
 ];
 
 const WriterButton = () => {
@@ -20,14 +21,17 @@ const WriterButton = () => {
   if (!WRITE_BUTTON_INCLUDES_PATHS.includes(path)) return null;
 
   return (
-    <div className={s.writerButtonWrap}>
+    <Link
+      href={`${path.includes("finder") ? "/finder/register" : path.includes("community") ? "/community/register" : ""}`}
+      className={s.writerButtonWrap}
+    >
       <Button className={s.buttonStyle}>
         <Flex direction="column" justify="center" align="center">
           <PiPencilSimpleBold className={s.iconStyle} />
           <span className={s.buttonText}>글쓰기</span>
         </Flex>
       </Button>
-    </div>
+    </Link>
   );
 };
 
