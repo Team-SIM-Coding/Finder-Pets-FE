@@ -4,6 +4,7 @@ import EditorSection from "@/shared/components/editor/EditorSection";
 import MyPetRegisterMain from "./MyPetRegisterMain";
 import { useEffect, useState } from "react";
 import { LostPets } from "@/shared/types/pet";
+import MyPetRegisterButton from "./MyPetRegisterButton";
 
 const MyPetRegisterForm = () => {
   const [item, setItem] = useState<LostPets>({} as LostPets);
@@ -18,7 +19,7 @@ const MyPetRegisterForm = () => {
     <EditorSection
       title="반려동물 등록"
       main={<MyPetRegisterMain pet_info={item} />}
-      footer={<></>}
+      footer={<MyPetRegisterButton />}
     />
   );
 };

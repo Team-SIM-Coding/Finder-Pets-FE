@@ -2,14 +2,13 @@ import * as es from "@/shared/components/editor/EditorStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
+import Spacing from "@/shared/components/Spacing";
+import EditorCheckBoxField from "@/shared/components/editor/EditorCheckBoxField";
 import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";
 import EditorInputField from "@/shared/components/editor/EditorInputField";
-import Spacing from "@/shared/components/Spacing";
-import { LostPets } from "@/shared/types/pet";
 import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
-import EditorCheckBoxField from "@/shared/components/editor/EditorCheckBoxField";
 import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
-import MyPetRegisterButton from "./MyPetRegisterButton";
+import { LostPets } from "@/shared/types/pet";
 
 interface Props {
   pet_info: LostPets;
@@ -62,8 +61,6 @@ const MyPetRegisterMain = ({ pet_info }: Props) => {
       <Spacing height="12px" />
       <EditorTextAreaField label="소개" className={es.editorTextAreaStyle} />
       <Spacing height="12px" />
-      <MyPetRegisterButton />
-      <Spacing height="24px" />
     </div>
   );
 };
