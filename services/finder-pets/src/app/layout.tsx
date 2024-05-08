@@ -5,6 +5,7 @@ import React from "react";
 import type { Metadata } from "next";
 import NavBarTop from "@/shared/components/NavBarTop";
 import NavBarBottom from "@/shared/components/NavBarBottom";
+import { MSWProvider } from "@/shared/components/MSWProvider";
 
 export const metadata: Metadata = {
   title: "찾아줄개",
@@ -15,9 +16,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <NavBarTop />
-        {children}
-        <NavBarBottom />
+        <MSWProvider>
+          <NavBarTop />
+          {children}
+          <NavBarBottom />
+        </MSWProvider>
       </body>
     </html>
   );
