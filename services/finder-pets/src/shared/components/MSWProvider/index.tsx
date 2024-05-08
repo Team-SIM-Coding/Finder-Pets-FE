@@ -17,7 +17,7 @@ export const MSWProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [isReady]);
 
-  if (!isReady) return null;
+  if (!isReady) return <p>Loading Mock Server...</p>;
 
-  return (children);
+  return children;
 };
