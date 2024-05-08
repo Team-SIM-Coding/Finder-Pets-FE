@@ -13,7 +13,7 @@ const TEST_USER = {
 
 const FindIdButtons = () => {
   const handleFindId = async () => {
-    const response = await fetch("/api/findId", {
+    const response = await fetch("/api/find-id", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(TEST_USER),

@@ -3,7 +3,7 @@ import { HttpHandler, HttpResponse, http } from "msw";
 
 const users: User[] = JSON.parse(localStorage.getItem("users") || "[]");
 
-export const postFindUserId: HttpHandler = http.post("/api/findId", async ({ request }) => {
+export const postFindUserId: HttpHandler = http.post("/api/find-id", async ({ request }) => {
   const { name, phone } = (await request.json()) as User;
 
   const user = users.find((u) => u.name === name && u.phone === phone);
