@@ -11,3 +11,9 @@ export interface User {
   like_kind?: string;
   intro?: string;
 }
+
+export interface PasswordResetRequest {
+  email: string;
+  password: string;
+  newPassword: string;
+}
