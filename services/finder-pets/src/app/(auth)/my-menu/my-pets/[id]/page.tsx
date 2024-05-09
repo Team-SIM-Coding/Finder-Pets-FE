@@ -32,7 +32,7 @@ const MyPetDetail = () => {
 
   return (
     <EditorSection
-      title={<MyPetProfileTitle name={item.name} />}
+      title={<MyPetProfileTitle id={item.my_pet_id} name={item.name} />}
       main={<MyPetProfileMain pet_info={item} />}
       footer={<MyPetProfileButton />}
     />
