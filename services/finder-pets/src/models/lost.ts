@@ -4,12 +4,14 @@ import { Pet } from "./pet";
 
 export interface LostPet extends Pet {
   lost_pet_id: string;
-  date: string;
-  place: string;
-  latitude: string;
-  longitude: string;
-  created_at: string;
-  like_count: number;
-  images: Image[];
-  comments: IComment[];
+  date?: string;
+  place?: string;
+  latitude?: string;
+  longitude?: string;
+  created_at?: string;
+  like_count?: number;
+  phone?: string;
+  description?: string;
+  images?: Image[];
+  comments?: IComment[];
 }

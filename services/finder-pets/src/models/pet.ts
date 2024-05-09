@@ -16,12 +16,13 @@ export interface MyPet {
 }
 
 export interface Pet {
-  pet_id: string;
-  animal: string;
-  kind: string;
-  gender: string;
-  weight: number;
-  color: string;
-  age: number;
-  character: string;
+  pet_id?: string;
+  animal?: string;
+  kind?: string;
+  gender?: string;
+  weight?: number;
+  color?: string;
+  age?: number;
+  is_neutering?: boolean;
+  character?: string;
 }
