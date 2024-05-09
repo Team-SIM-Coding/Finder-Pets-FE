@@ -7,6 +7,7 @@ import { postMyPet } from "@/app/api/mocks/postMyPet";
 import { postRegisterUser } from "@/app/api/mocks/postRegistUser";
 import { postResetUserPassword } from "@/app/api/mocks/postResetUserPassword";
 import { postUpdateUser } from "@/app/api/mocks/postUpdateUser";
+import { putUpdateMyPet } from "@/app/api/mocks/putUpdateMyPet";
 import { HttpHandler } from "msw";
 
 export const handlers: HttpHandler[] = [
@@ -20,4 +21,5 @@ export const handlers: HttpHandler[] = [
   postMyPet,
   getMyPets,
   getMyPet,
+  putUpdateMyPet,
 ];
