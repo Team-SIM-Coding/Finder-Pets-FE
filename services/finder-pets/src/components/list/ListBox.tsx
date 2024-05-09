@@ -4,8 +4,16 @@ import { Flex } from "@design-system/react-components-layout";
 
 import Image from "next/image";
 import ListInfoBox from "./ListInfoBox";
+import { LostPet } from "@/models/lost";
+import { SightedPet } from "@/models/sighted";
+import { Review } from "@/models/review";
+import { PetStory } from "@/models/pet-story";
 
-const ListBox = () => {
+interface Props {
+  list_info: LostPet | SightedPet | Review | PetStory;
+}
+
+const ListBox = ({ list_info }: Props) => {
   return (
     <article className={s.listBoxWrap}>
       <Flex>
@@ -16,7 +24,7 @@ const ListBox = () => {
           height={100}
           className={s.listBoxImage}
         />
-        <ListInfoBox />
+        <ListInfoBox info={list_info} />
       </Flex>
     </article>
   );

@@ -3,7 +3,7 @@ import { Image } from "./image";
 import { Pet } from "./pet";
 
 export interface SightedPet extends Pet {
-  sighted_pet_id: string;
+  sighted_pet_id?: string;
   date?: string;
   place?: string;
   latitude?: string;
