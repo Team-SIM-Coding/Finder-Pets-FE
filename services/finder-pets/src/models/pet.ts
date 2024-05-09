@@ -16,6 +16,7 @@ export interface MyPet {
 
 export interface Pet {
   pet_id: string;
+  name?: string;
   animal: string;
   kind: string;
   gender: string;
