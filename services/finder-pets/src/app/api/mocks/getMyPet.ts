@@ -4,6 +4,7 @@ import { HttpHandler, HttpResponse, http } from "msw";
 const pets: MyPet[] = JSON.parse(localStorage.getItem("pets") || "[]");
 
 export const getMyPets: HttpHandler = http.get("/api/my-pets", async () => {
+  console.log(pets);
   if (pets) {
     return HttpResponse.json(pets, { status: 200 });
   } else {
@@ -16,6 +17,8 @@ export const getMyPets: HttpHandler = http.get("/api/my-pets", async () => {
 
 export const getMyPet: HttpHandler = http.get("/api/my-pets/:id", async ({ params }) => {
   const myPetId = params.id;
+
+  console.log(myPetId);
 
   const pet = pets.find((p) => p.my_pet_id === myPetId);
 
