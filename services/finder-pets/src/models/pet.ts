@@ -12,11 +12,11 @@ export interface MyPet {
   age: number;
   is_neutering: boolean;
   is_adoption: boolean;
+  profile_image: string;
 }
 
 export interface Pet {
   pet_id: string;
-  name?: string;
   animal: string;
   kind: string;
   gender: string;

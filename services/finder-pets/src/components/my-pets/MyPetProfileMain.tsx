@@ -2,17 +2,17 @@ import * as es from "@/shared/components/editor/EditorStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
+import { MyPet } from "@/models/pet";
 import Spacing from "@/shared/components/Spacing";
+import EditorCheckBoxField from "@/shared/components/editor/EditorCheckBoxField";
 import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";
 import EditorInputField from "@/shared/components/editor/EditorInputField";
-import { LostPets } from "@/shared/types/pet";
 import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
-import EditorCheckBoxField from "@/shared/components/editor/EditorCheckBoxField";
 import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
 import MyPetProfileButton from "./MyPetProfileButton";
 
 interface Props {
-  pet_info: LostPets;
+  pet_info: MyPet;
 }
 
 const MyPetProfileMain = ({ pet_info }: Props) => {

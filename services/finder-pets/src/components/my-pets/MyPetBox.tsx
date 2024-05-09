@@ -4,13 +4,13 @@ import { GridItem } from "@design-system/react-components-layout";
 
 import Image from "next/image";
 
-import { LostPets } from "@/shared/types/pet";
 import { Flex } from "@design-system/react-components-layout";
 import HighLightTag from "../list/HighLightTag";
 import Spacing from "@/shared/components/Spacing";
+import { MyPet } from "@/models/pet";
 
 interface Props {
-  pet: LostPets;
+  pet: MyPet;
 }
 
 const MyPetBox = ({ pet }: Props) => {
@@ -18,11 +18,11 @@ const MyPetBox = ({ pet }: Props) => {
     <GridItem>
       <Spacing height="12px" />
       <Flex direction="column" justify="center" align="center">
-        <label>반려동물 이름</label>
+        <label>{pet.name}</label>
         <Spacing height="12px" />
         <Image
-          key={pet.images[0].image_id}
-          src={pet.images[0].image_url}
+          key={pet.profile_image}
+          src={pet.profile_image}
           alt="반려동물 이미지"
           width={160}
           height={160}

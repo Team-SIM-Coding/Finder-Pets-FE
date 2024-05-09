@@ -6,7 +6,7 @@ import Spacing from "@/shared/components/Spacing";
 import { Button } from "@design-system/react-components-button";
 
 const TEST_MY_PET = {
-  pet_id: "1",
+  my_pet_id: "1",
   name: "도베만",
   animal: "개",
   kind: "도베르만",
@@ -14,7 +14,12 @@ const TEST_MY_PET = {
   weight: 3,
   color: "검정",
   age: 5,
-  character: "사나워서 조심해야 되요",
+  profile_image: "/images/pet1.jpeg",
+  intro: "사나워서 조심해야 되요",
+  birth: "2023.01.01",
+  adoption: "2024.04.03",
+  is_neutering: true,
+  is_adoption: false,
 };
 
 const MyPetRegisterButton = () => {

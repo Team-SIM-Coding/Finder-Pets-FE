@@ -1,10 +1,10 @@
-import { Pet } from "@/models/pet";
+import { MyPet } from "@/models/pet";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const pets: Pet[] = JSON.parse(localStorage.getItem("my-pets") || "[]");
+const pets: MyPet[] = JSON.parse(localStorage.getItem("my-pets") || "[]");
 
 export const postMyPet: HttpHandler = http.post("/api/my-pet/register", async ({ request }) => {
-  const newMyPet = (await request.json()) as Pet;
+  const newMyPet = (await request.json()) as MyPet;
 
   const isDuplicate = pets.some((pet) => pet.name === newMyPet.name);
 
