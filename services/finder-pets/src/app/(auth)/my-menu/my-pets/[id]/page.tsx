@@ -1,6 +1,7 @@
 "use client";
 import MyPetProfileButton from "@/components/my-pets/MyPetProfileButton";
 import MyPetProfileMain from "@/components/my-pets/MyPetProfileMain";
+import MyPetProfileTitle from "@/components/my-pets/MyPetProfileTitle";
 import { MyPet } from "@/models/pet";
 import EditorSection from "@/shared/components/editor/EditorSection";
 import { waitForMSWActivation } from "@/shared/mocks/waitForWorkerActivation";
@@ -31,7 +32,7 @@ const MyPetDetail = () => {
 
   return (
     <EditorSection
-      title={item?.my_pet_id ? `${item?.my_pet_id}의 프로필` : "반려동물 프로필"}
+      title={<MyPetProfileTitle name={item.name} />}
       main={<MyPetProfileMain pet_info={item} />}
       footer={<MyPetProfileButton />}
     />
