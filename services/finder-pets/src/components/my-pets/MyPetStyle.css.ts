@@ -19,3 +19,7 @@ export const highLightTagStyle = style({
     },
   },
 });
+
+export const myPetBoxLinkStyle = style({
+  textDecoration: "none",
+});

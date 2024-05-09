@@ -16,7 +16,7 @@ interface Props {
 
 const MyPetBox = ({ pet }: Props) => {
   return (
-    <Link href={`/my-menu/my-pets/${pet.my_pet_id}`}>
+    <Link href={`/my-menu/my-pets/${pet.my_pet_id}`} className={s.myPetBoxLinkStyle}>
       <GridItem>
         <Spacing height="12px" />
         <Flex direction="column" justify="center" align="center">
