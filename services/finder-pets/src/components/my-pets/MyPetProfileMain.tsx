@@ -9,7 +9,6 @@ import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegis
 import EditorInputField from "@/shared/components/editor/EditorInputField";
 import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
 import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
-import MyPetProfileButton from "./MyPetProfileButton";
 
 interface Props {
   pet_info: MyPet;
@@ -62,8 +61,6 @@ const MyPetProfileMain = ({ pet_info }: Props) => {
       <Spacing height="12px" />
       <EditorTextAreaField label="소개" className={es.editorTextAreaStyle} />
       <Spacing height="12px" />
-      <MyPetProfileButton />
-      <Spacing height="24px" />
     </div>
   );
 };
