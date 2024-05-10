@@ -1,8 +1,10 @@
 import { deleteLostPet } from "@/app/api/mocks/deleteLostPet";
 import { deleteMyPet } from "@/app/api/mocks/deleteMyPet";
+import { deleteReview } from "@/app/api/mocks/deleteReview";
 import { deleteSightedPet } from "@/app/api/mocks/deleteSightedPet";
 import { getLostPet, getLostPets } from "@/app/api/mocks/getLostPet";
 import { getMyPet, getMyPets } from "@/app/api/mocks/getMyPet";
+import { getReview, getReviews } from "@/app/api/mocks/getReview";
 import { getSightedPet, getSightedPets } from "@/app/api/mocks/getSightedPet";
 import { getUser } from "@/app/api/mocks/getUser";
 import { postFindUserId } from "@/app/api/mocks/postFindUserId";
@@ -40,4 +42,7 @@ export const handlers: HttpHandler[] = [
   getSightedPet,
   deleteSightedPet,
   postReview,
+  getReviews,
+  getReview,
+  deleteReview,
 ];

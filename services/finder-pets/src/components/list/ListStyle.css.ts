@@ -65,3 +65,9 @@ export const infoDescriptionWrap = style({
   padding: "0 8px",
   marginTop: "6px",
 });
+
+export const infoDescription = style({
+  padding: "10px",
+  fontSize: "12px",
+  lineHeight: "1.3",
+});

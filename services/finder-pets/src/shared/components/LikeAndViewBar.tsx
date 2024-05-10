@@ -28,7 +28,7 @@ const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
     if (response.ok) {
       const data = await response.json();
       console.log("해당 포스트가 정상적으로 삭제되었습니다.", data);
-      router.push("/finder/lost");
+      router.push("/community/reunion-reviews");
     } else {
       const data = await response.json();
       console.log("해당 포스트 삭제가 실패 되었습니다.", data);
