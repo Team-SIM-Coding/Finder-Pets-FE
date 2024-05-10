@@ -6,7 +6,7 @@ import Spacing from "@/shared/components/Spacing";
 import { Button } from "@design-system/react-components-button";
 
 const TEST_PET = {
-  lost_pet_id: "3",
+  sighted_pet_id: "6",
   date: "2024.04.03",
   place: "충남시 우금리 터널",
   created_at: "2024.04.04",
@@ -26,8 +26,8 @@ const TEST_PET = {
 };
 
 const FinderRegisterButton = () => {
-  const handleRegisterLostPet = async () => {
-    const response = await fetch("/api/lost/register", {
+  const handleRegisterSightedPet = async () => {
+    const response = await fetch("/api/sighted/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(TEST_PET),
@@ -35,16 +35,16 @@ const FinderRegisterButton = () => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log("실종 동물 등록 완료 : ", data);
+      console.log("목격 동물 등록 완료 : ", data);
     } else {
       const data = await response.json();
-      console.log("실종 동물 등록 실패 : ", data);
+      console.log("목격 동물 등록 실패 : ", data);
     }
   };
 
   return (
     <>
-      <Button className={cs.defaultButton} onClick={handleRegisterLostPet}>
+      <Button className={cs.defaultButton} onClick={handleRegisterSightedPet}>
         등록하기
       </Button>
       <Spacing height="24px" />
