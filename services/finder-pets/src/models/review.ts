@@ -4,9 +4,12 @@ import { Image } from "./image";
 export interface Review {
   review_id?: string;
   title: string;
-  description: string;
+  description?: string;
   created_at: string;
   like_count: number;
-  images: Image[];
-  comments: IComment[];
+  place?: string;
+  animal?: string;
+  kind?: string;
+  images?: Image[];
+  comments?: IComment[];
 }

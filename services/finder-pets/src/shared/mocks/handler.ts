@@ -12,6 +12,7 @@ import { postLostPet } from "@/app/api/mocks/postLostPet";
 import { postMyPet } from "@/app/api/mocks/postMyPet";
 import { postRegisterUser } from "@/app/api/mocks/postRegistUser";
 import { postResetUserPassword } from "@/app/api/mocks/postResetUserPassword";
+import { postReview } from "@/app/api/mocks/postReview";
 import { postSightedPet } from "@/app/api/mocks/postSightedPet";
 import { postUpdateUser } from "@/app/api/mocks/postUpdateUser";
 import { putUpdateMyPet } from "@/app/api/mocks/putUpdateMyPet";
@@ -38,4 +39,5 @@ export const handlers: HttpHandler[] = [
   getSightedPets,
   getSightedPet,
   deleteSightedPet,
+  postReview,
 ];
