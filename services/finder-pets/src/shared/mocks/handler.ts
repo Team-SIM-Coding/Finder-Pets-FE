@@ -1,3 +1,4 @@
+import { deleteLostPet } from "@/app/api/mocks/deleteLostPet";
 import { deleteMyPet } from "@/app/api/mocks/deleteMyPet";
 import { getLostPet, getLostPets } from "@/app/api/mocks/getLostPet";
 import { getMyPet, getMyPets } from "@/app/api/mocks/getMyPet";
@@ -29,4 +30,5 @@ export const handlers: HttpHandler[] = [
   postLostPet,
   getLostPets,
   getLostPet,
+  deleteLostPet,
 ];
