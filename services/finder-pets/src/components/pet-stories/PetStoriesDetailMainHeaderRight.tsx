@@ -6,7 +6,7 @@ interface Props {
 }
 
 const PetStoriesDetailMainHeaderRight = ({ like_count, view_count }: Props) => {
-  return <LikeAndViewBar like_count={like_count} view_count={view_count} />;
+  return <LikeAndViewBar like_count={like_count} view_count={view_count} type="pet-story" />;
 };
 
 export default PetStoriesDetailMainHeaderRight;
