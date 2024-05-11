@@ -9,6 +9,12 @@ import { getPetStories, getPetStory } from "@/app/api/mocks/getPetStory";
 import { getReview, getReviews } from "@/app/api/mocks/getReview";
 import { getSightedPet, getSightedPets } from "@/app/api/mocks/getSightedPet";
 import { getUser } from "@/app/api/mocks/getUser";
+import {
+  postLostComment,
+  postReviewComment,
+  postSightedComment,
+  postStoryComment,
+} from "@/app/api/mocks/postComment";
 import { postFindUserId } from "@/app/api/mocks/postFindUserId";
 import { postFindUserPassword } from "@/app/api/mocks/postFindUserPassword";
 import { postLogInUser } from "@/app/api/mocks/postLogInUser";
@@ -52,4 +58,8 @@ export const handlers: HttpHandler[] = [
   getPetStories,
   getPetStory,
   deletePetStory,
+  postLostComment,
+  postSightedComment,
+  postReviewComment,
+  postStoryComment,
 ];
