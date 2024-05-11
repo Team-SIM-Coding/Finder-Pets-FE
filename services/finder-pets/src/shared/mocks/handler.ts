@@ -1,3 +1,9 @@
+import {
+  deleteLostComment,
+  deleteReviewComment,
+  deleteSightedComment,
+  deleteStoryComment,
+} from "@/app/api/mocks/deleteComment";
 import { deleteLostPet } from "@/app/api/mocks/deleteLostPet";
 import { deleteMyPet } from "@/app/api/mocks/deleteMyPet";
 import { deletePetStory } from "@/app/api/mocks/deletePetStory";
@@ -32,6 +38,12 @@ import { postResetUserPassword } from "@/app/api/mocks/postResetUserPassword";
 import { postReview } from "@/app/api/mocks/postReview";
 import { postSightedPet } from "@/app/api/mocks/postSightedPet";
 import { postUpdateUser } from "@/app/api/mocks/postUpdateUser";
+import {
+  putUpdateLostComment,
+  putUpdateReviewComment,
+  putUpdateSightedComment,
+  putUpdateStoryComment,
+} from "@/app/api/mocks/putUpdateComment";
 import { putUpdateMyPet } from "@/app/api/mocks/putUpdateMyPet";
 import { HttpHandler } from "msw";
 
@@ -72,4 +84,12 @@ export const handlers: HttpHandler[] = [
   getSightedComments,
   getReviewComments,
   getStoryComments,
+  putUpdateLostComment,
+  putUpdateSightedComment,
+  putUpdateReviewComment,
+  putUpdateStoryComment,
+  deleteLostComment,
+  deleteSightedComment,
+  deleteReviewComment,
+  deleteStoryComment,
 ];

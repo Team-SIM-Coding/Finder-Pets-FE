@@ -29,6 +29,7 @@ export const commentTextWrap = style({
 export const iconStyle = style({
   width: "24px",
   height: "24px",
+  cursor: "pointer",
 });
 
 export const commentWriterWrap = style([f.pRelative]);
@@ -67,4 +68,26 @@ export const commentRegisterButton = style({
   border: "none",
   outline: "none",
   backgroundColor: "transparent",
+});
+
+export const CommentBoxWrap = style([f.pRelative]);
+
+export const deleteAndModifyBox = style([
+  f.pAbsolute,
+  {
+    right: "20px",
+    top: "10px",
+    width: "60px",
+    height: "60px",
+    padding: "8px 12px",
+    backgroundColor: "white",
+    border: "1px solid #DFDFDF",
+    borderRadius: "4px",
+    zIndex: "10",
+  },
+]);
+
+export const deleteAndModifyText = style({
+  fontSize: "12px",
+  cursor: "pointer",
 });

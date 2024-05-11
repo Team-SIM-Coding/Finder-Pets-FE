@@ -13,7 +13,11 @@ export const PATH_TYPE: Record<string, string> = {
   "/community/pet-stories": "pet-story",
 };
 
-const TEST_COMMENT = "댓글 등록 테스트!";
+const TEST_COMMENT = {
+  comment_id: "3",
+  comment: "댓글 등록 테스트",
+  created_at: "2024.04.03",
+};
 
 const CommentRegisterButton = () => {
   const [comments, setComments] = useState([]);
