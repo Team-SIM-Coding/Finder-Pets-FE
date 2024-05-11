@@ -6,28 +6,28 @@ import { PetStory } from "@/models/pet-story";
 import { Review } from "@/models/review";
 import { SightedPet } from "@/models/sighted";
 
-type AnyPost = LostPet | SightedPet | Review | PetStory;
+export type AnyPost = LostPet | SightedPet | Review | PetStory;
 
-const storagePaths: Record<string, string> = {
+export const storagePaths: Record<string, string> = {
   lost: "lost-pets",
   sighted: "sighted-pets",
   review: "reviews",
   "pet-story": "pet-stories",
 };
 
-const isLostPet = (post: AnyPost): post is LostPet => {
+export const isLostPet = (post: AnyPost): post is LostPet => {
   return (post as LostPet).lost_pet_id !== undefined;
 };
 
-const isSightedPet = (post: AnyPost): post is SightedPet => {
+export const isSightedPet = (post: AnyPost): post is SightedPet => {
   return (post as SightedPet).sighted_pet_id !== undefined;
 };
 
-const isReview = (post: AnyPost): post is Review => {
+export const isReview = (post: AnyPost): post is Review => {
   return (post as Review).review_id !== undefined;
 };
 
-const isPetStory = (post: AnyPost): post is PetStory => {
+export const isPetStory = (post: AnyPost): post is PetStory => {
   return (post as PetStory).pet_story_id !== undefined;
 };
 

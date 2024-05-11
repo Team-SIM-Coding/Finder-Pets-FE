@@ -3,6 +3,12 @@ import { deleteMyPet } from "@/app/api/mocks/deleteMyPet";
 import { deletePetStory } from "@/app/api/mocks/deletePetStory";
 import { deleteReview } from "@/app/api/mocks/deleteReview";
 import { deleteSightedPet } from "@/app/api/mocks/deleteSightedPet";
+import {
+  getLostComments,
+  getReviewComments,
+  getSightedComments,
+  getStoryComments,
+} from "@/app/api/mocks/getComments";
 import { getLostPet, getLostPets } from "@/app/api/mocks/getLostPet";
 import { getMyPet, getMyPets } from "@/app/api/mocks/getMyPet";
 import { getPetStories, getPetStory } from "@/app/api/mocks/getPetStory";
@@ -62,4 +68,8 @@ export const handlers: HttpHandler[] = [
   postSightedComment,
   postReviewComment,
   postStoryComment,
+  getLostComments,
+  getSightedComments,
+  getReviewComments,
+  getStoryComments,
 ];
