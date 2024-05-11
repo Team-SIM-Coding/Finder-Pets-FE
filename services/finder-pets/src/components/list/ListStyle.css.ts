@@ -3,6 +3,11 @@ import { createVar, style } from "@vanilla-extract/css";
 export const highLightColor = createVar();
 export const hightLightTagWidth = createVar();
 
+export const linkStyle = style({
+  color: "black",
+  textDecoration: "none",
+});
+
 export const listBoxWrap = style({
   padding: "10px 0",
   margin: "0 10px",
