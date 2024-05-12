@@ -6,7 +6,7 @@ interface Props {
 }
 
 const LostDetailMainHeaderRight = ({ like_count, view_count }: Props) => {
-  return <LikeAndViewBar like_count={like_count} view_count={view_count} />;
+  return <LikeAndViewBar like_count={like_count} view_count={view_count} type="lost" />;
 };
 
 export default LostDetailMainHeaderRight;

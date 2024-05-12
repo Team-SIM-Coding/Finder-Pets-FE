@@ -1,15 +1,11 @@
-import ListBox from "@/components/list/ListBox";
+import ReUnionReviewsList from "@/components/reviews/ReUnionReviewsList";
 import Spacing from "@/shared/components/Spacing";
 
 const ReUnionReviews = () => {
   return (
     <section>
       <Spacing height="142px" />
-      <ListBox />
-      <ListBox />
-      <ListBox />
-      <ListBox />
-      <ListBox />
+      <ReUnionReviewsList />
     </section>
   );
 };

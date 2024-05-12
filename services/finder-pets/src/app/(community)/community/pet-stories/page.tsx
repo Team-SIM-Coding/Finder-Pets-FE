@@ -1,14 +1,11 @@
-import ListBox from "@/components/list/ListBox";
+import PetStoryList from "@/components/pet-stories/PetStoryList";
 import Spacing from "@/shared/components/Spacing";
 
 const PetStories = () => {
   return (
     <section>
       <Spacing height="142px" />
-      <ListBox />
-      <ListBox />
-      <ListBox />
-      <ListBox />
+      <PetStoryList />
     </section>
   );
 };

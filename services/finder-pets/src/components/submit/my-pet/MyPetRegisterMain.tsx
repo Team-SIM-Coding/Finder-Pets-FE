@@ -8,13 +8,8 @@ import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegis
 import EditorInputField from "@/shared/components/editor/EditorInputField";
 import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
 import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
-import { LostPets } from "@/shared/types/pet";
 
-interface Props {
-  pet_info: LostPets;
-}
-
-const MyPetRegisterMain = ({ pet_info }: Props) => {
+const MyPetRegisterMain = () => {
   return (
     <div>
       <EditorImageRegisterForm />
@@ -26,30 +21,19 @@ const MyPetRegisterMain = ({ pet_info }: Props) => {
       </Flex>
       <Spacing height="12px" />
       <Flex>
-        {pet_info.animal ? (
-          <EditorInputField label="동물" className={es.editorInputSmallStyle} />
-        ) : (
-          <EditorSelectTab label="동물" className={es.editorSelectStyle}>
-            <option value="all">모든 동물</option>
-          </EditorSelectTab>
-        )}
-        {pet_info.kind ? (
-          <EditorInputField label="품종" className={es.editorInputSmallStyle} />
-        ) : (
-          <EditorSelectTab label="품종" className={es.editorSelectStyle}>
-            <option value="all">모든 동물</option>
-          </EditorSelectTab>
-        )}
+        <EditorSelectTab label="동물" className={es.editorSelectStyle}>
+          <option value="all">모든 동물</option>
+        </EditorSelectTab>
+
+        <EditorSelectTab label="품종" className={es.editorSelectStyle}>
+          <option value="all">모든 동물</option>
+        </EditorSelectTab>
       </Flex>
       <Spacing height="12px" />
       <Flex>
-        {pet_info.gender ? (
-          <EditorInputField label="성별" className={es.editorInputSmallStyle} />
-        ) : (
-          <EditorSelectTab label="성별" className={es.editorSelectStyle}>
-            <option value="default">미확인</option>
-          </EditorSelectTab>
-        )}
+        <EditorSelectTab label="성별" className={es.editorSelectStyle}>
+          <option value="default">미확인</option>
+        </EditorSelectTab>
         <EditorInputField label="몸무게" className={es.editorInputSmallStyle} />
       </Flex>
       <Spacing height="12px" />

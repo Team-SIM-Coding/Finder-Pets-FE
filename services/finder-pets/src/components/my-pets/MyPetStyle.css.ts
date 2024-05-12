@@ -19,3 +19,27 @@ export const highLightTagStyle = style({
     },
   },
 });
+
+export const myPetBoxLinkStyle = style({
+  textDecoration: "none",
+});
+
+export const myPetProfileTitleWrap = style({
+  width: "100%",
+  height: "50px",
+});
+
+export const myPetProfileDeleteButton = style({
+  width: "70px",
+  height: "40px",
+  fontSize: "16px",
+  backgroundColor: "white",
+  border: "1px solid #DCD6D6",
+  borderRadius: "10px",
+  selectors: {
+    "&:hover": {
+      backgroundColor: "#DCD6D6",
+      color: "black",
+    },
+  },
+});

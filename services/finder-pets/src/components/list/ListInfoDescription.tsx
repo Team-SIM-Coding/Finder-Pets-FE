@@ -5,7 +5,7 @@ import { Flex } from "@design-system/react-components-layout";
 
 interface Props {
   label: string;
-  text: string;
+  text: string | undefined;
 }
 
 const ListInfoDescription = ({ label, text }: Props) => {

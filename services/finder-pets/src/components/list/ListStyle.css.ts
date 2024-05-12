@@ -3,6 +3,11 @@ import { createVar, style } from "@vanilla-extract/css";
 export const highLightColor = createVar();
 export const hightLightTagWidth = createVar();
 
+export const linkStyle = style({
+  color: "black",
+  textDecoration: "none",
+});
+
 export const listBoxWrap = style({
   padding: "10px 0",
   margin: "0 10px",
@@ -64,4 +69,10 @@ export const infoDescriptionBox = style({
 export const infoDescriptionWrap = style({
   padding: "0 8px",
   marginTop: "6px",
+});
+
+export const infoDescription = style({
+  padding: "10px",
+  fontSize: "12px",
+  lineHeight: "1.3",
 });

@@ -1,15 +1,11 @@
-import ListBox from "@/components/list/ListBox";
+import SightedPetList from "@/components/sighted/SightedPetList";
 import Spacing from "@/shared/components/Spacing";
 
 const Sighted = () => {
   return (
     <section>
       <Spacing height="142px" />
-      <ListBox />
-      <ListBox />
-      <ListBox />
-      <ListBox />
-      <ListBox />
+      <SightedPetList />
     </section>
   );
 };

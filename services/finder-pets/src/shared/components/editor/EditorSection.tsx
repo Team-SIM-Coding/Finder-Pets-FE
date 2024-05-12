@@ -4,7 +4,7 @@ import { Flex } from "@design-system/react-components-layout";
 import { ReactNode } from "react";
 
 interface Props {
-  title: string;
+  title: ReactNode;
   main: ReactNode;
   footer: ReactNode;
 }

@@ -4,7 +4,7 @@ import { Flex } from "@design-system/react-components-layout";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 interface Props {
-  text: string;
+  text: string | undefined;
   color: string;
   width?: string;
 }

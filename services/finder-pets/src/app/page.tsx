@@ -1,3 +1,5 @@
+"use client";
+
 import * as cs from "@/shared/styles/common.css";
 
 import MainInfoBox from "@/components/home/MainInfoBox";

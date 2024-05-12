@@ -8,14 +8,15 @@ import ValidationMessages from "./ValidationMessages";
 
 interface Props {
   label: string;
+  type?: string;
   validationMessages?: string[];
 }
 
-const InputField = ({ label, validationMessages }: Props) => {
+const InputField = ({ label, validationMessages, type }: Props) => {
   return (
     <Flex direction="column" align="start">
       <label htmlFor="">{label}</label>
-      <Input className={s.inputStyle} />
+      <Input className={s.inputStyle} type={type} />
       <ValidationMessages
         firstMessage={validationMessages && validationMessages[0]}
         secondMessage={validationMessages && validationMessages[1]}
