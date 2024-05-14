@@ -53,6 +53,18 @@ export const findIdSchema = z.object({
   }),
 });
 
+export const findPasswordSchema = z.object({
+  email: z
+    .string()
+    .min(1, { message: "이메일을 입력해주세요." })
+    .email({ message: "유효하지 않은 이메일 형식입니다." }),
+  name: z.string().min(1, { message: "이름을 입력해주세요." }),
+  phone: z.string().regex(/^01([0 | 1 | 6 | 7 | 8 | 9])-([0-9]{3,4})-([0-9]{4})$/, {
+    message: "휴대폰 번호를 정확하게 입력해주세요. (- 포함)",
+  }),
+});
+
 export type RegisterFormData = z.infer<typeof registerSchema>;
 export type LogInFormData = z.infer<typeof loginSchema>;
 export type FindIdFormData = z.infer<typeof findIdSchema>;
+export type FindPasswordFormData = z.infer<typeof findPasswordSchema>;
