@@ -70,6 +70,7 @@ const Alert = ({
             </Button>
           </Flex>
         </Flex>
+        <Spacing height="12px" />
       </section>
     </BackDrop>
   );

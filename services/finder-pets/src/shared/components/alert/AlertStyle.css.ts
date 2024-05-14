@@ -43,6 +43,11 @@ export const alertTitle = style({
   margin: "16px 0px",
 });
 
+export const AlertMainTextWrap = style({
+  margin: "10px 4px",
+});
+
 export const AlertMainText = style({
-  padding: "10px 20px",
+  padding: "4px 8px",
+  lineHeight: "1.3",
 });
