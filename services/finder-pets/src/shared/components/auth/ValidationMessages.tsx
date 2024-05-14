@@ -1,15 +1,13 @@
 import ValidationMessage from "./ValidationMessage";
 
 interface Props {
-  firstMessage?: string | undefined;
-  secondMessage?: string | undefined;
+  firstMessage?: string;
 }
 
-const ValidationMessages = ({ firstMessage, secondMessage }: Props) => {
+const ValidationMessages = ({ firstMessage }: Props) => {
   return (
     <div>
       <ValidationMessage text={firstMessage} />
-      {secondMessage && <ValidationMessage text={secondMessage} />}
     </div>
   );
 };
