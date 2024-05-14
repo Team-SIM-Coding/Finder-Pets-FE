@@ -1,17 +1,23 @@
 "use client";
+import * as cs from "@/shared/styles/common.css";
 
+import useAlertContext from "@/hooks/useAlertContext";
 import authState from "@/recoil/authAtom";
 import Spacing from "@/shared/components/Spacing";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import InputField from "@/shared/components/auth/InputField";
 import { LogInFormData, loginSchema } from "@/utils/validation/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
+import { useEffect } from "react";
 
 const LogInMain = () => {
   const router = useRouter();
-  const setAuthState = useSetRecoilState(authState);
+  const [authStateValue, setAuthStateValue] = useRecoilState(authState);
+
+  const { open, close } = useAlertContext();
 
   const methods = useForm<LogInFormData>({
     resolver: zodResolver(loginSchema),
@@ -36,13 +42,33 @@ const LogInMain = () => {
     if (response.ok) {
       const data = await response.json();
       console.log("로그인 성공:", data);
-      setAuthState({ isLoggedIn: true });
-      router.push("/");
+      setAuthStateValue({ isLoggedIn: true });
+
+      open({
+        width: "300px",
+        height: "200px",
+        title: "로그인",
+        main: <AlertMainTextBox text="로그인에 성공했습니다." />,
+        rightButtonStyle: cs.defaultButton,
+        onRightButtonClick: () => {
+          close();
+          router.push("/");
+        },
+        onBackDropClick: () => {
+          close();
+        },
+      });
     } else {
       const error = await response.json();
       console.error("로그인 실패:", error.message);
     }
   };
+
+  useEffect(() => {
+    if (authStateValue.isLoggedIn === true) {
+      router.push("/");
+    }
+  }, []);
 
   return (
     <FormProvider {...methods}>

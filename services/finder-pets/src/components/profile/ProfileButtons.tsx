@@ -1,11 +1,16 @@
 "use client";
+import useAlertContext from "@/hooks/useAlertContext";
+import authState from "@/recoil/authAtom";
 import Spacing from "@/shared/components/Spacing";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import { waitForMSWActivation } from "@/shared/mocks/waitForWorkerActivation";
 import * as cs from "@/shared/styles/common.css";
 
 import { Button } from "@design-system/react-components-button";
 import { Flex } from "@design-system/react-components-layout";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useSetRecoilState } from "recoil";
 
 const TEST_USER = {
   user_id: "1",
@@ -20,6 +25,11 @@ const TEST_USER = {
 const ProfileButtons = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
+
+  const setAuthStateValue = useSetRecoilState(authState);
+
+  const router = useRouter();
+  const { open, close } = useAlertContext();
 
   const fetchUserProfile = async (id: string) => {
     try {
@@ -56,6 +66,29 @@ const ProfileButtons = () => {
   console.log(user);
   console.log(error);
 
+  const handleLogOut = () => {
+    open({
+      width: "300px",
+      height: "200px",
+      title: "로그아웃",
+      main: <AlertMainTextBox text="로그아웃 하시겠습니까?" />,
+      leftButtonLabel: "취소",
+      leftButtonStyle: cs.whiteButton,
+      rightButtonStyle: cs.defaultButton,
+      onLeftButtonClick: () => {
+        close();
+      },
+      onRightButtonClick: () => {
+        close();
+        router.push("/");
+      },
+      onBackDropClick: () => {
+        close();
+      },
+    });
+    setAuthStateValue({ isLoggedIn: false });
+  };
+
   useEffect(() => {
     (async () => {
       await waitForMSWActivation();
@@ -69,7 +102,9 @@ const ProfileButtons = () => {
       <Button className={cs.defaultButton} onClick={handleUpdateUser}>
         저장
       </Button>
-      <Button className={cs.whiteButton}>로그아웃</Button>
+      <Button className={cs.whiteButton} onClick={handleLogOut}>
+        로그아웃
+      </Button>
       <Button className={cs.whiteButton}>회원탈퇴</Button>
       <Spacing height="24px" />
     </Flex>

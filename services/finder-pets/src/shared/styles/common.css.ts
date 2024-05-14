@@ -3,6 +3,7 @@ import { createVar, style } from "@vanilla-extract/css";
 import { f } from "./functions";
 
 export const spacingHeightVar = createVar();
+export const spacingWidthVar = createVar();
 
 export const sectionStyle = style([
   f.pRelative,
@@ -58,6 +59,6 @@ export const linkTextButton = style({
 });
 
 export const spacingStyle = style({
-  width: "100%",
+  width: spacingWidthVar,
   height: spacingHeightVar,
 });
