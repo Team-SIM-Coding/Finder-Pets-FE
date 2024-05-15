@@ -8,13 +8,14 @@ import { Input } from "@design-system/react-components-input";
 interface Props {
   label: string;
   className: string;
+  value?: string;
 }
 
-const EditorInputField = ({ label, className }: Props) => {
+const EditorInputField = ({ label, className, value }: Props) => {
   return (
     <Flex align="center">
       <label className={s.editorInputLabel}>{label}</label>
-      <Input className={className} />
+      <Input className={className} value={value} />
     </Flex>
   );
 };

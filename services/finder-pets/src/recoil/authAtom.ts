@@ -4,6 +4,7 @@ interface AuthState {
   isLoggedIn: boolean;
   isCompletedResetPassword: boolean;
   isCompletedFindPassword: boolean;
+  userId: string;
 }
 
 const persistAuthState =
@@ -37,6 +38,7 @@ const authState = atom<AuthState>({
     isLoggedIn: false,
     isCompletedResetPassword: false,
     isCompletedFindPassword: false,
+    userId: "",
   },
   effects_UNSTABLE: [persistAuthState("authState")],
 });

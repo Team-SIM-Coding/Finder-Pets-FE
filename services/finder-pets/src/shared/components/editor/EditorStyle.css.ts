@@ -54,6 +54,10 @@ export const labelStyle = style({
   fontSize: "14px",
 });
 
+export const editorInputStyle = style({
+  padding: "10px",
+});
+
 export const editorInputLabel = style([labelStyle]);
 
 export const editorTextareaLabel = style([
@@ -91,6 +95,7 @@ export const editorInputMediumStyle = style([
   {
     flex: 1,
     height: "40px",
+    padding: "0px 10px",
   },
 ]);
 
