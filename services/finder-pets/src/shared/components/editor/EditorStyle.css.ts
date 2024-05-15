@@ -46,6 +46,7 @@ export const imageRegisterFormFileInputWrap = style([
 export const imageRegisterFormFileInput = style({
   width: "150px",
   height: "150px",
+  cursor: "pointer",
   opacity: 0,
 });
 
