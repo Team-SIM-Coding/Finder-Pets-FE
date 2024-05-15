@@ -1,11 +1,14 @@
 "use client";
 import * as s from "./FilterStyle.css";
 
-import { LuListFilter } from "react-icons/lu";
 import { Flex } from "@design-system/react-components-layout";
+import { LuListFilter } from "react-icons/lu";
 
-import SelectTab from "./SelectTab";
 import { usePathname } from "next/navigation";
+import { FormProvider, useForm } from "react-hook-form";
+import SelectTab from "./SelectTab";
+import { FilterMenuFormData, filterMenuSchema } from "@/utils/validation/filter";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const FILTER_MENU_BAR_INCLUDES_PATHS = [
   "/shelter",
@@ -18,28 +21,34 @@ const FILTER_MENU_BAR_INCLUDES_PATHS = [
 const FilterMenuBar = () => {
   const path = usePathname();
 
+  const methods = useForm<FilterMenuFormData>({
+    resolver: zodResolver(filterMenuSchema),
+    mode: "onChange",
+    defaultValues: {
+      area: "",
+      animal: "",
+      kind: "",
+    },
+  });
+
   if (!FILTER_MENU_BAR_INCLUDES_PATHS.includes(path)) return null;
 
   return (
     <Flex justify="space-between" align="center" className={s.filterMenuWrap}>
-      <div>
-        <SelectTab>
-          <option value="all" selected>
-            모든 지역
-          </option>
-        </SelectTab>
-        <SelectTab>
-          <option value="all" selected>
-            모든 동물
-          </option>
-        </SelectTab>
-        <SelectTab>
-          <option value="all" selected>
-            모든 품종
-          </option>
-        </SelectTab>
-      </div>
-      <LuListFilter className={s.filterIconStyle} />
+      <FormProvider {...methods}>
+        <form id="filter-menu-form">
+          <SelectTab name="area">
+            <option value="all">모든 지역</option>
+          </SelectTab>
+          <SelectTab name="animal">
+            <option value="all">모든 동물</option>
+          </SelectTab>
+          <SelectTab name="kind">
+            <option value="all">모든 품종</option>
+          </SelectTab>
+        </form>
+        <LuListFilter className={s.filterIconStyle} />
+      </FormProvider>
     </Flex>
   );
 };
