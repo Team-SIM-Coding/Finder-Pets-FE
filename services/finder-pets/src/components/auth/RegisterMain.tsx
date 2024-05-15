@@ -1,4 +1,5 @@
 "use client";
+import * as cs from "@/shared/styles/common.css";
 
 import Spacing from "@/shared/components/Spacing";
 import InputField from "@/shared/components/auth/InputField";
@@ -8,8 +9,12 @@ import { RegisterFormData, registerSchema } from "@/utils/validation/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { useEffect } from "react";
+import useAlertContext from "@/hooks/useAlertContext";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 
 const RegisterMain = () => {
+  const { open, close } = useAlertContext();
+
   const methods = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
     mode: "onChange",
@@ -49,9 +54,24 @@ const RegisterMain = () => {
         console.log("회원가입 성공:", data);
       } else {
         const contentType = response.headers.get("Content-Type");
-        if (contentType && contentType.includes("application/json")) {
+        if (contentType?.includes("application/json")) {
           const error = await response.json();
-          console.error("회원가입 실패:", error.message);
+          const errorStatus = response.status;
+          if (errorStatus === 409) {
+            open({
+              width: "300px",
+              height: "200px",
+              title: "회원가입 실패",
+              main: <AlertMainTextBox text={error.message} />,
+              rightButtonStyle: cs.defaultButton,
+              onRightButtonClick: () => {
+                close();
+              },
+              onBackDropClick: () => {
+                close();
+              },
+            });
+          }
         } else {
           const errorText = await response.text();
           console.error("회원가입 실패 - HTML 오류 페이지:", errorText);
