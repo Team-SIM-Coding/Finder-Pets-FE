@@ -60,6 +60,23 @@ const LogInMain = () => {
       });
     } else {
       const error = await response.json();
+      const errorStatus = response.status;
+
+      if (errorStatus === 401) {
+        open({
+          width: "300px",
+          height: "200px",
+          title: "로그인 실패",
+          main: <AlertMainTextBox text={error.message} />,
+          rightButtonStyle: cs.defaultButton,
+          onRightButtonClick: () => {
+            close();
+          },
+          onBackDropClick: () => {
+            close();
+          },
+        });
+      }
       console.error("로그인 실패:", error.message);
     }
   };
