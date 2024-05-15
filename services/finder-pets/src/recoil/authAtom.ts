@@ -2,6 +2,8 @@ import { atom, DefaultValue } from "recoil";
 
 interface AuthState {
   isLoggedIn: boolean;
+  isCompletedResetPassword: boolean;
+  isCompletedFindPassword: boolean;
 }
 
 const persistAuthState =
@@ -33,6 +35,8 @@ const authState = atom<AuthState>({
   key: "authState",
   default: {
     isLoggedIn: false,
+    isCompletedResetPassword: false,
+    isCompletedFindPassword: false,
   },
   effects_UNSTABLE: [persistAuthState("authState")],
 });

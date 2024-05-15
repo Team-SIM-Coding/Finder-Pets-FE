@@ -42,7 +42,7 @@ const LogInMain = () => {
     if (response.ok) {
       const data = await response.json();
       console.log("로그인 성공:", data);
-      setAuthStateValue({ isLoggedIn: true });
+      setAuthStateValue((prev) => ({ ...prev, isLoggedIn: true }));
 
       open({
         width: "300px",

@@ -11,9 +11,12 @@ import { FindPasswordFormData, findPasswordSchema } from "@/utils/validation/aut
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+import { useSetRecoilState } from "recoil";
+import authState from "@/recoil/authAtom";
 
 const FindPasswordMain = () => {
   const [isFoundPassword, setIsFoundPassword] = useState(false);
+  const setAuthStateValue = useSetRecoilState(authState);
 
   const router = useRouter();
   const { open, close } = useAlertContext();
@@ -41,6 +44,7 @@ const FindPasswordMain = () => {
     if (response.ok) {
       const data = await response.json();
       setIsFoundPassword(true);
+      setAuthStateValue((prev) => ({ ...prev, isCompletedFindPassword: true }));
       console.log("비밀번호 찾기 성공:", data.email);
     } else {
       const error = await response.json();

@@ -6,7 +6,7 @@ import AuthSection from "@/shared/components/auth/AuthSection";
 const ResetPassword = () => {
   return (
     <AuthSection
-      header={<AuthHeader title="비밀번호 제설정" />}
+      header={<AuthHeader title="비밀번호 재설정" />}
       main={<ResetPasswordMain />}
       footer={<ResetPasswordButtons />}
     />

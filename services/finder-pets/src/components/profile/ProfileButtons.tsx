@@ -86,7 +86,7 @@ const ProfileButtons = () => {
         close();
       },
     });
-    setAuthStateValue({ isLoggedIn: false });
+    setAuthStateValue((prev) => ({ ...prev, isLoggedIn: false }));
   };
 
   useEffect(() => {

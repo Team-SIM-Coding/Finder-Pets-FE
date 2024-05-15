@@ -64,7 +64,28 @@ export const findPasswordSchema = z.object({
   }),
 });
 
+export const resetPasswordSchema = z
+  .object({
+    email: z
+      .string()
+      .min(1, { message: "이메일을 입력해주세요." })
+      .email({ message: "유효하지 않은 이메일 형식입니다." }),
+    password: passwordRequirements,
+    newPassword: passwordRequirements,
+    confirmPassword: z.string().min(1, { message: "새로운 비밀번호를 다시 입력해주세요." }),
+  })
+  .superRefine(({ newPassword, confirmPassword }, ctx) => {
+    if (newPassword !== confirmPassword) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "비밀번호가 일치하지 않습니다.",
+        path: ["confirmPassword"],
+      });
+    }
+  });
+
 export type RegisterFormData = z.infer<typeof registerSchema>;
 export type LogInFormData = z.infer<typeof loginSchema>;
 export type FindIdFormData = z.infer<typeof findIdSchema>;
 export type FindPasswordFormData = z.infer<typeof findPasswordSchema>;
+export type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;
