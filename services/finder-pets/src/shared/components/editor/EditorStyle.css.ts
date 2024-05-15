@@ -80,6 +80,7 @@ export const editorTextAreaStyle = style([
   {
     flex: 1,
     height: "150px",
+    padding: "12px",
   },
 ]);
 
@@ -105,6 +106,7 @@ export const editorInputSmallStyle = style([
   {
     width: "108px",
     height: "40px",
+    padding: "0px 10px",
   },
 ]);
 

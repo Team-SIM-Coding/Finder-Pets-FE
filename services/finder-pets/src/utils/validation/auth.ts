@@ -84,8 +84,18 @@ export const resetPasswordSchema = z
     }
   });
 
+export const profileSchema = z.object({
+  nickname: z.string(),
+  phone: z.string(),
+  like_area: z.string(),
+  like_animal: z.string(),
+  like_kind: z.string(),
+  intro: z.string(),
+});
+
 export type RegisterFormData = z.infer<typeof registerSchema>;
 export type LogInFormData = z.infer<typeof loginSchema>;
 export type FindIdFormData = z.infer<typeof findIdSchema>;
 export type FindPasswordFormData = z.infer<typeof findPasswordSchema>;
 export type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;
+export type ProfileFormData = z.infer<typeof profileSchema>;

@@ -11,7 +11,6 @@ interface Props<T extends FieldValues> {
   label: string;
   name: Path<T>;
   type?: string;
-  rules?: Partial<Record<keyof T, { required: string }>>;
 }
 
 const InputField = <T extends FieldValues>({ label, name, type }: Props<T>) => {
