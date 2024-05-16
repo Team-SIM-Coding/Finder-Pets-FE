@@ -8,9 +8,10 @@ interface Props<T extends FieldValues> {
   children: ReactNode;
   className?: string;
   name: Path<T>;
+  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const SelectTab = <T extends FieldValues>({ children, name, className }: Props<T>) => {
+const SelectTab = <T extends FieldValues>({ children, name, className, onChange }: Props<T>) => {
   const { control } = useFormContext<T>();
 
   return (
@@ -22,7 +23,10 @@ const SelectTab = <T extends FieldValues>({ children, name, className }: Props<T
           {...field}
           id={name}
           className={className || s.selectStyle}
-          onChange={field.onChange}
+          onChange={(e) => {
+            field.onChange(e);
+            onChange && onChange(e);
+          }}
         >
           {children}
         </Select>

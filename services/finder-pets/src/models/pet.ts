@@ -26,3 +26,12 @@ export interface Pet {
   is_neutering?: boolean;
   character?: string;
 }
+
+export interface ListPetInfo {
+  place?: string;
+  animal?: string;
+  kind?: string;
+  gender?: string;
+  description?: string;
+  created_at?: string;
+}

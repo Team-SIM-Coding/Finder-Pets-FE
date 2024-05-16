@@ -13,8 +13,8 @@ globalStyle(".swiper-button-next", {
 });
 
 export const imageWrap = style({
-  width: "320px",
-  height: "214px",
+  width: "100%",
+  height: "auto",
   borderRadius: "10px",
 });
 

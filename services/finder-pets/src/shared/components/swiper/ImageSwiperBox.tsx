@@ -11,14 +11,15 @@ import ImageBox from "./ImageBox";
 
 interface Props {
   images: PetImage[];
+  width: number;
+  height: number;
 }
 
-const ImageSwiperBox = ({ images }: Props) => {
+const ImageSwiperBox = ({ images, width, height }: Props) => {
   SwiperCore.use([Navigation, Scrollbar]);
 
   return (
     <article>
-      {/* <Spacing height="12px" /> */}
       <Swiper
         spaceBetween={8}
         loop={true}
@@ -26,7 +27,6 @@ const ImageSwiperBox = ({ images }: Props) => {
         breakpoints={{
           0: {
             slidesPerView: 1,
-            centeredSlides: true,
           },
           768: {
             slidesPerView: 2,
@@ -41,7 +41,7 @@ const ImageSwiperBox = ({ images }: Props) => {
       >
         {images?.map((image, index) => (
           <SwiperSlide key={index}>
-            <ImageBox image={image} width={320} height={214} />
+            <ImageBox image={image} width={width} height={height} />
           </SwiperSlide>
         ))}
       </Swiper>

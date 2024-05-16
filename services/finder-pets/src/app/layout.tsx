@@ -8,6 +8,7 @@ import NavBarBottom from "@/shared/components/NavBarBottom";
 import { MSWProvider } from "@/shared/components/MSWProvider";
 import RecoilRootProvider from "@/recoil/RecoilRootProvider";
 import { AlertContextProvider } from "@/contexts/AlertContext";
+import Providers from "@/react-query/Providers";
 
 export const metadata: Metadata = {
   title: "찾아줄개",
@@ -18,15 +19,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <MSWProvider>
-          <RecoilRootProvider>
-            <AlertContextProvider>
-              <NavBarTop />
-              {children}
-            </AlertContextProvider>
-          </RecoilRootProvider>
-          <NavBarBottom />
-        </MSWProvider>
+        <Providers>
+          <MSWProvider>
+            <RecoilRootProvider>
+              <AlertContextProvider>
+                <NavBarTop />
+                {children}
+              </AlertContextProvider>
+            </RecoilRootProvider>
+            <NavBarBottom />
+          </MSWProvider>
+        </Providers>
       </body>
     </html>
   );

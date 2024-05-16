@@ -42,10 +42,12 @@ export const navIconWrap = style({
 });
 
 export const activeIconWrap = style({
+  width: "55px",
   color: vars.colors.$scale.blue[500],
 });
 
 export const navIconText = style({
+  width: "55px",
   fontSize: "14px",
   marginTop: "4px",
 });
