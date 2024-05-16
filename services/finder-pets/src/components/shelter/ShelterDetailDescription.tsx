@@ -2,11 +2,11 @@ import * as cs from "@/shared/styles/common.css";
 
 import { Divider } from "@design-system/react-components-layout";
 
+import { ShelterPet } from "@/models/shelter";
 import Spacing from "@/shared/components/Spacing";
 import DetailDescriptionTextField from "@/shared/components/detail/DetailDescriptionTextField";
+import KakaoMap from "@/shared/components/kakao-map/KakaoMap";
 import { trimText } from "@/utils/trimText";
-import MapImage from "@/shared/components/detail/MapImage";
-import { ShelterPet } from "@/models/shelter";
 
 interface Props {
   pet_info: ShelterPet;
@@ -40,7 +40,7 @@ const ShelterDetailDescription = ({ pet_info }: Props) => {
       <Spacing height="12px" />
       <DetailDescriptionTextField label="발견장소" />
       <Spacing height="12px" />
-      <MapImage url="/images/map.jpg" />
+      <KakaoMap address={pet_info.careAddr} />
     </article>
   );
 };
