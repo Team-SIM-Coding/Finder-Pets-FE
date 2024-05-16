@@ -1,11 +1,11 @@
 "use client";
 import * as s from "./FilterStyle.css";
 
+import { useEffect, useState } from "react";
 import { Flex } from "@design-system/react-components-layout";
 import { LuListFilter } from "react-icons/lu";
-
 import { usePathname } from "next/navigation";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm, useWatch } from "react-hook-form";
 import SelectTab from "./SelectTab";
 import { FilterMenuFormData, filterMenuSchema } from "@/utils/validation/filter";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,6 +20,20 @@ const FILTER_MENU_BAR_INCLUDES_PATHS = [
 
 const FilterMenuBar = () => {
   const path = usePathname();
+  const [regions, setRegions] = useState<{ [key: string]: string[] }>({});
+  const [cities, setCities] = useState<string[]>([]);
+  const [districts, setDistricts] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchRegions = async () => {
+      const response = await fetch("/address/regions.json");
+      const data = await response.json();
+      setRegions(data);
+      setCities(Object.keys(data));
+    };
+
+    fetchRegions();
+  }, []);
 
   const methods = useForm<FilterMenuFormData>({
     resolver: zodResolver(filterMenuSchema),
@@ -31,15 +45,49 @@ const FilterMenuBar = () => {
     },
   });
 
+  const selectedCity = useWatch({ name: "area", control: methods.control });
+
+  useEffect(() => {
+    if (selectedCity && selectedCity !== "all" && regions[selectedCity]) {
+      setDistricts(regions[selectedCity]);
+    } else {
+      setDistricts([]);
+    }
+  }, [selectedCity, regions]);
+
+  const handleDistrictChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    if (value === "all") {
+      methods.setValue("area", "all");
+    }
+  };
+
   if (!FILTER_MENU_BAR_INCLUDES_PATHS.includes(path)) return null;
 
   return (
     <Flex justify="space-between" align="center" className={s.filterMenuWrap}>
       <FormProvider {...methods}>
         <form id="filter-menu-form">
-          <SelectTab name="area">
-            <option value="all">모든 지역</option>
-          </SelectTab>
+          {selectedCity && selectedCity !== "all" ? (
+            <SelectTab name="district" onChange={handleDistrictChange}>
+              <option value="all">모든 시/군/구</option>
+              {districts?.map((district) => (
+                <option key={district} value={district}>
+                  {district}
+                </option>
+              ))}
+              <option value="all">모든 지역</option>
+            </SelectTab>
+          ) : (
+            <SelectTab name="area">
+              <option value="all">모든 지역</option>
+              {cities?.map((city) => (
+                <option key={city} value={city}>
+                  {city}
+                </option>
+              ))}
+            </SelectTab>
+          )}
           <SelectTab name="animal">
             <option value="all">모든 동물</option>
           </SelectTab>
