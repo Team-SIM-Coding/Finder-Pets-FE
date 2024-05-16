@@ -30,3 +30,8 @@ export const mainItemBox = style({
 export const mainItemDescriptionWrap = style({
   padding: "8px 10px",
 });
+
+export const linkStyle = style({
+  color: "#ADADAD",
+  textDecoration: "none",
+});

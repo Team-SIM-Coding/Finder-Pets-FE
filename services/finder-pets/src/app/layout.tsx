@@ -6,6 +6,8 @@ import type { Metadata } from "next";
 import NavBarTop from "@/shared/components/NavBarTop";
 import NavBarBottom from "@/shared/components/NavBarBottom";
 import { MSWProvider } from "@/shared/components/MSWProvider";
+import RecoilRootProvider from "@/recoil/RecoilRootProvider";
+import { AlertContextProvider } from "@/contexts/AlertContext";
 
 export const metadata: Metadata = {
   title: "찾아줄개",
@@ -17,8 +19,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <MSWProvider>
-          <NavBarTop />
-          {children}
+          <RecoilRootProvider>
+            <AlertContextProvider>
+              <NavBarTop />
+              {children}
+            </AlertContextProvider>
+          </RecoilRootProvider>
           <NavBarBottom />
         </MSWProvider>
       </body>

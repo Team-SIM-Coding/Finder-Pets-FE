@@ -9,8 +9,14 @@ import Image from "next/image";
 const EditorImageRegisterForm = () => {
   return (
     <div className={s.imageRegisterFormWrap}>
-      <div className={s.imageRegisterFormImage}>
-        <Image src="/images/user_profile.jpeg" alt="이미지 등록" width={150} height={150} />
+      <div>
+        <Image
+          src="/images/user_profile.jpeg"
+          alt="이미지 등록"
+          width={150}
+          height={150}
+          className={s.imageRegisterFormImage}
+        />
       </div>
       <div className={s.imageRegisterFormFileInputWrap}>
         <Input type="file" className={s.imageRegisterFormFileInput} />

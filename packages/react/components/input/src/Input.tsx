@@ -22,6 +22,9 @@ const Input = (props: InputProps, ref: Ref<HTMLInputElement>) => {
     focusBorderColor = "#3182CE",
     className,
     style,
+    onChange,
+    onBlur,
+    value,
     ...rest
   } = props;
 
@@ -30,6 +33,9 @@ const Input = (props: InputProps, ref: Ref<HTMLInputElement>) => {
   return (
     <input
       {...inputProps}
+      onChange={onChange}
+      onBlur={onBlur}
+      value={value}
       ref={ref}
       className={clsx([
         inputStyle({

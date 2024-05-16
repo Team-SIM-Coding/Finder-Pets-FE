@@ -10,12 +10,12 @@ export const postUpdateUser: HttpHandler = http.post("/api/user/update", async (
   const userIndex = users.findIndex((u) => u.user_id === user_id);
 
   if (userIndex !== -1) {
-    users[userIndex].phone = phone ?? users[userIndex].phone;
-    users[userIndex].nickname = nickname ?? users[userIndex].nickname;
-    users[userIndex].like_area = like_area ?? users[userIndex].like_area;
-    users[userIndex].like_animal = like_animal ?? users[userIndex].like_animal;
-    users[userIndex].like_kind = like_kind ?? users[userIndex].like_kind;
-    users[userIndex].intro = intro ?? users[userIndex].intro;
+    users[userIndex].phone = phone || users[userIndex].phone;
+    users[userIndex].nickname = nickname || users[userIndex].nickname;
+    users[userIndex].like_area = like_area || users[userIndex].like_area;
+    users[userIndex].like_animal = like_animal || users[userIndex].like_animal;
+    users[userIndex].like_kind = like_kind || users[userIndex].like_kind;
+    users[userIndex].intro = intro || users[userIndex].intro;
 
     localStorage.setItem("users", JSON.stringify(users));
 

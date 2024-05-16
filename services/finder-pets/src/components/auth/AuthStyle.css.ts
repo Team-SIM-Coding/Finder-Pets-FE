@@ -20,4 +20,5 @@ export const foundIdText = style({
   marginLeft: "8px",
   fontSize: "14px",
   color: vars.colors.$scale.blue[500],
+  cursor: "pointer",
 });

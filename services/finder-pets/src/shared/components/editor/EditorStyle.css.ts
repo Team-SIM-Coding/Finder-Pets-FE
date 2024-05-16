@@ -46,12 +46,17 @@ export const imageRegisterFormFileInputWrap = style([
 export const imageRegisterFormFileInput = style({
   width: "150px",
   height: "150px",
+  cursor: "pointer",
   opacity: 0,
 });
 
 export const labelStyle = style({
   width: "60px",
   fontSize: "14px",
+});
+
+export const editorInputStyle = style({
+  padding: "10px",
 });
 
 export const editorInputLabel = style([labelStyle]);
@@ -75,6 +80,7 @@ export const editorTextAreaStyle = style([
   {
     flex: 1,
     height: "150px",
+    padding: "12px",
   },
 ]);
 
@@ -91,6 +97,7 @@ export const editorInputMediumStyle = style([
   {
     flex: 1,
     height: "40px",
+    padding: "0px 10px",
   },
 ]);
 
@@ -99,6 +106,7 @@ export const editorInputSmallStyle = style([
   {
     width: "108px",
     height: "40px",
+    padding: "0px 10px",
   },
 ]);
 
