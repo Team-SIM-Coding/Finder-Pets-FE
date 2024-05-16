@@ -27,6 +27,8 @@ const FilterMenuBar = ({ onFilterChange }: Props) => {
   const [regions, setRegions] = useState<{ [key: string]: string[] }>({});
   const [cities, setCities] = useState<string[]>([]);
   const [districts, setDistricts] = useState<string[]>([]);
+  const [animals, setAnimals] = useState<{ [key: string]: string[] }>({});
+  const [kinds, setKinds] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchRegions = async () => {
@@ -36,7 +38,14 @@ const FilterMenuBar = ({ onFilterChange }: Props) => {
       setCities(Object.keys(data));
     };
 
+    const fetchKinds = async () => {
+      const response = await fetch("/pet/kind.json");
+      const data = await response.json();
+      setAnimals(data);
+    };
+
     fetchRegions();
+    fetchKinds();
   }, []);
 
   const methods = useForm<FilterMenuFormData>({
@@ -51,6 +60,7 @@ const FilterMenuBar = ({ onFilterChange }: Props) => {
   });
 
   const selectedCity = useWatch({ name: "area", control: methods.control });
+  const selectedAnimal = useWatch({ name: "animal", control: methods.control });
 
   useEffect(() => {
     if (selectedCity && selectedCity !== "all" && regions[selectedCity]) {
@@ -59,6 +69,14 @@ const FilterMenuBar = ({ onFilterChange }: Props) => {
       setDistricts([]);
     }
   }, [selectedCity, regions]);
+
+  useEffect(() => {
+    if (selectedAnimal && selectedAnimal !== "all" && animals[selectedAnimal]) {
+      setKinds(animals[selectedAnimal]);
+    } else {
+      setKinds([]);
+    }
+  }, [selectedAnimal, animals]);
 
   const handleAreaChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
@@ -76,6 +94,18 @@ const FilterMenuBar = ({ onFilterChange }: Props) => {
       methods.setValue("district", value);
       onFilterChange({ district: value });
     }
+  };
+
+  const handleAnimalChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    methods.setValue("animal", value);
+    onFilterChange({ animal: value, kind: "" });
+  };
+
+  const handleKindChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    methods.setValue("kind", value);
+    onFilterChange({ kind: value });
   };
 
   if (!FILTER_MENU_BAR_INCLUDES_PATHS.includes(path)) return null;
@@ -104,11 +134,19 @@ const FilterMenuBar = ({ onFilterChange }: Props) => {
               ))}
             </SelectTab>
           )}
-          <SelectTab name="animal">
+          <SelectTab name="animal" onChange={handleAnimalChange}>
             <option value="all">모든 동물</option>
+            <option value="개">개</option>
+            <option value="고양이">고양이</option>
+            <option value="기타">기타</option>
           </SelectTab>
-          <SelectTab name="kind">
+          <SelectTab name="kind" onChange={handleKindChange}>
             <option value="all">모든 품종</option>
+            {kinds.map((kind) => (
+              <option key={kind} value={kind}>
+                {kind}
+              </option>
+            ))}
           </SelectTab>
         </form>
         <LuListFilter className={s.filterIconStyle} />

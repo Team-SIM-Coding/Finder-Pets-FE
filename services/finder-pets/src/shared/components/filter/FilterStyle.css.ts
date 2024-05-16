@@ -13,10 +13,12 @@ export const filterMenuWrap = style([
 ]);
 
 export const selectStyle = style({
+  maxWidth: "80px",
   padding: "4px",
   marginRight: "8px",
   border: "1px solid #DFDFDF",
   borderRadius: "6px",
+  textAlign: "center",
 });
 
 export const filterIconStyle = style({
