@@ -18,7 +18,11 @@ const FILTER_MENU_BAR_INCLUDES_PATHS = [
   "/community/pet-stories",
 ];
 
-const FilterMenuBar = () => {
+interface Props {
+  onFilterChange: (filter: Partial<FilterMenuFormData>) => void;
+}
+
+const FilterMenuBar = ({ onFilterChange }: Props) => {
   const path = usePathname();
   const [regions, setRegions] = useState<{ [key: string]: string[] }>({});
   const [cities, setCities] = useState<string[]>([]);
@@ -40,6 +44,7 @@ const FilterMenuBar = () => {
     mode: "onChange",
     defaultValues: {
       area: "",
+      district: "",
       animal: "",
       kind: "",
     },
@@ -55,11 +60,16 @@ const FilterMenuBar = () => {
     }
   }, [selectedCity, regions]);
 
+  const handleAreaChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    methods.setValue("area", value);
+    onFilterChange({ area: value });
+  };
+
   const handleDistrictChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
-    if (value === "all") {
-      methods.setValue("area", "all");
-    }
+    methods.setValue("district", value);
+    onFilterChange({ district: value });
   };
 
   if (!FILTER_MENU_BAR_INCLUDES_PATHS.includes(path)) return null;
@@ -70,7 +80,7 @@ const FilterMenuBar = () => {
         <form id="filter-menu-form">
           {selectedCity && selectedCity !== "all" ? (
             <SelectTab name="district" onChange={handleDistrictChange}>
-              <option value="all">모든 시/군/구</option>
+              <option value="all">{selectedCity}</option>
               {districts?.map((district) => (
                 <option key={district} value={district}>
                   {district}
@@ -79,7 +89,7 @@ const FilterMenuBar = () => {
               <option value="all">모든 지역</option>
             </SelectTab>
           ) : (
-            <SelectTab name="area">
+            <SelectTab name="area" onChange={handleAreaChange}>
               <option value="all">모든 지역</option>
               {cities?.map((city) => (
                 <option key={city} value={city}>

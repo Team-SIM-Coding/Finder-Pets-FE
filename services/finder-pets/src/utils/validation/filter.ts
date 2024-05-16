@@ -2,6 +2,7 @@ import { z } from "zod";
 
 export const filterMenuSchema = z.object({
   area: z.string(),
+  district: z.string(),
   animal: z.string(),
   kind: z.string(),
 });

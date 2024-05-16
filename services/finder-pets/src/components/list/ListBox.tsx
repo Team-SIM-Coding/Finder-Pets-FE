@@ -40,8 +40,6 @@ const ListBox = ({ list_info }: Props) => {
 
   const image_url = (list_info && "filename" in list_info && list_info.filename) || defaultImageUrl;
 
-  console.log(image_url);
-
   return (
     <Link href={`${path}/${id}`} className={s.linkStyle}>
       <article className={s.listBoxWrap}>
