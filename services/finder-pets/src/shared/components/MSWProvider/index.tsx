@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { isMocking } from "../../constants";
 import { initMocking } from "../../mocks";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "../loading/LoadingSpinner";
 
 export const MSWProvider = ({ children }: { children: React.ReactNode }) => {
   const [isReady, setIsReady] = useState(!isMocking());
@@ -18,7 +18,7 @@ export const MSWProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [isReady]);
 
-  if (!isReady) return <LoadingSpinner />;
+  if (!isReady) return <LoadingSpinner text="Mock Sever 실행 중.." />;
 
   return children;
 };

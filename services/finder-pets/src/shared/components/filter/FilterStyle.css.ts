@@ -8,6 +8,7 @@ export const filterMenuWrap = style([
     width: "100%",
     padding: "10px 20px",
     backgroundColor: "white",
+    zIndex: "1",
   },
 ]);
 

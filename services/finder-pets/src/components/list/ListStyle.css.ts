@@ -1,3 +1,4 @@
+import { f } from "@/shared/styles/functions";
 import { createVar, style } from "@vanilla-extract/css";
 
 export const highLightColor = createVar();
@@ -14,8 +15,19 @@ export const listBoxWrap = style({
   borderBottom: "1px solid #EBEBEB",
 });
 
+export const listBoxImageContainer = style([
+  f.pRelative,
+  f.wFull,
+  {
+    maxWidth: "100px",
+    height: "auto",
+    maxHeight: "100px",
+  },
+]);
+
 export const listBoxImage = style({
   borderRadius: "10px",
+  objectFit: "cover",
 });
 
 export const listInfoBoxWrap = style({
@@ -38,7 +50,7 @@ export const highLightTagStyle = style({
 });
 
 export const highLightTagText = style({
-  fontSize: "12px",
+  fontSize: "10px",
   color: highLightColor,
   transition: "color 0.3s ease-in-out",
   selectors: {
