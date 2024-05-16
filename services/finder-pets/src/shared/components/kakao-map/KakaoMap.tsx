@@ -61,7 +61,7 @@ const KakaoMap = ({ address, initialLevel = 3 }: Props) => {
     };
   }, [address, initialLevel]);
 
-  return <div id="map" style={{ width: "100%", height: "400px" }}></div>;
+  return <div id="map" style={{ width: "100%", height: "400px", marginBottom: "100px" }}></div>;
 };
 
 export default KakaoMap;
