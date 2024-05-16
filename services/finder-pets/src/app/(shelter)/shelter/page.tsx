@@ -9,7 +9,7 @@ import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
 const Shelter = () => {
   return (
     <section className={cs.sectionStyle}>
-      <Spacing height="20px" />
+      <Spacing height="30px" />
       <FilterMenuBar />
       <Suspense fallback={<LoadingSpinner text="보호소 유기동물 리스트 로딩 중.." />}>
         <ShelterList />
