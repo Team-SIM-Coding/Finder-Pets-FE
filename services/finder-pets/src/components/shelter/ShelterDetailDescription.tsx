@@ -6,7 +6,6 @@ import { ShelterPet } from "@/models/shelter";
 import Spacing from "@/shared/components/Spacing";
 import DetailDescriptionTextField from "@/shared/components/detail/DetailDescriptionTextField";
 import KakaoMap from "@/shared/components/kakao-map/KakaoMap";
-import { trimText } from "@/utils/trimText";
 
 interface Props {
   pet_info: ShelterPet;
@@ -22,7 +21,7 @@ const ShelterDetailDescription = ({ pet_info }: Props) => {
       <Spacing height="12px" />
       <Divider size={6} />
       <Spacing height="12px" />
-      <DetailDescriptionTextField label="특징" text={trimText(pet_info.specialMark)} />
+      <DetailDescriptionTextField label="특징" text={pet_info.specialMark} />
       <Spacing height="12px" />
       <DetailDescriptionTextField label="색상" text={pet_info.colorCd} />
       <Spacing height="12px" />

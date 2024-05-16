@@ -30,6 +30,7 @@ export const detailDescriptionText = style({
   width: "76%",
   fontSize: "12px",
   textAlign: "right",
+  lineHeight: "1.3",
 });
 
 export const detailDescriptionTextBox = style({
