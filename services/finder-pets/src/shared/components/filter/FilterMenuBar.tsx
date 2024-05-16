@@ -63,13 +63,19 @@ const FilterMenuBar = ({ onFilterChange }: Props) => {
   const handleAreaChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     methods.setValue("area", value);
-    onFilterChange({ area: value });
+    onFilterChange({ area: value, district: "" });
   };
 
   const handleDistrictChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
-    methods.setValue("district", value);
-    onFilterChange({ district: value });
+    if (value === "all") {
+      methods.setValue("area", "all");
+      methods.setValue("district", "");
+      onFilterChange({ area: "all", district: "" });
+    } else {
+      methods.setValue("district", value);
+      onFilterChange({ district: value });
+    }
   };
 
   if (!FILTER_MENU_BAR_INCLUDES_PATHS.includes(path)) return null;
@@ -80,7 +86,7 @@ const FilterMenuBar = ({ onFilterChange }: Props) => {
         <form id="filter-menu-form">
           {selectedCity && selectedCity !== "all" ? (
             <SelectTab name="district" onChange={handleDistrictChange}>
-              <option value="all">{selectedCity}</option>
+              <option value={selectedCity}>{selectedCity}</option>
               {districts?.map((district) => (
                 <option key={district} value={district}>
                   {district}

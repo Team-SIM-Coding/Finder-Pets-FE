@@ -5,8 +5,8 @@ import usePetList from "@/hooks/usePetList";
 import { ShelterPet, ShelterPetResponseResponse } from "@/models/shelter";
 import { VisibilityLoader } from "@/shared/components/VisibilityLoader";
 import { flattenShelterData } from "@/utils/data/flattenShelterData";
+import { useCallback, useMemo } from "react";
 import ListBox from "../list/ListBox";
-import { useEffect, useState } from "react";
 
 export interface FetchResponse {
   response: ShelterPetResponseResponse;
@@ -35,12 +35,11 @@ const ShelterList = ({ filter }: Props) => {
     maxResults: 10,
     initPageToken: 1,
   });
-  const [filteredData, setFilteredData] = useState<ShelterPet[]>([]);
 
-  useEffect(() => {
-    const flatData = flattenShelterData(data) as ShelterPet[];
+  const flatData = useMemo(() => flattenShelterData(data) as ShelterPet[], [data]);
 
-    const filtered = flatData.filter((pet) => {
+  const filteredData = useMemo(() => {
+    return flatData.filter((pet) => {
       return (
         (filter.area === "" || pet.careAddr.includes(filter.area)) &&
         (filter.district === "" || pet.careAddr.includes(filter.district)) &&
@@ -48,11 +47,13 @@ const ShelterList = ({ filter }: Props) => {
         (filter.kind === "" || pet.kindCd.includes(filter.kind))
       );
     });
+  }, [filter, flatData]);
 
-    console.log("filter", filter);
-
-    setFilteredData(filtered);
-  }, [filter, data]);
+  const handleFetchNextPage = useCallback(() => {
+    if (!isFetchingNextPage && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [isFetchingNextPage, hasNextPage, fetchNextPage]);
 
   return (
     <>
@@ -61,13 +62,7 @@ const ShelterList = ({ filter }: Props) => {
           <ListBox key={pet?.desertionNo} list_info={pet} />
         ))}
       </ul>
-      {hasNextPage && (
-        <VisibilityLoader
-          callback={() => {
-            !isFetchingNextPage && fetchNextPage();
-          }}
-        />
-      )}
+      {hasNextPage && <VisibilityLoader callback={handleFetchNextPage} />}
     </>
   );
 };
