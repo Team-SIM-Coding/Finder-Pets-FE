@@ -57,9 +57,13 @@ const ListInfoBox = ({ info }: Props) => {
   return (
     <div className={s.listInfoBoxWrap}>
       <Flex justify="space-around">
-        {hasPetInfo(petInfo) && <HighLightTag text={trimText(petInfo.place, 4)} color="#FDD78D" />}
-        {hasPetInfo(petInfo) && <HighLightTag text={petInfo.animal} color="#7C80E4" />}
-        {hasPetInfo(petInfo) && <HighLightTag text={trimText(petInfo.kind, 5)} color="#F18FE2" />}
+        {hasPetInfo(petInfo) && (
+          <>
+            <HighLightTag text={trimText(petInfo.place, 4)} color="#FDD78D" />
+            <HighLightTag text={petInfo.animal} color="#7C80E4" />
+            <HighLightTag text={trimText(petInfo.kind, 5)} color="#F18FE2" />
+          </>
+        )}
         {!COMMUNITY_PATHS.includes(path) && hasPetInfo(petInfo) && (
           <HighLightTag text={petInfo.gender === "M" ? "수컷" : "암컷"} color="#52FF00" />
         )}
@@ -67,12 +71,12 @@ const ListInfoBox = ({ info }: Props) => {
       {!COMMUNITY_PATHS.includes(path) && (
         <div className={s.infoDescriptionWrap}>
           {hasPetInfo(petInfo) && (
-            <ListInfoDescription label="체중" text={`${petInfo.weight} Kg`} />
-          )}
-          {hasPetInfo(petInfo) && <ListInfoDescription label="특징" text={petInfo.description} />}
-          {hasPetInfo(petInfo) && <ListInfoDescription label="구조장소" text={petInfo.place} />}
-          {hasPetInfo(petInfo) && (
-            <ListInfoDescription label="공고기간" text={formatDate(petInfo.created_at)} />
+            <>
+              <ListInfoDescription label="체중" text={`${petInfo.weight} Kg`} />
+              <ListInfoDescription label="특징" text={petInfo.description} />
+              <ListInfoDescription label="구조장소" text={petInfo.place} />
+              <ListInfoDescription label="공고기간" text={formatDate(petInfo.created_at)} />
+            </>
           )}
         </div>
       )}
