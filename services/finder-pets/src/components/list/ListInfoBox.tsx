@@ -3,22 +3,19 @@ import * as s from "./ListStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
-import HighLightTag from "./HighLightTag";
-import ListInfoDescription from "./ListInfoDescription";
-import { LostPet } from "@/models/lost";
-import { SightedPet } from "@/models/sighted";
-import { Review } from "@/models/review";
-import { PetStory } from "@/models/pet-story";
-import { trimText } from "@/utils/trimText";
-import { usePathname } from "next/navigation";
+import { Board } from "@/models/board";
+import { FinderPet } from "@/models/finder";
 import { ShelterPet } from "@/models/shelter";
 import { formatDate } from "@/utils/format/formatDate";
+import { trimText } from "@/utils/trimText";
+import { usePathname } from "next/navigation";
+import HighLightTag from "./HighLightTag";
+import ListInfoDescription from "./ListInfoDescription";
 
-type PetInfo = LostPet | SightedPet | ShelterPet;
-type CommunityInfo = Review | PetStory;
+type PetInfo = FinderPet | ShelterPet;
 
 interface Props {
-  info: PetInfo | CommunityInfo;
+  info: PetInfo | Board;
 }
 
 const hasPetInfo = (info: PetInfo): info is PetInfo => {

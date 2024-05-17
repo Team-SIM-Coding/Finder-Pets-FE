@@ -3,10 +3,10 @@
 import { waitForMSWActivation } from "@/shared/mocks/waitForWorkerActivation";
 import { useEffect, useState } from "react";
 import ListBox from "../list/ListBox";
-import { SightedPet } from "@/models/sighted";
+import { FinderPet } from "@/models/finder";
 
 const SightedPetList = () => {
-  const [sightedPets, setSightedPets] = useState<SightedPet[]>([]);
+  const [sightedPets, setSightedPets] = useState<FinderPet[]>([]);
 
   const fetchLostPets = async () => {
     const response = await fetch("/api/sighted");
@@ -31,7 +31,7 @@ const SightedPetList = () => {
   return (
     <ul>
       {sightedPets.map((sighted) => (
-        <ListBox key={sighted.sighted_pet_id} list_info={sighted} />
+        <ListBox key={sighted.pet_id} list_info={sighted} />
       ))}
     </ul>
   );

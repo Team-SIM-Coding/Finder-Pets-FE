@@ -1,7 +1,7 @@
-import { Review } from "@/models/review";
+import { Board } from "@/models/board";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const reviews: Review[] = JSON.parse(localStorage.getItem("reviews") || "[]");
+const reviews: Board[] = JSON.parse(localStorage.getItem("reviews") || "[]");
 
 export const getReviews: HttpHandler = http.get("/api/review", async () => {
   if (reviews) {
@@ -14,7 +14,7 @@ export const getReviews: HttpHandler = http.get("/api/review", async () => {
 export const getReview: HttpHandler = http.get("/api/review/:id", async ({ params }) => {
   const reviewId = params.id;
 
-  const review = reviews.find((p) => p.review_id === reviewId);
+  const review = reviews.find((p) => p.board_id === reviewId);
 
   if (review) {
     return HttpResponse.json(review, { status: 200 });

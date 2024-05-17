@@ -1,7 +1,7 @@
-import { LostPet } from "@/models/lost";
+import { FinderPet } from "@/models/finder";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const lostPets: LostPet[] = JSON.parse(localStorage.getItem("lost-pets") || "[]");
+const lostPets: FinderPet[] = JSON.parse(localStorage.getItem("lost-pets") || "[]");
 
 export const getLostPets: HttpHandler = http.get("/api/lost", async () => {
   if (lostPets) {
@@ -14,7 +14,7 @@ export const getLostPets: HttpHandler = http.get("/api/lost", async () => {
 export const getLostPet: HttpHandler = http.get("/api/lost/:id", async ({ params }) => {
   const lostPetId = params.id;
 
-  const pet = lostPets.find((p) => p.lost_pet_id === lostPetId);
+  const pet = lostPets.find((p) => p.pet_id === lostPetId);
 
   if (pet) {
     return HttpResponse.json(pet, { status: 200 });

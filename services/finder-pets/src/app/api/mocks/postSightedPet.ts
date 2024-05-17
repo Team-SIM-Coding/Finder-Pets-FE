@@ -1,12 +1,12 @@
-import { SightedPet } from "@/models/sighted";
+import { FinderPet } from "@/models/finder";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const sightedPets: SightedPet[] = JSON.parse(localStorage.getItem("sighted-pets") || "[]");
+const sightedPets: FinderPet[] = JSON.parse(localStorage.getItem("sighted-pets") || "[]");
 
 export const postSightedPet: HttpHandler = http.post(
   "/api/sighted/register",
   async ({ request }) => {
-    const newSightedPet = (await request.json()) as SightedPet;
+    const newSightedPet = (await request.json()) as FinderPet;
 
     sightedPets.push(newSightedPet);
 

@@ -1,7 +1,7 @@
-import { PetStory } from "@/models/pet-story";
+import { Board } from "@/models/board";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const petStories: PetStory[] = JSON.parse(localStorage.getItem("pet-stories") || "[]");
+const petStories: Board[] = JSON.parse(localStorage.getItem("pet-stories") || "[]");
 
 export const getPetStories: HttpHandler = http.get("/api/pet-story", async () => {
   if (petStories) {
@@ -17,7 +17,7 @@ export const getPetStories: HttpHandler = http.get("/api/pet-story", async () =>
 export const getPetStory: HttpHandler = http.get("/api/pet-story/:id", async ({ params }) => {
   const petStoryId = params.id;
 
-  const petStory = petStories.find((p) => p.pet_story_id === petStoryId);
+  const petStory = petStories.find((p) => p.board_id === petStoryId);
 
   if (petStory) {
     return HttpResponse.json(petStory, { status: 200 });

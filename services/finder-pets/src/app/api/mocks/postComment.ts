@@ -1,12 +1,10 @@
 import { HttpHandler, HttpResponse, http } from "msw";
 
+import { Board } from "@/models/board";
 import { IComment } from "@/models/comment";
-import { LostPet } from "@/models/lost";
-import { PetStory } from "@/models/pet-story";
-import { Review } from "@/models/review";
-import { SightedPet } from "@/models/sighted";
+import { FinderPet } from "@/models/finder";
 
-export type AnyPost = LostPet | SightedPet | Review | PetStory;
+export type AnyPost = FinderPet | Board;
 
 export const storagePaths: Record<string, string> = {
   lost: "lost-pets",
@@ -15,20 +13,12 @@ export const storagePaths: Record<string, string> = {
   "pet-story": "pet-stories",
 };
 
-export const isLostPet = (post: AnyPost): post is LostPet => {
-  return (post as LostPet).lost_pet_id !== undefined;
+export const isFinderPet = (post: AnyPost): post is FinderPet => {
+  return (post as FinderPet).pet_id !== undefined;
 };
 
-export const isSightedPet = (post: AnyPost): post is SightedPet => {
-  return (post as SightedPet).sighted_pet_id !== undefined;
-};
-
-export const isReview = (post: AnyPost): post is Review => {
-  return (post as Review).review_id !== undefined;
-};
-
-export const isPetStory = (post: AnyPost): post is PetStory => {
-  return (post as PetStory).pet_story_id !== undefined;
+export const isBoard = (post: AnyPost): post is Board => {
+  return (post as Board).board_id !== undefined;
 };
 
 const createCommentHandler = (storageKey: string): HttpHandler => {
@@ -38,10 +28,8 @@ const createCommentHandler = (storageKey: string): HttpHandler => {
     const posts = JSON.parse(localStorage.getItem(storagePaths[storageKey]) || "[]") as AnyPost[];
 
     const postIndex = posts.findIndex((post) => {
-      if (isLostPet(post) && storageKey === "lost") return post.lost_pet_id === id;
-      if (isSightedPet(post) && storageKey === "sighted") return post.sighted_pet_id === id;
-      if (isReview(post) && storageKey === "review") return post.review_id === id;
-      if (isPetStory(post) && storageKey === "pet-story") return post.pet_story_id === id;
+      if (isFinderPet(post) && storageKey === "lost") return post.pet_id === id;
+      if (isBoard(post) && storageKey === "review") return post.board_id === id;
       return false;
     });
 

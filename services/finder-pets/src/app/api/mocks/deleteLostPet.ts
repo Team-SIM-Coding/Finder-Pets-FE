@@ -1,14 +1,14 @@
-import { LostPet } from "@/models/lost";
+import { FinderPet } from "@/models/finder";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const lostPets: LostPet[] = JSON.parse(localStorage.getItem("lost-pets") || "[]");
+const lostPets: FinderPet[] = JSON.parse(localStorage.getItem("lost-pets") || "[]");
 
 export const deleteLostPet: HttpHandler = http.delete(
   "/api/lost/delete/:id",
   async ({ params }) => {
     const lostPetId = params.id;
 
-    const lostPetIndex = lostPets.findIndex((p) => p.lost_pet_id === lostPetId);
+    const lostPetIndex = lostPets.findIndex((p) => p.pet_id === lostPetId);
 
     if (lostPetIndex !== -1) {
       lostPets.splice(lostPetIndex, 1);

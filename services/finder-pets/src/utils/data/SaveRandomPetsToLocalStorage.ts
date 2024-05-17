@@ -108,12 +108,12 @@ const generateRandomPets = (count: number) => {
   const pets = [];
   for (let i = 0; i < count; i++) {
     const pet = {
-      sighted_pet_id: uuid(),
+      pet_id: uuid(),
       date: randomDate(),
       place: addresses[Math.floor(Math.random() * addresses.length)],
       created_at: randomDate(),
       like_count: Math.floor(Math.random() * 10),
-      pet_id: uuid(),
+      my_pet_id: uuid(),
       animal: animals[Math.floor(Math.random() * animals.length)],
       kind: kinds[Math.floor(Math.random() * kinds.length)],
       gender: Math.random() > 0.5 ? "수컷" : "암컷",

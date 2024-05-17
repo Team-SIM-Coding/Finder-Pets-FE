@@ -1,12 +1,5 @@
 import { HttpHandler, HttpResponse, http } from "msw";
-import {
-  AnyPost,
-  isLostPet,
-  isPetStory,
-  isReview,
-  isSightedPet,
-  storagePaths,
-} from "./postComment";
+import { AnyPost, isBoard, isFinderPet, storagePaths } from "./postComment";
 
 const createDeleteCommentHandler = (storageKey: string): HttpHandler => {
   return http.delete(`/api/${storageKey}/:id/comment/delete`, async ({ request, params }) => {
@@ -15,10 +8,8 @@ const createDeleteCommentHandler = (storageKey: string): HttpHandler => {
     const posts = JSON.parse(localStorage.getItem(storagePaths[storageKey]) || "[]") as AnyPost[];
 
     const postIndex = posts.findIndex((post) => {
-      if (isLostPet(post) && storageKey === "lost") return post.lost_pet_id === id;
-      if (isSightedPet(post) && storageKey === "sighted") return post.sighted_pet_id === id;
-      if (isReview(post) && storageKey === "review") return post.review_id === id;
-      if (isPetStory(post) && storageKey === "pet-story") return post.pet_story_id === id;
+      if (isFinderPet(post) && storageKey === "lost") return post.pet_id === id;
+      if (isBoard(post) && storageKey === "review") return post.board_id === id;
       return false;
     });
 

@@ -1,7 +1,7 @@
-import { SightedPet } from "@/models/sighted";
+import { FinderPet } from "@/models/finder";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const sightedPets: SightedPet[] = JSON.parse(localStorage.getItem("sighted-pets") || "[]");
+const sightedPets: FinderPet[] = JSON.parse(localStorage.getItem("sighted-pets") || "[]");
 
 export const getSightedPets: HttpHandler = http.get("/api/sighted", async () => {
   if (sightedPets) {
@@ -14,7 +14,7 @@ export const getSightedPets: HttpHandler = http.get("/api/sighted", async () => 
 export const getSightedPet: HttpHandler = http.get("/api/sighted/:id", async ({ params }) => {
   const sightedPetId = params.id;
 
-  const pet = sightedPets.find((p) => p.sighted_pet_id === sightedPetId);
+  const pet = sightedPets.find((p) => p.pet_id === sightedPetId);
 
   if (pet) {
     return HttpResponse.json(pet, { status: 200 });
