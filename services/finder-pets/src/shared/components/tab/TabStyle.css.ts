@@ -11,6 +11,7 @@ export const tabMenuWrap = style([
     padding: "10px",
     marginTop: "10px",
     backgroundColor: "white",
+    zIndex: "1",
   },
 ]);
 

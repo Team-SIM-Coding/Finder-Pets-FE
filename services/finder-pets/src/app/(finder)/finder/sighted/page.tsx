@@ -6,6 +6,7 @@ const Sighted = () => {
     <section>
       <Spacing height="142px" />
       <SightedPetList />
+      <Spacing height="60px" />
     </section>
   );
 };
