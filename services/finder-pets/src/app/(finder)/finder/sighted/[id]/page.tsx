@@ -40,7 +40,7 @@ const SightedDetail = () => {
               right={<SightedDetailMainHeaderRight like_count={4} view_count={46} />}
             />
           }
-          images={<ImageSwiperBox images={items[0]?.images} />}
+          images={<ImageSwiperBox images={items[0]?.images} width={330} height={214} />}
           description={<SightedDetailDescription />}
         />
       }
