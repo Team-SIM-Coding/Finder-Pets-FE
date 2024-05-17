@@ -81,7 +81,7 @@ const FilterMenuBar = ({ onFilterChange }: Props) => {
   const handleAreaChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     methods.setValue("area", value);
-    onFilterChange({ area: value, district: "" });
+    onFilterChange({ area: value === "all" ? "" : value, district: "" });
   };
 
   const handleDistrictChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -89,7 +89,7 @@ const FilterMenuBar = ({ onFilterChange }: Props) => {
     if (value === "all") {
       methods.setValue("area", "all");
       methods.setValue("district", "");
-      onFilterChange({ area: "all", district: "" });
+      onFilterChange({ area: "", district: "" });
     } else {
       methods.setValue("district", value);
       onFilterChange({ district: value });
@@ -99,13 +99,13 @@ const FilterMenuBar = ({ onFilterChange }: Props) => {
   const handleAnimalChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     methods.setValue("animal", value);
-    onFilterChange({ animal: value, kind: "" });
+    onFilterChange({ animal: value === "all" ? "" : value, kind: "" });
   };
 
   const handleKindChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     methods.setValue("kind", value);
-    onFilterChange({ kind: value });
+    onFilterChange({ kind: value === "all" ? "" : value });
   };
 
   if (!FILTER_MENU_BAR_INCLUDES_PATHS.includes(path)) return null;

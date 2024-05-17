@@ -32,7 +32,7 @@ const ShelterList = ({ filter }: Props) => {
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage } = usePetList({
     type: "shelter-pets",
     fetchFunction: getShelterPetList,
-    maxResults: 10,
+    maxResults: 100,
     initPageToken: 1,
   });
 
@@ -48,6 +48,8 @@ const ShelterList = ({ filter }: Props) => {
       );
     });
   }, [filter, flatData]);
+
+  console.log(filter);
 
   const handleFetchNextPage = useCallback(() => {
     if (!isFetchingNextPage && hasNextPage) {
