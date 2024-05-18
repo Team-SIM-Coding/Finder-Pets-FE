@@ -91,19 +91,21 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
 
     console.log("data", data);
 
-    const response = await fetch("/api/lost/register", {
+    const response = await fetch(`/api/${category === "lost" ? "lost" : "sighted"}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
+
+    const categoryName = category === "lost" ? "실종" : "목격";
 
     if (response.ok) {
       const data = await response.json();
       open({
         width: "300px",
         height: "200px",
-        title: "실종 동물 등록",
-        main: <AlertMainTextBox text="실종 동물 등록이 완료되었습니다." />,
+        title: `${categoryName} 동물 등록`,
+        main: <AlertMainTextBox text={`${categoryName} 동물 등록이 완료되었습니다.`} />,
         rightButtonStyle: cs.defaultButton,
         onRightButtonClick: () => {
           router.push("/finder/lost");
@@ -113,10 +115,10 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
           close();
         },
       });
-      console.log("실종 동물 등록 완료 : ", data);
+      console.log(`${categoryName} 동물 등록 완료 : `, data);
     } else {
       const data = await response.json();
-      console.log("실종 동물 등록 실패 : ", data);
+      console.log(`${categoryName} 동물 등록 실패 : `, data);
     }
   };
 
