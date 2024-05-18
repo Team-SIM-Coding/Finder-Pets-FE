@@ -10,7 +10,9 @@ const createUpdateCommentHandler = (storageKey: string): HttpHandler => {
 
     const postIndex = posts.findIndex((post) => {
       if (isFinderPet(post) && storageKey === "lost") return post.pet_id === id;
+      if (isFinderPet(post) && storageKey === "sighted") return post.pet_id === id;
       if (isBoard(post) && storageKey === "review") return post.board_id === id;
+      if (isBoard(post) && storageKey === "pet-story") return post.board_id === id;
       return false;
     });
 
@@ -21,11 +23,11 @@ const createUpdateCommentHandler = (storageKey: string): HttpHandler => {
       if (commentIndex !== -1 && commentIndex !== undefined) {
         posts[postIndex].comments![commentIndex] = updatedCommentData;
         localStorage.setItem(storagePaths[storageKey], JSON.stringify(posts));
-        return HttpResponse.json({ message: "Comment updated successfully." }, { status: 200 });
+        return HttpResponse.json({ message: "댓글 수정 성공" }, { status: 200 });
       }
     }
 
-    return HttpResponse.json({ message: "Post or comment not found." }, { status: 404 });
+    return HttpResponse.json({ message: "댓글을 찾을 수 없습니다." }, { status: 404 });
   });
 };
 

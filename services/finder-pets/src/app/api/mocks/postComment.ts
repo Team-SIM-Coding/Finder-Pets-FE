@@ -1,4 +1,5 @@
 import { HttpHandler, HttpResponse, http } from "msw";
+import { v4 as uuid } from "uuid";
 
 import { Board } from "@/models/board";
 import { IComment } from "@/models/comment";
@@ -30,13 +31,16 @@ const createCommentHandler = (storageKey: string): HttpHandler => {
     const postIndex = posts.findIndex((post) => {
       if (isFinderPet(post) && storageKey === "lost") return post.pet_id === id;
       if (isBoard(post) && storageKey === "review") return post.board_id === id;
+      if (isFinderPet(post) && storageKey === "sighted") return post.pet_id === id;
+      if (isBoard(post) && storageKey === "pet-story") return post.board_id === id;
       return false;
     });
 
     if (postIndex !== -1) {
       const targetPost = posts[postIndex];
       targetPost.comments = targetPost.comments || [];
-      targetPost.comments.push(newComment);
+      const commentWithId = { ...newComment, comment_id: uuid() };
+      targetPost.comments.push(commentWithId);
       localStorage.setItem(storagePaths[storageKey], JSON.stringify(posts));
       return HttpResponse.json({ message: "Comment added successfully." }, { status: 201 });
     }

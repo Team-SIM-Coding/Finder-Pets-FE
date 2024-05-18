@@ -21,7 +21,7 @@ const UserAndCreateAt = ({ user_image, user_name, width, height, create_at }: Pr
       </div>
       <Flex direction="column" align="center">
         <span className={s.nameText}>{user_name}</span>
-        {create_at && <span className={s.createdAtText}>{create_at}</span>}
+        {create_at && <span className={s.createdAtText}>{create_at.substring(0, 10)}</span>}
       </Flex>
     </Flex>
   );

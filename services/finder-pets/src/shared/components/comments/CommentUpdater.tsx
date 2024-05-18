@@ -1,13 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Spacing from "../Spacing";
 import UserAndCreateAt from "../UserAndCreateAt";
-import CommentRegisterButton from "./CommentRegisterButton";
+import CommentUpdateAndCancelButtons from "./CommentUpdateAndCancelButtons";
 import * as s from "./CommentsStyle.css";
 
-const CommentWriter = () => {
-  const [text, setText] = useState("");
+interface Props {
+  comment: string;
+  comment_id: string;
+  setIsUpdate: Dispatch<SetStateAction<boolean>>;
+  setIsOpenTextBox: Dispatch<SetStateAction<boolean>>;
+}
+
+const CommentUpdater = ({ comment, comment_id, setIsUpdate, setIsOpenTextBox }: Props) => {
+  const [text, setText] = useState(comment);
 
   const handleWriterTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
@@ -29,10 +36,16 @@ const CommentWriter = () => {
         onChange={handleWriterTextChange}
         value={text}
       />
-      <CommentRegisterButton comment={text} setText={setText} />
+      <CommentUpdateAndCancelButtons
+        comment_id={comment_id}
+        comment={text}
+        setText={setText}
+        setIsUpdate={setIsUpdate}
+        setIsOpenTextBox={setIsOpenTextBox}
+      />
       <Spacing height="24px" />
     </div>
   );
 };
 
-export default CommentWriter;
+export default CommentUpdater;
