@@ -1,7 +1,7 @@
 import * as s from "./DetailStyle.css";
 
 interface Props {
-  text: string;
+  text: string | undefined;
 }
 
 const DetailSubHeader = ({ text }: Props) => {

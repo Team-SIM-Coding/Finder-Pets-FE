@@ -16,8 +16,6 @@ interface Props {
 const SightedDetailDescription = ({ info }: Props) => {
   const mapAddress = info?.area as string;
 
-  console.log(mapAddress);
-
   return (
     <article className={cs.detailSectionStyle}>
       <Spacing height="12px" />

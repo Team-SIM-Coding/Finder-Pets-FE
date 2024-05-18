@@ -22,3 +22,11 @@ export const getReview: HttpHandler = http.get("/api/review/:id", async ({ param
     return HttpResponse.json({ message: "재회 후기를 찾을 수 없습니다." }, { status: 404 });
   }
 });
+
+export const fetchReview = async (reviewId: string[] | string): Promise<Board> => {
+  const response = await fetch(`/api/review/${reviewId}`);
+  if (!response.ok) {
+    throw new Error("재회 후기 게시물 정보 조회에 실패했습니다.");
+  }
+  return response.json();
+};

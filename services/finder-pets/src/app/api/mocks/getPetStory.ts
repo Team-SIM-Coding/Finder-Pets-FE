@@ -25,3 +25,11 @@ export const getPetStory: HttpHandler = http.get("/api/pet-story/:id", async ({ 
     return HttpResponse.json({ message: "반려 이야기를 찾을 수 없습니다." }, { status: 404 });
   }
 });
+
+export const fetchPetStory = async (petStoryId: string[] | string): Promise<Board> => {
+  const response = await fetch(`/api/pet-story/${petStoryId}`);
+  if (!response.ok) {
+    throw new Error("반려 이야기 게시물 정보 조회에 실패했습니다.");
+  }
+  return response.json();
+};
