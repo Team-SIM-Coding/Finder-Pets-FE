@@ -89,6 +89,7 @@ export const editorTextAreaLargeStyle = style([
   {
     flex: 1,
     height: "350px",
+    padding: "12px",
   },
 ]);
 

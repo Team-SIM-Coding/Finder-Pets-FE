@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 export const petSchema = z.object({
-  pet_id: z.string().optional(),
   animal: z.string().optional(),
   kind: z.string().optional(),
   gender: z.string().optional(),
@@ -12,13 +11,10 @@ export const petSchema = z.object({
   character: z.string().optional(),
 });
 
-export const lostPetSchema = petSchema.extend({
+export const finderPetSchema = petSchema.extend({
   category: z.string(),
-  lost_pet_id: z.string().optional(),
   date: z.string().optional(),
   place: z.string().optional(),
-  latitude: z.string().optional(),
-  longitude: z.string().optional(),
   created_at: z.string().optional(),
   like_count: z.number().optional(),
   phone: z
@@ -31,4 +27,4 @@ export const lostPetSchema = petSchema.extend({
   images: z.array(z.string().optional()),
 });
 
-export type LostPetRegisterFormData = z.infer<typeof lostPetSchema>;
+export type FinderPetRegisterFormData = z.infer<typeof finderPetSchema>;

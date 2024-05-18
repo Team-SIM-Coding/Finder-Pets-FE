@@ -1,31 +1,30 @@
 import * as es from "@/shared/components/editor/EditorStyle.css";
 import * as cs from "@/shared/styles/common.css";
 
-import { v4 as uuid } from "uuid";
 import { Flex } from "@design-system/react-components-layout";
+import { v4 as uuid } from "uuid";
 
+import useAlertContext from "@/hooks/useAlertContext";
 import { Pet } from "@/models/pet";
 import Spacing from "@/shared/components/Spacing";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import EditorCheckBoxField from "@/shared/components/editor/EditorCheckBoxField";
 import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";
 import EditorInputField from "@/shared/components/editor/EditorInputField";
 import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
 import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
-import { LostPetRegisterFormData, lostPetSchema } from "@/utils/validation/finder";
+import { FinderPetRegisterFormData, finderPetSchema } from "@/utils/validation/finder";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
-import { useEffect, useState } from "react";
-import useAlertContext from "@/hooks/useAlertContext";
-import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
 
 interface Props {
   pet_info: Pet;
 }
 
-const defaultValues: LostPetRegisterFormData = {
+const defaultValues: FinderPetRegisterFormData = {
   category: "lost",
-  pet_id: "",
   animal: "",
   kind: "",
   gender: "",
@@ -34,11 +33,8 @@ const defaultValues: LostPetRegisterFormData = {
   age: "",
   is_neutering: false,
   character: "",
-  lost_pet_id: "",
   date: "",
   place: "",
-  latitude: "",
-  longitude: "",
   created_at: "",
   like_count: 0,
   phone: "",
@@ -63,8 +59,8 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
     fetchKinds();
   }, []);
 
-  const methods = useForm<LostPetRegisterFormData>({
-    resolver: zodResolver(lostPetSchema),
+  const methods = useForm<FinderPetRegisterFormData>({
+    resolver: zodResolver(finderPetSchema),
     mode: "onChange",
     defaultValues,
   });
@@ -81,7 +77,7 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
 
   const { handleSubmit } = methods;
 
-  const onSubmit: SubmitHandler<LostPetRegisterFormData> = async (data, event) => {
+  const onSubmit: SubmitHandler<FinderPetRegisterFormData> = async (data, event) => {
     event?.preventDefault();
 
     const randomId = uuid();
