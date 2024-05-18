@@ -19,9 +19,9 @@ export interface Pet {
   animal?: string;
   kind?: string;
   gender?: string;
-  weight?: number;
+  weight?: string;
   color?: string;
-  age?: number;
+  age?: string;
   is_neutering?: boolean;
   character?: string;
 }

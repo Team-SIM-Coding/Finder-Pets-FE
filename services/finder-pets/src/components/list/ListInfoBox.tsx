@@ -32,7 +32,7 @@ const normalizeShelterPetData = (pet: ShelterPet): PetInfo => {
     gender: pet.sexCd,
     description: pet.specialMark || "",
     created_at: pet.noticeSdt,
-    weight: parseFloat(pet.weight) || 0,
+    weight: pet.weight || "",
   };
 };
 

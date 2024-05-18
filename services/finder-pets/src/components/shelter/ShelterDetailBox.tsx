@@ -10,7 +10,7 @@ import DetailMain from "@/shared/components/detail/DetailMain";
 import DetailMainHeader from "@/shared/components/detail/DetailMainHeader";
 import DetailSection from "@/shared/components/detail/DetailSection";
 import ImageSwiperBox from "@/shared/components/swiper/ImageSwiperBox";
-import { PetImage } from "@/shared/types/pet";
+import { Image } from "@/models/image";
 import { flattenShelterData } from "@/utils/data/flattenShelterData";
 import { formatDate } from "@/utils/format/formatDate";
 import { useParams } from "next/navigation";
@@ -32,10 +32,8 @@ const ShelterDetailBox = () => {
   const flatData = flattenShelterData(data) as ShelterPet[];
   const filterData = flatData.filter((data) => data.desertionNo === id)[0];
 
-  console.log("filterData", filterData);
-
-  const imageUrls: PetImage[] = [];
-  if (filterData.filename) imageUrls.push({ image_id: randomId, image_url: filterData.filename });
+  const imageUrls: Image[] = [];
+  if (filterData.filename) imageUrls.push({ img_id: randomId, url: filterData.filename });
 
   return (
     <DetailSection

@@ -8,7 +8,7 @@ const CommentWriter = () => {
     <div className={s.commentWriterWrap}>
       <div className={s.commentWriterUserInfo}>
         <UserAndCreateAt
-          user_image="/images/user_profile.jpeg"
+          user_image={{ img_id: "user1", url: "/images/user_profile.jpeg" }}
           user_name="이종현"
           width={28}
           height={28}

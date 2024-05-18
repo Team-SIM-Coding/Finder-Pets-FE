@@ -11,6 +11,6 @@ export interface FinderPet extends Pet {
   like_count?: number;
   phone?: string;
   description?: string;
-  images?: Image[];
+  images?: Image[] | undefined;
   comments?: IComment[];
 }

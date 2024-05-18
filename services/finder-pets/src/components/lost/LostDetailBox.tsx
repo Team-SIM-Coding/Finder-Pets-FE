@@ -1,8 +1,7 @@
 "use client";
 
-import ReUnionReviewsDetailDescription from "@/components/reviews/ReUnionReviewsDetailDescription";
-import ReUnionReviewsDetailMainHeaderLeft from "@/components/reviews/ReUnionReviewsDetailMainHeaderLeft";
-import ReUnionReviewsDetailMainHeaderRight from "@/components/reviews/ReUnionReviewsDetailMainHeaderRight";
+import { fetchLostPet } from "@/app/api/mocks/getLostPet";
+import { FinderPet } from "@/models/finder";
 import CommentWriter from "@/shared/components/comments/CommentWriter";
 import CommentsList from "@/shared/components/comments/CommentsList";
 import CommentsSection from "@/shared/components/comments/CommentsSection";
@@ -11,27 +10,43 @@ import DetailMain from "@/shared/components/detail/DetailMain";
 import DetailMainHeader from "@/shared/components/detail/DetailMainHeader";
 import DetailSection from "@/shared/components/detail/DetailSection";
 import ImageSwiperBox from "@/shared/components/swiper/ImageSwiperBox";
+import { useQuery } from "@tanstack/react-query";
+import { useParams } from "next/navigation";
+import LostDetailDescription from "./LostDetailDescription";
+import LostDetailMainHeaderLeft from "./LostDetailMainHeaderLeft";
+import LostDetailMainHeaderRight from "./LostDetailMainHeaderRight";
 
-const ReUnionReviewsDetail = () => {
+const LostDetailBox = () => {
+  const { id } = useParams();
+
+  const { data } = useQuery<FinderPet, Error>({
+    queryKey: ["lost-pet", id],
+    queryFn: () => fetchLostPet(id),
+  });
+
+  console.log(data?.images);
+
+  const createdAt = data?.created_at as string;
+
   return (
     <DetailSection
-      header={<DetailHeader text="재회 후기" />}
+      header={<DetailHeader text="기다림의 끝에서" />}
       main={
         <DetailMain
           header={
             <DetailMainHeader
               left={
-                <ReUnionReviewsDetailMainHeaderLeft
+                <LostDetailMainHeaderLeft
                   user_image={{ img_id: "user1", url: "/images/user_profile.jpeg" }}
                   user_name="이종현"
-                  create_at="4시간 전"
+                  create_at={createdAt}
                 />
               }
-              right={<ReUnionReviewsDetailMainHeaderRight like_count={4} view_count={46} />}
+              right={<LostDetailMainHeaderRight like_count={4} view_count={46} />}
             />
           }
-          images={<ImageSwiperBox images={[]} width={330} height={214} />}
-          description={<ReUnionReviewsDetailDescription />}
+          images={<ImageSwiperBox images={data?.images} width={330} height={214} />}
+          description={<LostDetailDescription info={data} />}
         />
       }
       comments={
@@ -41,4 +56,4 @@ const ReUnionReviewsDetail = () => {
   );
 };
 
-export default ReUnionReviewsDetail;
+export default LostDetailBox;

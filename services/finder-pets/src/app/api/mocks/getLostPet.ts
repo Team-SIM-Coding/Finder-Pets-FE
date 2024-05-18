@@ -22,3 +22,11 @@ export const getLostPet: HttpHandler = http.get("/api/lost/:id", async ({ params
     return HttpResponse.json({ message: "실종 동물을 찾을 수 없습니다." }, { status: 404 });
   }
 });
+
+export const fetchLostPet = async (lostPetId: string[] | string): Promise<FinderPet> => {
+  const response = await fetch(`/api/lost/${lostPetId}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch the lost pet");
+  }
+  return response.json();
+};

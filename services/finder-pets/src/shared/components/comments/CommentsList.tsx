@@ -5,13 +5,13 @@ const CommentsList = () => {
   return (
     <div className={s.commentsSection}>
       <Comment
-        user_image="/images/user_profile.jpeg"
+        user_image={{ img_id: "user1", url: "/images/user_profile.jpeg" }}
         user_name="이종현"
         created_at="4시간 전"
         comment="댓글 내용 테스트"
       />
       <Comment
-        user_image="/images/user_profile.jpeg"
+        user_image={{ img_id: "user1", url: "/images/user_profile.jpeg" }}
         user_name="이종현"
         created_at="4시간 전"
         comment="댓글 내용 테스트"

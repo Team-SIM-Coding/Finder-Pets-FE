@@ -3,14 +3,14 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./Swiper.css";
 
-import { PetImage } from "@/shared/types/pet";
 import SwiperCore from "swiper";
 import { Navigation, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ImageBox from "./ImageBox";
+import { Image } from "@/models/image";
 
 interface Props {
-  images: PetImage[];
+  images: Image[] | undefined;
   width: number;
   height: number;
 }

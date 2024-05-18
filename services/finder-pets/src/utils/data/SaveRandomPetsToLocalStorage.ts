@@ -123,7 +123,11 @@ const generateRandomPets = (count: number) => {
       character: characters[Math.floor(Math.random() * characters.length)],
       phone: randomPhoneNumber(),
       description: `설명 ${i + 1}`,
-      images: ["/images/pet1.jpeg", "/images/pet2.jpeg", "/images/pet3.jpeg"],
+      images: [
+        { img_id: "img1", url: "/images/pet1.jpeg" },
+        { img_id: "img2", url: "/images/pet2.jpeg" },
+        { img_id: "img3", url: "/images/pet3.jpeg" },
+      ],
       comments: [],
     };
     pets.push(pet);

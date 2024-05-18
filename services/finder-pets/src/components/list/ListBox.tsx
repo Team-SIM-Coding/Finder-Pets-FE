@@ -23,14 +23,10 @@ const ListBox = ({ list_info }: Props) => {
   let id;
 
   if (list_info) {
-    if ("lost_pet_id" in list_info) {
-      id = list_info.lost_pet_id;
-    } else if ("sighted_pet_id" in list_info) {
-      id = list_info.sighted_pet_id;
-    } else if ("review_id" in list_info) {
-      id = list_info.review_id;
-    } else if ("pet_story_id" in list_info) {
-      id = list_info.pet_story_id;
+    if ("pet_id" in list_info) {
+      id = list_info.pet_id;
+    } else if ("board_id" in list_info) {
+      id = list_info.board_id;
     } else if ("desertionNo" in list_info) {
       id = list_info.desertionNo;
     }

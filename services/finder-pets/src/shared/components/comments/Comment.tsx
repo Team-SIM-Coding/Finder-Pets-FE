@@ -8,9 +8,10 @@ import UserAndCreateAt from "../UserAndCreateAt";
 import { useState } from "react";
 import { useParams, usePathname } from "next/navigation";
 import { PATH_TYPE } from "./CommentRegisterButton";
+import { Image } from "@/models/image";
 
 interface Props {
-  user_image: string;
+  user_image: Image;
   user_name: string;
   created_at: string;
   comment: string;
