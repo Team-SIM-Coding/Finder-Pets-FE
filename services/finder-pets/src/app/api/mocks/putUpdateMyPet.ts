@@ -1,7 +1,7 @@
 import { MyPet } from "@/models/pet";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const pets: MyPet[] = JSON.parse(localStorage.getItem("pets") || "[]");
+const pets: MyPet[] = JSON.parse(localStorage.getItem("my-pets") || "[]");
 
 export const putUpdateMyPet: HttpHandler = http.put(
   "/api/my-pets/update/:id",
@@ -11,10 +11,12 @@ export const putUpdateMyPet: HttpHandler = http.put(
 
     const petIndex = pets.findIndex((p) => p.my_pet_id === myPetId);
 
+    console.log(petIndex);
+
     if (petIndex !== -1) {
       pets[petIndex] = { ...pets[petIndex], ...updatedPetData };
 
-      localStorage.setItem("pets", JSON.stringify(pets));
+      localStorage.setItem("my-pets", JSON.stringify(pets));
 
       return HttpResponse.json(pets[petIndex], { status: 200 });
     } else {

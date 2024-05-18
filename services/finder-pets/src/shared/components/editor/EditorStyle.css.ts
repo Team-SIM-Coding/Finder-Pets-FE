@@ -30,6 +30,10 @@ export const imageRegisterFormWrap = style([
   },
 ]);
 
+export const imageRegisterMyPetImage = style({
+  borderRadius: "50%",
+});
+
 export const imageRegisterFormImage = style({
   cursor: "pointer",
 });

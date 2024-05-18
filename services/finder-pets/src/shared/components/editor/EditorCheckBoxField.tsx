@@ -3,15 +3,27 @@ import * as s from "./EditorStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 import { Input } from "@design-system/react-components-input";
-import { FieldValues, useFormContext, Path, Controller } from "react-hook-form";
+import { FieldValues, useFormContext, Path, Controller, PathValue } from "react-hook-form";
+import { useEffect } from "react";
 
 interface Props<T extends FieldValues> {
   label: string;
   name: Path<T>;
+  defaultValue?: boolean; // Add defaultValue prop
 }
 
-const EditorCheckBoxField = <T extends FieldValues>({ label, name }: Props<T>) => {
-  const { control } = useFormContext<T>();
+const EditorCheckBoxField = <T extends FieldValues>({ label, name, defaultValue }: Props<T>) => {
+  const { control, setValue } = useFormContext<T>();
+
+  useEffect(() => {
+    if (defaultValue !== undefined) {
+      setValue(name, defaultValue as PathValue<T, Path<T>>);
+    }
+  }, [defaultValue, name, setValue]);
+
+  const handleChange = (value: boolean) => {
+    setValue(name, value as PathValue<T, Path<T>>);
+  };
 
   return (
     <Flex align="center" className={s.editorCheckBoxWrap}>
@@ -30,10 +42,10 @@ const EditorCheckBoxField = <T extends FieldValues>({ label, name }: Props<T>) =
                 </label>
                 <Input
                   {...field}
-                  id={name}
+                  id={`${name}-yes`}
                   type="checkbox"
                   checked={field.value === true}
-                  onChange={() => field.onChange(true)}
+                  onChange={() => handleChange(true)}
                 />
               </div>
               <div>
@@ -42,10 +54,10 @@ const EditorCheckBoxField = <T extends FieldValues>({ label, name }: Props<T>) =
                 </label>
                 <Input
                   {...field}
-                  id={name}
+                  id={`${name}-no`}
                   type="checkbox"
                   checked={field.value === false}
-                  onChange={() => field.onChange(false)}
+                  onChange={() => handleChange(false)}
                 />
               </div>
             </>

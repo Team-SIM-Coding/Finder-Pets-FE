@@ -8,14 +8,14 @@ import { MyPet } from "@/models/pet";
 import { waitForMSWActivation } from "@/shared/mocks/waitForWorkerActivation";
 
 const MyPetList = () => {
-  const [items, setItems] = useState<MyPet[]>([]);
+  const [myPets, setMyPets] = useState<MyPet[]>([]);
 
   const fetchMyPets = async () => {
     const response = await fetch("/api/my-pets");
 
     if (response.ok) {
       const data = await response.json();
-      setItems(data);
+      setMyPets(data);
       console.log("내 반려동물 리스트 조회 성공 : ", data);
     } else {
       const data = await response.json();
@@ -34,8 +34,8 @@ const MyPetList = () => {
     <div>
       <Spacing height="24px" />
       <Grid templateColumns="repeat(2, 1fr)" gap="8px">
-        {items.map((item) => (
-          <MyPetBox key={item.my_pet_id} pet={item} />
+        {myPets.map((pet) => (
+          <MyPetBox key={pet.my_pet_id} pet={pet} />
         ))}
       </Grid>
     </div>

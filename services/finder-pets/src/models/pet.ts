@@ -1,3 +1,5 @@
+import { Image } from "./image";
+
 export interface MyPet {
   my_pet_id: string;
   name: string;
@@ -7,12 +9,12 @@ export interface MyPet {
   color: string;
   weight: number;
   intro: string;
-  birth: string;
-  adoption: string;
+  birth_day: string;
+  adoption_day: string;
   age: number;
   is_neutering: boolean;
   is_adoption: boolean;
-  profile_image: string;
+  pet_image: Image;
 }
 
 export interface Pet {

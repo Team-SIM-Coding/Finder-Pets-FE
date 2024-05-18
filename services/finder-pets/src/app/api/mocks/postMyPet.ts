@@ -17,7 +17,7 @@ export const postMyPet: HttpHandler = http.post("/api/my-pet/register", async ({
 
   pets.push(newMyPet);
 
-  localStorage.setItem("pets", JSON.stringify(pets));
+  localStorage.setItem("my-pets", JSON.stringify(pets));
 
   return HttpResponse.json(newMyPet, { status: 201 });
 });
