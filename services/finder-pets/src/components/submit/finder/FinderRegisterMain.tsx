@@ -85,9 +85,13 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
     event?.preventDefault();
 
     const randomId = uuid();
-    const images = ["/images/pet1.jpeg", "/images/pet2.jpeg", "/images/pet3.jpeg"];
+    const images = [
+      { img_id: "img1", url: "/images/pet1.jpeg" },
+      { img_id: "img2", url: "/images/pet2.jpeg" },
+      { img_id: "img3", url: "/images/pet3.jpeg" },
+    ];
     const { category, ...formDataWithoutCategory } = data;
-    const formData = { ...formDataWithoutCategory, lost_pet_id: randomId, images };
+    const formData = { ...formDataWithoutCategory, pet_id: randomId, images };
 
     console.log("data", data);
 
@@ -109,9 +113,6 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
         rightButtonStyle: cs.defaultButton,
         onRightButtonClick: () => {
           router.push("/finder/lost");
-          close();
-        },
-        onBackDropClick: () => {
           close();
         },
       });

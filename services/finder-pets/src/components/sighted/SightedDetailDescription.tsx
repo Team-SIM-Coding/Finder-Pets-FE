@@ -2,18 +2,22 @@ import * as cs from "@/shared/styles/common.css";
 
 import { Divider } from "@design-system/react-components-layout";
 
+import { FinderPet } from "@/models/finder";
 import Spacing from "@/shared/components/Spacing";
 import DetailDescriptionTextBox from "@/shared/components/detail/DetailDescriptionTextBox";
 import DetailDescriptionTextField from "@/shared/components/detail/DetailDescriptionTextField";
-import MapImage from "@/shared/components/detail/MapImage";
+import KakaoMap from "@/shared/components/kakao-map/KakaoMap";
 import { trimText } from "@/utils/trimText";
-import { FinderPet } from "@/models/finder";
 
 interface Props {
   info: FinderPet | undefined;
 }
 
 const SightedDetailDescription = ({ info }: Props) => {
+  const mapAddress = info?.place as string;
+
+  console.log(mapAddress);
+
   return (
     <article className={cs.detailSectionStyle}>
       <Spacing height="12px" />
@@ -47,7 +51,7 @@ const SightedDetailDescription = ({ info }: Props) => {
       <Spacing height="24px" />
       <DetailDescriptionTextField label="발견장소" />
       <Spacing height="24px" />
-      <MapImage url="/images/map.jpg" />
+      <KakaoMap address={mapAddress} />
       <Spacing height="24px" />
       <Divider size={6} />
       <Spacing height="12px" />

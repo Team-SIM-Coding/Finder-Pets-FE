@@ -32,10 +32,14 @@ const KakaoMap = ({ address, initialLevel = 3 }: Props) => {
         geocoder.addressSearch(address, (result, status) => {
           if (status === window.kakao.maps.services.Status.OK) {
             console.log(result);
-            const coords = new window.kakao.maps.LatLng(
-              parseFloat(result[0].y),
-              parseFloat(result[0].x),
-            );
+            let coords;
+            if (result[0].road_address) {
+              coords = new window.kakao.maps.LatLng(
+                parseFloat(result[0]?.road_address.y),
+                parseFloat(result[0]?.road_address.x),
+              );
+            }
+            coords = new window.kakao.maps.LatLng(parseFloat(result[0].y), parseFloat(result[0].x));
             const marker = new window.kakao.maps.Marker({
               map,
               position: coords,
