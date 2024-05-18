@@ -110,7 +110,7 @@ const generateRandomPets = (count: number) => {
     const pet = {
       pet_id: uuid(),
       date: randomDate(),
-      place: addresses[Math.floor(Math.random() * addresses.length)],
+      area: addresses[Math.floor(Math.random() * addresses.length)],
       created_at: randomDate(),
       like_count: Math.floor(Math.random() * 10),
       my_pet_id: uuid(),

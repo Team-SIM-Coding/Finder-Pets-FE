@@ -27,7 +27,7 @@ export interface Pet {
 }
 
 export interface ListPetInfo {
-  place?: string;
+  area?: string;
   animal?: string;
   kind?: string;
   gender?: string;

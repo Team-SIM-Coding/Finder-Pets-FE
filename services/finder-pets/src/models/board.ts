@@ -7,7 +7,7 @@ export interface Board {
   description?: string;
   created_at: string;
   like_count: number;
-  place?: string;
+  area?: string;
   animal?: string;
   kind?: string;
   images?: Image[];

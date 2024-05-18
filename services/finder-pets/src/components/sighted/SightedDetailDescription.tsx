@@ -14,14 +14,14 @@ interface Props {
 }
 
 const SightedDetailDescription = ({ info }: Props) => {
-  const mapAddress = info?.place as string;
+  const mapAddress = info?.area as string;
 
   console.log(mapAddress);
 
   return (
     <article className={cs.detailSectionStyle}>
       <Spacing height="12px" />
-      <DetailDescriptionTextField label="발견장소" text={info?.place} />
+      <DetailDescriptionTextField label="발견장소" text={info?.area} />
       <Spacing height="12px" />
       <DetailDescriptionTextField label="발견일" text={info?.date} />
       <Spacing height="12px" />

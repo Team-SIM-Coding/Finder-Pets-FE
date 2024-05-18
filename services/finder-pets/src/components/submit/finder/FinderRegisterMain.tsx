@@ -34,7 +34,7 @@ const defaultValues: FinderPetRegisterFormData = {
   is_neutering: false,
   character: "",
   date: "",
-  place: "",
+  area: "",
   created_at: "",
   like_count: 0,
   phone: "",
@@ -135,7 +135,7 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
           className={es.editorInputMediumStyle}
         />
         <Spacing height="12px" />
-        <EditorInputField name="place" label="장소" className={es.editorInputMediumStyle} />
+        <EditorInputField name="area" label="장소" className={es.editorInputMediumStyle} />
         <Spacing height="12px" />
         <Flex>
           {pet_info.animal ? (

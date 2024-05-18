@@ -26,7 +26,7 @@ const COMMUNITY_PATHS = ["/community/reunion-reviews", "/community/pet-stories"]
 
 const normalizeShelterPetData = (pet: ShelterPet): PetInfo => {
   return {
-    place: `${pet.orgNm} ${pet.happenPlace}`,
+    area: `${pet.orgNm} ${pet.happenPlace}`,
     animal: pet.kindCd.match(/\[(.*?)\]/)?.[1] ?? pet.kindCd,
     kind: pet.kindCd.replace(/^\[.*?\]\s*/, ""),
     gender: pet.sexCd,
@@ -56,7 +56,7 @@ const ListInfoBox = ({ info }: Props) => {
       <Flex justify="space-around">
         {hasPetInfo(petInfo) && (
           <>
-            <HighLightTag text={trimText(petInfo.place, 4)} color="#FDD78D" />
+            <HighLightTag text={trimText(petInfo.area, 4)} color="#FDD78D" />
             <HighLightTag text={petInfo.animal} color="#7C80E4" />
             <HighLightTag text={trimText(petInfo.kind, 5)} color="#F18FE2" />
           </>
@@ -71,7 +71,7 @@ const ListInfoBox = ({ info }: Props) => {
             <>
               <ListInfoDescription label="체중" text={`${petInfo.weight} Kg`} />
               <ListInfoDescription label="특징" text={petInfo.description} />
-              <ListInfoDescription label="구조장소" text={petInfo.place} />
+              <ListInfoDescription label="구조장소" text={petInfo.area} />
               <ListInfoDescription label="공고기간" text={formatDate(petInfo.created_at)} />
             </>
           )}

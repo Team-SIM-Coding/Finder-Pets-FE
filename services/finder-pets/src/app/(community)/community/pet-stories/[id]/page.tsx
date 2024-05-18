@@ -22,7 +22,7 @@ const PetStoriesDetail = () => {
             <DetailMainHeader
               left={
                 <PetStoriesDetailMainHeaderLeft
-                  user_image="/images/user_profile.jpeg"
+                  user_image={{ img_id: "user1", url: "/images/user_profile.jpeg" }}
                   user_name="이종현"
                   create_at="4시간 전"
                 />

@@ -6,7 +6,7 @@ export interface FinderPet extends Pet {
   pet_id?: string;
   my_pet_id?: string;
   date?: string;
-  place?: string;
+  area?: string;
   created_at?: string;
   like_count?: number;
   phone?: string;

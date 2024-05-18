@@ -14,7 +14,7 @@ export const petSchema = z.object({
 export const finderPetSchema = petSchema.extend({
   category: z.string(),
   date: z.string().optional(),
-  place: z.string().optional(),
+  area: z.string().optional(),
   created_at: z.string().optional(),
   like_count: z.number().optional(),
   phone: z

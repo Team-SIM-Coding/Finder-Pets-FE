@@ -14,12 +14,12 @@ interface Props {
 }
 
 const LostDetailDescription = ({ info }: Props) => {
-  const mapAddress = info?.place as string;
+  const mapAddress = info?.area as string;
 
   return (
     <article className={cs.detailSectionStyle}>
       <Spacing height="12px" />
-      <DetailDescriptionTextField label="실종장소" text={info?.place} />
+      <DetailDescriptionTextField label="실종장소" text={info?.area} />
       <Spacing height="12px" />
       <DetailDescriptionTextField label="실종일" text={info?.date} />
       <Spacing height="12px" />

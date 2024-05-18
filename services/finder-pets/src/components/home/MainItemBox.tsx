@@ -36,7 +36,7 @@ const MainItemBox = ({ item, type }: Props) => {
           </h3>
         </Flex>
         <Spacing height="8px" />
-        <Text fontSize="sm">실종 장소 : {item?.place}</Text>
+        <Text fontSize="sm">실종 장소 : {item?.area}</Text>
         <Spacing height="8px" />
         <Text fontSize="sm">실종 날짜 : {item?.date?.toString()}</Text>
       </div>
