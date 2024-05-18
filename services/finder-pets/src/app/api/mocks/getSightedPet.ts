@@ -23,10 +23,18 @@ export const getSightedPet: HttpHandler = http.get("/api/sighted/:id", async ({ 
   }
 });
 
+export const fetchSightedPets = async (): Promise<FinderPet[]> => {
+  const response = await fetch("/api/sighted");
+  if (!response.ok) {
+    throw new Error("목격 동물 리스트 조회에 실패했습니다.");
+  }
+  return response.json();
+};
+
 export const fetchSightedPet = async (sightedPetId: string[] | string): Promise<FinderPet> => {
   const response = await fetch(`/api/sighted/${sightedPetId}`);
   if (!response.ok) {
-    throw new Error("Failed to fetch the lost pet");
+    throw new Error("목격 동물 정보 조회에 실패했습니다.");
   }
   return response.json();
 };

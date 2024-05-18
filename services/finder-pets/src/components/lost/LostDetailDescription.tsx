@@ -33,7 +33,7 @@ const LostDetailDescription = ({ info }: Props) => {
       <Spacing height="12px" />
       <DetailDescriptionTextField label="체중" text={`${info?.weight} Kg`} />
       <Spacing height="12px" />
-      <DetailDescriptionTextField label="성별" text={info?.gender} />
+      <DetailDescriptionTextField label="성별" text={info?.gender === "M" ? "수컷" : "암컷"} />
       <Spacing height="12px" />
       <DetailDescriptionTextField label="나이 " text={info?.age} />
       <Spacing height="12px" />

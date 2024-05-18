@@ -23,10 +23,18 @@ export const getLostPet: HttpHandler = http.get("/api/lost/:id", async ({ params
   }
 });
 
+export const fetchLostPets = async (): Promise<FinderPet[]> => {
+  const response = await fetch("/api/lost");
+  if (!response.ok) {
+    throw new Error("실종 동물 리스트 조회에 실패했습니다.");
+  }
+  return response.json();
+};
+
 export const fetchLostPet = async (lostPetId: string[] | string): Promise<FinderPet> => {
   const response = await fetch(`/api/lost/${lostPetId}`);
   if (!response.ok) {
-    throw new Error("Failed to fetch the lost pet");
+    throw new Error("실종 동물 정보 조회에 실패했습니다.");
   }
   return response.json();
 };

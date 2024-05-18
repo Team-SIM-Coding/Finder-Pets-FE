@@ -8,13 +8,14 @@ import { Navigation, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import MainItemBox from "@/components/home/MainItemBox";
-import { LostPets } from "@/shared/types/pet";
+import { FinderPet } from "@/models/finder";
 
 interface Props {
-  items: LostPets[];
+  items: FinderPet[] | undefined;
+  type: string;
 }
 
-const MainSwiperBox = ({ items }: Props) => {
+const MainSwiperBox = ({ items, type }: Props) => {
   SwiperCore.use([Navigation, Scrollbar]);
 
   return (
@@ -41,7 +42,7 @@ const MainSwiperBox = ({ items }: Props) => {
       >
         {items?.map((item, index) => (
           <SwiperSlide key={index}>
-            <MainItemBox item={item} />
+            <MainItemBox item={item} type={type} />
           </SwiperSlide>
         ))}
       </Swiper>
