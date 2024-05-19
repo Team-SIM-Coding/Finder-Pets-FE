@@ -6,7 +6,7 @@ import * as cs from "@/shared/styles/common.css";
 
 import { Flex } from "@design-system/react-components-layout";
 import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { CiMenuKebab } from "react-icons/ci";
 import AlertMainTextBox from "./alert/AlertMainTextBox";
@@ -25,6 +25,27 @@ const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
 
   const [isOpenTextBox, setIsOpenTextBox] = useState(false);
 
+  const likeAndViewBarBoxRef = useRef<HTMLDivElement>(null);
+
+  const handleOpenDeletePopUp = () => {
+    open({
+      width: "300px",
+      height: "200px",
+      title: "게시글 삭제",
+      main: <AlertMainTextBox text="게시글을 삭제 하시겠습니까?" />,
+      leftButtonLabel: "취소",
+      leftButtonStyle: cs.whiteButton,
+      rightButtonStyle: cs.defaultButton,
+      onLeftButtonClick: () => {
+        close();
+      },
+      onRightButtonClick: () => {
+        handleDeletePost();
+        close();
+      },
+    });
+  };
+
   const handleDeletePost = async () => {
     const response = await fetch(`/api/${type}/delete/${id}`, {
       method: "DELETE",
@@ -32,12 +53,12 @@ const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log("해당 포스트가 정상적으로 삭제되었습니다.", data);
+      console.log("해당 게시글이 정상적으로 삭제되었습니다.", data);
       open({
         width: "300px",
         height: "200px",
-        title: "포스트 삭제",
-        main: <AlertMainTextBox text="해당 포스트가 정상적으로 삭제되었습니다." />,
+        title: "게시글 삭제",
+        main: <AlertMainTextBox text="해당 게시글이 정상적으로 삭제되었습니다." />,
         rightButtonStyle: cs.defaultButton,
         onRightButtonClick: () => {
           router.push(
@@ -56,26 +77,49 @@ const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
     setIsOpenTextBox((prev) => !prev);
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      likeAndViewBarBoxRef.current &&
+      !likeAndViewBarBoxRef.current.contains(event.target as Node)
+    ) {
+      setIsOpenTextBox(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpenTextBox) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpenTextBox]);
+
   return (
-    <Flex align="center" className={s.likeAndViewBarWrap}>
-      <span className={s.text}>좋아요 {like_count}</span>
-      <div className={s.dividerStyle} />
-      <span className={s.text}>조회수 {view_count}</span>
-      <CiMenuKebab className={s.iconStyle} onClick={handleMenuKebabClick} />
-      {isOpenTextBox && (
-        <Flex
-          direction="column"
-          justify="space-around"
-          align="center"
-          className={s.deleteAndModifyBox}
-        >
-          <span className={s.deleteAndModifyText}>수정</span>
-          <span className={s.deleteAndModifyText} onClick={handleDeletePost}>
-            삭제
-          </span>
-        </Flex>
-      )}
-    </Flex>
+    <div ref={likeAndViewBarBoxRef}>
+      <Flex align="center" className={s.likeAndViewBarWrap}>
+        <span className={s.text}>좋아요 {like_count}</span>
+        <div className={s.dividerStyle} />
+        <span className={s.text}>조회수 {view_count}</span>
+        <CiMenuKebab className={s.iconStyle} onClick={handleMenuKebabClick} />
+        {isOpenTextBox && (
+          <Flex
+            direction="column"
+            justify="space-around"
+            align="center"
+            className={s.deleteAndModifyBox}
+          >
+            {/* <span className={s.deleteAndModifyText}>수정</span> */}
+            <span className={s.deleteAndModifyText} onClick={handleOpenDeletePopUp}>
+              삭제
+            </span>
+          </Flex>
+        )}
+      </Flex>
+    </div>
   );
 };
 

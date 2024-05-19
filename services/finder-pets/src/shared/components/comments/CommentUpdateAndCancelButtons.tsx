@@ -60,6 +60,7 @@ const CommentUpdateAndCancelButtons = ({
         onRightButtonClick: () => {
           setText("");
           setIsUpdate(false);
+          setIsOpenTextBox(false);
           close();
         },
       });
