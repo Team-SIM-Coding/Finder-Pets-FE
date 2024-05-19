@@ -86,8 +86,6 @@ const MyPetProfileMain = ({ pet_info }: Props) => {
       pet_image: { img_id: "pet2", url: "/images/pet4.jpeg" },
     };
 
-    console.log("data", formData);
-
     const response = await fetch(`/api/my-pets/update/${pet_info.my_pet_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -139,67 +137,40 @@ const MyPetProfileMain = ({ pet_info }: Props) => {
         />
         <Spacing height="12px" />
         <Flex>
-          {pet_info.animal ? (
-            <EditorInputField<MyPetRegisterFormData>
-              name="animal"
-              label="동물"
-              className={es.editorInputSmallStyle}
-              value={pet_info.animal}
-            />
-          ) : (
-            <EditorSelectTab<MyPetRegisterFormData>
-              name="animal"
-              label="동물"
-              className={es.editorSelectStyle}
-            >
-              <option value="all">모든 동물</option>
-              <option value="개">개</option>
-              <option value="고양이">고양이</option>
-              <option value="기타">기타</option>
-            </EditorSelectTab>
-          )}
-          {pet_info.kind ? (
-            <EditorInputField<MyPetRegisterFormData>
-              name="kind"
-              label="품종"
-              className={es.editorInputSmallStyle}
-              value={pet_info.kind}
-            />
-          ) : (
-            <EditorSelectTab<MyPetRegisterFormData>
-              name="kind"
-              label="품종"
-              className={es.editorSelectStyle}
-            >
-              <option value="all">모든 품종</option>
-              {kinds.map((kind) => (
-                <option key={kind} value={kind}>
-                  {kind}
-                </option>
-              ))}
-            </EditorSelectTab>
-          )}
+          <EditorSelectTab<MyPetRegisterFormData>
+            name="animal"
+            label="동물"
+            className={es.editorSelectStyle}
+          >
+            <option value="all">모든 동물</option>
+            <option value="개">개</option>
+            <option value="고양이">고양이</option>
+            <option value="기타">기타</option>
+          </EditorSelectTab>
+          <EditorSelectTab<MyPetRegisterFormData>
+            name="kind"
+            label="품종"
+            className={es.editorSelectStyle}
+          >
+            <option value="all">모든 품종</option>
+            {kinds.map((kind) => (
+              <option key={kind} value={kind}>
+                {kind}
+              </option>
+            ))}
+          </EditorSelectTab>
         </Flex>
         <Spacing height="12px" />
         <Flex>
-          {pet_info.gender ? (
-            <EditorInputField<MyPetRegisterFormData>
-              name="gender"
-              label="성별"
-              className={es.editorInputSmallStyle}
-              value={pet_info.gender === "M" ? "수컷" : "암컷"}
-            />
-          ) : (
-            <EditorSelectTab<MyPetRegisterFormData>
-              name="gender"
-              label="성별"
-              className={es.editorSelectStyle}
-            >
-              <option value="default">미확인</option>
-              <option value="M">수컷</option>
-              <option value="F">암컷</option>
-            </EditorSelectTab>
-          )}
+          <EditorSelectTab<MyPetRegisterFormData>
+            name="gender"
+            label="성별"
+            className={es.editorSelectStyle}
+          >
+            <option value="default">미확인</option>
+            <option value="수컷">수컷</option>
+            <option value="암컷">암컷</option>
+          </EditorSelectTab>
           <EditorInputField<MyPetRegisterFormData>
             name="weight"
             label="몸무게"
