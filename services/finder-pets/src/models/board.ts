@@ -8,8 +8,11 @@ export interface Board {
   created_at: string;
   like_count: number;
   area?: string;
+  district?: string;
   animal?: string;
   kind?: string;
+  gender?: string;
+  weight: string;
   images?: Image[];
   comments?: IComment[];
 }

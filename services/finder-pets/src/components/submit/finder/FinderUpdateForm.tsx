@@ -33,7 +33,7 @@ const FinderUpdateForm = ({ type }: Props) => {
     <EditorSection
       title={`${type === "lost" ? "실종" : "목격"}동물 수정`}
       main={<FinderUpdateMain type={type} pet_info={data} />}
-      footer={<FinderUpdateButton type={type} />}
+      footer={<FinderUpdateButton />}
     />
   );
 };

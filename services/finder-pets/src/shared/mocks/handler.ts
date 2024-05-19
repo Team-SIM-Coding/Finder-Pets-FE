@@ -46,6 +46,8 @@ import {
 } from "@/app/api/mocks/putUpdateComment";
 import { putUpdateLostPet } from "@/app/api/mocks/putUpdateLostPet";
 import { putUpdateMyPet } from "@/app/api/mocks/putUpdateMyPet";
+import { putUpdatePetStory } from "@/app/api/mocks/putUpdatePetStory";
+import { putUpdateReview } from "@/app/api/mocks/putUpdateReview";
 import { putUpdateSightedPet } from "@/app/api/mocks/putUpdateSightedPet";
 import { HttpHandler } from "msw";
 
@@ -96,4 +98,6 @@ export const handlers: HttpHandler[] = [
   deleteStoryComment,
   putUpdateLostPet,
   putUpdateSightedPet,
+  putUpdatePetStory,
+  putUpdateReview,
 ];

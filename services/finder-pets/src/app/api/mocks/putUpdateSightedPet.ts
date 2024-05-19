@@ -7,12 +7,12 @@ export const putUpdateSightedPet: HttpHandler = http.put(
   "/api/sighted/update/:id",
   async ({ params, request }) => {
     const sightedPetId = params.id;
-    const updatedLostPetData = (await request.json()) as Partial<FinderPet>;
+    const updatedSightedPetData = (await request.json()) as Partial<FinderPet>;
 
     const petIndex = sightedPets.findIndex((p) => p.pet_id === sightedPetId);
 
     if (petIndex !== -1) {
-      sightedPets[petIndex] = { ...sightedPets[petIndex], ...updatedLostPetData };
+      sightedPets[petIndex] = { ...sightedPets[petIndex], ...updatedSightedPetData };
 
       localStorage.setItem("sighted-pets", JSON.stringify(sightedPets));
 

@@ -5,10 +5,10 @@ import Spacing from "@/shared/components/Spacing";
 
 import { Button } from "@design-system/react-components-button";
 
-const FinderUpdateButton = () => {
+const CommunityUpdateButton = () => {
   return (
     <>
-      <Button className={cs.defaultButton} form="finder-update-form" type="submit">
+      <Button className={cs.defaultButton} form="community-update-form" type="submit">
         수정하기
       </Button>
       <Spacing height="24px" />
@@ -16,4 +16,4 @@ const FinderUpdateButton = () => {
   );
 };
 
-export default FinderUpdateButton;
+export default CommunityUpdateButton;
