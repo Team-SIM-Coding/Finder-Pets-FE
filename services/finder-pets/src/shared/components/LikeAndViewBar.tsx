@@ -5,11 +5,12 @@ import * as s from "./LikeAndViewStyle.css";
 import * as cs from "@/shared/styles/common.css";
 
 import { Flex } from "@design-system/react-components-layout";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { CiMenuKebab } from "react-icons/ci";
 import AlertMainTextBox from "./alert/AlertMainTextBox";
+import Link from "next/link";
 
 interface Props {
   like_count: number;
@@ -19,7 +20,13 @@ interface Props {
 
 const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
   const { id } = useParams();
+  const path = usePathname();
+  const parts = path.split("/");
+  const extractedPath = `/${parts[1]}/${parts[2]}`;
+
   const router = useRouter();
+
+  console.log(path, id);
 
   const { open, close } = useAlertContext();
 
@@ -112,7 +119,9 @@ const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
             align="center"
             className={s.deleteAndModifyBox}
           >
-            {/* <span className={s.deleteAndModifyText}>수정</span> */}
+            <Link href={`${extractedPath}/${id}/update`} className={s.deleteAndModifyText}>
+              <span>수정</span>
+            </Link>
             <span className={s.deleteAndModifyText} onClick={handleOpenDeletePopUp}>
               삭제
             </span>

@@ -30,7 +30,7 @@ const SightedDetailBox = () => {
 
   return (
     <DetailSection
-      header={<DetailHeader text="기다림의 끝에서" />}
+      header={<DetailHeader text="안전한 품으로" />}
       main={
         <DetailMain
           header={

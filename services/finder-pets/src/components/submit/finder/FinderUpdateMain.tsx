@@ -1,11 +1,12 @@
+"use client";
+
 import * as es from "@/shared/components/editor/EditorStyle.css";
 import * as cs from "@/shared/styles/common.css";
 
 import { Flex } from "@design-system/react-components-layout";
-import { v4 as uuid } from "uuid";
 
 import useAlertContext from "@/hooks/useAlertContext";
-import { Pet } from "@/models/pet";
+import { FinderPet } from "@/models/finder";
 import Spacing from "@/shared/components/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import EditorCheckBoxField from "@/shared/components/editor/EditorCheckBoxField";
@@ -20,29 +21,11 @@ import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
 
 interface Props {
-  pet_info: Pet;
+  type: string;
+  pet_info: FinderPet | undefined;
 }
 
-const defaultValues: FinderPetRegisterFormData = {
-  category: "lost",
-  animal: "",
-  kind: "",
-  gender: "",
-  weight: "",
-  color: "",
-  age: "",
-  is_neutering: false,
-  character: "",
-  date: "",
-  area: "",
-  created_at: "",
-  like_count: 0,
-  phone: "",
-  description: "",
-  images: [],
-};
-
-const FinderRegisterMain = ({ pet_info }: Props) => {
+const FinderUpdateMain = ({ type, pet_info }: Props) => {
   const [animals, setAnimals] = useState<{ [key: string]: string[] }>({});
   const [kinds, setKinds] = useState<string[]>([]);
 
@@ -62,8 +45,27 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
   const methods = useForm<FinderPetRegisterFormData>({
     resolver: zodResolver(finderPetSchema),
     mode: "onChange",
-    defaultValues,
+    defaultValues: {
+      category: type,
+      animal: pet_info?.animal || "",
+      kind: pet_info?.kind || "",
+      gender: pet_info?.gender || "",
+      weight: pet_info?.weight?.toString() || "",
+      color: pet_info?.color || "",
+      age: pet_info?.age?.toString() || "",
+      is_neutering: pet_info?.is_neutering || false,
+      character: pet_info?.character || "",
+      date: pet_info?.date || "",
+      area: pet_info?.area || "",
+      created_at: pet_info?.created_at || "",
+      like_count: pet_info?.like_count || 0,
+      phone: pet_info?.phone || "",
+      description: pet_info?.description || "",
+      images: pet_info?.images || [],
+    },
   });
+
+  const { handleSubmit } = methods;
 
   const selectedAnimal = useWatch({ name: "animal", control: methods.control });
 
@@ -75,57 +77,51 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
     }
   }, [selectedAnimal, animals]);
 
-  const { handleSubmit } = methods;
-
   const onSubmit: SubmitHandler<FinderPetRegisterFormData> = async (data, event) => {
     event?.preventDefault();
+    console.log("Form Submitted", data);
 
-    const randomId = uuid();
     const images = [
       { img_id: "img1", url: "/images/pet1.jpeg" },
       { img_id: "img2", url: "/images/pet2.jpeg" },
       { img_id: "img3", url: "/images/pet3.jpeg" },
     ];
-    const { category, ...formDataWithoutCategory } = data;
-    const formData = { ...formDataWithoutCategory, pet_id: randomId, images };
+    const formData = { ...data, images };
 
-    const response = await fetch(`/api/${category === "lost" ? "lost" : "sighted"}/register`, {
-      method: "POST",
+    const response = await fetch(`/api/${type}/update/${pet_info?.pet_id}`, {
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
-
-    const categoryName = category === "lost" ? "실종" : "목격";
 
     if (response.ok) {
       const data = await response.json();
       open({
         width: "300px",
         height: "200px",
-        title: `${categoryName} 동물 등록`,
-        main: <AlertMainTextBox text={`${categoryName} 동물 등록이 완료되었습니다.`} />,
+        title: `${type === "lost" ? "실종" : "목격"} 동물 수정`,
+        main: (
+          <AlertMainTextBox
+            text={`${type === "lost" ? "실종" : "목격"} 동물 수정이 완료되었습니다.`}
+          />
+        ),
         rightButtonStyle: cs.defaultButton,
         onRightButtonClick: () => {
-          router.push("/finder/lost");
+          router.push(`${type === "lost" ? "/finder/lost" : "/finder/sighted"}`);
           close();
         },
       });
-      console.log(`${categoryName} 동물 등록 완료 : `, data);
+      console.log(`${type === "lost" ? "실종" : "목격"} 동물 수정 완료 : `, data);
     } else {
       const data = await response.json();
-      console.log(`${categoryName} 동물 등록 실패 : `, data);
+      console.log(`${type === "lost" ? "실종" : "목격"} 동물 수정 실패`, data);
     }
   };
 
   return (
     <FormProvider {...methods}>
-      <form id="finder-register-form" onSubmit={handleSubmit(onSubmit)}>
+      <form id="finder-update-form" onSubmit={handleSubmit(onSubmit)}>
         <Spacing height="24px" />
-        <EditorSelectTab name="category" label="카테고리" className={es.editorSelectStyle}>
-          <option value="lost">실종</option>
-          <option value="sighted">목격</option>
-        </EditorSelectTab>
-        <Spacing height="12px" />
         <EditorInputField
           name="date"
           label="날짜"
@@ -136,40 +132,28 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
         <EditorInputField name="area" label="장소" className={es.editorInputMediumStyle} />
         <Spacing height="12px" />
         <Flex>
-          {pet_info.animal ? (
-            <EditorInputField name="animal" label="동물" className={es.editorInputSmallStyle} />
-          ) : (
-            <EditorSelectTab name="animal" label="동물" className={es.editorSelectStyle}>
-              <option value="all">모든 동물</option>
-              <option value="개">개</option>
-              <option value="고양이">고양이</option>
-              <option value="기타">기타</option>
-            </EditorSelectTab>
-          )}
-          {pet_info.kind ? (
-            <EditorInputField name="kind" label="품종" className={es.editorInputSmallStyle} />
-          ) : (
-            <EditorSelectTab name="kind" label="품종" className={es.editorSelectStyle}>
-              <option value="all">모든 품종</option>
-              {kinds.map((kind) => (
-                <option key={kind} value={kind}>
-                  {kind}
-                </option>
-              ))}
-            </EditorSelectTab>
-          )}
+          <EditorSelectTab name="animal" label="동물" className={es.editorSelectStyle}>
+            <option value="all">모든 동물</option>
+            <option value="개">개</option>
+            <option value="고양이">고양이</option>
+            <option value="기타">기타</option>
+          </EditorSelectTab>
+          <EditorSelectTab name="kind" label="품종" className={es.editorSelectStyle}>
+            <option value="all">모든 품종</option>
+            {kinds.map((kind) => (
+              <option key={kind} value={kind}>
+                {kind}
+              </option>
+            ))}
+          </EditorSelectTab>
         </Flex>
         <Spacing height="12px" />
         <Flex>
-          {pet_info.gender ? (
-            <EditorInputField name="gender" label="성별" className={es.editorInputSmallStyle} />
-          ) : (
-            <EditorSelectTab name="gender" label="성별" className={es.editorSelectStyle}>
-              <option value="default">미확인</option>
-              <option value="M">수컷</option>
-              <option value="F">암컷</option>
-            </EditorSelectTab>
-          )}
+          <EditorSelectTab name="gender" label="성별" className={es.editorSelectStyle}>
+            <option value="default">미확인</option>
+            <option value="수컷">수컷</option>
+            <option value="암컷">암컷</option>
+          </EditorSelectTab>
           <EditorInputField name="weight" label="몸무게" className={es.editorInputSmallStyle} />
         </Flex>
         <Spacing height="12px" />
@@ -189,12 +173,11 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
           label="상세설명"
           className={es.editorTextAreaStyle}
         />
-        <Spacing height="12px" />
+        <Spacing height="24px" />
         <EditorImageRegisterForm />
-        <Spacing height="12px" />
       </form>
     </FormProvider>
   );
 };
 
-export default FinderRegisterMain;
+export default FinderUpdateMain;

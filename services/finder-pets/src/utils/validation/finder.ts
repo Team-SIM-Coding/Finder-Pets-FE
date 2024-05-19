@@ -1,5 +1,10 @@
 import { z } from "zod";
 
+export const imageSchema = z.object({
+  img_id: z.string(),
+  url: z.string(),
+});
+
 export const petSchema = z.object({
   animal: z.string().optional(),
   kind: z.string().optional(),
@@ -12,7 +17,7 @@ export const petSchema = z.object({
 });
 
 export const finderPetSchema = petSchema.extend({
-  category: z.string(),
+  category: z.string().optional(),
   date: z.string().optional(),
   area: z.string().optional(),
   created_at: z.string().optional(),
@@ -24,7 +29,7 @@ export const finderPetSchema = petSchema.extend({
     })
     .optional(),
   description: z.string().optional(),
-  images: z.array(z.string().optional()),
+  images: z.array(imageSchema).optional(),
 });
 
 export type FinderPetRegisterFormData = z.infer<typeof finderPetSchema>;

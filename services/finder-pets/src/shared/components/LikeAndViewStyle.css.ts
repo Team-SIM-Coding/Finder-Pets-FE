@@ -38,6 +38,8 @@ export const deleteAndModifyBox = style([
 ]);
 
 export const deleteAndModifyText = style({
+  color: "black",
   fontSize: "12px",
   cursor: "pointer",
+  textDecoration: "none",
 });

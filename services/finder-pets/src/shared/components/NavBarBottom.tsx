@@ -52,7 +52,9 @@ const NavBarBottom = () => {
     path.startsWith(excludedPath),
   );
 
-  if (shouldExclude) return null;
+  const updatePathExclude = path.includes("/update");
+
+  if (shouldExclude || updatePathExclude) return null;
 
   return (
     <section className={s.navBottomSection}>

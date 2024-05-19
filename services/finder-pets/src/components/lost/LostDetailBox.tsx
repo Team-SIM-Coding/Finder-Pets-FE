@@ -24,8 +24,6 @@ const LostDetailBox = () => {
     queryFn: () => fetchLostPet(id),
   });
 
-  console.log(data?.images);
-
   const createdAt = data?.created_at as string;
 
   return (
