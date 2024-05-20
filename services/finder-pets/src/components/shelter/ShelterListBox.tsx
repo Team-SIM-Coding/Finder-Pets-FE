@@ -12,7 +12,7 @@ const ShelterListBox = () => {
   return (
     <>
       <FilterMenuBar onFilterChange={setFilter} />
-      <Suspense fallback={<LoadingSpinner text="보호소 유기동물 리스트 로딩 중.." />}>
+      <Suspense fallback={<LoadingSpinner text="보호소 유기동물 리스트 로딩 중.." height="85vh" />}>
         <ShelterList filter={filter} />
       </Suspense>
     </>

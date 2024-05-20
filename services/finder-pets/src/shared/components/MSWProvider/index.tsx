@@ -18,7 +18,7 @@ export const MSWProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [isReady]);
 
-  if (!isReady) return <LoadingSpinner text="Mock Sever 실행 중.." />;
+  if (!isReady) return <LoadingSpinner text="Mock Sever 실행 중.." height="100vh" />;
 
   return children;
 };

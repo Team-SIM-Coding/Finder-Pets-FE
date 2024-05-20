@@ -1,23 +1,23 @@
+import { fetchPetStory } from "@/app/api/mocks/getPetStory";
+import { Board } from "@/models/board";
+import CommentWriter from "@/shared/components/comments/CommentWriter";
+import CommentsList from "@/shared/components/comments/CommentsList";
+import CommentsSection from "@/shared/components/comments/CommentsSection";
 import DetailHeader from "@/shared/components/detail/DetailHeader";
 import DetailMain from "@/shared/components/detail/DetailMain";
 import DetailMainHeader from "@/shared/components/detail/DetailMainHeader";
 import DetailSection from "@/shared/components/detail/DetailSection";
+import ImageSwiperBox from "@/shared/components/swiper/ImageSwiperBox";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { useParams } from "next/navigation";
+import PetStoriesDetailDescription from "./PetStoriesDetailDescription";
 import PetStoriesDetailMainHeaderLeft from "./PetStoriesDetailMainHeaderLeft";
 import PetStoriesDetailMainHeaderRight from "./PetStoriesDetailMainHeaderRight";
-import PetStoriesDetailDescription from "./PetStoriesDetailDescription";
-import ImageSwiperBox from "@/shared/components/swiper/ImageSwiperBox";
-import CommentsSection from "@/shared/components/comments/CommentsSection";
-import CommentWriter from "@/shared/components/comments/CommentWriter";
-import CommentsList from "@/shared/components/comments/CommentsList";
-import { useQuery } from "@tanstack/react-query";
-import { Board } from "@/models/board";
-import { useParams } from "next/navigation";
-import { fetchPetStory } from "@/app/api/mocks/getPetStory";
 
 const PetStoriesDetailBox = () => {
   const { id } = useParams();
 
-  const { data } = useQuery<Board, Error>({
+  const { data } = useSuspenseQuery<Board, Error>({
     queryKey: ["pet-story", id],
     queryFn: () => fetchPetStory(id),
   });

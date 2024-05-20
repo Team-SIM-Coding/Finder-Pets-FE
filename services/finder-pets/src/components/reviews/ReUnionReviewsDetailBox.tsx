@@ -1,5 +1,6 @@
 "use client";
 
+import { fetchReview } from "@/app/api/mocks/getReview";
 import { Board } from "@/models/board";
 import CommentWriter from "@/shared/components/comments/CommentWriter";
 import CommentsList from "@/shared/components/comments/CommentsList";
@@ -9,17 +10,16 @@ import DetailMain from "@/shared/components/detail/DetailMain";
 import DetailMainHeader from "@/shared/components/detail/DetailMainHeader";
 import DetailSection from "@/shared/components/detail/DetailSection";
 import ImageSwiperBox from "@/shared/components/swiper/ImageSwiperBox";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import ReUnionReviewsDetailDescription from "./ReUnionReviewsDetailDescription";
 import ReUnionReviewsDetailMainHeaderLeft from "./ReUnionReviewsDetailMainHeaderLeft";
 import ReUnionReviewsDetailMainHeaderRight from "./ReUnionReviewsDetailMainHeaderRight";
-import { fetchReview } from "@/app/api/mocks/getReview";
 
 const ReUnionReviewsDetailBox = () => {
   const { id } = useParams();
 
-  const { data } = useQuery<Board, Error>({
+  const { data } = useSuspenseQuery<Board, Error>({
     queryKey: ["review", id],
     queryFn: () => fetchReview(id),
   });

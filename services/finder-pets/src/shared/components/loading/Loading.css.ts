@@ -1,11 +1,13 @@
-import { style, keyframes } from "@vanilla-extract/css";
+import { style, keyframes, createVar } from "@vanilla-extract/css";
+
+export const loadingBoxHeight = createVar();
 
 export const centered = style({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  height: "100vh", // 전체 뷰포트 높이
+  height: loadingBoxHeight,
 });
 
 const spin = keyframes({

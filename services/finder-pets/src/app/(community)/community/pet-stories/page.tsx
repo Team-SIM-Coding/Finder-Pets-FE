@@ -1,11 +1,15 @@
 import PetStoryList from "@/components/pet-stories/PetStoryList";
 import Spacing from "@/shared/components/Spacing";
+import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import { Suspense } from "react";
 
 const PetStories = () => {
   return (
     <section>
       <Spacing height="142px" />
-      <PetStoryList />
+      <Suspense fallback={<LoadingSpinner text="반려 이야기 리스트 로딩 중.." height="70vh" />}>
+        <PetStoryList />
+      </Suspense>
     </section>
   );
 };

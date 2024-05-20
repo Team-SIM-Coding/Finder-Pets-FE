@@ -10,7 +10,7 @@ import DetailMain from "@/shared/components/detail/DetailMain";
 import DetailMainHeader from "@/shared/components/detail/DetailMainHeader";
 import DetailSection from "@/shared/components/detail/DetailSection";
 import ImageSwiperBox from "@/shared/components/swiper/ImageSwiperBox";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import SightedDetailDescription from "./SightedDetailDescription";
 import SightedDetailMainHeaderLeft from "./SightedDetailMainHeaderLeft";
@@ -19,12 +19,10 @@ import SightedDetailMainHeaderRight from "./SightedDetailMainHeaderRight";
 const SightedDetailBox = () => {
   const { id } = useParams();
 
-  const { data } = useQuery<FinderPet, Error>({
+  const { data } = useSuspenseQuery<FinderPet, Error>({
     queryKey: ["sighted-pet", id],
     queryFn: () => fetchSightedPet(id),
   });
-
-  console.log(data?.images);
 
   const createdAt = data?.created_at as string;
 

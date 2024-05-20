@@ -26,6 +26,18 @@ export const getMyPet: HttpHandler = http.get("/api/my-pets/:id", async ({ param
   }
 });
 
+export const fetchMyPets = async () => {
+  const response = await fetch("/api/my-pets");
+
+  if (response.ok) {
+    console.log("내 반려동물 리스트 조회 성공");
+  } else {
+    console.log("내 반려동물 리스트 조회 실패");
+  }
+
+  return response.json();
+};
+
 export const fetchMyPet = async (MyPetId: string[] | string): Promise<MyPet> => {
   const response = await fetch(`/api/my-pets/${MyPetId}`);
   if (!response.ok) {

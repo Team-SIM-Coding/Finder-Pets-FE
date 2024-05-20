@@ -4,7 +4,7 @@ import { fetchLostPet } from "@/app/api/mocks/getLostPet";
 import { fetchSightedPet } from "@/app/api/mocks/getSightedPet";
 import { FinderPet } from "@/models/finder";
 import EditorSection from "@/shared/components/editor/EditorSection";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import FinderUpdateButton from "./FinderUpdateButton";
 import FinderUpdateMain from "./FinderUpdateMain";
@@ -24,7 +24,7 @@ const FinderUpdateForm = ({ type }: Props) => {
     }
   };
 
-  const { data } = useQuery<FinderPet, Error>({
+  const { data } = useSuspenseQuery<FinderPet, Error>({
     queryKey: [`${type === "lost" ? "lost-pet" : "sighted-pet"}`, id],
     queryFn,
   });

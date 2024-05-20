@@ -26,6 +26,18 @@ export const getPetStory: HttpHandler = http.get("/api/pet-story/:id", async ({ 
   }
 });
 
+export const fetchPetStories = async () => {
+  const response = await fetch("/api/pet-story");
+
+  if (response.ok) {
+    console.log("반려 이야기 리스트 조회 성공");
+  } else {
+    console.log("반려 이야기 리스트 조회 실패");
+  }
+
+  return response.json();
+};
+
 export const fetchPetStory = async (petStoryId: string[] | string): Promise<Board> => {
   const response = await fetch(`/api/pet-story/${petStoryId}`);
   if (!response.ok) {

@@ -23,6 +23,18 @@ export const getReview: HttpHandler = http.get("/api/review/:id", async ({ param
   }
 });
 
+export const fetchReviews = async () => {
+  const response = await fetch("/api/review");
+
+  if (response.ok) {
+    console.log("재회 후기 리스트 조회 성공");
+  } else {
+    console.log("재회 후기 리스트 조회 실패");
+  }
+
+  return response.json();
+};
+
 export const fetchReview = async (reviewId: string[] | string): Promise<Board> => {
   const response = await fetch(`/api/review/${reviewId}`);
   if (!response.ok) {
