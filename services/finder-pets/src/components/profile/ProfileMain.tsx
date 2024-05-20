@@ -2,41 +2,32 @@
 import * as es from "@/shared/components/editor/EditorStyle.css";
 import * as cs from "@/shared/styles/common.css";
 
+import { fetchUser } from "@/app/api/mocks/getUser";
 import useAlertContext from "@/hooks/useAlertContext";
-import { User } from "@/models/user";
 import Spacing from "@/shared/components/Spacing";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";
 import EditorInputField from "@/shared/components/editor/EditorInputField";
 import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
 import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
-import { waitForMSWActivation } from "@/shared/mocks/waitForWorkerActivation";
 import { ProfileFormData, profileSchema } from "@/utils/validation/auth";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { User } from "@/models/user";
 
 const ProfileMain = () => {
   const searchParams = useSearchParams();
-  const id = searchParams.get("id");
+  const id = searchParams.get("id") as string;
   const router = useRouter();
   const { open, close } = useAlertContext();
 
-  const [userInfo, setUserInfo] = useState<User>({} as User);
-
-  const fetchUser = async () => {
-    const response = await fetch(`/api/user?id=${id}`);
-
-    if (response.ok) {
-      const data = await response.json();
-      setUserInfo(data);
-      console.log("유저 데이터 조회 성공", data);
-    } else {
-      const data = await response.json();
-      console.log("유저 데이터 조회 실패", data);
-    }
-  };
+  const { data } = useSuspenseQuery<User, Error>({
+    queryKey: ["profile"],
+    queryFn: () => fetchUser(id),
+  });
 
   const methods = useForm<ProfileFormData>({
     resolver: zodResolver(profileSchema),
@@ -99,21 +90,12 @@ const ProfileMain = () => {
   };
 
   useEffect(() => {
-    (async () => {
-      waitForMSWActivation();
-      if (id) {
-        fetchUser();
-      }
-    })();
-  }, []);
-
-  useEffect(() => {
-    if (userInfo) {
-      setValue("like_area", userInfo.like_area as string);
-      setValue("like_animal", userInfo.like_animal as string);
-      setValue("like_kind", userInfo.like_kind as string);
+    if (data) {
+      setValue("like_area", data.like_area as string);
+      setValue("like_animal", data.like_animal as string);
+      setValue("like_kind", data.like_kind as string);
     }
-  }, [userInfo, setValue]);
+  }, [data, setValue]);
 
   return (
     <FormProvider {...methods}>
@@ -123,14 +105,14 @@ const ProfileMain = () => {
           name="nickname"
           label="닉네임"
           className={es.editorInputMediumStyle}
-          value={userInfo.nickname}
+          value={data.nickname}
         />
         <Spacing height="12px" />
         <EditorInputField
           name="phone"
           label="휴대폰"
           className={es.editorInputMediumStyle}
-          value={userInfo.phone}
+          value={data.phone}
         />
         <Spacing height="12px" />
         <EditorSelectTab name="like_area" label="관심 지역" className={es.editorSelectStyle}>
@@ -158,7 +140,7 @@ const ProfileMain = () => {
           name="intro"
           label="자기소개"
           className={es.editorTextAreaStyle}
-          value={userInfo.intro}
+          value={data.intro}
         />
       </form>
     </FormProvider>
