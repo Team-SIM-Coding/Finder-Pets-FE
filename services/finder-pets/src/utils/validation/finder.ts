@@ -20,6 +20,9 @@ export const finderPetSchema = petSchema.extend({
   category: z.string().optional(),
   date: z.string().optional(),
   area: z.string().optional(),
+  zonecode: z.string().optional(),
+  address: z.string().optional(),
+  detail_address: z.string().optional(),
   created_at: z.string().optional(),
   like_count: z.number().optional(),
   phone: z

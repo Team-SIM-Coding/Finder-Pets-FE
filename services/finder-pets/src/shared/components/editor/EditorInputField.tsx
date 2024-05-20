@@ -15,6 +15,7 @@ interface Props<T extends FieldValues> {
   className: string;
   type?: string;
   value?: string | number;
+  placeholder?: string;
 }
 
 const EditorInputField = <T extends FieldValues>({
@@ -23,6 +24,7 @@ const EditorInputField = <T extends FieldValues>({
   value,
   type,
   className,
+  placeholder,
 }: Props<T>) => {
   const {
     control,
@@ -46,6 +48,7 @@ const EditorInputField = <T extends FieldValues>({
               type={type}
               onChange={field.onChange}
               value={field.value || value}
+              placeholder={placeholder}
             />
           )}
         />

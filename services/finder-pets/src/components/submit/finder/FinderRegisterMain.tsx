@@ -1,6 +1,7 @@
 import * as es from "@/shared/components/editor/EditorStyle.css";
 import * as cs from "@/styles/common.css";
 
+import { Button } from "@design-system/react-components-button";
 import { Flex } from "@design-system/react-components-layout";
 
 import Spacing from "@/shared/c/spacing/Spacing";
@@ -20,11 +21,13 @@ import { FinderPetRegisterFormData, finderPetSchema } from "@/utils/validation/f
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useDaumPostcodePopup } from "react-daum-postcode";
 import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
 interface Props {
   pet_info: Pet;
+  scriptUrl?: string;
 }
 
 const defaultValues: FinderPetRegisterFormData = {
@@ -38,7 +41,9 @@ const defaultValues: FinderPetRegisterFormData = {
   is_neutering: false,
   character: "",
   date: "",
-  area: "",
+  zonecode: "",
+  address: "",
+  detail_address: "",
   created_at: "",
   like_count: 0,
   phone: "",
@@ -46,12 +51,14 @@ const defaultValues: FinderPetRegisterFormData = {
   images: [],
 };
 
-const FinderRegisterMain = ({ pet_info }: Props) => {
+const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
   const [animals, setAnimals] = useState<{ [key: string]: string[] }>({});
   const [kinds, setKinds] = useState<string[]>([]);
 
   const { open, close } = useAlertContext();
   const router = useRouter();
+
+  const openModal = useDaumPostcodePopup(scriptUrl);
 
   useEffect(() => {
     const fetchKinds = async () => {
@@ -79,7 +86,7 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
     }
   }, [selectedAnimal, animals]);
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, setValue } = methods;
 
   const onSubmit: SubmitHandler<FinderPetRegisterFormData> = async (data, event) => {
     event?.preventDefault();
@@ -90,8 +97,10 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
       { img_id: "img2", url: "/images/pet2.jpeg" },
       { img_id: "img3", url: "/images/pet3.jpeg" },
     ];
+    const area = data.address + " " + data.detail_address;
+
     const { category, ...formDataWithoutCategory } = data;
-    const formData = { ...formDataWithoutCategory, pet_id: randomId, images };
+    const formData = { ...formDataWithoutCategory, pet_id: randomId, images, area };
 
     const response = await fetch(`/api/${category === "lost" ? "lost" : "sighted"}/register`, {
       method: "POST",
@@ -121,6 +130,15 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
     }
   };
 
+  const handleZipCodeButtonClick = () => {
+    openModal({
+      onComplete: (data) => {
+        setValue("zonecode", data.zonecode);
+        setValue("address", data.address);
+      },
+    });
+  };
+
   return (
     <FormProvider {...methods}>
       <form id="finder-register-form" onSubmit={handleSubmit(onSubmit)}>
@@ -137,7 +155,41 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
           className={es.editorInputMediumStyle}
         />
         <Spacing height="12px" />
-        <EditorInputField name="area" label="장소" className={es.editorInputMediumStyle} />
+        <Flex align="center">
+          <EditorInputField
+            name="zonecode"
+            label="장소"
+            className={es.editorInputMediumStyle}
+            placeholder="우편번호"
+          />
+          <Button
+            className={cs.whiteButton}
+            style={{
+              width: "100px",
+              height: "40px",
+              padding: "2px",
+              margin: "0 0 0 8px",
+              fontSize: "14px",
+            }}
+            onClick={handleZipCodeButtonClick}
+          >
+            우편번호 찾기
+          </Button>
+        </Flex>
+        <Spacing height="12px" />
+        <EditorInputField
+          name="address"
+          label=""
+          className={es.editorInputMediumStyle}
+          placeholder="주소"
+        />
+        <Spacing height="12px" />
+        <EditorInputField
+          name="detail_address"
+          label=""
+          className={es.editorInputMediumStyle}
+          placeholder="상세주소"
+        />
         <Spacing height="12px" />
         <Flex>
           {pet_info.animal ? (
@@ -170,8 +222,8 @@ const FinderRegisterMain = ({ pet_info }: Props) => {
           ) : (
             <EditorSelectTab name="gender" label="성별" className={es.editorSelectStyle}>
               <option value="default">미확인</option>
-              <option value="M">수컷</option>
-              <option value="F">암컷</option>
+              <option value="수컷">수컷</option>
+              <option value="암컷">암컷</option>
             </EditorSelectTab>
           )}
           <EditorInputField name="weight" label="몸무게" className={es.editorInputSmallStyle} />

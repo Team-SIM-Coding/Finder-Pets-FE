@@ -4836,6 +4836,7 @@ const RAW_RUNTIME_STATE =
           ["next", "virtual:256fae25011fdfce9e26f7d331c93e795c855a7f2c09218599529022b9d70f0b5bf94978e08f1e0ab1f3a552c24e8b1a44e0fccd953733093f3f5e598fca4160#npm:13.5.6"],\
           ["query-string", "npm:9.0.0"],\
           ["react", "npm:18.3.1"],\
+          ["react-daum-postcode", "virtual:256fae25011fdfce9e26f7d331c93e795c855a7f2c09218599529022b9d70f0b5bf94978e08f1e0ab1f3a552c24e8b1a44e0fccd953733093f3f5e598fca4160#npm:3.1.3"],\
           ["react-dom", "virtual:4835bf47ac88bab542b31dd75e73291a5582f5a964a4e3acc01e9f4e54d2e1a73b076b61ed080b4b1123e994327061be88c7ce75bbc3443455dc1e99fe1f5a24#npm:18.3.1"],\
           ["react-hook-form", "virtual:256fae25011fdfce9e26f7d331c93e795c855a7f2c09218599529022b9d70f0b5bf94978e08f1e0ab1f3a552c24e8b1a44e0fccd953733093f3f5e598fca4160#npm:7.51.3"],\
           ["react-icons", "virtual:256fae25011fdfce9e26f7d331c93e795c855a7f2c09218599529022b9d70f0b5bf94978e08f1e0ab1f3a552c24e8b1a44e0fccd953733093f3f5e598fca4160#npm:5.2.0"],\
@@ -7212,6 +7213,28 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["react", "npm:18.3.1"],\
           ["loose-envify", "npm:1.4.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-daum-postcode", [\
+      ["npm:3.1.3", {\
+        "packageLocation": "../../../../.yarn/berry/cache/react-daum-postcode-npm-3.1.3-95dbfacabd-10c0.zip/node_modules/react-daum-postcode/",\
+        "packageDependencies": [\
+          ["react-daum-postcode", "npm:3.1.3"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:256fae25011fdfce9e26f7d331c93e795c855a7f2c09218599529022b9d70f0b5bf94978e08f1e0ab1f3a552c24e8b1a44e0fccd953733093f3f5e598fca4160#npm:3.1.3", {\
+        "packageLocation": "./.yarn/__virtual__/react-daum-postcode-virtual-1be4843f0c/5/.yarn/berry/cache/react-daum-postcode-npm-3.1.3-95dbfacabd-10c0.zip/node_modules/react-daum-postcode/",\
+        "packageDependencies": [\
+          ["react-daum-postcode", "virtual:256fae25011fdfce9e26f7d331c93e795c855a7f2c09218599529022b9d70f0b5bf94978e08f1e0ab1f3a552c24e8b1a44e0fccd953733093f3f5e598fca4160#npm:3.1.3"],\
+          ["@types/react", "npm:18.3.0"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\

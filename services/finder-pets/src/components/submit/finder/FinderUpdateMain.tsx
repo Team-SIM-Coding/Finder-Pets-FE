@@ -3,6 +3,7 @@
 import * as es from "@/shared/components/editor/EditorStyle.css";
 import * as cs from "@/styles/common.css";
 
+import { Button } from "@design-system/react-components-button";
 import { Flex } from "@design-system/react-components-layout";
 
 import Spacing from "@/shared/c/spacing/Spacing";
@@ -14,7 +15,6 @@ import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
 import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
 
 import useAlertContext from "@/hooks/useAlertContext";
-
 import { FinderPet } from "@/models/finder";
 
 import { FinderPetRegisterFormData, finderPetSchema } from "@/utils/validation/finder";
@@ -22,16 +22,20 @@ import { FinderPetRegisterFormData, finderPetSchema } from "@/utils/validation/f
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useDaumPostcodePopup } from "react-daum-postcode";
 import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
 
 interface Props {
   type: string;
   pet_info: FinderPet | undefined;
+  scriptUrl?: string;
 }
 
-const FinderUpdateMain = ({ type, pet_info }: Props) => {
+const FinderUpdateMain = ({ type, pet_info, scriptUrl }: Props) => {
   const [animals, setAnimals] = useState<{ [key: string]: string[] }>({});
   const [kinds, setKinds] = useState<string[]>([]);
+
+  const openModal = useDaumPostcodePopup(scriptUrl);
 
   const { open, close } = useAlertContext();
   const router = useRouter();
@@ -45,6 +49,8 @@ const FinderUpdateMain = ({ type, pet_info }: Props) => {
 
     fetchKinds();
   }, []);
+
+  console.log(pet_info);
 
   const methods = useForm<FinderPetRegisterFormData>({
     resolver: zodResolver(finderPetSchema),
@@ -60,7 +66,9 @@ const FinderUpdateMain = ({ type, pet_info }: Props) => {
       is_neutering: pet_info?.is_neutering || false,
       character: pet_info?.character || "",
       date: pet_info?.date || "",
-      area: pet_info?.area || "",
+      zonecode: pet_info?.zonecode || "",
+      address: pet_info?.address || "",
+      detail_address: pet_info?.detail_address || "",
       created_at: pet_info?.created_at || "",
       like_count: pet_info?.like_count || 0,
       phone: pet_info?.phone || "",
@@ -69,7 +77,7 @@ const FinderUpdateMain = ({ type, pet_info }: Props) => {
     },
   });
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, setValue } = methods;
 
   const selectedAnimal = useWatch({ name: "animal", control: methods.control });
 
@@ -89,7 +97,9 @@ const FinderUpdateMain = ({ type, pet_info }: Props) => {
       { img_id: "img2", url: "/images/pet2.jpeg" },
       { img_id: "img3", url: "/images/pet3.jpeg" },
     ];
-    const formData = { ...data, images };
+
+    const area = data.address + " " + data.detail_address;
+    const formData = { ...data, images, area };
 
     const response = await fetch(`/api/${type}/update/${pet_info?.pet_id}`, {
       method: "PUT",
@@ -121,6 +131,15 @@ const FinderUpdateMain = ({ type, pet_info }: Props) => {
     }
   };
 
+  const handleZipCodeButtonClick = () => {
+    openModal({
+      onComplete: (data) => {
+        setValue("zonecode", data.zonecode);
+        setValue("address", data.address);
+      },
+    });
+  };
+
   return (
     <FormProvider {...methods}>
       <form id="finder-update-form" onSubmit={handleSubmit(onSubmit)}>
@@ -132,7 +151,41 @@ const FinderUpdateMain = ({ type, pet_info }: Props) => {
           className={es.editorInputMediumStyle}
         />
         <Spacing height="12px" />
-        <EditorInputField name="area" label="장소" className={es.editorInputMediumStyle} />
+        <Flex align="center">
+          <EditorInputField
+            name="zonecode"
+            label="장소"
+            className={es.editorInputMediumStyle}
+            placeholder="우편번호"
+          />
+          <Button
+            className={cs.whiteButton}
+            style={{
+              width: "100px",
+              height: "40px",
+              padding: "2px",
+              margin: "0 0 0 8px",
+              fontSize: "14px",
+            }}
+            onClick={handleZipCodeButtonClick}
+          >
+            우편번호 찾기
+          </Button>
+        </Flex>
+        <Spacing height="12px" />
+        <EditorInputField
+          name="address"
+          label=""
+          className={es.editorInputMediumStyle}
+          placeholder="주소"
+        />
+        <Spacing height="12px" />
+        <EditorInputField
+          name="detail_address"
+          label=""
+          className={es.editorInputMediumStyle}
+          placeholder="상세주소"
+        />
         <Spacing height="12px" />
         <Flex>
           <EditorSelectTab name="animal" label="동물" className={es.editorSelectStyle}>
