@@ -5,7 +5,7 @@ import * as s from "./NavBarStyle.css";
 import { Button } from "@design-system/react-components-button";
 import { Flex } from "@design-system/react-components-layout";
 
-import NavBarSearchInput from "@/shared/components/NavBarSearchInput";
+import NavBarSearchInput from "@/shared/c/nav/NavBarSearchInput";
 
 import Image from "next/image";
 import Link from "next/link";

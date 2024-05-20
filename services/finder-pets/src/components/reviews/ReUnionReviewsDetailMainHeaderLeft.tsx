@@ -1,4 +1,4 @@
-import UserAndCreateAt from "@/shared/components/UserAndCreateAt";
+import UserAndCreateAt from "@/shared/c/nav/UserAndCreateAt";
 
 import { Image } from "@/models/image";
 

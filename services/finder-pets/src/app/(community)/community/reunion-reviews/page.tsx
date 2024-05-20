@@ -1,4 +1,4 @@
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
 import ReUnionReviewsList from "@/components/reviews/ReUnionReviewsList";
 

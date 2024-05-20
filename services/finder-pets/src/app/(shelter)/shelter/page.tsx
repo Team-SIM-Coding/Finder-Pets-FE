@@ -1,6 +1,6 @@
 import * as cs from "@/styles/common.css";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import ShelterListBox from "@/components/shelter/ShelterListBox";
 
 import { FilterProvider } from "@/contexts/FilterContext";

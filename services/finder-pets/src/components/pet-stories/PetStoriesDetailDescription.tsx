@@ -2,7 +2,7 @@ import * as cs from "@/styles/common.css";
 
 import { Divider } from "@design-system/react-components-layout";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import DetailDescriptionTextBox from "@/shared/components/detail/DetailDescriptionTextBox";
 import DetailSubHeader from "@/shared/components/detail/DetailSubHeader";
 

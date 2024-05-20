@@ -1,6 +1,6 @@
 "use client";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import MyMenuLink from "@/shared/components/auth/MyMenuLink";
 
 import authState from "@/recoil/authAtom";

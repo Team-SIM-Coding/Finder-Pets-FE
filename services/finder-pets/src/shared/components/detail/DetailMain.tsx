@@ -1,4 +1,4 @@
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 
 import { ReactNode } from "react";
 

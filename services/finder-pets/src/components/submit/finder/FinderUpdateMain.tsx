@@ -5,7 +5,7 @@ import * as cs from "@/styles/common.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import EditorCheckBoxField from "@/shared/components/editor/EditorCheckBoxField";
 import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";

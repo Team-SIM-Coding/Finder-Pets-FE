@@ -1,6 +1,6 @@
 import * as s from "./AuthStyle.css";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 
 import Link from "next/link";
 import Image from "next/image";

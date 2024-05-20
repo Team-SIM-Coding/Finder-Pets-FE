@@ -8,7 +8,7 @@ import { RiBookLine, RiHome2Line } from "react-icons/ri";
 
 import { Flex } from "@design-system/react-components-layout";
 
-import NavBarIcon from "@/shared/components/NavBarIcon";
+import NavBarIcon from "@/shared/c/nav/NavBarIcon";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";

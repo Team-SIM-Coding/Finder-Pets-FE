@@ -2,7 +2,7 @@
 import * as es from "@/shared/components/editor/EditorStyle.css";
 import * as cs from "@/styles/common.css";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";
 import EditorInputField from "@/shared/components/editor/EditorInputField";

@@ -2,7 +2,7 @@ import * as s from "./CommentsStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 
 import { ReactNode } from "react";
 

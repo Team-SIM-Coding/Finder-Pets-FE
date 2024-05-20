@@ -1,4 +1,4 @@
-import LikeAndViewBar from "@/shared/components/LikeAndViewBar";
+import LikeAndViewBar from "@/shared/c/nav/LikeAndViewBar";
 
 interface Props {
   like_count: number;

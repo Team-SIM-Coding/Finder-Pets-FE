@@ -3,7 +3,7 @@ import * as s from "./MainStyle.css";
 
 import { Flex, Text } from "@design-system/react-components-layout";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 
 import { FinderPet } from "@/models/finder";
 import { Image } from "@/models/image";

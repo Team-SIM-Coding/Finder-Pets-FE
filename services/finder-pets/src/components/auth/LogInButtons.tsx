@@ -3,8 +3,8 @@ import * as cs from "@/styles/common.css";
 
 import { Button } from "@design-system/react-components-button";
 
-import LinkButton from "@/shared/components/LinkButton";
-import Spacing from "@/shared/components/Spacing";
+import LinkButton from "@/shared/c/nav/LinkButton";
+import Spacing from "@/shared/c/spacing/Spacing";
 import FindAndResetButtons from "@/components/auth/FindAndResetButtons";
 
 const LogInButtons = () => {

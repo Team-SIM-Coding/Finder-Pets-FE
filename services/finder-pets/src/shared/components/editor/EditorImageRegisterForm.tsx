@@ -4,7 +4,7 @@ import * as s from "./EditorStyle.css";
 
 import { Input } from "@design-system/react-components-input";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 
 import { Image as ImageType } from "@/models/image";
 

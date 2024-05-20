@@ -10,7 +10,7 @@ import useAlertContext from "@/hooks/useAlertContext";
 
 import { Image } from "@/models/image";
 
-import UserAndCreateAt from "@/shared/components/UserAndCreateAt";
+import UserAndCreateAt from "@/shared/c/nav/UserAndCreateAt";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import { PATH_TYPE } from "@/shared/components/comments/CommentUpdateAndCancelButtons";
 import CommentUpdater from "@/shared/components/comments/CommentUpdater";

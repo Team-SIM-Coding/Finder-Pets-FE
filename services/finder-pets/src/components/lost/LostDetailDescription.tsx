@@ -2,7 +2,7 @@ import * as cs from "@/styles/common.css";
 
 import { Divider } from "@design-system/react-components-layout";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import DetailDescriptionTextBox from "@/shared/components/detail/DetailDescriptionTextBox";
 import DetailDescriptionTextField from "@/shared/components/detail/DetailDescriptionTextField";
 import KakaoMap from "@/shared/components/kakao-map/KakaoMap";

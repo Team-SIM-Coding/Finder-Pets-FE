@@ -5,7 +5,7 @@ import { Button } from "@design-system/react-components-button";
 import { Flex } from "@design-system/react-components-layout";
 
 import BackDrop from "@/shared/components/back-drop/BackDrop";
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 
 import { ReactNode } from "react";
 

@@ -4,7 +4,7 @@ import * as cs from "@/styles/common.css";
 
 import { Button } from "@design-system/react-components-button";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 
 const CommunityUpdateButton = () => {
   return (

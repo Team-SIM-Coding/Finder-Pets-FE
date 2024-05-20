@@ -1,8 +1,8 @@
 import "@/shared/styles";
 
 import { MSWProvider } from "@/shared/components/MSWProvider";
-import NavBarBottom from "@/shared/components/NavBarBottom";
-import NavBarTop from "@/shared/components/NavBarTop";
+import NavBarBottom from "@/shared/c/nav/NavBarBottom";
+import NavBarTop from "@/shared/c/nav/NavBarTop";
 
 import { AlertContextProvider } from "@/contexts/AlertContext";
 

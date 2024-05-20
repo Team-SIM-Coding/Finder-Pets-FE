@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { f } from "../styles/functions";
+import { f } from "../../styles/functions";
 
 export const likeAndViewBarWrap = style([f.pRelative]);
 

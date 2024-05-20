@@ -2,7 +2,7 @@
 
 import * as cs from "@/styles/common.css";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import InputField from "@/shared/components/auth/InputField";
 

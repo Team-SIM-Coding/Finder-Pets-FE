@@ -1,6 +1,6 @@
 "use client";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import DetailHeader from "@/shared/components/detail/DetailHeader";
 import DetailMain from "@/shared/components/detail/DetailMain";
 import DetailMainHeader from "@/shared/components/detail/DetailMainHeader";

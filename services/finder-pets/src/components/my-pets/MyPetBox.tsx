@@ -2,7 +2,7 @@ import * as s from "./MyPetStyle.css";
 
 import { GridItem, Flex } from "@design-system/react-components-layout";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import HighLightTag from "@/components/list/HighLightTag";
 
 import { MyPet } from "@/models/pet";

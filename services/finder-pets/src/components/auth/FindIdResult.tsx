@@ -4,7 +4,7 @@ import * as s from "./AuthStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 
 import useAlertContext from "@/hooks/useAlertContext";

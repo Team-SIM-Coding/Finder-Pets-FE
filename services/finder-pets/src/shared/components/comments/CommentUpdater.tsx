@@ -2,8 +2,8 @@
 
 import * as s from "./CommentsStyle.css";
 
-import Spacing from "@/shared/components/Spacing";
-import UserAndCreateAt from "@/shared/components/UserAndCreateAt";
+import Spacing from "@/shared/c/spacing/Spacing";
+import UserAndCreateAt from "@/shared/c/nav/UserAndCreateAt";
 import CommentUpdateAndCancelButtons from "@/shared/components/comments/CommentUpdateAndCancelButtons";
 
 import { Dispatch, SetStateAction, useState } from "react";

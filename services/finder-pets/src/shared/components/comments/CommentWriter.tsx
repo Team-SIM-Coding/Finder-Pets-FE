@@ -2,8 +2,8 @@
 
 import * as s from "./CommentsStyle.css";
 
-import Spacing from "@/shared/components//Spacing";
-import UserAndCreateAt from "@/shared/components//UserAndCreateAt";
+import Spacing from "@/shared/c/spacing/Spacing";
+import UserAndCreateAt from "@/shared/c/nav/UserAndCreateAt";
 import CommentRegisterButton from "@/shared/components/comments/CommentRegisterButton";
 
 import { useState } from "react";

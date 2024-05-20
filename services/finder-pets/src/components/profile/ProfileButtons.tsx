@@ -3,7 +3,7 @@ import * as cs from "@/styles/common.css";
 
 import useAlertContext from "@/hooks/useAlertContext";
 import authState from "@/recoil/authAtom";
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 
 import { Button } from "@design-system/react-components-button";

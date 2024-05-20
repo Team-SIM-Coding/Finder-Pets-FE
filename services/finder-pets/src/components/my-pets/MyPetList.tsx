@@ -2,7 +2,7 @@
 
 import { Grid } from "@design-system/react-components-layout";
 
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import MyPetBox from "@/components/my-pets/MyPetBox";
 
 import { fetchMyPets } from "@/api/mocks/getMyPet";
