@@ -1,11 +1,13 @@
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 import * as s from "./MainStyle.css";
 
 import { Flex, Text } from "@design-system/react-components-layout";
 
-import { FinderPet } from "@/models/finder";
 import Spacing from "@/shared/components/Spacing";
+
+import { FinderPet } from "@/models/finder";
 import { Image } from "@/models/image";
+
 import Link from "next/link";
 
 interface Props {

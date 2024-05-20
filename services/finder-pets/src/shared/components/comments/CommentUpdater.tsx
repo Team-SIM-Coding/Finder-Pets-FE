@@ -1,10 +1,12 @@
 "use client";
 
-import { Dispatch, SetStateAction, useState } from "react";
-import Spacing from "../Spacing";
-import UserAndCreateAt from "../UserAndCreateAt";
-import CommentUpdateAndCancelButtons from "./CommentUpdateAndCancelButtons";
 import * as s from "./CommentsStyle.css";
+
+import Spacing from "@/shared/components/Spacing";
+import UserAndCreateAt from "@/shared/components/UserAndCreateAt";
+import CommentUpdateAndCancelButtons from "@/shared/components/comments/CommentUpdateAndCancelButtons";
+
+import { Dispatch, SetStateAction, useState } from "react";
 
 interface Props {
   comment: string;

@@ -1,8 +1,10 @@
 "use client";
 
-import { fetchSightedPets } from "@/app/api/mocks/getSightedPet";
+import ListBox from "@/components/list/ListBox";
+
+import { fetchSightedPets } from "@/api/mocks/getSightedPet";
+
 import { useSuspenseQuery } from "@tanstack/react-query";
-import ListBox from "../list/ListBox";
 
 const SightedPetList = () => {
   const { data } = useSuspenseQuery({

@@ -1,5 +1,5 @@
 import Spacing from "@/shared/components/Spacing";
-import MainInfoBox from "./MainInfoBox";
+import MainInfoBox from "@/components/home/MainInfoBox";
 
 const MainInfoList = () => {
   return (

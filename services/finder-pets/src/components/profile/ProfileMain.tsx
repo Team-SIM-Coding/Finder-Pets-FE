@@ -1,22 +1,28 @@
 "use client";
 import * as es from "@/shared/components/editor/EditorStyle.css";
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
-import { fetchUser } from "@/app/api/mocks/getUser";
-import useAlertContext from "@/hooks/useAlertContext";
 import Spacing from "@/shared/components/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";
 import EditorInputField from "@/shared/components/editor/EditorInputField";
 import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
 import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
-import { ProfileFormData, profileSchema } from "@/utils/validation/auth";
-import { zodResolver } from "@hookform/resolvers/zod";
+
+import { fetchUser } from "@/api/mocks/getUser";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import { User } from "@/models/user";
+
 import { useSuspenseQuery } from "@tanstack/react-query";
+
+import { ProfileFormData, profileSchema } from "@/utils/validation/auth";
+
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { User } from "@/models/user";
 
 const ProfileMain = () => {
   const searchParams = useSearchParams();

@@ -1,13 +1,17 @@
 "use client";
 
-import { fetchLostPet } from "@/app/api/mocks/getLostPet";
-import { fetchSightedPet } from "@/app/api/mocks/getSightedPet";
-import { FinderPet } from "@/models/finder";
 import EditorSection from "@/shared/components/editor/EditorSection";
+import FinderUpdateButton from "@/components/submit/finder/FinderUpdateButton";
+import FinderUpdateMain from "@/components/submit/finder/FinderUpdateMain";
+
+import { fetchLostPet } from "@/api/mocks/getLostPet";
+import { fetchSightedPet } from "@/api/mocks/getSightedPet";
+
+import { FinderPet } from "@/models/finder";
+
 import { useSuspenseQuery } from "@tanstack/react-query";
+
 import { useParams } from "next/navigation";
-import FinderUpdateButton from "./FinderUpdateButton";
-import FinderUpdateMain from "./FinderUpdateMain";
 
 interface Props {
   type: string;

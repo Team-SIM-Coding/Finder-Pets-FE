@@ -1,5 +1,6 @@
-import FinderUpdateForm from "@/components/submit/finder/FinderUpdateForm";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import FinderUpdateForm from "@/components/submit/finder/FinderUpdateForm";
+
 import { Suspense } from "react";
 
 const LostUpdate = () => {

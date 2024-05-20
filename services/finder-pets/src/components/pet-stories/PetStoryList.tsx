@@ -1,9 +1,12 @@
 "use client";
 
-import { fetchPetStories } from "@/app/api/mocks/getPetStory";
+import ListBox from "@/components/list/ListBox";
+
+import { fetchPetStories } from "@/api/mocks/getPetStory";
+
 import { Board } from "@/models/board";
+
 import { useSuspenseQuery } from "@tanstack/react-query";
-import ListBox from "../list/ListBox";
 
 const PetStoryList = () => {
   const { data } = useSuspenseQuery<Board[], Error>({

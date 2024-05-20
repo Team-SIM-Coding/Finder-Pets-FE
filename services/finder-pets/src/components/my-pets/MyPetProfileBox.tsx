@@ -1,11 +1,16 @@
 "use client";
-import { fetchMyPet } from "@/app/api/mocks/getMyPet";
+
+import EditorSection from "@/shared/components/editor/EditorSection";
 import MyPetProfileButton from "@/components/my-pets/MyPetProfileButton";
 import MyPetProfileMain from "@/components/my-pets/MyPetProfileMain";
 import MyPetProfileTitle from "@/components/my-pets/MyPetProfileTitle";
+
+import { fetchMyPet } from "@/api/mocks/getMyPet";
+
 import { MyPet } from "@/models/pet";
-import EditorSection from "@/shared/components/editor/EditorSection";
+
 import { useSuspenseQuery } from "@tanstack/react-query";
+
 import { useParams } from "next/navigation";
 
 const MyPetProfileBox = () => {

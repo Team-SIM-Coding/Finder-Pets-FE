@@ -1,11 +1,13 @@
 "use client";
 
-import authState from "@/recoil/authAtom";
 import Spacing from "@/shared/components/Spacing";
 import MyMenuLink from "@/shared/components/auth/MyMenuLink";
+
+import authState from "@/recoil/authAtom";
+import { useRecoilValue } from "recoil";
+
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useRecoilValue } from "recoil";
 
 const MyMenuList = () => {
   const authStateValue = useRecoilValue(authState);

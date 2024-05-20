@@ -1,5 +1,5 @@
 "use client";
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
 import useAlertContext from "@/hooks/useAlertContext";
 import authState from "@/recoil/authAtom";

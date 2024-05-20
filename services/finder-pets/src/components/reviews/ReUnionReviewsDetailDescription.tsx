@@ -1,10 +1,11 @@
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
 import { Divider } from "@design-system/react-components-layout";
 
 import Spacing from "@/shared/components/Spacing";
-import DetailSubHeader from "@/shared/components/detail/DetailSubHeader";
 import DetailDescriptionTextBox from "@/shared/components/detail/DetailDescriptionTextBox";
+import DetailSubHeader from "@/shared/components/detail/DetailSubHeader";
+
 import { Board } from "@/models/board";
 
 interface Props {

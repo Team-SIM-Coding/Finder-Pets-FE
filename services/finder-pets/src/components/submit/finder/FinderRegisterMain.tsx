@@ -1,11 +1,8 @@
 import * as es from "@/shared/components/editor/EditorStyle.css";
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
 import { Flex } from "@design-system/react-components-layout";
-import { v4 as uuid } from "uuid";
 
-import useAlertContext from "@/hooks/useAlertContext";
-import { Pet } from "@/models/pet";
 import Spacing from "@/shared/components/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import EditorCheckBoxField from "@/shared/components/editor/EditorCheckBoxField";
@@ -13,11 +10,18 @@ import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegis
 import EditorInputField from "@/shared/components/editor/EditorInputField";
 import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
 import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import { Pet } from "@/models/pet";
+
 import { FinderPetRegisterFormData, finderPetSchema } from "@/utils/validation/finder";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
+import { v4 as uuid } from "uuid";
 
 interface Props {
   pet_info: Pet;

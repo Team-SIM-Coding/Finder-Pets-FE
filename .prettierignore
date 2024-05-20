@@ -1,0 +1,8 @@
+node_modules
+build
+dist
+*.js
+*.cjs
+*.mjs
+*.yml
+.yarn

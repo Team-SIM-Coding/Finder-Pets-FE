@@ -1,7 +1,8 @@
+import * as s from "./AuthStyle.css";
+
 import { Flex } from "@design-system/react-components-layout";
 
 import Spacing from "@/shared/components/Spacing";
-import * as s from "./AuthStyle.css";
 
 const FindPasswordResult = () => {
   return (

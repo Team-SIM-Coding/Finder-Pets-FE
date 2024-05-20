@@ -1,8 +1,10 @@
 "use client";
 
-import { Controller, FieldValues, Path, useFormContext } from "react-hook-form";
 import * as s from "./EditorStyle.css";
+
 import { Flex } from "@design-system/react-components-layout";
+
+import { Controller, FieldValues, Path, useFormContext } from "react-hook-form";
 
 interface Props<T extends FieldValues> {
   label: string;

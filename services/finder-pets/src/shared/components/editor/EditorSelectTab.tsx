@@ -2,9 +2,10 @@ import * as s from "./EditorStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
+import SelectTab from "@/shared/components/filter/SelectTab";
+
 import { ReactNode } from "react";
 import { FieldValues, Path } from "react-hook-form";
-import SelectTab from "../filter/SelectTab";
 
 interface Props<T extends FieldValues> {
   label: string;

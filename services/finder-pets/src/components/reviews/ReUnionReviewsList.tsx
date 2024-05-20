@@ -1,9 +1,12 @@
 "use client";
 
-import { fetchReviews } from "@/app/api/mocks/getReview";
+import ListBox from "@/components/list/ListBox";
+
+import { fetchReviews } from "@/api/mocks/getReview";
+
 import { Board } from "@/models/board";
+
 import { useSuspenseQuery } from "@tanstack/react-query";
-import ListBox from "../list/ListBox";
 
 const ReUnionReviewsList = () => {
   const { data } = useSuspenseQuery<Board[], Error>({

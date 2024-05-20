@@ -4,8 +4,10 @@ import * as s from "./EditorStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 import { Input } from "@design-system/react-components-input";
+
+import ValidationMessages from "@/shared/components/auth/ValidationMessages";
+
 import { FieldValues, useFormContext, Path, Controller } from "react-hook-form";
-import ValidationMessages from "../auth/ValidationMessages";
 
 interface Props<T extends FieldValues> {
   label: string;

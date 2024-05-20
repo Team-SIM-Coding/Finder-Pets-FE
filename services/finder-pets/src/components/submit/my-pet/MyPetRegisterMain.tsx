@@ -1,22 +1,25 @@
 import * as es from "@/shared/components/editor/EditorStyle.css";
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
-import { v4 as uuid } from "uuid";
 import { Flex } from "@design-system/react-components-layout";
 
 import Spacing from "@/shared/components/Spacing";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import EditorCheckBoxField from "@/shared/components/editor/EditorCheckBoxField";
 import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";
 import EditorInputField from "@/shared/components/editor/EditorInputField";
 import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
 import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
-import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
-import { MyPetRegisterFormData, myPetSchema } from "@/utils/validation/my-pet";
-import { useEffect, useState } from "react";
+
 import useAlertContext from "@/hooks/useAlertContext";
-import { useRouter } from "next/navigation";
+
+import { MyPetRegisterFormData, myPetSchema } from "@/utils/validation/my-pet";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
+import { v4 as uuid } from "uuid";
 
 const defaultValues = {
   name: "",

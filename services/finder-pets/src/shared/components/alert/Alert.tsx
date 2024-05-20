@@ -1,12 +1,13 @@
 import * as s from "./AlertStyle.css";
-
-import BackDrop from "@/shared/components/back-drop/BackDrop";
-import { Button } from "@design-system/react-components-button";
-import { Flex } from "@design-system/react-components-layout";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 
+import { Button } from "@design-system/react-components-button";
+import { Flex } from "@design-system/react-components-layout";
+
+import BackDrop from "@/shared/components/back-drop/BackDrop";
+import Spacing from "@/shared/components/Spacing";
+
 import { ReactNode } from "react";
-import Spacing from "../Spacing";
 
 interface AlertProps {
   width: string;

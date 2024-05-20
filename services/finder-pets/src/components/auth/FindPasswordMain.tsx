@@ -1,18 +1,23 @@
 "use client";
-import * as cs from "@/shared/styles/common.css";
+
+import * as cs from "@/styles/common.css";
 
 import Spacing from "@/shared/components/Spacing";
-import InputField from "@/shared/components/auth/InputField";
-import { useState } from "react";
-import FindPasswordResult from "./FindPasswordResult";
-import { useRouter } from "next/navigation";
-import useAlertContext from "@/hooks/useAlertContext";
-import { FindPasswordFormData, findPasswordSchema } from "@/utils/validation/auth";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
-import { useSetRecoilState } from "recoil";
+import InputField from "@/shared/components/auth/InputField";
+import FindPasswordResult from "@/components/auth/FindPasswordResult";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
 import authState from "@/recoil/authAtom";
+import { useSetRecoilState } from "recoil";
+
+import { FindPasswordFormData, findPasswordSchema } from "@/utils/validation/auth";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
 const FindPasswordMain = () => {
   const [isFoundPassword, setIsFoundPassword] = useState(false);

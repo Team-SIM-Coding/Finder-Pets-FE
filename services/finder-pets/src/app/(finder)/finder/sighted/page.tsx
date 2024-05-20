@@ -1,6 +1,7 @@
-import SightedPetList from "@/components/sighted/SightedPetList";
 import Spacing from "@/shared/components/Spacing";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import SightedPetList from "@/components/sighted/SightedPetList";
+
 import { Suspense } from "react";
 
 const Sighted = () => {

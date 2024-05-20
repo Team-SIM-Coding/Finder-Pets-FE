@@ -1,8 +1,10 @@
 "use client";
 
-import { fetchLostPets } from "@/app/api/mocks/getLostPet";
+import ListBox from "@/components/list/ListBox";
+
+import { fetchLostPets } from "@/api/mocks/getLostPet";
+
 import { useSuspenseQuery } from "@tanstack/react-query";
-import ListBox from "../list/ListBox";
 
 const LostPetList = () => {
   const { data } = useSuspenseQuery({ queryKey: ["lost-pets"], queryFn: fetchLostPets });

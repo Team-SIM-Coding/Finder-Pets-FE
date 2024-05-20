@@ -1,14 +1,14 @@
 import * as s from "./MyPetStyle.css";
 
-import { GridItem } from "@design-system/react-components-layout";
+import { GridItem, Flex } from "@design-system/react-components-layout";
 
-import Image from "next/image";
+import Spacing from "@/shared/components/Spacing";
+import HighLightTag from "@/components/list/HighLightTag";
 
 import { MyPet } from "@/models/pet";
-import Spacing from "@/shared/components/Spacing";
-import { Flex } from "@design-system/react-components-layout";
+
 import Link from "next/link";
-import HighLightTag from "../list/HighLightTag";
+import Image from "next/image";
 
 interface Props {
   pet: MyPet;

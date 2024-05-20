@@ -1,7 +1,7 @@
-import ResetPasswordButtons from "@/components/auth/ResetPasswordButtons";
-import ResetPasswordMain from "@/components/auth/ResetPasswordMain";
 import AuthHeader from "@/shared/components/auth/AuthHeader";
 import AuthSection from "@/shared/components/auth/AuthSection";
+import ResetPasswordButtons from "@/components/auth/ResetPasswordButtons";
+import ResetPasswordMain from "@/components/auth/ResetPasswordMain";
 
 const ResetPassword = () => {
   return (

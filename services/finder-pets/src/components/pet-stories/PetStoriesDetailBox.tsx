@@ -1,5 +1,3 @@
-import { fetchPetStory } from "@/app/api/mocks/getPetStory";
-import { Board } from "@/models/board";
 import CommentWriter from "@/shared/components/comments/CommentWriter";
 import CommentsList from "@/shared/components/comments/CommentsList";
 import CommentsSection from "@/shared/components/comments/CommentsSection";
@@ -8,11 +6,17 @@ import DetailMain from "@/shared/components/detail/DetailMain";
 import DetailMainHeader from "@/shared/components/detail/DetailMainHeader";
 import DetailSection from "@/shared/components/detail/DetailSection";
 import ImageSwiperBox from "@/shared/components/swiper/ImageSwiperBox";
+import PetStoriesDetailDescription from "@/components/pet-stories/PetStoriesDetailDescription";
+import PetStoriesDetailMainHeaderLeft from "@/components/pet-stories/PetStoriesDetailMainHeaderLeft";
+import PetStoriesDetailMainHeaderRight from "@/components/pet-stories/PetStoriesDetailMainHeaderRight";
+
+import { fetchPetStory } from "@/api/mocks/getPetStory";
+
+import { Board } from "@/models/board";
+
 import { useSuspenseQuery } from "@tanstack/react-query";
+
 import { useParams } from "next/navigation";
-import PetStoriesDetailDescription from "./PetStoriesDetailDescription";
-import PetStoriesDetailMainHeaderLeft from "./PetStoriesDetailMainHeaderLeft";
-import PetStoriesDetailMainHeaderRight from "./PetStoriesDetailMainHeaderRight";
 
 const PetStoriesDetailBox = () => {
   const { id } = useParams();

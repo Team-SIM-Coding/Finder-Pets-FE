@@ -1,5 +1,6 @@
+import Spacing from "@/shared/components/Spacing";
+
 import { ReactNode } from "react";
-import Spacing from "../Spacing";
 
 interface Props {
   header: ReactNode;

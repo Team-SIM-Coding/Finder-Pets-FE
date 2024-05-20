@@ -1,16 +1,19 @@
 "use client";
-import * as cs from "@/shared/styles/common.css";
+
+import * as cs from "@/styles/common.css";
 
 import Spacing from "@/shared/components/Spacing";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import InputField from "@/shared/components/auth/InputField";
-import { v4 as uuid } from "uuid";
+
+import useAlertContext from "@/hooks/useAlertContext";
 
 import { RegisterFormData, registerSchema } from "@/utils/validation/auth";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { useEffect } from "react";
-import useAlertContext from "@/hooks/useAlertContext";
-import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { v4 as uuid } from "uuid";
 
 const RegisterMain = () => {
   const { open, close } = useAlertContext();

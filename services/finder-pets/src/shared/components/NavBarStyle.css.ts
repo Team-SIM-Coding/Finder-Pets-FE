@@ -1,5 +1,5 @@
-import { vars } from "@design-system/themes";
 import { style } from "@vanilla-extract/css";
+import { vars } from "@design-system/themes";
 import { f } from "../styles/functions";
 
 export const navTopSection = style({

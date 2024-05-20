@@ -1,3 +1,7 @@
+import MainItemBox from "@/components/home/MainItemBox";
+
+import { FinderPet } from "@/models/finder";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -6,9 +10,6 @@ import "./Swiper.css";
 import SwiperCore from "swiper";
 import { Navigation, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import MainItemBox from "@/components/home/MainItemBox";
-import { FinderPet } from "@/models/finder";
 
 interface Props {
   items: FinderPet[] | undefined;

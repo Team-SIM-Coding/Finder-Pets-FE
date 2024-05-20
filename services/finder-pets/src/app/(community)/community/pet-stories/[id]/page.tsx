@@ -1,7 +1,8 @@
 "use client";
 
-import PetStoriesDetailBox from "@/components/pet-stories/PetStoriesDetailBox";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import PetStoriesDetailBox from "@/components/pet-stories/PetStoriesDetailBox";
+
 import { Suspense } from "react";
 
 const PetStoriesDetail = () => {

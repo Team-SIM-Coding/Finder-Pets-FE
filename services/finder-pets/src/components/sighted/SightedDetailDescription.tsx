@@ -1,12 +1,14 @@
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
 import { Divider } from "@design-system/react-components-layout";
 
-import { FinderPet } from "@/models/finder";
 import Spacing from "@/shared/components/Spacing";
 import DetailDescriptionTextBox from "@/shared/components/detail/DetailDescriptionTextBox";
 import DetailDescriptionTextField from "@/shared/components/detail/DetailDescriptionTextField";
 import KakaoMap from "@/shared/components/kakao-map/KakaoMap";
+
+import { FinderPet } from "@/models/finder";
+
 import { trimText } from "@/utils/trimText";
 
 interface Props {

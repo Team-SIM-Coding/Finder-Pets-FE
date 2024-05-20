@@ -1,16 +1,19 @@
 "use client";
+
+import * as cs from "@/styles/common.css";
+
+import { Button } from "@design-system/react-components-button";
+
 import LinkButton from "@/shared/components/LinkButton";
 import Spacing from "@/shared/components/Spacing";
-import * as s from "@/shared/styles/common.css";
-import { Button } from "@design-system/react-components-button";
 
 const RegisterButton = () => {
   return (
     <>
-      <Button className={s.defaultButton} form={"register-form"} type="submit">
+      <Button className={cs.defaultButton} form={"register-form"} type="submit">
         회원가입
       </Button>
-      <LinkButton href="/login" text="로그인" className={s.whiteButton} />
+      <LinkButton href="/login" text="로그인" className={cs.whiteButton} />
       <Spacing height="40px" />
     </>
   );

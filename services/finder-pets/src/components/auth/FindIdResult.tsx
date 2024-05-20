@@ -1,13 +1,15 @@
 "use client";
+import * as cs from "@/styles/common.css";
 import * as s from "./AuthStyle.css";
-import * as cs from "@/shared/styles/common.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
 import Spacing from "@/shared/components/Spacing";
-import { useCallback } from "react";
-import useAlertContext from "@/hooks/useAlertContext";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import { useCallback } from "react";
 
 interface Props {
   email: string;

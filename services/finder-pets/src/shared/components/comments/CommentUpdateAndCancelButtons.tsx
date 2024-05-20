@@ -1,14 +1,17 @@
 "use client";
-import * as s from "./CommentsStyle.css";
-import * as cs from "@/shared/styles/common.css";
 
+import * as cs from "@/styles/common.css";
+import * as s from "./CommentsStyle.css";
+
+import { Button } from "@design-system/react-components-button";
 import { Flex } from "@design-system/react-components-layout";
-import { useParams, usePathname } from "next/navigation";
+
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 
 import useAlertContext from "@/hooks/useAlertContext";
-import { Button } from "@design-system/react-components-button";
+
+import { useParams, usePathname } from "next/navigation";
 import { Dispatch, SetStateAction } from "react";
-import AlertMainTextBox from "../alert/AlertMainTextBox";
 
 export const PATH_TYPE: Record<string, string> = {
   "/finder/lost": "lost",

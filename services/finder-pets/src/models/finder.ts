@@ -1,6 +1,6 @@
-import { IComment } from "./comment";
-import { Image } from "./image";
-import { Pet } from "./pet";
+import { IComment } from "@/models/comment";
+import { Image } from "@/models/image";
+import { Pet } from "@/models/pet";
 
 export interface FinderPet extends Pet {
   pet_id?: string;

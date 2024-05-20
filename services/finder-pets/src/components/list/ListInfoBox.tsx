@@ -3,14 +3,17 @@ import * as s from "./ListStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
+import HighLightTag from "@/components/list/HighLightTag";
+import ListInfoDescription from "@/components/list/ListInfoDescription";
+
 import { Board } from "@/models/board";
 import { FinderPet } from "@/models/finder";
 import { ShelterPet } from "@/models/shelter";
+
 import { formatDate } from "@/utils/format/formatDate";
 import { trimText } from "@/utils/trimText";
+
 import { usePathname } from "next/navigation";
-import HighLightTag from "./HighLightTag";
-import ListInfoDescription from "./ListInfoDescription";
 
 type PetInfo = FinderPet | ShelterPet;
 

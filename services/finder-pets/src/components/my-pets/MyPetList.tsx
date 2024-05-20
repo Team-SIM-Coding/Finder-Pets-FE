@@ -1,11 +1,15 @@
 "use client";
+
 import { Grid } from "@design-system/react-components-layout";
 
-import { fetchMyPets } from "@/app/api/mocks/getMyPet";
 import Spacing from "@/shared/components/Spacing";
-import { useSuspenseQuery } from "@tanstack/react-query";
-import MyPetBox from "./MyPetBox";
+import MyPetBox from "@/components/my-pets/MyPetBox";
+
+import { fetchMyPets } from "@/api/mocks/getMyPet";
+
 import { MyPet } from "@/models/pet";
+
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 const MyPetList = () => {
   const { data } = useSuspenseQuery<MyPet[], Error>({

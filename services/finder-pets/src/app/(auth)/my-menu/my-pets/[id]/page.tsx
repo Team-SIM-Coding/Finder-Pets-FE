@@ -1,6 +1,8 @@
 "use client";
-import MyPetProfileBox from "@/components/my-pets/MyPetProfileBox";
+
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import MyPetProfileBox from "@/components/my-pets/MyPetProfileBox";
+
 import { Suspense } from "react";
 
 const MyPetDetail = () => {

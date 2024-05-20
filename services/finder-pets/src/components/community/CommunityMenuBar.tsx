@@ -1,8 +1,9 @@
 "use client";
 
-import { useFilter } from "@/contexts/FilterContext";
 import FilterMenuBar from "@/shared/components/filter/FilterMenuBar";
 import TabMenuBar from "@/shared/components/tab/TabMenuBar";
+
+import { useFilter } from "@/contexts/FilterContext";
 
 const CommunityMenuBar = () => {
   const { setFilter } = useFilter();

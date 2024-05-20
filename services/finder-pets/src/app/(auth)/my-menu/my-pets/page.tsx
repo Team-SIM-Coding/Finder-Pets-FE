@@ -1,8 +1,9 @@
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
-import MyPetList from "@/components/my-pets/MyPetList";
-import { Suspense } from "react";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import MyPetList from "@/components/my-pets/MyPetList";
+
+import { Suspense } from "react";
 
 const MyPets = () => {
   return (

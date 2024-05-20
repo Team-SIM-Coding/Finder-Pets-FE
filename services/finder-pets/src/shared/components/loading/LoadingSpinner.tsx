@@ -1,5 +1,5 @@
-import { assignInlineVars } from "@vanilla-extract/dynamic";
 import * as s from "./Loading.css";
+import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 interface Props {
   text: string;

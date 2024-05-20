@@ -1,6 +1,7 @@
-import ReUnionReviewsList from "@/components/reviews/ReUnionReviewsList";
 import Spacing from "@/shared/components/Spacing";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import ReUnionReviewsList from "@/components/reviews/ReUnionReviewsList";
+
 import { Suspense } from "react";
 
 const ReUnionReviews = () => {

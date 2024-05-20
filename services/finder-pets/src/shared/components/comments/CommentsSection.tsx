@@ -2,8 +2,9 @@ import * as s from "./CommentsStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
+import Spacing from "@/shared/components/Spacing";
+
 import { ReactNode } from "react";
-import Spacing from "../Spacing";
 
 interface Props {
   comment_count: number;

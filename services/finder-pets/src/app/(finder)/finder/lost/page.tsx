@@ -1,6 +1,7 @@
-import LostPetList from "@/components/lost/LostPetList";
 import Spacing from "@/shared/components/Spacing";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import LostPetList from "@/components/lost/LostPetList";
+
 import { Suspense } from "react";
 
 const Lost = () => {

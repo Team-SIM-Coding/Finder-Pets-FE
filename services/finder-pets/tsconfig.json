@@ -6,7 +6,18 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/api/*": ["./src/app/api/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/contexts/*": ["./src/contexts/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/models/*": ["./src/models/*"],
+      "@/react-query/*": ["./src/react-query/*"],
+      "@/recoil/*": ["./src/recoil/*"],
+      "@/shared/c/*": ["./src/shared/components/*"],
+      "@/shared/*": ["./src/shared/*"],
+      "@/mocks/*": ["./src/shared/mocks/*"],
+      "@/styles/*": ["./src/shared/styles/*"],
+      "@/utils/*": ["./src/utils/*"]
     },
     "plugins": [
       {

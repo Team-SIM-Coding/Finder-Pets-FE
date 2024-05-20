@@ -1,8 +1,7 @@
 import * as s from "./AuthStyle.css";
+import { IoIosArrowForward } from "react-icons/io";
 
 import { Flex } from "@design-system/react-components-layout";
-
-import { IoIosArrowForward } from "react-icons/io";
 
 import Link from "next/link";
 

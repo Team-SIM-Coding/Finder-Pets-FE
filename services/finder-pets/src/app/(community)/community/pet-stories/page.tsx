@@ -1,6 +1,7 @@
-import PetStoryList from "@/components/pet-stories/PetStoryList";
 import Spacing from "@/shared/components/Spacing";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import PetStoryList from "@/components/pet-stories/PetStoryList";
+
 import { Suspense } from "react";
 
 const PetStories = () => {

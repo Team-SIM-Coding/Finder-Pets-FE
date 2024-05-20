@@ -1,11 +1,12 @@
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
 import { Divider } from "@design-system/react-components-layout";
 
-import { ShelterPet } from "@/models/shelter";
 import Spacing from "@/shared/components/Spacing";
 import DetailDescriptionTextField from "@/shared/components/detail/DetailDescriptionTextField";
 import KakaoMap from "@/shared/components/kakao-map/KakaoMap";
+
+import { ShelterPet } from "@/models/shelter";
 
 interface Props {
   pet_info: ShelterPet;

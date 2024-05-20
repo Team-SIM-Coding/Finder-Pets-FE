@@ -1,3 +1,7 @@
+import ImageBox from "@/shared/components/swiper/ImageBox";
+
+import { Image } from "@/models/image";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -6,8 +10,6 @@ import "./Swiper.css";
 import SwiperCore from "swiper";
 import { Navigation, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import ImageBox from "./ImageBox";
-import { Image } from "@/models/image";
 
 interface Props {
   images: Image[] | undefined;

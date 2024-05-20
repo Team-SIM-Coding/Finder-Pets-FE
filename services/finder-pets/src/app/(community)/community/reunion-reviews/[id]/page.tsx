@@ -1,5 +1,6 @@
-import ReUnionReviewsDetailBox from "@/components/reviews/ReUnionReviewsDetailBox";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import ReUnionReviewsDetailBox from "@/components/reviews/ReUnionReviewsDetailBox";
+
 import { Suspense } from "react";
 
 const ReUnionReviewsDetail = () => {

@@ -1,4 +1,4 @@
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
 import Spacing from "@/shared/components/Spacing";
 import MyMenuList from "@/components/my-menu/MyMenuList";

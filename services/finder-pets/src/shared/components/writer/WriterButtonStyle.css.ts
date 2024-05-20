@@ -1,6 +1,6 @@
-import { f } from "@/shared/styles/functions";
-import { vars } from "@design-system/themes";
 import { style } from "@vanilla-extract/css";
+import { vars } from "@design-system/themes";
+import { f } from "@/shared/styles/functions";
 
 export const writerButtonWrap = style([
   f.pFixed,

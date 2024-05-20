@@ -1,10 +1,12 @@
 "use client";
 
-import { useFilter } from "@/contexts/FilterContext";
 import FilterMenuBar from "@/shared/components/filter/FilterMenuBar";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import ShelterList from "@/components/shelter/ShelterList";
+
+import { useFilter } from "@/contexts/FilterContext";
+
 import { Suspense } from "react";
-import ShelterList from "./ShelterList";
 
 const ShelterListBox = () => {
   const { filter, setFilter } = useFilter();

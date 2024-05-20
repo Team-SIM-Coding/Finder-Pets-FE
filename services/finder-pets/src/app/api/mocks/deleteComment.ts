@@ -1,5 +1,6 @@
+import { AnyPost, isBoard, isFinderPet, storagePaths } from "@/api/mocks/postComment";
+
 import { HttpHandler, HttpResponse, http } from "msw";
-import { AnyPost, isBoard, isFinderPet, storagePaths } from "./postComment";
 
 const createDeleteCommentHandler = (storageKey: string): HttpHandler => {
   return http.delete(`/api/${storageKey}/:id/comment/delete`, async ({ request, params }) => {

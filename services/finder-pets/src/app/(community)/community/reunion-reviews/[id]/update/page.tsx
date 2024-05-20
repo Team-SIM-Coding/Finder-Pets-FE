@@ -1,5 +1,6 @@
-import CommunityUpdateForm from "@/components/submit/community/CommunityUpdateForm";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import CommunityUpdateForm from "@/components/submit/community/CommunityUpdateForm";
+
 import { Suspense } from "react";
 
 const PetStoryUpdate = () => {

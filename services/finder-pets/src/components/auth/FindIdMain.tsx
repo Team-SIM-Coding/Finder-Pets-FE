@@ -1,17 +1,20 @@
 "use client";
-import * as cs from "@/shared/styles/common.css";
+
+import * as cs from "@/styles/common.css";
 
 import Spacing from "@/shared/components/Spacing";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import InputField from "@/shared/components/auth/InputField";
-import FindIdResult from "./FindIdResult";
+import FindIdResult from "@/components/auth/FindIdResult";
 
+import useAlertContext from "@/hooks/useAlertContext";
+
+import { FindIdFormData, findIdSchema } from "@/utils/validation/auth";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { FindIdFormData, findIdSchema } from "@/utils/validation/auth";
-import { zodResolver } from "@hookform/resolvers/zod";
-import useAlertContext from "@/hooks/useAlertContext";
-import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
-import { useRouter } from "next/navigation";
 
 const FindIdMain = () => {
   const [isFoundId, setIsFoundId] = useState(false);

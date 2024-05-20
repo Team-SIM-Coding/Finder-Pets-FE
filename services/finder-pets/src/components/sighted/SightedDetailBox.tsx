@@ -1,7 +1,5 @@
 "use client";
 
-import { fetchSightedPet } from "@/app/api/mocks/getSightedPet";
-import { FinderPet } from "@/models/finder";
 import CommentWriter from "@/shared/components/comments/CommentWriter";
 import CommentsList from "@/shared/components/comments/CommentsList";
 import CommentsSection from "@/shared/components/comments/CommentsSection";
@@ -10,11 +8,17 @@ import DetailMain from "@/shared/components/detail/DetailMain";
 import DetailMainHeader from "@/shared/components/detail/DetailMainHeader";
 import DetailSection from "@/shared/components/detail/DetailSection";
 import ImageSwiperBox from "@/shared/components/swiper/ImageSwiperBox";
+import SightedDetailDescription from "@/components/sighted/SightedDetailDescription";
+import SightedDetailMainHeaderLeft from "@/components/sighted/SightedDetailMainHeaderLeft";
+import SightedDetailMainHeaderRight from "@/components/sighted/SightedDetailMainHeaderRight";
+
+import { fetchSightedPet } from "@/api/mocks/getSightedPet";
+
+import { FinderPet } from "@/models/finder";
+
 import { useSuspenseQuery } from "@tanstack/react-query";
+
 import { useParams } from "next/navigation";
-import SightedDetailDescription from "./SightedDetailDescription";
-import SightedDetailMainHeaderLeft from "./SightedDetailMainHeaderLeft";
-import SightedDetailMainHeaderRight from "./SightedDetailMainHeaderRight";
 
 const SightedDetailBox = () => {
   const { id } = useParams();

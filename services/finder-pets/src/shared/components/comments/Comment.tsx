@@ -1,18 +1,22 @@
 "use client";
-import * as cs from "@/shared/styles/common.css";
+
+import * as cs from "@/styles/common.css";
 import * as s from "./CommentsStyle.css";
+import { CiMenuKebab } from "react-icons/ci";
 
 import { Flex } from "@design-system/react-components-layout";
 
 import useAlertContext from "@/hooks/useAlertContext";
+
 import { Image } from "@/models/image";
+
+import UserAndCreateAt from "@/shared/components/UserAndCreateAt";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+import { PATH_TYPE } from "@/shared/components/comments/CommentUpdateAndCancelButtons";
+import CommentUpdater from "@/shared/components/comments/CommentUpdater";
+
 import { useParams, usePathname } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
-import { CiMenuKebab } from "react-icons/ci";
-import UserAndCreateAt from "../UserAndCreateAt";
-import AlertMainTextBox from "../alert/AlertMainTextBox";
-import { PATH_TYPE } from "./CommentUpdateAndCancelButtons";
-import CommentUpdater from "./CommentUpdater";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
   user_image: Image;

@@ -1,12 +1,14 @@
 "use client";
 
-import * as s from "@/shared/styles/common.css";
+import * as s from "@/styles/common.css";
+
+import { Button } from "@design-system/react-components-button";
 
 import LinkButton from "@/shared/components/LinkButton";
-import { Button } from "@design-system/react-components-button";
 import Spacing from "@/shared/components/Spacing";
-import { useRecoilValue } from "recoil";
+
 import authState from "@/recoil/authAtom";
+import { useRecoilValue } from "recoil";
 
 const FindPasswordButtons = () => {
   const { isCompletedFindPassword } = useRecoilValue(authState);

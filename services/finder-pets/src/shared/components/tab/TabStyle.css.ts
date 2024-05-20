@@ -1,5 +1,5 @@
-import { f } from "@/shared/styles/functions";
 import { createVar, style } from "@vanilla-extract/css";
+import { f } from "@/shared/styles/functions";
 
 export const currentPathColor = createVar();
 

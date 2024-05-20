@@ -1,9 +1,10 @@
 "use client";
 
-import * as s from "@/shared/styles/common.css";
+import * as s from "@/styles/common.css";
+
+import { Button } from "@design-system/react-components-button";
 
 import LinkButton from "@/shared/components/LinkButton";
-import { Button } from "@design-system/react-components-button";
 import Spacing from "@/shared/components/Spacing";
 
 const FindIdButtons = () => {

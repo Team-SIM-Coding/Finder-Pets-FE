@@ -1,8 +1,9 @@
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
-import ShelterListBox from "@/components/shelter/ShelterListBox";
-import { FilterProvider } from "@/contexts/FilterContext";
 import Spacing from "@/shared/components/Spacing";
+import ShelterListBox from "@/components/shelter/ShelterListBox";
+
+import { FilterProvider } from "@/contexts/FilterContext";
 
 const Shelter = () => {
   return (

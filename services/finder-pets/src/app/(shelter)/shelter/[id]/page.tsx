@@ -1,7 +1,8 @@
 "use client";
 
-import ShelterDetailBox from "@/components/shelter/ShelterDetailBox";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import ShelterDetailBox from "@/components/shelter/ShelterDetailBox";
+
 import { Suspense } from "react";
 
 const ShelterDetail = () => {

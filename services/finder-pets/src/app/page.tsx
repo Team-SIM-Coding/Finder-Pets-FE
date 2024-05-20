@@ -1,6 +1,8 @@
-import MainInfoList from "@/components/home/MainInfoList";
+import * as cs from "@/styles/common.css";
+
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
-import * as cs from "@/shared/styles/common.css";
+import MainInfoList from "@/components/home/MainInfoList";
+
 import { Suspense } from "react";
 
 export default function Home() {

@@ -1,4 +1,4 @@
-import * as s from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 interface Props {
@@ -9,8 +9,8 @@ interface Props {
 const Spacing = ({ width = "100%", height }: Props) => {
   return (
     <div
-      style={assignInlineVars({ [s.spacingWidthVar]: width, [s.spacingHeightVar]: height })}
-      className={s.spacingStyle}
+      style={assignInlineVars({ [cs.spacingWidthVar]: width, [cs.spacingHeightVar]: height })}
+      className={cs.spacingStyle}
     ></div>
   );
 };

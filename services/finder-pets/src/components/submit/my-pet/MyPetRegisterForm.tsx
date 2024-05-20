@@ -1,8 +1,8 @@
 "use client";
 
 import EditorSection from "@/shared/components/editor/EditorSection";
-import MyPetRegisterButton from "./MyPetRegisterButton";
-import MyPetRegisterMain from "./MyPetRegisterMain";
+import MyPetRegisterButton from "@/components/submit/my-pet/MyPetRegisterButton";
+import MyPetRegisterMain from "@/components/submit/my-pet/MyPetRegisterMain";
 
 const MyPetRegisterForm = () => {
   return (

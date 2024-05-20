@@ -1,18 +1,23 @@
 "use client";
+
 import * as cs from "@/shared/styles/common.css";
 
-import useAlertContext from "@/hooks/useAlertContext";
 import Spacing from "@/shared/components/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import InputField from "@/shared/components/auth/InputField";
+import ResetPasswordResult from "@/components/auth/ResetPasswordResult";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import authState from "@/recoil/authAtom";
+import { useSetRecoilState } from "recoil";
+
 import { ResetPasswordFormData, resetPasswordSchema } from "@/utils/validation/auth";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import ResetPasswordResult from "./ResetPasswordResult";
-import { useSetRecoilState } from "recoil";
-import authState from "@/recoil/authAtom";
 
 const ResetPasswordMain = () => {
   const [isResetPassword, setIsResetPassword] = useState(false);

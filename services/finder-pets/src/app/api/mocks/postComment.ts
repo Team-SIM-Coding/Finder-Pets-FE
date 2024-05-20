@@ -1,9 +1,9 @@
-import { HttpHandler, HttpResponse, http } from "msw";
-import { v4 as uuid } from "uuid";
-
 import { Board } from "@/models/board";
 import { IComment } from "@/models/comment";
 import { FinderPet } from "@/models/finder";
+
+import { HttpHandler, HttpResponse, http } from "msw";
+import { v4 as uuid } from "uuid";
 
 export type AnyPost = FinderPet | Board;
 

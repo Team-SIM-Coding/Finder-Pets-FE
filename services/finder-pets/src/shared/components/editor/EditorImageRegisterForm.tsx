@@ -1,12 +1,14 @@
 "use client";
 
-import { Image as ImageType } from "@/models/image";
 import * as s from "./EditorStyle.css";
 
 import { Input } from "@design-system/react-components-input";
 
+import Spacing from "@/shared/components/Spacing";
+
+import { Image as ImageType } from "@/models/image";
+
 import Image from "next/image";
-import Spacing from "../Spacing";
 
 interface Props {
   pet_image?: ImageType;

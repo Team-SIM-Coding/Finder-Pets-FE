@@ -1,22 +1,26 @@
 "use client";
+
 import * as es from "@/shared/components/editor/EditorStyle.css";
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
 import { Flex } from "@design-system/react-components-layout";
 import { v4 as uuid } from "uuid";
 
 import Spacing from "@/shared/components/Spacing";
-import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
-import EditorInputField from "@/shared/components/editor/EditorInputField";
-import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
-import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";
-import { useEffect, useState } from "react";
-import useAlertContext from "@/hooks/useAlertContext";
-import { useRouter } from "next/navigation";
-import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
-import { CommunityBoardRegisterFormData, communityBoardSchema } from "@/utils/validation/community";
-import { zodResolver } from "@hookform/resolvers/zod";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";
+import EditorInputField from "@/shared/components/editor/EditorInputField";
+import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
+import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import { CommunityBoardRegisterFormData, communityBoardSchema } from "@/utils/validation/community";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
 
 const defaultValues = {
   category: "review",

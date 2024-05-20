@@ -1,14 +1,18 @@
 "use client";
-import * as s from "./FilterStyle.css";
 
-import { useEffect, useState } from "react";
-import { Flex } from "@design-system/react-components-layout";
+import * as s from "./FilterStyle.css";
 import { LuListFilter } from "react-icons/lu";
-import { usePathname } from "next/navigation";
-import { FormProvider, useForm, useWatch } from "react-hook-form";
-import SelectTab from "./SelectTab";
+
+import { Flex } from "@design-system/react-components-layout";
+
+import SelectTab from "@/shared/components/filter/SelectTab";
+
 import { FilterMenuFormData, filterMenuSchema } from "@/utils/validation/filter";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { FormProvider, useForm, useWatch } from "react-hook-form";
 
 const FILTER_MENU_BAR_INCLUDES_PATHS = [
   "/shelter",

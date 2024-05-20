@@ -1,4 +1,5 @@
 import { FinderPet } from "@/models/finder";
+
 import { HttpHandler, HttpResponse, http } from "msw";
 
 const sightedPets: FinderPet[] = JSON.parse(localStorage.getItem("sighted-pets") || "[]");

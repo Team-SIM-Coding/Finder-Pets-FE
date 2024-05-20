@@ -1,7 +1,8 @@
 "use client";
 
-import SightedDetailBox from "@/components/sighted/SightedDetailBox";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import SightedDetailBox from "@/components/sighted/SightedDetailBox";
+
 import { Suspense } from "react";
 
 const SightedDetail = () => {

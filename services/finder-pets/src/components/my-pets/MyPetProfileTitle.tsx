@@ -1,10 +1,13 @@
-import useAlertContext from "@/hooks/useAlertContext";
 import * as s from "./MyPetStyle.css";
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
 import { Button } from "@design-system/react-components-button";
 import { Flex } from "@design-system/react-components-layout";
+
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
 import { useRouter } from "next/navigation";
 
 interface Props {

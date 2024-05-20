@@ -1,14 +1,16 @@
 import "@/shared/styles";
 
-import React from "react";
+import { MSWProvider } from "@/shared/components/MSWProvider";
+import NavBarBottom from "@/shared/components/NavBarBottom";
+import NavBarTop from "@/shared/components/NavBarTop";
+
+import { AlertContextProvider } from "@/contexts/AlertContext";
+
+import Providers from "@/react-query/Providers";
+import RecoilRootProvider from "@/recoil/RecoilRootProvider";
 
 import type { Metadata } from "next";
-import NavBarTop from "@/shared/components/NavBarTop";
-import NavBarBottom from "@/shared/components/NavBarBottom";
-import { MSWProvider } from "@/shared/components/MSWProvider";
-import RecoilRootProvider from "@/recoil/RecoilRootProvider";
-import { AlertContextProvider } from "@/contexts/AlertContext";
-import Providers from "@/react-query/Providers";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "찾아줄개",

@@ -1,17 +1,21 @@
 "use client";
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
-import useAlertContext from "@/hooks/useAlertContext";
-import authState from "@/recoil/authAtom";
 import Spacing from "@/shared/components/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import InputField from "@/shared/components/auth/InputField";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import authState from "@/recoil/authAtom";
+import { useRecoilState } from "recoil";
+
 import { LogInFormData, loginSchema } from "@/utils/validation/auth";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { useRecoilState } from "recoil";
 import { useEffect } from "react";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
 const LogInMain = () => {
   const router = useRouter();

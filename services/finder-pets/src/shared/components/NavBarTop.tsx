@@ -2,11 +2,13 @@
 
 import * as s from "./NavBarStyle.css";
 
-import { Flex } from "@design-system/react-components-layout";
 import { Button } from "@design-system/react-components-button";
-import Link from "next/link";
+import { Flex } from "@design-system/react-components-layout";
+
+import NavBarSearchInput from "@/shared/components/NavBarSearchInput";
+
 import Image from "next/image";
-import NavBarSearchInput from "./NavBarSearchInput";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAVBAR_EXCLUSION_PATHS = [

@@ -1,7 +1,8 @@
-import Link from "next/link";
-import Spacing from "../Spacing";
 import * as s from "./AuthStyle.css";
 
+import Spacing from "@/shared/components/Spacing";
+
+import Link from "next/link";
 import Image from "next/image";
 
 interface Props {

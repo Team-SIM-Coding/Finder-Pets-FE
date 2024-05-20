@@ -1,4 +1,4 @@
-import ValidationMessage from "./ValidationMessage";
+import ValidationMessage from "@/shared/components/auth/ValidationMessage";
 
 interface Props {
   firstMessage?: string;

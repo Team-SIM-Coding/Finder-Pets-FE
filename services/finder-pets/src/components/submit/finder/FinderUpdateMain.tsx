@@ -1,12 +1,10 @@
 "use client";
 
 import * as es from "@/shared/components/editor/EditorStyle.css";
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
-import useAlertContext from "@/hooks/useAlertContext";
-import { FinderPet } from "@/models/finder";
 import Spacing from "@/shared/components/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import EditorCheckBoxField from "@/shared/components/editor/EditorCheckBoxField";
@@ -14,7 +12,13 @@ import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegis
 import EditorInputField from "@/shared/components/editor/EditorInputField";
 import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
 import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import { FinderPet } from "@/models/finder";
+
 import { FinderPetRegisterFormData, finderPetSchema } from "@/utils/validation/finder";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";

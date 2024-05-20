@@ -1,8 +1,10 @@
 "use client";
-import Spacing from "@/shared/components/Spacing";
-import * as cs from "@/shared/styles/common.css";
+
+import * as cs from "@/styles/common.css";
 
 import { Button } from "@design-system/react-components-button";
+
+import Spacing from "@/shared/components/Spacing";
 
 const MyPetProfileButton = () => {
   return (

@@ -1,7 +1,7 @@
 import * as s from "./ListStyle.css";
+import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 import { Flex } from "@design-system/react-components-layout";
-import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 interface Props {
   text: string | undefined;

@@ -1,11 +1,16 @@
 "use client";
 
-import { fetchComments } from "@/app/api/mocks/getComments";
-import { useQuery } from "@tanstack/react-query";
-import { useParams, usePathname } from "next/navigation";
-import Comment from "./Comment";
 import * as s from "./CommentsStyle.css";
+
+import Comment from "./Comment";
+
+import { fetchComments } from "@/api/mocks/getComments";
+
 import { IComment } from "@/models/comment";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { useParams, usePathname } from "next/navigation";
 
 const pathStorageKey: Record<string, string> = {
   "/finder/lost": "lost",

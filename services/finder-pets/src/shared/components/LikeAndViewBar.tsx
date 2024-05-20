@@ -1,16 +1,18 @@
 "use client";
 
-import useAlertContext from "@/hooks/useAlertContext";
+import * as cs from "@/styles/common.css";
 import * as s from "./LikeAndViewStyle.css";
-import * as cs from "@/shared/styles/common.css";
+import { CiMenuKebab } from "react-icons/ci";
 
 import { Flex } from "@design-system/react-components-layout";
+
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import Link from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-
-import { CiMenuKebab } from "react-icons/ci";
-import AlertMainTextBox from "./alert/AlertMainTextBox";
-import Link from "next/link";
 
 interface Props {
   like_count: number;

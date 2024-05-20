@@ -1,12 +1,17 @@
 "use client";
+
 import * as cs from "@/shared/styles/common.css";
-import { useParams, usePathname } from "next/navigation";
 import * as s from "./CommentsStyle.css";
 
-import useAlertContext from "@/hooks/useAlertContext";
-import { IComment } from "@/models/comment";
 import { Button } from "@design-system/react-components-button";
-import AlertMainTextBox from "../alert/AlertMainTextBox";
+
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import { IComment } from "@/models/comment";
+
+import { useParams, usePathname } from "next/navigation";
 import { Dispatch, SetStateAction } from "react";
 
 export const PATH_TYPE: Record<string, string> = {

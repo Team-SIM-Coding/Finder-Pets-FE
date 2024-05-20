@@ -1,7 +1,8 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback } from "react";
 import { FilterMenuFormData } from "@/utils/validation/filter";
+
+import { createContext, useContext, useState, useCallback } from "react";
 
 interface FilterContextType {
   filter: FilterMenuFormData;

@@ -1,15 +1,17 @@
 "use client";
+
 import * as s from "./EditorStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 import { Input } from "@design-system/react-components-input";
+
 import { FieldValues, useFormContext, Path, Controller, PathValue } from "react-hook-form";
 import { useEffect } from "react";
 
 interface Props<T extends FieldValues> {
   label: string;
   name: Path<T>;
-  defaultValue?: boolean; // Add defaultValue prop
+  defaultValue?: boolean;
 }
 
 const EditorCheckBoxField = <T extends FieldValues>({ label, name, defaultValue }: Props<T>) => {

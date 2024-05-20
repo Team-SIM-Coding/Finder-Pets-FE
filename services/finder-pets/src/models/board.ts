@@ -1,5 +1,5 @@
-import { IComment } from "./comment";
-import { Image } from "./image";
+import { IComment } from "@/models/comment";
+import { Image } from "@/models/image";
 
 export interface Board {
   board_id?: string;

@@ -1,7 +1,8 @@
 "use client";
 
-import LostDetailBox from "@/components/lost/LostDetailBox";
 import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import LostDetailBox from "@/components/lost/LostDetailBox";
+
 import { Suspense } from "react";
 
 const LostDetail = () => {

@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import Spacing from "../Spacing";
-import UserAndCreateAt from "../UserAndCreateAt";
-import CommentRegisterButton from "./CommentRegisterButton";
 import * as s from "./CommentsStyle.css";
+
+import Spacing from "@/shared/components//Spacing";
+import UserAndCreateAt from "@/shared/components//UserAndCreateAt";
+import CommentRegisterButton from "@/shared/components/comments/CommentRegisterButton";
+
+import { useState } from "react";
 
 const CommentWriter = () => {
   const [text, setText] = useState("");

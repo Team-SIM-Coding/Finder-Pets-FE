@@ -1,6 +1,6 @@
 import EditorSection from "@/shared/components/editor/EditorSection";
-import CommunityRegisterMain from "./CommunityRegisterMain";
-import CommunityRegisterButton from "./CommunityRegisterButton";
+import CommunityRegisterMain from "@/components/submit/community/CommunityRegisterMain";
+import CommunityRegisterButton from "@/components/submit/community/CommunityRegisterButton";
 
 const CommunityRegisterForm = () => {
   return (
