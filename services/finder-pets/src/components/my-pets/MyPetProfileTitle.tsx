@@ -1,7 +1,11 @@
+import useAlertContext from "@/hooks/useAlertContext";
 import * as s from "./MyPetStyle.css";
+import * as cs from "@/shared/styles/common.css";
 
 import { Button } from "@design-system/react-components-button";
 import { Flex } from "@design-system/react-components-layout";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+import { useRouter } from "next/navigation";
 
 interface Props {
   id: string;
@@ -9,6 +13,9 @@ interface Props {
 }
 
 const MyPetProfileTitle = ({ id, name = "반려동물" }: Props) => {
+  const { open, close } = useAlertContext();
+  const router = useRouter();
+
   const handleDeleteMyPet = async (id: string) => {
     const response = await fetch(`/api/my-pets/delete/${id}`, {
       method: "DELETE",
@@ -16,6 +23,17 @@ const MyPetProfileTitle = ({ id, name = "반려동물" }: Props) => {
 
     if (response.ok) {
       const data = await response.json();
+      open({
+        width: "300px",
+        height: "200px",
+        title: "나의 반려 동물 삭제",
+        main: <AlertMainTextBox text={`나의 반려 동물 삭제가 완료되었습니다.`} />,
+        rightButtonStyle: cs.defaultButton,
+        onRightButtonClick: () => {
+          router.push("/my-menu/my-pets");
+          close();
+        },
+      });
       console.log("나의 반려동물 프로필 삭제 완료 : ", data);
     } else {
       const data = await response.json();

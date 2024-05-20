@@ -64,6 +64,29 @@ export const commentRegisterButtonWrap = style([
   },
 ]);
 
+export const commentUpdateAndCancelButtonWrap = style([
+  f.pAbsolute,
+  {
+    bottom: "28px",
+    right: "1px",
+    width: "104px",
+    height: "30px",
+    backgroundColor: "white",
+    borderTop: "1px solid #CBCBCB",
+    borderLeft: "1px solid #CBCBCB",
+    borderBottom: "0.5px solid black",
+    textAlign: "center",
+  },
+]);
+
+export const commentUpdateAndCancelButton = style({
+  width: "50%",
+  border: "none",
+  outline: "none",
+  backgroundColor: "transparent",
+  borderLeft: "1px solid #CBCBCB",
+});
+
 export const commentRegisterButton = style({
   border: "none",
   outline: "none",

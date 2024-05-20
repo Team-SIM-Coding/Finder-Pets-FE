@@ -20,11 +20,12 @@ interface Props {
   fetchFunction: (params: FetchParams) => Promise<FetchResponse>;
   maxResults: number;
   initPageToken?: number;
+  id?: string;
 }
 
-const usePetList = ({ type, fetchFunction, maxResults, initPageToken = 1 }: Props) => {
+const usePetList = ({ type, fetchFunction, maxResults, initPageToken = 1, id }: Props) => {
   return useSuspenseInfiniteQuery({
-    queryKey: [type, maxResults, initPageToken],
+    queryKey: [type, id, maxResults, initPageToken],
     queryFn: async ({ pageParam = initPageToken }) => {
       return await fetchFunction({ pageParam, maxResults });
     },

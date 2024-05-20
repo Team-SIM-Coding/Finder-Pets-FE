@@ -50,6 +50,10 @@ interface Geocoder {
 }
 
 interface GeocoderResult {
+  road_address?: {
+    y: string;
+    x: string;
+  };
   y: string;
   x: string;
 }

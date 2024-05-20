@@ -2,50 +2,54 @@ import * as cs from "@/shared/styles/common.css";
 
 import { Divider } from "@design-system/react-components-layout";
 
+import { FinderPet } from "@/models/finder";
 import Spacing from "@/shared/components/Spacing";
 import DetailDescriptionTextBox from "@/shared/components/detail/DetailDescriptionTextBox";
 import DetailDescriptionTextField from "@/shared/components/detail/DetailDescriptionTextField";
-import MapImage from "@/shared/components/detail/MapImage";
+import KakaoMap from "@/shared/components/kakao-map/KakaoMap";
 import { trimText } from "@/utils/trimText";
 
-const LostDetailDescription = () => {
+interface Props {
+  info: FinderPet | undefined;
+}
+
+const LostDetailDescription = ({ info }: Props) => {
+  const mapAddress = info?.area as string;
+
   return (
     <article className={cs.detailSectionStyle}>
       <Spacing height="12px" />
-      <DetailDescriptionTextField label="실종장소" text="공주시 우금리터널" />
+      <DetailDescriptionTextField label="실종장소" text={info?.area} />
       <Spacing height="12px" />
-      <DetailDescriptionTextField label="실종일" text="2024.04.13" />
+      <DetailDescriptionTextField label="실종일" text={info?.date} />
       <Spacing height="12px" />
       <Divider size={6} />
       <Spacing height="12px" />
-      <DetailDescriptionTextField
-        label="특징"
-        text={trimText("파란색목줄착용, 겁이많음,진드기, 털엉킴, 치석")}
-      />
+      <DetailDescriptionTextField label="특징" text={trimText(info?.character)} />
       <Spacing height="12px" />
-      <DetailDescriptionTextField label="색상" text="갈색" />
+      <DetailDescriptionTextField label="색상" text={info?.color} />
       <Spacing height="12px" />
-      <DetailDescriptionTextField label="품종" text="믹스견" />
+      <DetailDescriptionTextField label="품종" text={info?.kind} />
       <Spacing height="12px" />
-      <DetailDescriptionTextField label="체중" text="3Kg" />
+      <DetailDescriptionTextField label="체중" text={`${info?.weight} Kg`} />
       <Spacing height="12px" />
-      <DetailDescriptionTextField label="성별" text="수컷" />
+      <DetailDescriptionTextField label="성별" text={info?.gender === "M" ? "수컷" : "암컷"} />
       <Spacing height="12px" />
-      <DetailDescriptionTextField label="나이 " text="1년 미만" />
+      <DetailDescriptionTextField label="나이 " text={info?.age} />
       <Spacing height="12px" />
-      <DetailDescriptionTextField label="연락처" text="010-0000-0001" />
+      <DetailDescriptionTextField label="연락처" text={info?.phone} />
       <Spacing height="12px" />
       <Divider size={6} />
       <Spacing height="12px" />
       <DetailDescriptionTextField label="상세설명" />
       <Spacing height="12px" />
-      <DetailDescriptionTextBox text="산책 도중에 잠깐 한눈팔은 사이에 잃어버렸어요. 보신 분 계시면 꼭 연락 부탁드립니다. " />
+      <DetailDescriptionTextBox text={info?.description} />
       <Spacing height="12px" />
       <Divider size={6} />
       <Spacing height="24px" />
       <DetailDescriptionTextField label="실종장소" />
       <Spacing height="24px" />
-      <MapImage url="/images/map.jpg" />
+      <KakaoMap address={mapAddress} />
       <Spacing height="24px" />
       <Divider size={6} />
       <Spacing height="12px" />

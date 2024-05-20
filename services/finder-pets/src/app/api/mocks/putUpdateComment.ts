@@ -1,12 +1,5 @@
 import { HttpHandler, HttpResponse, http } from "msw";
-import {
-  AnyPost,
-  isLostPet,
-  isPetStory,
-  isReview,
-  isSightedPet,
-  storagePaths,
-} from "./postComment";
+import { AnyPost, isBoard, isFinderPet, storagePaths } from "./postComment";
 import { IComment } from "@/models/comment";
 
 const createUpdateCommentHandler = (storageKey: string): HttpHandler => {
@@ -16,10 +9,10 @@ const createUpdateCommentHandler = (storageKey: string): HttpHandler => {
     const posts = JSON.parse(localStorage.getItem(storagePaths[storageKey]) || "[]") as AnyPost[];
 
     const postIndex = posts.findIndex((post) => {
-      if (isLostPet(post) && storageKey === "lost") return post.lost_pet_id === id;
-      if (isSightedPet(post) && storageKey === "sighted") return post.sighted_pet_id === id;
-      if (isReview(post) && storageKey === "review") return post.review_id === id;
-      if (isPetStory(post) && storageKey === "pet-story") return post.pet_story_id === id;
+      if (isFinderPet(post) && storageKey === "lost") return post.pet_id === id;
+      if (isFinderPet(post) && storageKey === "sighted") return post.pet_id === id;
+      if (isBoard(post) && storageKey === "review") return post.board_id === id;
+      if (isBoard(post) && storageKey === "pet-story") return post.board_id === id;
       return false;
     });
 
@@ -30,11 +23,11 @@ const createUpdateCommentHandler = (storageKey: string): HttpHandler => {
       if (commentIndex !== -1 && commentIndex !== undefined) {
         posts[postIndex].comments![commentIndex] = updatedCommentData;
         localStorage.setItem(storagePaths[storageKey], JSON.stringify(posts));
-        return HttpResponse.json({ message: "Comment updated successfully." }, { status: 200 });
+        return HttpResponse.json({ message: "댓글 수정 성공" }, { status: 200 });
       }
     }
 
-    return HttpResponse.json({ message: "Post or comment not found." }, { status: 404 });
+    return HttpResponse.json({ message: "댓글을 찾을 수 없습니다." }, { status: 404 });
   });
 };
 

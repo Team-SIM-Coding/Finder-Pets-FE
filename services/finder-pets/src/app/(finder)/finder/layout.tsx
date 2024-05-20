@@ -1,19 +1,15 @@
-import FilterMenuBar from "@/shared/components/filter/FilterMenuBar";
-import TabMenuBar from "@/shared/components/tab/TabMenuBar";
+import FinderMenuBar from "@/components/finder/FinderMenuBar";
+import { FilterProvider } from "@/contexts/FilterContext";
 import WriterButton from "@/shared/components/writer/WriterButton";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <section>
-      <FilterMenuBar />
-      <TabMenuBar
-        firstTab="기다림의 끝에서"
-        secondTab="안전한 품으로"
-        firstPath="/finder/lost"
-        secondPath="/finder/sighted"
-      />
-      {children}
-      <WriterButton />
+      <FilterProvider>
+        <FinderMenuBar />
+        {children}
+        <WriterButton />
+      </FilterProvider>
     </section>
   );
 }

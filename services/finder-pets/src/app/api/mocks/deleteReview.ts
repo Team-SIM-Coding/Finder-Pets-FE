@@ -1,14 +1,14 @@
-import { Review } from "@/models/review";
+import { Board } from "@/models/board";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const reviews: Review[] = JSON.parse(localStorage.getItem("reviews") || "[]");
+const reviews: Board[] = JSON.parse(localStorage.getItem("reviews") || "[]");
 
 export const deleteReview: HttpHandler = http.delete(
   "/api/review/delete/:id",
   async ({ params }) => {
     const reviewId = params.id;
 
-    const reviewIndex = reviews.findIndex((p) => p.review_id === reviewId);
+    const reviewIndex = reviews.findIndex((p) => p.board_id === reviewId);
 
     if (reviewIndex !== -1) {
       reviews.splice(reviewIndex, 1);

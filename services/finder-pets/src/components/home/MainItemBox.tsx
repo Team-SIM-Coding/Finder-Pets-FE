@@ -3,20 +3,28 @@ import * as s from "./MainStyle.css";
 
 import { Flex, Text } from "@design-system/react-components-layout";
 
-import { LostPets } from "@/shared/types/pet";
+import { FinderPet } from "@/models/finder";
 import Spacing from "@/shared/components/Spacing";
+import { Image } from "@/models/image";
+import Link from "next/link";
 
 interface Props {
-  item: LostPets;
+  item: FinderPet;
+  type: string;
 }
 
-const MainItemBox = ({ item }: Props) => {
+const MainItemBox = ({ item, type }: Props) => {
+  const thumnail = item.images && (item.images[0] as Image);
+
   return (
-    <div className={s.mainItemBox}>
+    <Link
+      href={type === "lost" ? `/finder/lost/${item.pet_id}` : `/finder/sighted/${item.pet_id}`}
+      className={s.mainItemBox}
+    >
       <div>
         <img
-          key={item.images[0].image_id}
-          src={item.images[0].image_url}
+          key={thumnail ? thumnail.img_id : ""}
+          src={thumnail ? thumnail.url : "/images/pet1.jpeg"}
           alt="반려동물 이미지"
           className={s.mainItemImage}
         />
@@ -28,11 +36,11 @@ const MainItemBox = ({ item }: Props) => {
           </h3>
         </Flex>
         <Spacing height="8px" />
-        <Text fontSize="sm">실종 장소 : {item.lost_price}</Text>
+        <Text fontSize="sm">실종 장소 : {item?.area}</Text>
         <Spacing height="8px" />
-        <Text fontSize="sm">실종 날짜 : {item.lost_date.toString()}</Text>
+        <Text fontSize="sm">실종 날짜 : {item?.date?.toString()}</Text>
       </div>
-    </div>
+    </Link>
   );
 };
 

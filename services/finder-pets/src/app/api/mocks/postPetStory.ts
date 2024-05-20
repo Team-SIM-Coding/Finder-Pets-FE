@@ -1,12 +1,12 @@
-import { PetStory } from "@/models/pet-story";
+import { Board } from "@/models/board";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const petStories: PetStory[] = JSON.parse(localStorage.getItem("pet-stories") || "[]");
+const petStories: Board[] = JSON.parse(localStorage.getItem("pet-stories") || "[]");
 
 export const postPetStory: HttpHandler = http.post(
   "/api/pet-story/register",
   async ({ request }) => {
-    const newPetStory = (await request.json()) as PetStory;
+    const newPetStory = (await request.json()) as Board;
 
     petStories.push(newPetStory);
 

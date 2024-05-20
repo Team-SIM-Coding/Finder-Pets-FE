@@ -3,22 +3,19 @@ import * as s from "./ListStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
-import HighLightTag from "./HighLightTag";
-import ListInfoDescription from "./ListInfoDescription";
-import { LostPet } from "@/models/lost";
-import { SightedPet } from "@/models/sighted";
-import { Review } from "@/models/review";
-import { PetStory } from "@/models/pet-story";
-import { trimText } from "@/utils/trimText";
-import { usePathname } from "next/navigation";
+import { Board } from "@/models/board";
+import { FinderPet } from "@/models/finder";
 import { ShelterPet } from "@/models/shelter";
 import { formatDate } from "@/utils/format/formatDate";
+import { trimText } from "@/utils/trimText";
+import { usePathname } from "next/navigation";
+import HighLightTag from "./HighLightTag";
+import ListInfoDescription from "./ListInfoDescription";
 
-type PetInfo = LostPet | SightedPet | ShelterPet;
-type CommunityInfo = Review | PetStory;
+type PetInfo = FinderPet | ShelterPet;
 
 interface Props {
-  info: PetInfo | CommunityInfo;
+  info: PetInfo | Board;
 }
 
 const hasPetInfo = (info: PetInfo): info is PetInfo => {
@@ -29,13 +26,13 @@ const COMMUNITY_PATHS = ["/community/reunion-reviews", "/community/pet-stories"]
 
 const normalizeShelterPetData = (pet: ShelterPet): PetInfo => {
   return {
-    place: `${pet.orgNm} ${pet.happenPlace}`,
+    area: `${pet.orgNm} ${pet.happenPlace}`,
     animal: pet.kindCd.match(/\[(.*?)\]/)?.[1] ?? pet.kindCd,
     kind: pet.kindCd.replace(/^\[.*?\]\s*/, ""),
     gender: pet.sexCd,
     description: pet.specialMark || "",
     created_at: pet.noticeSdt,
-    weight: parseFloat(pet.weight) || 0,
+    weight: pet.weight || "",
   };
 };
 
@@ -57,9 +54,13 @@ const ListInfoBox = ({ info }: Props) => {
   return (
     <div className={s.listInfoBoxWrap}>
       <Flex justify="space-around">
-        {hasPetInfo(petInfo) && <HighLightTag text={trimText(petInfo.place, 4)} color="#FDD78D" />}
-        {hasPetInfo(petInfo) && <HighLightTag text={petInfo.animal} color="#7C80E4" />}
-        {hasPetInfo(petInfo) && <HighLightTag text={trimText(petInfo.kind, 5)} color="#F18FE2" />}
+        {hasPetInfo(petInfo) && (
+          <>
+            <HighLightTag text={trimText(petInfo.area, 4)} color="#FDD78D" />
+            <HighLightTag text={petInfo.animal} color="#7C80E4" />
+            <HighLightTag text={trimText(petInfo.kind, 5)} color="#F18FE2" />
+          </>
+        )}
         {!COMMUNITY_PATHS.includes(path) && hasPetInfo(petInfo) && (
           <HighLightTag text={petInfo.gender === "M" ? "수컷" : "암컷"} color="#52FF00" />
         )}
@@ -67,12 +68,12 @@ const ListInfoBox = ({ info }: Props) => {
       {!COMMUNITY_PATHS.includes(path) && (
         <div className={s.infoDescriptionWrap}>
           {hasPetInfo(petInfo) && (
-            <ListInfoDescription label="체중" text={`${petInfo.weight} Kg`} />
-          )}
-          {hasPetInfo(petInfo) && <ListInfoDescription label="특징" text={petInfo.description} />}
-          {hasPetInfo(petInfo) && <ListInfoDescription label="구조장소" text={petInfo.place} />}
-          {hasPetInfo(petInfo) && (
-            <ListInfoDescription label="공고기간" text={formatDate(petInfo.created_at)} />
+            <>
+              <ListInfoDescription label="체중" text={`${petInfo.weight} Kg`} />
+              <ListInfoDescription label="특징" text={petInfo.description} />
+              <ListInfoDescription label="구조장소" text={petInfo.area} />
+              <ListInfoDescription label="공고기간" text={formatDate(petInfo.created_at)} />
+            </>
           )}
         </div>
       )}

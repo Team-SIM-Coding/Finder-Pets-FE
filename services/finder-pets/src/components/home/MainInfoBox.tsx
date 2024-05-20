@@ -3,25 +3,25 @@
 import * as cs from "@/shared/styles/common.css";
 import * as s from "./MainStyle.css";
 
-import { IoIosArrowForward } from "react-icons/io";
-import { Flex } from "@design-system/react-components-layout";
+import { fetchLostPets } from "@/app/api/mocks/getLostPet";
+import { FinderPet } from "@/models/finder";
 import MainSwiperBox from "@/shared/components/swiper/MainSwiperBox";
-import { useEffect, useState } from "react";
-import { LostPets } from "@/shared/types/pet";
+import { Flex } from "@design-system/react-components-layout";
+import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
+import { IoIosArrowForward } from "react-icons/io";
+import { fetchSightedPets } from "@/app/api/mocks/getSightedPet";
 
 interface Props {
   title: string;
+  type: string;
 }
 
-const MainInfoBox = ({ title }: Props) => {
-  const [items, setItems] = useState<LostPets[]>([]);
-
-  useEffect(() => {
-    fetch("/mocks/lost_mock_data.json")
-      .then((res) => res.json())
-      .then((data) => setItems(data));
-  }, []);
+const MainInfoBox = ({ title, type }: Props) => {
+  const { data } = useQuery<FinderPet[], Error>({
+    queryKey: [type === "lost" ? "lost-pets" : "sighted-pets"],
+    queryFn: type === "lost" ? fetchLostPets : fetchSightedPets,
+  });
 
   return (
     <article>
@@ -37,7 +37,7 @@ const MainInfoBox = ({ title }: Props) => {
           <IoIosArrowForward className={s.iconStyle} />
         </Flex>
       </Flex>
-      <MainSwiperBox items={items} />
+      <MainSwiperBox items={data} type={type} />
     </article>
   );
 };

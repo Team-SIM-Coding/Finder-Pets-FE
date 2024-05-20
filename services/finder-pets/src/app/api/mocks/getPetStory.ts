@@ -1,7 +1,7 @@
-import { PetStory } from "@/models/pet-story";
+import { Board } from "@/models/board";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const petStories: PetStory[] = JSON.parse(localStorage.getItem("pet-stories") || "[]");
+const petStories: Board[] = JSON.parse(localStorage.getItem("pet-stories") || "[]");
 
 export const getPetStories: HttpHandler = http.get("/api/pet-story", async () => {
   if (petStories) {
@@ -17,7 +17,7 @@ export const getPetStories: HttpHandler = http.get("/api/pet-story", async () =>
 export const getPetStory: HttpHandler = http.get("/api/pet-story/:id", async ({ params }) => {
   const petStoryId = params.id;
 
-  const petStory = petStories.find((p) => p.pet_story_id === petStoryId);
+  const petStory = petStories.find((p) => p.board_id === petStoryId);
 
   if (petStory) {
     return HttpResponse.json(petStory, { status: 200 });
@@ -25,3 +25,11 @@ export const getPetStory: HttpHandler = http.get("/api/pet-story/:id", async ({ 
     return HttpResponse.json({ message: "반려 이야기를 찾을 수 없습니다." }, { status: 404 });
   }
 });
+
+export const fetchPetStory = async (petStoryId: string[] | string): Promise<Board> => {
+  const response = await fetch(`/api/pet-story/${petStoryId}`);
+  if (!response.ok) {
+    throw new Error("반려 이야기 게시물 정보 조회에 실패했습니다.");
+  }
+  return response.json();
+};

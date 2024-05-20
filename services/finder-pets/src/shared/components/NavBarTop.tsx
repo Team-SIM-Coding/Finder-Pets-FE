@@ -25,7 +25,7 @@ const NAVBAR_SEARCH_INCLUDES_PATHS = [
   "/community/pet-stories",
 ];
 
-const MY_PET_REGISTER_BUTTON_PATH = "/my-menu/profile";
+const MY_PET_REGISTER_BUTTON_PATH = "/my-menu";
 
 const NavBarTop = () => {
   const path = usePathname();
@@ -45,7 +45,7 @@ const NavBarTop = () => {
           />
         </Link>
         {NAVBAR_SEARCH_INCLUDES_PATHS.includes(path) && <NavBarSearchInput />}
-        {MY_PET_REGISTER_BUTTON_PATH.includes(path) && (
+        {MY_PET_REGISTER_BUTTON_PATH === path && (
           <Link href="/my-menu/my-pets/register">
             <Button className={s.myPetRegisterButton}>반려동물 등록</Button>
           </Link>

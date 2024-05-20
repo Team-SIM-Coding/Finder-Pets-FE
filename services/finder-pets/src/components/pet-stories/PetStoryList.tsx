@@ -1,12 +1,12 @@
 "use client";
 
-import { PetStory } from "@/models/pet-story";
 import { waitForMSWActivation } from "@/shared/mocks/waitForWorkerActivation";
 import { useEffect, useState } from "react";
 import ListBox from "../list/ListBox";
+import { Board } from "@/models/board";
 
 const PetStoryList = () => {
-  const [petStories, setPetStories] = useState<PetStory[]>([]);
+  const [petStories, setPetStories] = useState<Board[]>([]);
 
   const fetchPetStories = async () => {
     const response = await fetch("/api/pet-story");
@@ -31,7 +31,7 @@ const PetStoryList = () => {
   return (
     <ul>
       {petStories.map((story) => (
-        <ListBox key={story.pet_story_id} list_info={story} />
+        <ListBox key={story.board_id} list_info={story} />
       ))}
     </ul>
   );

@@ -19,7 +19,7 @@ const EditorSelectTab = <T extends FieldValues>({ label, name, children, classNa
       <label htmlFor={name} className={s.labelStyle}>
         {label}
       </label>
-      <SelectTab name={name} className={className}>
+      <SelectTab<T> name={name} className={className}>
         {children}
       </SelectTab>
     </Flex>

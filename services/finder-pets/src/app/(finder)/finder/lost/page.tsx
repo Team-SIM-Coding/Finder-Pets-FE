@@ -6,6 +6,7 @@ const Lost = () => {
     <section>
       <Spacing height="142px" />
       <LostPetList />
+      <Spacing height="60px" />
     </section>
   );
 };

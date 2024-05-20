@@ -3,10 +3,10 @@
 import { waitForMSWActivation } from "@/shared/mocks/waitForWorkerActivation";
 import { useEffect, useState } from "react";
 import ListBox from "../list/ListBox";
-import { Review } from "@/models/review";
+import { Board } from "@/models/board";
 
 const ReUnionReviewsList = () => {
-  const [reviews, setReviews] = useState<Review[]>([]);
+  const [reviews, setReviews] = useState<Board[]>([]);
 
   const fetchReviews = async () => {
     const response = await fetch("/api/review");
@@ -31,7 +31,7 @@ const ReUnionReviewsList = () => {
   return (
     <ul>
       {reviews.map((review) => (
-        <ListBox key={review.review_id} list_info={review} />
+        <ListBox key={review.board_id} list_info={review} />
       ))}
     </ul>
   );

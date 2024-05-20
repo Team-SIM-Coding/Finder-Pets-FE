@@ -1,10 +1,13 @@
 "use client";
+import * as cs from "@/shared/styles/common.css";
 import { useParams, usePathname } from "next/navigation";
 import * as s from "./CommentsStyle.css";
 
+import useAlertContext from "@/hooks/useAlertContext";
+import { IComment } from "@/models/comment";
 import { Button } from "@design-system/react-components-button";
-import { useEffect, useState } from "react";
-import { waitForMSWActivation } from "@/shared/mocks/waitForWorkerActivation";
+import AlertMainTextBox from "../alert/AlertMainTextBox";
+import { Dispatch, SetStateAction } from "react";
 
 export const PATH_TYPE: Record<string, string> = {
   "/finder/lost": "lost",
@@ -13,60 +16,53 @@ export const PATH_TYPE: Record<string, string> = {
   "/community/pet-stories": "pet-story",
 };
 
-const TEST_COMMENT = {
-  comment_id: "3",
-  comment: "댓글 등록 테스트",
-  created_at: "2024.04.03",
-};
+interface Props {
+  comment: string;
+  setText: Dispatch<SetStateAction<string>>;
+}
 
-const CommentRegisterButton = () => {
-  const [comments, setComments] = useState([]);
-
+const CommentRegisterButton = ({ comment, setText }: Props) => {
   const { id } = useParams();
   const path = usePathname();
   const parts = path.split("/");
   const extractedPath = `/${parts[1]}/${parts[2]}`;
 
+  const { open, close } = useAlertContext();
+
   const storageKey = PATH_TYPE[extractedPath];
 
   const handleRegisterComment = async () => {
+    const newComment: IComment = {
+      comment_id: "",
+      comment,
+      created_at: new Date().toISOString(),
+    };
+
     const response = await fetch(`/api/${storageKey}/${id}/comment/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(TEST_COMMENT),
+      body: JSON.stringify(newComment),
     });
-
     if (response.ok) {
       const data = await response.json();
       console.log("댓글 등록이 완료되었습니다.", data);
-      fetchComments();
+      setText("");
+      open({
+        width: "300px",
+        height: "200px",
+        title: "댓글 등록",
+        main: <AlertMainTextBox text="댓글 등록이 완료되었습니다." />,
+        rightButtonStyle: cs.defaultButton,
+        onRightButtonClick: () => {
+          setText("");
+          close();
+        },
+      });
     } else {
       const data = await response.json();
       console.log("댓글 등록이 실패되었습니다.", data);
     }
   };
-
-  const fetchComments = async () => {
-    const response = await fetch(`/api/${storageKey}/${id}/comments`);
-
-    if (response.ok) {
-      const data = await response.json();
-      setComments(data);
-      console.log("댓글 리스트 조회 성공 : ", data);
-    } else {
-      const data = await response.json();
-      console.log("댓글 리스트 조회 실패 : ", data);
-    }
-  };
-
-  useEffect(() => {
-    (async () => {
-      waitForMSWActivation();
-      fetchComments();
-    })();
-  }, []);
-
-  console.log(comments);
 
   return (
     <div className={s.commentRegisterButtonWrap}>

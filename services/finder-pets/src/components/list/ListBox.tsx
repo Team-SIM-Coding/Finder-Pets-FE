@@ -3,18 +3,16 @@ import * as s from "./ListStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
+import { Board } from "@/models/board";
+import { FinderPet } from "@/models/finder";
+import { ShelterPet } from "@/models/shelter";
 import Image from "next/image";
-import ListInfoBox from "./ListInfoBox";
-import { LostPet } from "@/models/lost";
-import { SightedPet } from "@/models/sighted";
-import { Review } from "@/models/review";
-import { PetStory } from "@/models/pet-story";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShelterPet } from "@/models/shelter";
+import ListInfoBox from "./ListInfoBox";
 
 interface Props {
-  list_info: LostPet | SightedPet | Review | PetStory | ShelterPet;
+  list_info: FinderPet | Board | ShelterPet;
 }
 
 const defaultImageUrl = "/images/pet1.jpeg";
@@ -25,14 +23,10 @@ const ListBox = ({ list_info }: Props) => {
   let id;
 
   if (list_info) {
-    if ("lost_pet_id" in list_info) {
-      id = list_info.lost_pet_id;
-    } else if ("sighted_pet_id" in list_info) {
-      id = list_info.sighted_pet_id;
-    } else if ("review_id" in list_info) {
-      id = list_info.review_id;
-    } else if ("pet_story_id" in list_info) {
-      id = list_info.pet_story_id;
+    if ("pet_id" in list_info) {
+      id = list_info.pet_id;
+    } else if ("board_id" in list_info) {
+      id = list_info.board_id;
     } else if ("desertionNo" in list_info) {
       id = list_info.desertionNo;
     }

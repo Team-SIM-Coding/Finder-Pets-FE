@@ -1,14 +1,14 @@
-import { SightedPet } from "@/models/sighted";
+import { FinderPet } from "@/models/finder";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const sightedPets: SightedPet[] = JSON.parse(localStorage.getItem("sighted-pets") || "[]");
+const sightedPets: FinderPet[] = JSON.parse(localStorage.getItem("sighted-pets") || "[]");
 
 export const deleteSightedPet: HttpHandler = http.delete(
   "/api/sighted/delete/:id",
   async ({ params }) => {
     const SightedId = params.id;
 
-    const sightedPetIndex = sightedPets.findIndex((p) => p.sighted_pet_id === SightedId);
+    const sightedPetIndex = sightedPets.findIndex((p) => p.pet_id === SightedId);
 
     if (sightedPetIndex !== -1) {
       sightedPets.splice(sightedPetIndex, 1);

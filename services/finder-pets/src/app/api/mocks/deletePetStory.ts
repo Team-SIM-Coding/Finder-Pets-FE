@@ -1,14 +1,14 @@
-import { PetStory } from "@/models/pet-story";
+import { Board } from "@/models/board";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const petStories: PetStory[] = JSON.parse(localStorage.getItem("pet-stories") || "[]");
+const petStories: Board[] = JSON.parse(localStorage.getItem("pet-stories") || "[]");
 
 export const deletePetStory: HttpHandler = http.delete(
   "/api/pet-story/delete/:id",
   async ({ params }) => {
     const petStoryId = params.id;
 
-    const petStoryIndex = petStories.findIndex((p) => p.pet_story_id === petStoryId);
+    const petStoryIndex = petStories.findIndex((p) => p.board_id === petStoryId);
 
     if (petStoryIndex !== -1) {
       petStories.splice(petStoryIndex, 1);

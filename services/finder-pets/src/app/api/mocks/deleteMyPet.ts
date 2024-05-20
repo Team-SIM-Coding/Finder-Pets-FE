@@ -1,7 +1,7 @@
 import { MyPet } from "@/models/pet";
 import { HttpHandler, HttpResponse, http } from "msw";
 
-const pets: MyPet[] = JSON.parse(localStorage.getItem("pets") || "[]");
+const pets: MyPet[] = JSON.parse(localStorage.getItem("my-pets") || "[]");
 
 export const deleteMyPet: HttpHandler = http.delete(
   "/api/my-pets/delete/:id",
@@ -13,7 +13,7 @@ export const deleteMyPet: HttpHandler = http.delete(
     if (petIndex !== -1) {
       const [deletedPet] = pets.splice(petIndex, 1);
 
-      localStorage.setItem("pets", JSON.stringify(pets));
+      localStorage.setItem("my-pets", JSON.stringify(pets));
 
       return HttpResponse.json(
         { message: `반려동물 ${deletedPet.name}이 삭제되었습니다.` },

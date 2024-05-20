@@ -1,12 +1,12 @@
 "use client";
 
-import { LostPet } from "@/models/lost";
 import { waitForMSWActivation } from "@/shared/mocks/waitForWorkerActivation";
 import { useEffect, useState } from "react";
 import ListBox from "../list/ListBox";
+import { FinderPet } from "@/models/finder";
 
 const LostPetList = () => {
-  const [lostPets, setLostPets] = useState<LostPet[]>([]);
+  const [lostPets, setLostPets] = useState<FinderPet[]>([]);
 
   const fetchLostPets = async () => {
     const response = await fetch("/api/lost");
@@ -31,7 +31,7 @@ const LostPetList = () => {
   return (
     <ul>
       {lostPets.map((lost) => (
-        <ListBox key={lost.lost_pet_id} list_info={lost} />
+        <ListBox key={lost.pet_id} list_info={lost} />
       ))}
     </ul>
   );

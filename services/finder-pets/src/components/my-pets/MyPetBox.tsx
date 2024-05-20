@@ -23,8 +23,8 @@ const MyPetBox = ({ pet }: Props) => {
         <Spacing height="12px" />
         <Link href={`/my-menu/my-pets/${pet.my_pet_id}`} className={s.myPetBoxLinkStyle}>
           <Image
-            key={pet.profile_image}
-            src={pet.profile_image}
+            key={pet.pet_image.img_id}
+            src={pet.pet_image.url}
             alt="반려동물 이미지"
             width={160}
             height={160}
@@ -35,7 +35,7 @@ const MyPetBox = ({ pet }: Props) => {
         <Flex>
           <HighLightTag text={pet.animal} color="#FDD78D" width="56px" />
           <HighLightTag text={pet.kind} color="#7C80E4" width="56px" />
-          <HighLightTag text={pet.gender} color="#F18FE2" width="56px" />
+          <HighLightTag text={pet.gender === "M" ? "수컷" : "암컷"} color="#F18FE2" width="56px" />
         </Flex>
         <Spacing height="12px" />
       </Flex>
