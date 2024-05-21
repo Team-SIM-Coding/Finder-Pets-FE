@@ -95,6 +95,7 @@ const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
   const { mutate } = useMutation({
     mutationFn: fetchPostPet,
     onSuccess: (data) => {
+      console.log(data);
       const categoryName = data.category === "lost" ? "실종" : "목격";
 
       queryClient.refetchQueries({
@@ -126,8 +127,8 @@ const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
     ];
     const area = data.address + " " + data.detail_address;
 
-    const { category, ...formDataWithoutCategory } = data;
-    const formData = { ...formDataWithoutCategory, pet_id: randomId, images, area };
+    const formData = { ...data, pet_id: randomId, images, area };
+    const { category } = formData;
 
     mutate({ formData, category });
   };
