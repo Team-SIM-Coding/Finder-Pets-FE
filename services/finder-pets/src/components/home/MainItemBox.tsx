@@ -9,6 +9,7 @@ import { FinderPet } from "@/models/finder";
 import { Image } from "@/models/image";
 
 import Link from "next/link";
+import { trimText } from "@/utils/trimText";
 
 interface Props {
   item: FinderPet;
@@ -38,7 +39,7 @@ const MainItemBox = ({ item, type }: Props) => {
           </h3>
         </Flex>
         <Spacing height="8px" />
-        <Text fontSize="sm">실종 장소 : {item?.area}</Text>
+        <Text fontSize="sm">실종 장소 : {trimText(item?.area, 20)}</Text>
         <Spacing height="8px" />
         <Text fontSize="sm">실종 날짜 : {item?.date?.toString()}</Text>
       </div>

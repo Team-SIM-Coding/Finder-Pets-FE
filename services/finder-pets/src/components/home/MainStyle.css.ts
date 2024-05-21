@@ -23,7 +23,6 @@ export const mainItemImage = style({
 });
 
 export const mainItemBox = style({
-  border: "1px solid #DFDFDF",
   borderRadius: "10px",
   textDecoration: "none",
   color: "black",
@@ -31,6 +30,7 @@ export const mainItemBox = style({
 
 export const mainItemDescriptionWrap = style({
   padding: "8px 10px",
+  border: "1px solid #DFDFDF",
 });
 
 export const linkStyle = style({
