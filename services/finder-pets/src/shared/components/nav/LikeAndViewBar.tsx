@@ -13,12 +13,20 @@ import useAlertContext from "@/hooks/useAlertContext";
 import Link from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface Props {
   like_count: number;
   view_count: number;
   type?: string;
 }
+
+const refetchQueryType: Record<string, string> = {
+  lost: "lost-pets",
+  sighted: "sighted-pets",
+  "pet-story": "pet-stories",
+  review: "reviews",
+};
 
 const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
   const { id } = useParams();
@@ -28,7 +36,7 @@ const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
 
   const router = useRouter();
 
-  console.log(path, id);
+  const queryClient = useQueryClient();
 
   const { open, close } = useAlertContext();
 
@@ -63,6 +71,13 @@ const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
     if (response.ok) {
       const data = await response.json();
       console.log("해당 게시글이 정상적으로 삭제되었습니다.", data);
+
+      const typeMatch = type as string;
+
+      await queryClient.refetchQueries({
+        queryKey: [`${refetchQueryType[typeMatch]}`],
+      });
+
       open({
         width: "300px",
         height: "200px",

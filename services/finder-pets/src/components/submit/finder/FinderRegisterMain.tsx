@@ -24,6 +24,8 @@ import { useEffect, useState } from "react";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
 import { v4 as uuid } from "uuid";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { fetchPostPet } from "@/api/mocks/postLostPet";
 
 interface Props {
   pet_info: Pet;
@@ -60,6 +62,8 @@ const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
 
   const openModal = useDaumPostcodePopup(scriptUrl);
 
+  const queryClient = useQueryClient();
+
   useEffect(() => {
     const fetchKinds = async () => {
       const response = await fetch("/pet/kind.json");
@@ -88,6 +92,29 @@ const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
 
   const { handleSubmit, setValue } = methods;
 
+  const { mutate } = useMutation({
+    mutationFn: fetchPostPet,
+    onSuccess: (data) => {
+      const categoryName = data.category === "lost" ? "실종" : "목격";
+
+      queryClient.refetchQueries({
+        queryKey: [`${data.category === "lost" ? "lost-pets" : "sighted-pets"}`],
+      });
+
+      open({
+        width: "300px",
+        height: "200px",
+        title: `${categoryName} 동물 등록`,
+        main: <AlertMainTextBox text={`${categoryName} 동물 등록이 완료되었습니다.`} />,
+        rightButtonStyle: cs.defaultButton,
+        onRightButtonClick: () => {
+          router.push(`/finder/${data.category === "lost" ? "lost" : "sighted"}`);
+          close();
+        },
+      });
+    },
+  });
+
   const onSubmit: SubmitHandler<FinderPetRegisterFormData> = async (data, event) => {
     event?.preventDefault();
 
@@ -102,32 +129,7 @@ const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
     const { category, ...formDataWithoutCategory } = data;
     const formData = { ...formDataWithoutCategory, pet_id: randomId, images, area };
 
-    const response = await fetch(`/api/${category === "lost" ? "lost" : "sighted"}/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-
-    const categoryName = category === "lost" ? "실종" : "목격";
-
-    if (response.ok) {
-      const data = await response.json();
-      open({
-        width: "300px",
-        height: "200px",
-        title: `${categoryName} 동물 등록`,
-        main: <AlertMainTextBox text={`${categoryName} 동물 등록이 완료되었습니다.`} />,
-        rightButtonStyle: cs.defaultButton,
-        onRightButtonClick: () => {
-          router.push("/finder/lost");
-          close();
-        },
-      });
-      console.log(`${categoryName} 동물 등록 완료 : `, data);
-    } else {
-      const data = await response.json();
-      console.log(`${categoryName} 동물 등록 실패 : `, data);
-    }
+    mutate({ formData, category });
   };
 
   const handleZipCodeButtonClick = () => {
