@@ -9,6 +9,8 @@ export const postLogInUser: HttpHandler = http.post("/api/login", async ({ reque
 
   const user = users.find((u) => u.email === email && u.password === password);
 
+  console.log("user", user);
+
   if (user) {
     return HttpResponse.json(user, { status: 200 });
   } else {

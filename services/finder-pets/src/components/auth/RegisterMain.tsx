@@ -14,8 +14,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
+import { useRouter } from "next/navigation";
 
 const RegisterMain = () => {
+  const router = useRouter();
   const { open, close } = useAlertContext();
 
   const methods = useForm<RegisterFormData>({
@@ -54,6 +56,17 @@ const RegisterMain = () => {
 
       if (response.ok) {
         const data = await response.json();
+        open({
+          width: "300px",
+          height: "200px",
+          title: "회원가입 완료",
+          main: <AlertMainTextBox text="회원가입이 완료되었습니다." />,
+          rightButtonStyle: cs.defaultButton,
+          onRightButtonClick: () => {
+            router.push("/login");
+            close();
+          },
+        });
       } else {
         const contentType = response.headers.get("Content-Type");
         if (contentType?.includes("application/json")) {
@@ -67,9 +80,6 @@ const RegisterMain = () => {
               main: <AlertMainTextBox text={error.message} />,
               rightButtonStyle: cs.defaultButton,
               onRightButtonClick: () => {
-                close();
-              },
-              onBackDropClick: () => {
                 close();
               },
             });
