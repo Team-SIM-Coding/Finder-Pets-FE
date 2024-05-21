@@ -64,12 +64,12 @@ const ProfileMain = () => {
       open({
         width: "300px",
         height: "220px",
-        title: "프로필 업데이트 실패",
+        title: "프로필 업데이트",
         main: <AlertMainTextBox text={data.message} />,
         rightButtonStyle: cs.defaultButton,
         onRightButtonClick: () => {
           close();
-          router.push("/my-menu/profile");
+          router.push("/my-menu");
         },
         onBackDropClick: () => {
           close();
