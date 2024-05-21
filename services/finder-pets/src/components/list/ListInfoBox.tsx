@@ -65,14 +65,22 @@ const ListInfoBox = ({ info }: Props) => {
           </>
         )}
         {!COMMUNITY_PATHS.includes(path) && hasPetInfo(petInfo) && (
-          <HighLightTag text={petInfo.gender === "M" ? "수컷" : "암컷"} color="#52FF00" />
+          <HighLightTag
+            text={
+              petInfo.gender === "M" ? "수컷" : petInfo.gender === "F" ? "암컷" : petInfo.gender
+            }
+            color="#52FF00"
+          />
         )}
       </Flex>
       {!COMMUNITY_PATHS.includes(path) && (
         <div className={s.infoDescriptionWrap}>
           {hasPetInfo(petInfo) && (
             <>
-              <ListInfoDescription label="체중" text={`${petInfo.weight} Kg`} />
+              <ListInfoDescription
+                label="체중"
+                text={`${petInfo.weight?.includes("Kg") ? petInfo.weight : petInfo.weight + "Kg"}`}
+              />
               <ListInfoDescription label="특징" text={petInfo.description} />
               <ListInfoDescription label="구조장소" text={petInfo.area} />
               <ListInfoDescription label="공고기간" text={formatDate(petInfo.created_at)} />
