@@ -50,7 +50,6 @@ const CommentRegisterButton = ({ comment, setText }: Props) => {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log("댓글 등록이 완료되었습니다.", data);
       setText("");
       open({
         width: "300px",
@@ -65,7 +64,6 @@ const CommentRegisterButton = ({ comment, setText }: Props) => {
       });
     } else {
       const data = await response.json();
-      console.log("댓글 등록이 실패되었습니다.", data);
     }
   };
 

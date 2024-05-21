@@ -12,8 +12,6 @@ export const putUpdateMyPet: HttpHandler = http.put(
 
     const petIndex = pets.findIndex((p) => p.my_pet_id === myPetId);
 
-    console.log(petIndex);
-
     if (petIndex !== -1) {
       pets[petIndex] = { ...pets[petIndex], ...updatedPetData };
 

@@ -52,7 +52,6 @@ const ResetPasswordMain = () => {
       const data = await response.json();
       setIsResetPassword(true);
       setAuthStateValue((prev) => ({ ...prev, isCompletedResetPassword: true }));
-      console.log("비밀번호 재설정 성공:", data);
     } else {
       const error = await response.json();
       const errorStatus = response.status;
@@ -85,7 +84,6 @@ const ResetPasswordMain = () => {
           close();
         },
       });
-      console.error("비밀번호 재설정 실패:", error.message);
     }
   };
 

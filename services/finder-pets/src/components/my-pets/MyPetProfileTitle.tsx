@@ -37,10 +37,8 @@ const MyPetProfileTitle = ({ id, name = "반려동물" }: Props) => {
           close();
         },
       });
-      console.log("나의 반려동물 프로필 삭제 완료 : ", data);
     } else {
       const data = await response.json();
-      console.log("나의 반려동물 프로필 삭제 실패 : ", data);
     }
   };
 

@@ -32,7 +32,6 @@ const FindIdResult = ({ email }: Props) => {
         },
       });
     } catch (err) {
-      console.error("클립보드 복사 실패:", err);
       open({
         width: "300px",
         height: "200px",

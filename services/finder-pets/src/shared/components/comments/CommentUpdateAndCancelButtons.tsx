@@ -53,7 +53,6 @@ const CommentUpdateAndCancelButtons = ({
 
     if (response.ok) {
       const data = await response.json();
-      console.log("댓글이 수정 되었습니다.", data);
       open({
         width: "300px",
         height: "200px",
@@ -69,7 +68,6 @@ const CommentUpdateAndCancelButtons = ({
       });
     } else {
       const data = await response.json();
-      console.log("댓글 수정이 실패 되었습니다.", data);
     }
   };
 

@@ -29,10 +29,8 @@ const KakaoMap = ({ address, initialLevel = 3 }: Props) => {
         const map = new window.kakao.maps.Map(container, options);
 
         const geocoder = new window.kakao.maps.services.Geocoder();
-        console.log(geocoder);
         geocoder.addressSearch(address, (result, status) => {
           if (status === window.kakao.maps.services.Status.OK) {
-            console.log(result);
             let coords;
             if (result[0].road_address) {
               coords = new window.kakao.maps.LatLng(
@@ -47,12 +45,12 @@ const KakaoMap = ({ address, initialLevel = 3 }: Props) => {
             });
             map.setCenter(coords);
           } else {
-            console.error("Geocoder failed due to: " + status);
+            throw new Error("Geocoder failed due to: " + status);
           }
         });
 
         script.onerror = () => {
-          console.error("Failed to load the Kakao Maps SDK.");
+          throw new Error("Failed to load the Kakao Maps SDK.");
         };
 
         return () => {

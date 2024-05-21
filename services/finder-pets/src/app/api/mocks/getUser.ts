@@ -20,10 +20,8 @@ export const getUser: HttpHandler = http.get("/api/user", async ({ request }) =>
 export const fetchUser = async (id: string) => {
   const response = await fetch(`/api/user?id=${id}`);
 
-  if (response.ok) {
-    console.log("유저 데이터 조회 성공");
-  } else {
-    console.log("유저 데이터 조회 실패");
+  if (!response.ok) {
+    throw new Error("유저 정보를 조회할 수 없습니다.");
   }
 
   return response.json();

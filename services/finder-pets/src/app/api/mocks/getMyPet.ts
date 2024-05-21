@@ -30,10 +30,8 @@ export const getMyPet: HttpHandler = http.get("/api/my-pets/:id", async ({ param
 export const fetchMyPets = async () => {
   const response = await fetch("/api/my-pets");
 
-  if (response.ok) {
-    console.log("내 반려동물 리스트 조회 성공");
-  } else {
-    console.log("내 반려동물 리스트 조회 실패");
+  if (!response.ok) {
+    throw new Error("나의 반려 동물 리스트 조회에 실패했습니다.");
   }
 
   return response.json();

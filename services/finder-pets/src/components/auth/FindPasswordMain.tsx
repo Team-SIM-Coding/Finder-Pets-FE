@@ -47,10 +47,8 @@ const FindPasswordMain = () => {
     });
 
     if (response.ok) {
-      const data = await response.json();
       setIsFoundPassword(true);
       setAuthStateValue((prev) => ({ ...prev, isCompletedFindPassword: true }));
-      console.log("비밀번호 찾기 성공:", data.email);
     } else {
       const error = await response.json();
       const errorStatus = response.status;
@@ -83,7 +81,6 @@ const FindPasswordMain = () => {
           close();
         },
       });
-      console.error("비밀번호 찾기 실패:", error.message);
     }
   };
 

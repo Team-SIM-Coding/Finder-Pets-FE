@@ -54,8 +54,6 @@ const ShelterList = ({ filter }: Props) => {
     });
   }, [filter, flatData]);
 
-  console.log(filter);
-
   const handleFetchNextPage = useCallback(() => {
     if (!isFetchingNextPage && hasNextPage) {
       fetchNextPage();

@@ -99,8 +99,6 @@ const CommunityRegisterMain = () => {
     const { category, ...formDataWithoutCategory } = data;
     const formData = { ...formDataWithoutCategory, board_id: randomId, images, create_at: today };
 
-    console.log("data", data);
-
     const response = await fetch(
       `/api/${category === "review" ? "review" : "pet-story"}/register`,
       {
@@ -125,10 +123,8 @@ const CommunityRegisterMain = () => {
           close();
         },
       });
-      console.log(`${categoryName} 게시물 등록 완료 : `, data);
     } else {
       const data = await response.json();
-      console.log(`${categoryName} 게시물 등록 실패 : `, data);
     }
   };
 

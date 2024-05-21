@@ -110,10 +110,8 @@ const MyPetProfileMain = ({ pet_info }: Props) => {
           close();
         },
       });
-      console.log("나의 반려 동물 수정 완료 : ", data);
     } else {
       const data = await response.json();
-      console.log("나의 반려 동물 수정 실패 : ", data);
     }
   };
 

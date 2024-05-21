@@ -72,8 +72,6 @@ const CommunityUpdateMain = ({ type, community_info }: Props) => {
     },
   });
 
-  console.log(community_info);
-
   const { handleSubmit } = methods;
 
   const selectedCity = useWatch({ name: "area", control: methods.control });
@@ -130,13 +128,8 @@ const CommunityUpdateMain = ({ type, community_info }: Props) => {
           close();
         },
       });
-      console.log(
-        `${type === "pet-story" ? "반려 이야기" : "재회 후기"} 게시글 수정 완료 : `,
-        data,
-      );
     } else {
       const data = await response.json();
-      console.log(`${type === "pet-story" ? "반려 이야기" : "재회 후기"} 게시글 수정 실패`, data);
     }
   };
 

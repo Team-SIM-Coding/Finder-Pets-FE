@@ -72,7 +72,6 @@ const Comment = ({ user_image, user_name, comment_id, created_at, comment }: Pro
 
     if (response.ok) {
       const data = await response.json();
-      console.log("댓글이 삭제 되었습니다.", data);
       open({
         width: "300px",
         height: "200px",
@@ -85,7 +84,6 @@ const Comment = ({ user_image, user_name, comment_id, created_at, comment }: Pro
       });
     } else {
       const data = await response.json();
-      console.log("댓글 삭제가 실패 되었습니다.", data);
     }
   };
 

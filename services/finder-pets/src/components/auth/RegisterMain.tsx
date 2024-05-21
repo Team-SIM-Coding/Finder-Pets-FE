@@ -54,7 +54,6 @@ const RegisterMain = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("회원가입 성공:", data);
       } else {
         const contentType = response.headers.get("Content-Type");
         if (contentType?.includes("application/json")) {
@@ -77,11 +76,10 @@ const RegisterMain = () => {
           }
         } else {
           const errorText = await response.text();
-          console.error("회원가입 실패 - HTML 오류 페이지:", errorText);
         }
       }
     } catch (networkError) {
-      console.error("회원가입 실패 - 네트워크 오류:", networkError);
+      throw new Error("회원가입 실패 - 네트워크 오류");
     }
   };
 

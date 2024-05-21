@@ -30,10 +30,8 @@ export const getPetStory: HttpHandler = http.get("/api/pet-story/:id", async ({ 
 export const fetchPetStories = async () => {
   const response = await fetch("/api/pet-story");
 
-  if (response.ok) {
-    console.log("반려 이야기 리스트 조회 성공");
-  } else {
-    console.log("반려 이야기 리스트 조회 실패");
+  if (!response.ok) {
+    throw new Error("반려 이야기 리스트 조회에 실패했습니다.");
   }
 
   return response.json();
@@ -41,8 +39,10 @@ export const fetchPetStories = async () => {
 
 export const fetchPetStory = async (petStoryId: string[] | string): Promise<Board> => {
   const response = await fetch(`/api/pet-story/${petStoryId}`);
+
   if (!response.ok) {
     throw new Error("반려 이야기 게시물 정보 조회에 실패했습니다.");
   }
+
   return response.json();
 };

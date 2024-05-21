@@ -99,10 +99,8 @@ const MyPetRegisterMain = () => {
           close();
         },
       });
-      console.log("나의 반려 동물 등록 완료 : ", data);
     } else {
       const data = await response.json();
-      console.log("나의 반려 동물 등록 실패 : ", data);
     }
   };
 

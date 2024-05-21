@@ -50,8 +50,6 @@ const FinderUpdateMain = ({ type, pet_info, scriptUrl }: Props) => {
     fetchKinds();
   }, []);
 
-  console.log(pet_info);
-
   const methods = useForm<FinderPetRegisterFormData>({
     resolver: zodResolver(finderPetSchema),
     mode: "onChange",
@@ -124,10 +122,8 @@ const FinderUpdateMain = ({ type, pet_info, scriptUrl }: Props) => {
           close();
         },
       });
-      console.log(`${type === "lost" ? "실종" : "목격"} 동물 수정 완료 : `, data);
     } else {
       const data = await response.json();
-      console.log(`${type === "lost" ? "실종" : "목격"} 동물 수정 실패`, data);
     }
   };
 

@@ -47,7 +47,6 @@ const FindIdMain = () => {
       const data = await response.json();
       setEmail(data.email);
       setIsFoundId(true);
-      console.log("아이디 찾기 성공:", data.email);
     } else {
       const error = await response.json();
       const errorStatus = response.status;
@@ -80,7 +79,6 @@ const FindIdMain = () => {
           close();
         },
       });
-      console.error("아이디 찾기 실패:", error.message);
     }
   };
 

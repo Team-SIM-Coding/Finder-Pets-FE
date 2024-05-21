@@ -75,7 +75,6 @@ const ProfileMain = () => {
           close();
         },
       });
-      console.log("프로필 업데이트 성공 : ", data);
     } else {
       const error = await response.json();
       open({
@@ -91,7 +90,6 @@ const ProfileMain = () => {
           close();
         },
       });
-      console.error("프로필 업데이트 실패:", error.message);
     }
   };
 
