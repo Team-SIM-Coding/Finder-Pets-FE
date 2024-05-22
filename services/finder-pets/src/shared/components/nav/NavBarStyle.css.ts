@@ -80,3 +80,22 @@ export const myPetRegisterButton = style({
   backgroundColor: "transparent",
   borderRadius: "4px",
 });
+
+export const shareAndLikeButtonWrap = style({
+  width: "50px",
+});
+
+export const shareButtonIcon = style({
+  color: vars.colors.$scale.blue[500],
+  width: "20px",
+  height: "20px",
+  marginRight: "8px",
+  cursor: "pointer",
+});
+
+export const likeButtonIcon = style({
+  color: "red",
+  width: "20px",
+  height: "20px",
+  cursor: "pointer",
+});

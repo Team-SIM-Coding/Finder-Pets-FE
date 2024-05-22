@@ -1,6 +1,7 @@
 "use client";
 
 import * as s from "./NavBarStyle.css";
+import { IoMdShare, IoMdHeartEmpty } from "react-icons/io";
 
 import { Button } from "@design-system/react-components-button";
 import { Flex } from "@design-system/react-components-layout";
@@ -29,10 +30,43 @@ const NAVBAR_SEARCH_INCLUDES_PATHS = [
 
 const MY_PET_REGISTER_BUTTON_PATH = "/my-menu";
 
+const SHARE_BUTTON_PATHS = [
+  "/shelter",
+  "/finder/lost",
+  "/finder/sighted",
+  "/community/reunion-reviews",
+  "/community/pet-stories",
+];
+
+const shouldShowShareButton = (path: string) => {
+  return SHARE_BUTTON_PATHS.some((sharePath) => {
+    if (path.startsWith(sharePath)) {
+      const pathSegments = path.split("/");
+
+      return pathSegments.length > 2;
+    }
+    return false;
+  });
+};
+
+const shouldShowLikeButton = (path: string) => {
+  return SHARE_BUTTON_PATHS.filter((sharePath) => sharePath !== "/shelter").some((sharePath) => {
+    if (path.startsWith(sharePath)) {
+      const pathSegments = path.split("/");
+
+      return pathSegments.length > 2;
+    }
+    return false;
+  });
+};
+
 const NavBarTop = () => {
   const path = usePathname();
 
   if (NAVBAR_EXCLUSION_PATHS.includes(path)) return null;
+
+  const showShareButton = shouldShowShareButton(path);
+  const showLikeButton = shouldShowLikeButton(path);
 
   return (
     <section className={s.navTopSection}>
@@ -52,6 +86,10 @@ const NavBarTop = () => {
             <Button className={s.myPetRegisterButton}>반려동물 등록</Button>
           </Link>
         )}
+        <div className={s.shareAndLikeButtonWrap}>
+          {showShareButton && <IoMdShare className={s.shareButtonIcon} />}
+          {showLikeButton && <IoMdHeartEmpty className={s.likeButtonIcon} />}
+        </div>
       </Flex>
     </section>
   );
