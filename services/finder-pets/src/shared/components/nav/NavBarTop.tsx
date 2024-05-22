@@ -1,7 +1,7 @@
 "use client";
 
+import { IoMdHeartEmpty } from "react-icons/io";
 import * as s from "./NavBarStyle.css";
-import { IoMdShare, IoMdHeartEmpty } from "react-icons/io";
 
 import { Button } from "@design-system/react-components-button";
 import { Flex } from "@design-system/react-components-layout";
@@ -11,6 +11,7 @@ import NavBarSearchInput from "@/shared/c/nav/NavBarSearchInput";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ShareButton from "@/shared/c/nav/ShareButton";
 
 const NAVBAR_EXCLUSION_PATHS = [
   "/register",
@@ -86,10 +87,12 @@ const NavBarTop = () => {
             <Button className={s.myPetRegisterButton}>반려동물 등록</Button>
           </Link>
         )}
-        <div className={s.shareAndLikeButtonWrap}>
-          {showShareButton && <IoMdShare className={s.shareButtonIcon} />}
-          {showLikeButton && <IoMdHeartEmpty className={s.likeButtonIcon} />}
-        </div>
+        {(showShareButton || showLikeButton) && (
+          <Flex className={s.shareAndLikeButtonWrap}>
+            {showShareButton && <ShareButton />}
+            {showLikeButton && <IoMdHeartEmpty className={s.likeButtonIcon} />}
+          </Flex>
+        )}
       </Flex>
     </section>
   );

@@ -65,6 +65,7 @@ export const navInput = style({
 
 export const navLogoImage = style({
   marginTop: "4px",
+  cursor: "pointer",
 });
 
 export const searchIcon = style([
@@ -85,17 +86,42 @@ export const shareAndLikeButtonWrap = style({
   width: "50px",
 });
 
+export const shareButtonWrap = style([
+  f.pRelative,
+  {
+    cursor: "pointer",
+  },
+]);
+
+export const shareButtonsBox = style([
+  f.pAbsolute,
+  {
+    top: "20px",
+    right: "20px",
+    padding: "8px",
+    border: "1px solid #D9D9D9",
+    backgroundColor: "white",
+    borderRadius: "5px",
+  },
+]);
+
 export const shareButtonIcon = style({
   color: vars.colors.$scale.blue[500],
   width: "20px",
   height: "20px",
   marginRight: "8px",
-  cursor: "pointer",
 });
 
 export const likeButtonIcon = style({
   color: "red",
   width: "20px",
   height: "20px",
+  cursor: "pointer",
+});
+
+export const kakaoButtonIcon = style({
+  width: "24px",
+  height: "24px",
+  color: "yellow",
   cursor: "pointer",
 });
