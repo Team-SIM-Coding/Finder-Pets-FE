@@ -37,3 +37,11 @@ export const linkStyle = style({
   color: "#ADADAD",
   textDecoration: "none",
 });
+
+export const skeletonBoxWrap = style({
+  padding: "10px",
+});
+
+export const skeletonInfoBoxWrap = style({
+  padding: "0 10px",
+});

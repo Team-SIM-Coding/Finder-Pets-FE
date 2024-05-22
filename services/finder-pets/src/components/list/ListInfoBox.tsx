@@ -79,11 +79,13 @@ const ListInfoBox = ({ info }: Props) => {
             <>
               <ListInfoDescription
                 label="체중"
-                text={`${petInfo.weight?.includes("Kg") ? petInfo.weight : petInfo.weight + "Kg"}`}
+                text={
+                  String(petInfo.weight)?.includes("Kg") ? petInfo?.weight : petInfo?.weight + " Kg"
+                }
               />
-              <ListInfoDescription label="특징" text={petInfo.description} />
-              <ListInfoDescription label="구조장소" text={petInfo.area} />
-              <ListInfoDescription label="공고기간" text={formatDate(petInfo.created_at)} />
+              <ListInfoDescription label="특징" text={petInfo?.description} />
+              <ListInfoDescription label="구조장소" text={petInfo?.area} />
+              <ListInfoDescription label="공고기간" text={formatDate(petInfo?.created_at)} />
             </>
           )}
         </div>
