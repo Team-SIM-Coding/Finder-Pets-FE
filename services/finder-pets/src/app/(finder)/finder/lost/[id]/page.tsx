@@ -9,7 +9,6 @@ const LostDetail = () => {
   return (
     <Suspense fallback={<DetailSkeleton />}>
       <LostDetailBox />
-      <DetailSkeleton />
     </Suspense>
   );
 };
