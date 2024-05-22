@@ -1,5 +1,5 @@
+import ListBoxSkeletonList from "@/shared/c/skeleton/ListBoxSkeletonList";
 import Spacing from "@/shared/c/spacing/Spacing";
-import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
 import PetStoryList from "@/components/pet-stories/PetStoryList";
 
 import { Suspense } from "react";
@@ -8,7 +8,7 @@ const PetStories = () => {
   return (
     <section>
       <Spacing height="142px" />
-      <Suspense fallback={<LoadingSpinner text="반려 이야기 리스트 로딩 중.." height="70vh" />}>
+      <Suspense fallback={<ListBoxSkeletonList item_length={7} />}>
         <PetStoryList />
       </Suspense>
     </section>

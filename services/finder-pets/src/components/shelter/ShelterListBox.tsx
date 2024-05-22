@@ -1,7 +1,7 @@
 "use client";
 
+import ListBoxSkeletonList from "@/shared/c/skeleton/ListBoxSkeletonList";
 import FilterMenuBar from "@/shared/components/filter/FilterMenuBar";
-import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
 import ShelterList from "@/components/shelter/ShelterList";
 
 import { useFilter } from "@/contexts/FilterContext";
@@ -14,7 +14,7 @@ const ShelterListBox = () => {
   return (
     <>
       <FilterMenuBar onFilterChange={setFilter} />
-      <Suspense fallback={<LoadingSpinner text="보호소 유기동물 리스트 로딩 중.." height="85vh" />}>
+      <Suspense fallback={<ListBoxSkeletonList item_length={7} />}>
         <ShelterList filter={filter} />
       </Suspense>
     </>

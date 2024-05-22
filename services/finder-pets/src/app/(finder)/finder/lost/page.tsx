@@ -1,6 +1,6 @@
-import Spacing from "@/shared/c/spacing/Spacing";
-import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import ListBoxSkeletonList from "@/shared/c/skeleton/ListBoxSkeletonList";
 import LostPetList from "@/components/lost/LostPetList";
+import Spacing from "@/shared/c/spacing/Spacing";
 
 import { Suspense } from "react";
 
@@ -8,7 +8,7 @@ const Lost = () => {
   return (
     <section>
       <Spacing height="142px" />
-      <Suspense fallback={<LoadingSpinner text="실종 동물 리스트 로딩 중.." height="70vh" />}>
+      <Suspense fallback={<ListBoxSkeletonList item_length={7} />}>
         <LostPetList />
       </Suspense>
       <Spacing height="60px" />
