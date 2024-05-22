@@ -1,6 +1,6 @@
 import { Flex } from "@design-system/react-components-layout";
 
-import MainSkeleton from "@/components/home/MainSkeleton";
+import MainSkeleton from "@/shared/c/skeleton/MainSkeleton";
 
 interface Props {
   item_length: number;

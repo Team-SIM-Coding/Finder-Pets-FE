@@ -1,4 +1,4 @@
-import * as s from "./MainStyle.css";
+import * as s from "../../../components/home/MainStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 

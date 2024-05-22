@@ -2,7 +2,7 @@ import * as cs from "@/styles/common.css";
 
 import MainInfoList from "@/components/home/MainInfoList";
 
-import MainSkeletonList from "@/components/home/MainSkeletonList";
+import MainSkeletonList from "@/shared/c/skeleton/MainSkeletonList";
 import { Suspense } from "react";
 
 export default function Home() {

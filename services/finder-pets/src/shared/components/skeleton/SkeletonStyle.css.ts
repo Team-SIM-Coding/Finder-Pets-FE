@@ -16,6 +16,14 @@ export const skeletonWrap = style([
   },
 ]);
 
+export const skeletonBoxWrap = style({
+  padding: "10px",
+});
+
+export const skeletonInfoBoxWrap = style({
+  padding: "0 10px",
+});
+
 export const listBoxSkeletonListWrap = style({
   padding: "10px",
 });

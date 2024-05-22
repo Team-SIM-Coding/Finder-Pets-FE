@@ -1,13 +1,13 @@
 "use client";
 
-import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+import DetailSkeleton from "@/shared/c/skeleton/DetailSkeleton";
 import ShelterDetailBox from "@/components/shelter/ShelterDetailBox";
 
 import { Suspense } from "react";
 
 const ShelterDetail = () => {
   return (
-    <Suspense fallback={<LoadingSpinner text="보호 동물 상세 정보 로딩 중.." height="90vh" />}>
+    <Suspense fallback={<DetailSkeleton />}>
       <ShelterDetailBox />;
     </Suspense>
   );
