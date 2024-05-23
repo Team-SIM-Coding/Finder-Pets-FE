@@ -125,3 +125,22 @@ export const kakaoButtonIcon = style({
   color: "yellow",
   cursor: "pointer",
 });
+
+export const backButtonIcon = style({
+  width: "20px",
+  height: "20px",
+  marginRight: "4px",
+  color: vars.colors.$scale.blue[500],
+});
+
+export const backButtonLinkStyle = style({
+  textDecoration: "none",
+});
+
+export const backButtonStyle = style({
+  fontSize: "16px",
+  color: vars.colors.$scale.blue[500],
+  backgroundColor: "transparent",
+  outline: "none",
+  border: "none",
+});
