@@ -11,7 +11,10 @@ import useAlertContext from "@/hooks/useAlertContext";
 
 import { IComment } from "@/models/comment";
 
-import { useParams, usePathname } from "next/navigation";
+import { useRecoilValue } from "recoil";
+import authState from "@/recoil/authAtom";
+
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { Dispatch, SetStateAction } from "react";
 
 export const PATH_TYPE: Record<string, string> = {
@@ -28,9 +31,13 @@ interface Props {
 
 const CommentRegisterButton = ({ comment, setText }: Props) => {
   const { id } = useParams();
+  const { isLoggedIn } = useRecoilValue(authState);
+
   const path = usePathname();
   const parts = path.split("/");
   const extractedPath = `/${parts[1]}/${parts[2]}`;
+
+  const router = useRouter();
 
   const { open, close } = useAlertContext();
 
@@ -43,27 +50,66 @@ const CommentRegisterButton = ({ comment, setText }: Props) => {
       created_at: new Date().toISOString(),
     };
 
-    const response = await fetch(`/api/${storageKey}/${id}/comment/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newComment),
-    });
-    if (response.ok) {
-      const data = await response.json();
-      setText("");
+    console.log(isLoggedIn);
+
+    if (!isLoggedIn) {
       open({
         width: "300px",
-        height: "200px",
-        title: "댓글 등록",
-        main: <AlertMainTextBox text="댓글 등록이 완료되었습니다." />,
+        height: "240px",
+        title: "로그인 확인",
+        main: (
+          <AlertMainTextBox text="로그인이 필요한 기능입니다. 로그인 페이지로 이동하시겠습니까?" />
+        ),
+        leftButtonLabel: "취소",
+        leftButtonStyle: cs.whiteButton,
         rightButtonStyle: cs.defaultButton,
+        onLeftButtonClick: () => {
+          close();
+        },
         onRightButtonClick: () => {
-          setText("");
+          router.push("/login");
+          close();
+        },
+        onBackDropClick: () => {
           close();
         },
       });
     } else {
-      const data = await response.json();
+      if (comment.trim() === "") {
+        open({
+          width: "300px",
+          height: "200px",
+          title: "댓글 등록 확인",
+          main: <AlertMainTextBox text="댓글 내용을 입력해주세요." />,
+          rightButtonStyle: cs.defaultButton,
+          onRightButtonClick: () => {
+            close();
+          },
+        });
+      } else {
+        const response = await fetch(`/api/${storageKey}/${id}/comment/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newComment),
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setText("");
+          open({
+            width: "300px",
+            height: "200px",
+            title: "댓글 등록",
+            main: <AlertMainTextBox text="댓글 등록이 완료되었습니다." />,
+            rightButtonStyle: cs.defaultButton,
+            onRightButtonClick: () => {
+              setText("");
+              close();
+            },
+          });
+        } else {
+          const data = await response.json();
+        }
+      }
     }
   };
 

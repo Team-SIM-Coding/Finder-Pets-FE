@@ -10,10 +10,13 @@ import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 
 import useAlertContext from "@/hooks/useAlertContext";
 
+import { useQueryClient } from "@tanstack/react-query";
+import { useRecoilValue } from "recoil";
+import authState from "@/recoil/authAtom";
+
 import Link from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
 
 interface Props {
   like_count: number;
@@ -30,6 +33,8 @@ const refetchQueryType: Record<string, string> = {
 
 const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
   const { id } = useParams();
+  const { isLoggedIn } = useRecoilValue(authState);
+
   const path = usePathname();
   const parts = path.split("/");
   const extractedPath = `/${parts[1]}/${parts[2]}`;
@@ -126,7 +131,7 @@ const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
         <span className={s.text}>좋아요 {like_count}</span>
         <div className={s.dividerStyle} />
         <span className={s.text}>조회수 {view_count}</span>
-        <CiMenuKebab className={s.iconStyle} onClick={handleMenuKebabClick} />
+        {isLoggedIn && <CiMenuKebab className={s.iconStyle} onClick={handleMenuKebabClick} />}
         {isOpenTextBox && (
           <Flex
             direction="column"

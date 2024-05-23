@@ -6,6 +6,9 @@ import { PiPencilSimpleBold } from "react-icons/pi";
 import { Flex } from "@design-system/react-components-layout";
 import { Button } from "@design-system/react-components-button";
 
+import { useRecoilValue } from "recoil";
+import authState from "@/recoil/authAtom";
+
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -18,8 +21,10 @@ const WRITE_BUTTON_INCLUDES_PATHS = [
 
 const WriterButton = () => {
   const path = usePathname();
+  const { isLoggedIn } = useRecoilValue(authState);
 
   if (!WRITE_BUTTON_INCLUDES_PATHS.includes(path)) return null;
+  if (!isLoggedIn) return null;
 
   return (
     <Link

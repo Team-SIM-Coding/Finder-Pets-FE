@@ -17,6 +17,8 @@ import CommentUpdater from "@/shared/components/comments/CommentUpdater";
 
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { useRecoilValue } from "recoil";
+import authState from "@/recoil/authAtom";
 
 interface Props {
   user_image: Image;
@@ -30,6 +32,7 @@ const Comment = ({ user_image, user_name, comment_id, created_at, comment }: Pro
   const [isUpdate, setIsUpdate] = useState(false);
   const { id } = useParams();
   const [isOpenTextBox, setIsOpenTextBox] = useState(false);
+  const { isLoggedIn } = useRecoilValue(authState);
 
   const path = usePathname();
   const parts = path.split("/");
@@ -117,7 +120,7 @@ const Comment = ({ user_image, user_name, comment_id, created_at, comment }: Pro
               width={48}
               height={48}
             />
-            <CiMenuKebab className={s.iconStyle} onClick={handleMenuKebabClick} />
+            {isLoggedIn && <CiMenuKebab className={s.iconStyle} onClick={handleMenuKebabClick} />}
             {isOpenTextBox && (
               <Flex
                 direction="column"

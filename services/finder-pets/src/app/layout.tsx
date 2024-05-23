@@ -1,8 +1,9 @@
 import "@/shared/styles";
 
-import { MSWProvider } from "@/shared/components/MSWProvider";
 import NavBarBottom from "@/shared/c/nav/NavBarBottom";
 import NavBarTop from "@/shared/c/nav/NavBarTop";
+import ProtectedRoute from "@/shared/c/protected/ProtectedRoute";
+import { MSWProvider } from "@/shared/components/MSWProvider";
 
 import { AlertContextProvider } from "@/contexts/AlertContext";
 
@@ -26,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <RecoilRootProvider>
               <AlertContextProvider>
                 <NavBarTop />
-                {children}
+                <ProtectedRoute>{children}</ProtectedRoute>
               </AlertContextProvider>
             </RecoilRootProvider>
             <NavBarBottom />

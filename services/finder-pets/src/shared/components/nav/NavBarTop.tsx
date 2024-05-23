@@ -1,18 +1,21 @@
 "use client";
 
-import { IoMdHeartEmpty } from "react-icons/io";
 import * as s from "./NavBarStyle.css";
+import { IoMdHeartEmpty } from "react-icons/io";
 
 import { Button } from "@design-system/react-components-button";
 import { Flex } from "@design-system/react-components-layout";
 
+import BackButton from "@/shared/c/nav/BackButton";
 import NavBarSearchInput from "@/shared/c/nav/NavBarSearchInput";
+import ShareButton from "@/shared/c/nav/ShareButton";
+
+import authState from "@/recoil/authAtom";
+import { useRecoilValue } from "recoil";
 
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ShareButton from "@/shared/c/nav/ShareButton";
-import BackButton from "./BackButton";
 
 const NAVBAR_EXCLUSION_PATHS = [
   "/register",
@@ -120,6 +123,7 @@ const getButtonLink = (buttonObject: Record<string, string>, path: string) => {
 
 const NavBarTop = () => {
   const path = usePathname();
+  const { isLoggedIn } = useRecoilValue(authState);
 
   const buttonName = getButtonName(BACK_BUTTON_NAME, path);
   const buttonLink = getButtonLink(BACK_BUTTON_NAME, path);
@@ -156,7 +160,7 @@ const NavBarTop = () => {
         {(showShareButton || showLikeButton) && (
           <Flex className={s.shareAndLikeButtonWrap}>
             {showShareButton && <ShareButton />}
-            {showLikeButton && <IoMdHeartEmpty className={s.likeButtonIcon} />}
+            {isLoggedIn && showLikeButton && <IoMdHeartEmpty className={s.likeButtonIcon} />}
           </Flex>
         )}
       </Flex>
