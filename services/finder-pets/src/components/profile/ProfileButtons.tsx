@@ -42,7 +42,7 @@ const ProfileButtons = () => {
 
   return (
     <Flex direction="column" justify="center" align="center">
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <Button className={cs.defaultButton} form="profile-form" type="submit">
         저장
       </Button>
@@ -50,7 +50,7 @@ const ProfileButtons = () => {
         로그아웃
       </Button>
       <Button className={cs.whiteButton}>회원탈퇴</Button>
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
     </Flex>
   );
 };

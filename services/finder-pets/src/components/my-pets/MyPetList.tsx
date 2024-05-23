@@ -19,7 +19,7 @@ const MyPetList = () => {
 
   return (
     <div>
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
       <Grid templateColumns="repeat(2, 1fr)" gap="8px">
         {data.map((pet) => (
           <MyPetBox key={pet.my_pet_id} pet={pet} />

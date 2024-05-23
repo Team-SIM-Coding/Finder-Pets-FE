@@ -9,9 +9,9 @@ const Shelter = () => {
   return (
     <section className={cs.sectionStyle}>
       <FilterProvider>
-        <Spacing height="30px" />
+        <Spacing margin="30px" />
         <ShelterListBox />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
       </FilterProvider>
     </section>
   );

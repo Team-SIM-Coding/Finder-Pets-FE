@@ -131,12 +131,12 @@ const CommunityRegisterMain = () => {
   return (
     <FormProvider {...methods}>
       <form id="community-register-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="24px" />
+        <Spacing margin="24px" />
         <EditorSelectTab name="category" label="카테고리" className={es.editorSelectStyle}>
           <option value="lost">재회 후기</option>
           <option value="sighted">반려 이야기</option>
         </EditorSelectTab>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           <EditorSelectTab name="area" label="지역1" className={es.editorSelectStyle}>
             <option value="all">모든 지역</option>
@@ -157,7 +157,7 @@ const CommunityRegisterMain = () => {
             </EditorSelectTab>
           )}
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           <EditorSelectTab name="animal" label="동물" className={es.editorSelectStyle}>
             <option value="all">모든 동물</option>
@@ -174,7 +174,7 @@ const CommunityRegisterMain = () => {
             ))}
           </EditorSelectTab>
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           <EditorSelectTab name="gender" label="성별" className={es.editorSelectStyle}>
             <option value="default">미확인</option>
@@ -183,15 +183,15 @@ const CommunityRegisterMain = () => {
           </EditorSelectTab>
           <EditorInputField name="weight" label="몸무게" className={es.editorInputSmallStyle} />
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField name="title" label="제목" className={es.editorInputMediumStyle} />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorTextAreaField
           name="description"
           label="글쓰기"
           className={es.editorTextAreaLargeStyle}
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorImageRegisterForm />
       </form>
     </FormProvider>

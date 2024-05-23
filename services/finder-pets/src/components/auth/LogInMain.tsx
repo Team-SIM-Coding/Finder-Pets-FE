@@ -93,10 +93,10 @@ const LogInMain = () => {
   return (
     <FormProvider {...methods}>
       <form id="login-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="40px" />
+        <Spacing margin="40px" />
         <InputField<LogInFormData> name="email" label="아이디" />
         <InputField<LogInFormData> name="password" label="비밀번호" type="password" />
-        <Spacing height="20px" />
+        <Spacing margin="20px" />
       </form>
     </FormProvider>
   );

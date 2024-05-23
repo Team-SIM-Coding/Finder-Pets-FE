@@ -32,7 +32,7 @@ const CommentUpdater = ({ comment, comment_id, setIsUpdate, setIsOpenTextBox }: 
           height={28}
         />
       </div>
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <textarea
         className={s.commentWriterTextArea}
         onChange={handleWriterTextChange}
@@ -45,7 +45,7 @@ const CommentUpdater = ({ comment, comment_id, setIsUpdate, setIsOpenTextBox }: 
         setIsUpdate={setIsUpdate}
         setIsOpenTextBox={setIsOpenTextBox}
       />
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
     </div>
   );
 };

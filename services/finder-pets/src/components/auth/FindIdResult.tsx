@@ -46,9 +46,9 @@ const FindIdResult = ({ email }: Props) => {
 
   return (
     <Flex direction="column" align="start">
-      <Spacing height="20px" />
+      <Spacing margin="20px" />
       <h2 className={s.subHeader}>회원님의 아이디입니다.</h2>
-      <Spacing height="20px" />
+      <Spacing margin="20px" />
       <Flex>
         <span className={s.labelTextStyle}>아이디 : </span>
         <p className={s.foundIdText} onClick={copyToClipboard}>

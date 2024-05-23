@@ -87,7 +87,7 @@ const FindPasswordMain = () => {
   return (
     <FormProvider {...methods}>
       <form id="find-password-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="40px" />
+        <Spacing margin="40px" />
         {!isFoundPassword && (
           <>
             <InputField<FindPasswordFormData> name="email" label="아이디" />

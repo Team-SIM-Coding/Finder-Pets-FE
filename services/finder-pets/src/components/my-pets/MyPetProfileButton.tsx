@@ -12,7 +12,7 @@ const MyPetProfileButton = () => {
       <Button className={cs.defaultButton} form="my-pet-form" type="submit">
         저장
       </Button>
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
     </>
   );
 };

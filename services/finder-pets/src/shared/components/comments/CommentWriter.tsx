@@ -25,14 +25,14 @@ const CommentWriter = () => {
           height={28}
         />
       </div>
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <textarea
         className={s.commentWriterTextArea}
         onChange={handleWriterTextChange}
         value={text}
       />
       <CommentRegisterButton comment={text} setText={setText} />
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
     </div>
   );
 };

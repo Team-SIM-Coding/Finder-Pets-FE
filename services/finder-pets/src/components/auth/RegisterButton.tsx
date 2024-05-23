@@ -14,7 +14,7 @@ const RegisterButton = () => {
         회원가입
       </Button>
       <LinkButton href="/login" text="로그인" className={cs.whiteButton} />
-      <Spacing height="40px" />
+      <Spacing margin="40px" />
     </>
   );
 };

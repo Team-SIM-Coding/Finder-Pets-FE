@@ -17,10 +17,10 @@ interface Props {
 const MyPetBox = ({ pet }: Props) => {
   return (
     <GridItem>
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <Flex direction="column" justify="center" align="center">
         <label>{pet.name}</label>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Link href={`/my-menu/my-pets/${pet.my_pet_id}`} className={s.myPetBoxLinkStyle}>
           <Image
             key={pet.pet_image.img_id}
@@ -31,13 +31,13 @@ const MyPetBox = ({ pet }: Props) => {
             className={s.myPetBoxImageStyle}
           />
         </Link>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           <HighLightTag text={pet.animal} color="#FDD78D" width="56px" />
           <HighLightTag text={pet.kind} color="#7C80E4" width="56px" />
           <HighLightTag text={pet.gender === "M" ? "수컷" : "암컷"} color="#F18FE2" width="56px" />
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
       </Flex>
     </GridItem>
   );

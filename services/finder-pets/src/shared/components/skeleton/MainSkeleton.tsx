@@ -12,7 +12,7 @@ const MainSkeleton = () => {
         <Skeleton width="75%" height="20px" />
         <Skeleton width="25%" height="20px" />
       </Flex>
-      <Spacing height="4px" />
+      <Spacing margin="4px" />
       <Flex direction="column" className={s.skeletonInfoBoxWrap}>
         <Skeleton height="200px" />
         <Skeleton height="18px" />

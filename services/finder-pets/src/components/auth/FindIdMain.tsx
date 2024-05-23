@@ -85,7 +85,7 @@ const FindIdMain = () => {
   return (
     <FormProvider {...methods}>
       <form id="find-id-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="40px" />
+        <Spacing margin="40px" />
         {!isFoundId && (
           <>
             <InputField<FindIdFormData> name="name" label="이름" />

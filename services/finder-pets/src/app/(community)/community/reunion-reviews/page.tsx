@@ -7,7 +7,7 @@ import { Suspense } from "react";
 const ReUnionReviews = () => {
   return (
     <section>
-      <Spacing height="142px" />
+      <Spacing margin="142px" />
       <Suspense fallback={<ListBoxSkeletonList item_length={7} />}>
         <ReUnionReviewsList />
       </Suspense>

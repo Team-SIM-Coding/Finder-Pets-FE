@@ -113,21 +113,21 @@ const MyPetRegisterMain = () => {
           label="이름"
           className={es.editorInputMediumStyle}
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField<MyPetRegisterFormData>
           name="birth_day"
           label="생일"
           className={es.editorInputMediumStyle}
           type="date"
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField<MyPetRegisterFormData>
           name="adoption_day"
           label="입양일"
           className={es.editorInputMediumStyle}
           type="date"
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           <EditorSelectTab<MyPetRegisterFormData>
             name="animal"
@@ -152,7 +152,7 @@ const MyPetRegisterMain = () => {
             ))}
           </EditorSelectTab>
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           <EditorSelectTab<MyPetRegisterFormData>
             name="gender"
@@ -169,23 +169,23 @@ const MyPetRegisterMain = () => {
             className={es.editorInputSmallStyle}
           />
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField<MyPetRegisterFormData>
           name="color"
           label="털색"
           className={es.editorInputSmallStyle}
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorCheckBoxField<MyPetRegisterFormData> name="is_neutering" label="중성화 여부" />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorCheckBoxField<MyPetRegisterFormData> name="is_adoption" label="보호소 입양 여부" />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorTextAreaField<MyPetRegisterFormData>
           name="intro"
           label="소개"
           className={es.editorTextAreaStyle}
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
       </form>
     </FormProvider>
   );

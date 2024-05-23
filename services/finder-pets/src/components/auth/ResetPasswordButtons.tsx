@@ -26,7 +26,7 @@ const ResetPasswordButtons = () => {
       <LinkButton href="/login" text="로그인" className={cs.defaultButton} />
       <LinkButton href="/find-password" text="비밀번호 찾기" className={cs.whiteButton} />
       <LinkButton href="/find-id" text="아이디 찾기" className={cs.whiteButton} />
-      <Spacing height="40px" />
+      <Spacing margin="40px" />
     </div>
   );
 };

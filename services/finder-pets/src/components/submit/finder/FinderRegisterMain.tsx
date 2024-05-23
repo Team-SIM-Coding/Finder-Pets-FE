@@ -145,19 +145,19 @@ const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
   return (
     <FormProvider {...methods}>
       <form id="finder-register-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="24px" />
+        <Spacing margin="24px" />
         <EditorSelectTab name="category" label="카테고리" className={es.editorSelectStyle}>
           <option value="lost">실종</option>
           <option value="sighted">목격</option>
         </EditorSelectTab>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField
           name="date"
           label="날짜"
           type="date"
           className={es.editorInputMediumStyle}
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex align="center">
           <EditorInputField
             name="zonecode"
@@ -179,21 +179,21 @@ const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
             우편번호 찾기
           </Button>
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField
           name="address"
           label=""
           className={es.editorInputMediumStyle}
           placeholder="주소"
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField
           name="detail_address"
           label=""
           className={es.editorInputMediumStyle}
           placeholder="상세주소"
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           {pet_info.animal ? (
             <EditorInputField name="animal" label="동물" className={es.editorInputSmallStyle} />
@@ -218,7 +218,7 @@ const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
             </EditorSelectTab>
           )}
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           {pet_info.gender ? (
             <EditorInputField name="gender" label="성별" className={es.editorInputSmallStyle} />
@@ -231,26 +231,26 @@ const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
           )}
           <EditorInputField name="weight" label="몸무게" className={es.editorInputSmallStyle} />
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           <EditorInputField name="color" label="털색" className={es.editorInputSmallStyle} />
           <EditorInputField name="age" label="나이" className={es.editorInputSmallStyle} />
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorCheckBoxField name="is_neutering" label="중성화 여부" />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField name="character" label="특징" className={es.editorInputMediumStyle} />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField name="phone" label="연락처" className={es.editorInputMediumStyle} />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorTextAreaField
           name="description"
           label="상세설명"
           className={es.editorTextAreaStyle}
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorImageRegisterForm />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
       </form>
     </FormProvider>
   );

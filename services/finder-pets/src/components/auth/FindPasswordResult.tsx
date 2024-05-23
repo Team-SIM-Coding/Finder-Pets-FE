@@ -7,9 +7,9 @@ import Spacing from "@/shared/c/spacing/Spacing";
 const FindPasswordResult = () => {
   return (
     <Flex direction="column" align="start">
-      <Spacing height="20px" />
+      <Spacing margin="20px" />
       <h2 className={s.subHeader}>고객님의 이메일로 비밀번호를 전송했습니다.</h2>
-      <Spacing height="10px" />
+      <Spacing margin="10px" />
       <h2 className={s.subHeader}>이메일을 확인해주세요.</h2>
     </Flex>
   );

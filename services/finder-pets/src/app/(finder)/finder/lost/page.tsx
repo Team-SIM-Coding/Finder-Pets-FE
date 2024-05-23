@@ -7,11 +7,11 @@ import { Suspense } from "react";
 const Lost = () => {
   return (
     <section>
-      <Spacing height="142px" />
+      <Spacing margin="142px" />
       <Suspense fallback={<ListBoxSkeletonList item_length={7} />}>
         <LostPetList />
       </Suspense>
-      <Spacing height="60px" />
+      <Spacing margin="60px" />
     </section>
   );
 };

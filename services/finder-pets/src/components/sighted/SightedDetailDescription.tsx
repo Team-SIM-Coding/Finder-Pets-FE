@@ -20,41 +20,41 @@ const SightedDetailDescription = ({ info }: Props) => {
 
   return (
     <article className={cs.detailSectionStyle}>
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <DetailDescriptionTextField label="발견장소" text={info?.area} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <DetailDescriptionTextField label="발견일" text={info?.date} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <Divider size={6} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <DetailDescriptionTextField label="특징" text={trimText(info?.character)} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <DetailDescriptionTextField label="색상" text={info?.color} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <DetailDescriptionTextField label="품종" text={info?.kind} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <DetailDescriptionTextField label="체중" text={`${info?.weight} Kg`} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <DetailDescriptionTextField label="성별" text={info?.gender === "M" ? "수컷" : "암컷"} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <DetailDescriptionTextField label="나이 " text={info?.age} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <DetailDescriptionTextField label="연락처" text={info?.phone} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <Divider size={6} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <DetailDescriptionTextField label="상세설명" />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <DetailDescriptionTextBox text={info?.description} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <Divider size={6} />
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
       <DetailDescriptionTextField label="발견장소" />
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
       <KakaoMap address={mapAddress} />
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
       <Divider size={6} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
     </article>
   );
 };

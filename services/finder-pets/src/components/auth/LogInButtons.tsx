@@ -15,7 +15,7 @@ const LogInButtons = () => {
       <Button className={cs.defaultButton} form="login-form" type="submit">
         로그인
       </Button>
-      <Spacing height="40px" />
+      <Spacing margin="40px" />
     </>
   );
 };

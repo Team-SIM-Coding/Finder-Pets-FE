@@ -26,7 +26,7 @@ const EditorImageRegisterForm = ({ pet_image }: Props) => {
             height={200}
             className={s.imageRegisterMyPetImage}
           />
-          <Spacing height="12px" />
+          <Spacing margin="12px" />
         </>
       ) : (
         <>

@@ -3,13 +3,13 @@ import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 interface Props {
   width?: string;
-  height?: string;
+  margin?: string;
 }
 
-const Spacing = ({ width = "100%", height }: Props) => {
+const Spacing = ({ width = "100%", margin }: Props) => {
   return (
     <div
-      style={assignInlineVars({ [cs.spacingWidthVar]: width, [cs.spacingHeightVar]: height })}
+      style={assignInlineVars({ [cs.spacingWidthVar]: width, [cs.spacingMarginVar]: margin })}
       className={cs.spacingStyle}
     ></div>
   );

@@ -96,7 +96,7 @@ const RegisterMain = () => {
   return (
     <FormProvider {...methods}>
       <form id="register-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="40px" />
+        <Spacing margin="40px" />
         <InputField<RegisterFormData> label="아이디" name="email" />
         <InputField<RegisterFormData> type="password" label="비밀번호" name="password" />
         <InputField<RegisterFormData>
@@ -106,7 +106,7 @@ const RegisterMain = () => {
         />
         <InputField<RegisterFormData> label="이름" name="name" />
         <InputField<RegisterFormData> label="휴대폰 번호" name="phone" />
-        <Spacing height="20px" />
+        <Spacing margin="20px" />
       </form>
     </FormProvider>
   );

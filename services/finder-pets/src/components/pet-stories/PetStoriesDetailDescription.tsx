@@ -15,15 +15,15 @@ interface Props {
 const PetStoriesDetailDescription = ({ info }: Props) => {
   return (
     <article className={cs.detailSectionStyle}>
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <DetailSubHeader text={info?.title} />
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
       <Divider size={6} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <DetailDescriptionTextBox text={info?.description} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <Divider size={6} />
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
     </article>
   );
 };

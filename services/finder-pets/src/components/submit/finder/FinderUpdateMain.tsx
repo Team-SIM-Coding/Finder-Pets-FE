@@ -139,14 +139,14 @@ const FinderUpdateMain = ({ type, pet_info, scriptUrl }: Props) => {
   return (
     <FormProvider {...methods}>
       <form id="finder-update-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="24px" />
+        <Spacing margin="24px" />
         <EditorInputField
           name="date"
           label="날짜"
           type="date"
           className={es.editorInputMediumStyle}
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex align="center">
           <EditorInputField
             name="zonecode"
@@ -168,21 +168,21 @@ const FinderUpdateMain = ({ type, pet_info, scriptUrl }: Props) => {
             우편번호 찾기
           </Button>
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField
           name="address"
           label=""
           className={es.editorInputMediumStyle}
           placeholder="주소"
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField
           name="detail_address"
           label=""
           className={es.editorInputMediumStyle}
           placeholder="상세주소"
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           <EditorSelectTab name="animal" label="동물" className={es.editorSelectStyle}>
             <option value="all">모든 동물</option>
@@ -199,7 +199,7 @@ const FinderUpdateMain = ({ type, pet_info, scriptUrl }: Props) => {
             ))}
           </EditorSelectTab>
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           <EditorSelectTab name="gender" label="성별" className={es.editorSelectStyle}>
             <option value="default">미확인</option>
@@ -208,24 +208,24 @@ const FinderUpdateMain = ({ type, pet_info, scriptUrl }: Props) => {
           </EditorSelectTab>
           <EditorInputField name="weight" label="몸무게" className={es.editorInputSmallStyle} />
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           <EditorInputField name="color" label="털색" className={es.editorInputSmallStyle} />
           <EditorInputField name="age" label="나이" className={es.editorInputSmallStyle} />
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorCheckBoxField name="is_neutering" label="중성화 여부" />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField name="character" label="특징" className={es.editorInputMediumStyle} />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField name="phone" label="연락처" className={es.editorInputMediumStyle} />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorTextAreaField
           name="description"
           label="상세설명"
           className={es.editorTextAreaStyle}
         />
-        <Spacing height="24px" />
+        <Spacing margin="24px" />
         <EditorImageRegisterForm />
       </form>
     </FormProvider>

@@ -111,27 +111,27 @@ const ProfileMain = () => {
           className={es.editorInputMediumStyle}
           value={data.nickname}
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField
           name="phone"
           label="휴대폰"
           className={es.editorInputMediumStyle}
           value={data.phone}
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorSelectTab name="like_area" label="관심 지역" className={es.editorSelectStyle}>
           <option value="all">모든 지역</option>
           <option value="seoul">서울</option>
           <option value="ansan">안산</option>
           <option value="suwon">수원</option>
         </EditorSelectTab>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorSelectTab name="like_animal" label="관심 동물" className={es.editorSelectStyle}>
           <option value="all">모든 동물</option>
           <option value="dog">개</option>
           <option value="cat">고양이</option>
         </EditorSelectTab>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorSelectTab name="like_kind" label="관심 품종" className={es.editorSelectStyle}>
           <option value="all">모든 품종</option>
           <option value="golden-retriever">골든 리트리버</option>
@@ -139,7 +139,7 @@ const ProfileMain = () => {
           <option value="maine-coon">메인 쿤</option>
           <option value="Siamese">샴 고양이</option>
         </EditorSelectTab>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorTextAreaField
           name="intro"
           label="자기소개"

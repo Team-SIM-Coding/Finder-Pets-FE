@@ -12,7 +12,7 @@ const CommunityUpdateButton = () => {
       <Button className={cs.defaultButton} form="community-update-form" type="submit">
         수정하기
       </Button>
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
     </>
   );
 };

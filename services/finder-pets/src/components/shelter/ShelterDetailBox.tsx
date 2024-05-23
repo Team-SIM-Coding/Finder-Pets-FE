@@ -53,7 +53,7 @@ const ShelterDetailBox = () => {
                   <ShelterDetailMainHeaderRight info={formatDate(filterData.noticeSdt) as string} />
                 }
               />
-              <Spacing height="12px" />
+              <Spacing margin="12px" />
             </>
           }
           images={<ImageSwiperBox images={imageUrls} width={330} height={214} />}

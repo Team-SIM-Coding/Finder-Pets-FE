@@ -12,7 +12,7 @@ const FinderRegisterButton = () => {
       <Button className={cs.defaultButton} form="finder-register-form" type="submit">
         등록하기
       </Button>
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
     </>
   );
 };

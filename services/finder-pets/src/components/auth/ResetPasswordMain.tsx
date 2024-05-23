@@ -90,7 +90,7 @@ const ResetPasswordMain = () => {
   return (
     <FormProvider {...methods}>
       <form id="reset-password-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="40px" />
+        <Spacing margin="40px" />
         {!isResetPassword && (
           <>
             <InputField<ResetPasswordFormData> name="email" label="아이디" />

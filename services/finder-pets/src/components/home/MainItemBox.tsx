@@ -38,9 +38,9 @@ const MainItemBox = ({ item, type }: Props) => {
             {item.kind} / {item.color} / {item.age} / {item.weight}
           </h3>
         </Flex>
-        <Spacing height="8px" />
+        <Spacing margin="8px" />
         <Text fontSize="sm">실종 장소 : {trimText(item?.area, 20)}</Text>
-        <Spacing height="8px" />
+        <Spacing margin="8px" />
         <Text fontSize="sm">실종 날짜 : {item?.date?.toString()}</Text>
       </div>
     </Link>

@@ -6,7 +6,7 @@ import MyMenuList from "@/components/my-menu/MyMenuList";
 const MyMenu = () => {
   return (
     <section className={cs.sectionStyle}>
-      <Spacing height="30px" />
+      <Spacing margin="30px" />
       <MyMenuList />
     </section>
   );

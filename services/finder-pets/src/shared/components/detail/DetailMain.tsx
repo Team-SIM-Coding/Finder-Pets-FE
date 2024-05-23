@@ -11,7 +11,7 @@ interface Props {
 const DetailMain = ({ header, images, description }: Props) => {
   return (
     <article>
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <div>{header}</div>
       <div>{images}</div>
       <div>{description}</div>
