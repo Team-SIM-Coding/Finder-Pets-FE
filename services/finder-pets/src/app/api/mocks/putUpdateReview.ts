@@ -26,3 +26,15 @@ export const putUpdateReview: HttpHandler = http.put(
     }
   },
 );
+
+export const fetchUpdateReview = async (id: string, data: Board) => {
+  const response = await fetch(`/api/review/update/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  return response.json();
+};

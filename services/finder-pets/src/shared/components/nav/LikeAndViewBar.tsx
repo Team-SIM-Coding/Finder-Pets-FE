@@ -1,8 +1,8 @@
 "use client";
 
 import * as cs from "@/styles/common.css";
-import * as s from "./LikeAndViewStyle.css";
 import { CiMenuKebab } from "react-icons/ci";
+import * as s from "./LikeAndViewStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
@@ -10,18 +10,27 @@ import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 
 import useAlertContext from "@/hooks/useAlertContext";
 
-import { useQueryClient } from "@tanstack/react-query";
-import { useRecoilValue } from "recoil";
 import authState from "@/recoil/authAtom";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRecoilValue } from "recoil";
 
+import { fetchUpdateLostPet } from "@/api/mocks/putUpdateLostPet";
+import { fetchUpdateSightedPet } from "@/api/mocks/putUpdateSightedPet";
+import { FinderPet } from "@/models/finder";
 import Link from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import Spacing from "../spacing/Spacing";
 
 interface Props {
   like_count: number;
   view_count: number;
   type?: string;
+}
+
+interface UpdatePayload<T> {
+  id: string;
+  data: T;
 }
 
 const refetchQueryType: Record<string, string> = {
@@ -48,6 +57,31 @@ const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
   const [isOpenTextBox, setIsOpenTextBox] = useState(false);
 
   const likeAndViewBarBoxRef = useRef<HTMLDivElement>(null);
+
+  const getFinderPetMutationFn = () => {
+    if (parts[2] === "lost") {
+      return async ({ id, data }: UpdatePayload<FinderPet>) => fetchUpdateLostPet(id, data);
+    } else if (parts[2] === "sighted") {
+      return async ({ id, data }: UpdatePayload<FinderPet>) => fetchUpdateSightedPet(id, data);
+    }
+    return;
+  };
+
+  const { mutate: finderMutate } = useMutation<FinderPet, unknown, UpdatePayload<FinderPet>>({
+    mutationFn: getFinderPetMutationFn(),
+    onSuccess: () => {
+      open({
+        width: "300px",
+        height: "240px",
+        title: `${parts[2] === "lost" ? "실종" : "목격"} 게시글 완료 등록`,
+        main: <AlertMainTextBox text="게시글이 완료 상태로 전환되어 있습니다." />,
+        rightButtonStyle: cs.defaultButton,
+        onRightButtonClick: () => {
+          close();
+        },
+      });
+    },
+  });
 
   const handleOpenDeletePopUp = () => {
     open({
@@ -113,6 +147,27 @@ const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
     }
   };
 
+  const openPopUpChangeCompletedPost = async () => {
+    open({
+      width: "300px",
+      height: "240px",
+      title: `${parts[2] === "lost" ? "실종" : "목격"} 게시글 완료 등록`,
+      main: <AlertMainTextBox text="게시글을 완료 상태로 전환하시겠습니까?" />,
+      leftButtonLabel: "취소",
+      leftButtonStyle: cs.whiteButton,
+      rightButtonStyle: cs.defaultButton,
+      onLeftButtonClick: () => {
+        close();
+      },
+      onRightButtonClick: () => {
+        close();
+      },
+      onBackDropClick: () => {
+        close();
+      },
+    });
+  };
+
   useEffect(() => {
     if (isOpenTextBox) {
       document.addEventListener("mousedown", handleClickOutside);
@@ -139,12 +194,23 @@ const LikeAndViewBar = ({ like_count, view_count, type }: Props) => {
             align="center"
             className={s.deleteAndModifyBox}
           >
+            <Spacing margin="8px" />
             <Link href={`${extractedPath}/${id}/update`} className={s.deleteAndModifyText}>
               <span>수정</span>
             </Link>
+            <Spacing margin="8px" />
             <span className={s.deleteAndModifyText} onClick={handleOpenDeletePopUp}>
               삭제
             </span>
+            <Spacing margin="8px" />
+            {(parts[2] === "lost" || parts[2] === "sighted") && (
+              <>
+                <span className={s.deleteAndModifyText} onClick={openPopUpChangeCompletedPost}>
+                  완료
+                </span>
+                <Spacing margin="8px" />
+              </>
+            )}
           </Flex>
         )}
       </Flex>

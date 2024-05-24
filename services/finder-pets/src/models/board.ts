@@ -3,7 +3,7 @@ import { Image } from "@/models/image";
 
 export interface Board {
   board_id?: string;
-  title: string;
+  title?: string;
   description?: string;
   created_at: string;
   like_count: number;

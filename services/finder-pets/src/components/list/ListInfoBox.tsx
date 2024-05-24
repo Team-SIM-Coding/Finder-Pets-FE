@@ -44,7 +44,7 @@ const ListInfoBox = ({ info }: Props) => {
 
   const petInfo = (info as ShelterPet)?.careAddr
     ? normalizeShelterPetData(info as ShelterPet)
-    : info;
+    : { ...info, isCompleted: true };
 
   if (!info) {
     return (
@@ -59,7 +59,11 @@ const ListInfoBox = ({ info }: Props) => {
       <Flex justify="space-around">
         {hasPetInfo(petInfo) && (
           <>
-            <HighLightTag text={trimText(petInfo.area, 4)} color="#FDD78D" />
+            {petInfo.isCompleted ? (
+              <HighLightTag text="완료" color="#878787" />
+            ) : (
+              <HighLightTag text={trimText(petInfo.area, 4)} color="#FDD78D" />
+            )}
             <HighLightTag text={petInfo.animal} color="#7C80E4" />
             <HighLightTag text={trimText(petInfo.kind, 5)} color="#F18FE2" />
           </>

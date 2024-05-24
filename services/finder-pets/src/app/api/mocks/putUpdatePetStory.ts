@@ -26,3 +26,15 @@ export const putUpdatePetStory: HttpHandler = http.put(
     }
   },
 );
+
+export const fetchUpdatePetStory = async (id: string, data: Board) => {
+  const response = await fetch(`/api/pet-story/update/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  return response.json();
+};

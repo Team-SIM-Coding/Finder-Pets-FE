@@ -16,4 +16,5 @@ export interface FinderPet extends Pet {
   description?: string;
   images?: Image[] | undefined;
   comments?: IComment[];
+  isCompleted?: boolean;
 }

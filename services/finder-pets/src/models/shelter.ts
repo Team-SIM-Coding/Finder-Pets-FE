@@ -22,6 +22,7 @@ export interface ShelterPet extends ListPetInfo {
   sexCd: string;
   specialMark?: string;
   weight: string;
+  isCompleted?: boolean;
 }
 
 interface ShelterPetItems {

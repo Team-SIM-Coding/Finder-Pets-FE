@@ -23,3 +23,15 @@ export const putUpdateLostPet: HttpHandler = http.put(
     }
   },
 );
+
+export const fetchUpdateLostPet = async (id: string, data: FinderPet) => {
+  const response = await fetch(`/api/lost/update/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  return response.json();
+};

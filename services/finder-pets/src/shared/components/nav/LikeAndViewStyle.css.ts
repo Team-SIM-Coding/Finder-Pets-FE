@@ -28,7 +28,6 @@ export const deleteAndModifyBox = style([
     right: "20px",
     top: "10px",
     width: "60px",
-    height: "60px",
     padding: "8px 12px",
     backgroundColor: "white",
     border: "1px solid #DFDFDF",
