@@ -12,6 +12,7 @@ import RecoilRootProvider from "@/recoil/RecoilRootProvider";
 
 import type { Metadata } from "next";
 import React from "react";
+import KakaoScript from "@/shared/c/kakao-share/KakaoScript";
 
 export const metadata: Metadata = {
   title: "찾아줄개",
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </MSWProvider>
         </Providers>
       </body>
+      <KakaoScript />
     </html>
   );
 }

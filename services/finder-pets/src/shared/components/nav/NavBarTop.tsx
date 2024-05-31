@@ -121,6 +121,14 @@ const getButtonLink = (buttonObject: Record<string, string>, path: string) => {
   return Object.entries(buttonObject).find(([key]) => path.includes(key))?.[0] || "";
 };
 
+const handleShareToKakao = () => {
+  const { Kakao, location } = window;
+  Kakao.Share.createScrapButton({
+    container: "#kakaotalk-sharing-btn",
+    requestUrl: location.href,
+  });
+};
+
 const NavBarTop = () => {
   const path = usePathname();
   const { isLoggedIn } = useRecoilValue(authState);
@@ -159,7 +167,7 @@ const NavBarTop = () => {
         )}
         {(showShareButton || showLikeButton) && (
           <Flex className={s.shareAndLikeButtonWrap}>
-            {showShareButton && <ShareButton />}
+            {showShareButton && <ShareButton onClick={handleShareToKakao} />}
             {isLoggedIn && showLikeButton && <IoMdHeartEmpty className={s.likeButtonIcon} />}
           </Flex>
         )}

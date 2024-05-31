@@ -7,12 +7,6 @@ interface Props {
   initialLevel?: number;
 }
 
-declare global {
-  interface Window {
-    kakao: Kakao;
-  }
-}
-
 const KakaoMap = ({ address, initialLevel = 3 }: Props) => {
   useEffect(() => {
     const script = document.createElement("script");
@@ -34,23 +28,27 @@ const KakaoMap = ({ address, initialLevel = 3 }: Props) => {
             let coords;
             if (result[0].road_address) {
               coords = new window.kakao.maps.LatLng(
-                parseFloat(result[0]?.road_address.y),
-                parseFloat(result[0]?.road_address.x),
+                parseFloat(result[0].road_address.y),
+                parseFloat(result[0].road_address.x),
+              );
+            } else {
+              coords = new window.kakao.maps.LatLng(
+                parseFloat(result[0].y),
+                parseFloat(result[0].x),
               );
             }
-            coords = new window.kakao.maps.LatLng(parseFloat(result[0].y), parseFloat(result[0].x));
             const marker = new window.kakao.maps.Marker({
               map,
               position: coords,
             });
             map.setCenter(coords);
           } else {
-            throw new Error("Geocoder failed due to: " + status);
+            throw new Error(`Geocoder failed due to: ${status}`);
           }
         });
 
         script.onerror = () => {
-          throw new Error("Failed to load the Kakao Maps SDK.");
+          console.error("Failed to load the Kakao Maps SDK.");
         };
 
         return () => {
