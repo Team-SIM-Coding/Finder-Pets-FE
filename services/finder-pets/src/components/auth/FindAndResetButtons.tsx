@@ -1,7 +1,8 @@
-import LinkTextButton from "@/shared/components/LinkTextButton";
 import * as s from "./AuthStyle.css";
 
 import { Divider, Flex } from "@design-system/react-components-layout";
+
+import LinkTextButton from "@/shared/c/nav/LinkTextButton";
 
 const FindAndResetButtons = () => {
   return (

@@ -1,17 +1,17 @@
 "use client";
 
 import * as s from "./NavBarStyle.css";
-
-import { RiHome2Line } from "react-icons/ri";
+import { IoPersonOutline } from "react-icons/io5";
 import { LuShield } from "react-icons/lu";
 import { PiBellSimpleRingingLight } from "react-icons/pi";
-import { RiBookLine } from "react-icons/ri";
-import { IoPersonOutline } from "react-icons/io5";
+import { RiBookLine, RiHome2Line } from "react-icons/ri";
 
 import { Flex } from "@design-system/react-components-layout";
-import NavBarIcon from "./NavBarIcon";
-import { usePathname } from "next/navigation";
+
+import NavBarIcon from "@/shared/c/nav/NavBarIcon";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NAVBAR_EXCLUSION_PATHS = [
   "/register",
@@ -52,7 +52,9 @@ const NavBarBottom = () => {
     path.startsWith(excludedPath),
   );
 
-  if (shouldExclude) return null;
+  const updatePathExclude = path.includes("/update");
+
+  if (shouldExclude || updatePathExclude) return null;
 
   return (
     <section className={s.navBottomSection}>

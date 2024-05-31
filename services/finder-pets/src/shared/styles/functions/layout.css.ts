@@ -1,4 +1,4 @@
-import { StyleRule } from "@vanilla-extract/css"
+import { StyleRule } from "@vanilla-extract/css";
 
 type responsiveStyleParams = {
   twoXl?: StyleRule;

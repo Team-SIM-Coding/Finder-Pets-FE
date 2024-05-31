@@ -1,5 +1,6 @@
+import UserAndCreateAt from "@/shared/c/nav/UserAndCreateAt";
+
 import { Image } from "@/models/image";
-import UserAndCreateAt from "@/shared/components/UserAndCreateAt";
 
 interface Props {
   user_image: Image;

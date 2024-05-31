@@ -1,9 +1,10 @@
 "use client";
 
-import { Pet } from "@/models/pet";
 import EditorSection from "@/shared/components/editor/EditorSection";
-import FinderRegisterButton from "./FinderRegisterButton";
-import FinderRegisterMain from "./FinderRegisterMain";
+import FinderRegisterButton from "@/components/submit/finder/FinderRegisterButton";
+import FinderRegisterMain from "@/components/submit/finder/FinderRegisterMain";
+
+import { Pet } from "@/models/pet";
 
 const FinderRegisterForm = () => {
   return (

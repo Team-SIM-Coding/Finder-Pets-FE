@@ -1,6 +1,7 @@
 import * as s from "./Swiper.css";
 
 import { Image as ImageType } from "@/models/image";
+
 import Image from "next/image";
 
 interface Props {

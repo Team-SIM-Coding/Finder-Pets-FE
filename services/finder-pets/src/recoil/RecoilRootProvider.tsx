@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
-import { ReactNode } from 'react';
-import { RecoilRoot } from 'recoil';
+import { RecoilRoot } from "recoil";
+
+import { ReactNode } from "react";
 
 interface RecoilRootProviderProps {
   children: ReactNode;

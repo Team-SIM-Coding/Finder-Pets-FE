@@ -3,13 +3,15 @@ import * as s from "./ListStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
+import ListInfoBox from "@/components/list/ListInfoBox";
+
 import { Board } from "@/models/board";
 import { FinderPet } from "@/models/finder";
 import { ShelterPet } from "@/models/shelter";
+
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ListInfoBox from "./ListInfoBox";
 
 interface Props {
   list_info: FinderPet | Board | ShelterPet;

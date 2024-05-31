@@ -1,4 +1,5 @@
 import { ShelterPetResponseResponse } from "@/models/shelter";
+
 import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
 
 interface FetchParams {

@@ -1,17 +1,22 @@
 "use client";
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
-import useAlertContext from "@/hooks/useAlertContext";
-import authState from "@/recoil/authAtom";
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import InputField from "@/shared/components/auth/InputField";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import authState from "@/recoil/authAtom";
+import { useRecoilState } from "recoil";
+
 import { LogInFormData, loginSchema } from "@/utils/validation/auth";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { useRecoilState } from "recoil";
 import { useEffect } from "react";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { User } from "@/models/user";
 
 const LogInMain = () => {
   const router = useRouter();
@@ -41,7 +46,6 @@ const LogInMain = () => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log("로그인 성공:", data);
       setAuthStateValue((prev) => ({ ...prev, isLoggedIn: true, userId: data.user_id }));
 
       open({
@@ -77,7 +81,6 @@ const LogInMain = () => {
           },
         });
       }
-      console.error("로그인 실패:", error.message);
     }
   };
 
@@ -90,10 +93,10 @@ const LogInMain = () => {
   return (
     <FormProvider {...methods}>
       <form id="login-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="40px" />
+        <Spacing margin="40px" />
         <InputField<LogInFormData> name="email" label="아이디" />
         <InputField<LogInFormData> name="password" label="비밀번호" type="password" />
-        <Spacing height="20px" />
+        <Spacing margin="20px" />
       </form>
     </FormProvider>
   );

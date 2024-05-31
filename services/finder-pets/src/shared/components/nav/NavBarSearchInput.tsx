@@ -1,8 +1,8 @@
 "use client";
 
 import * as s from "./NavBarStyle.css";
-
 import { IoIosSearch } from "react-icons/io";
+
 import { Input } from "@design-system/react-components-input";
 
 const NavBarSearchInput = () => {

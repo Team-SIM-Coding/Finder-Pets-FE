@@ -1,4 +1,4 @@
-import { Image } from "./image";
+import { Image } from "@/models/image";
 
 export interface MyPet {
   my_pet_id: string;

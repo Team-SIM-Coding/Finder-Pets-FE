@@ -1,7 +1,8 @@
 import * as s from "./UserAndCreateAtStyle.css";
 
-import { Image as ImageType } from "@/models/image";
 import { Flex } from "@design-system/react-components-layout";
+
+import { Image as ImageType } from "@/models/image";
 
 import Image from "next/image";
 

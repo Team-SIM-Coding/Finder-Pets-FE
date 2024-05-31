@@ -1,4 +1,4 @@
-import { ListPetInfo } from "./pet";
+import { ListPetInfo } from "@/models/pet";
 
 export interface ShelterPet extends ListPetInfo {
   age?: string;
@@ -22,6 +22,7 @@ export interface ShelterPet extends ListPetInfo {
   sexCd: string;
   specialMark?: string;
   weight: string;
+  isCompleted?: boolean;
 }
 
 interface ShelterPetItems {

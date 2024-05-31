@@ -1,9 +1,10 @@
 "use client";
-import * as cs from "@/shared/styles/common.css";
 
-import Spacing from "@/shared/components/Spacing";
+import * as cs from "@/styles/common.css";
 
 import { Button } from "@design-system/react-components-button";
+
+import Spacing from "@/shared/c/spacing/Spacing";
 
 const MyPetRegisterButton = () => {
   return (
@@ -11,7 +12,7 @@ const MyPetRegisterButton = () => {
       <Button className={cs.defaultButton} form="my-pet-register-form" type="submit">
         등록하기
       </Button>
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
     </>
   );
 };

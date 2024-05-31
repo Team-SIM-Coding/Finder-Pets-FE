@@ -1,12 +1,14 @@
 "use client";
 
-import { Image as ImageType } from "@/models/image";
 import * as s from "./EditorStyle.css";
 
 import { Input } from "@design-system/react-components-input";
 
+import Spacing from "@/shared/c/spacing/Spacing";
+
+import { Image as ImageType } from "@/models/image";
+
 import Image from "next/image";
-import Spacing from "../Spacing";
 
 interface Props {
   pet_image?: ImageType;
@@ -24,7 +26,7 @@ const EditorImageRegisterForm = ({ pet_image }: Props) => {
             height={200}
             className={s.imageRegisterMyPetImage}
           />
-          <Spacing height="12px" />
+          <Spacing margin="12px" />
         </>
       ) : (
         <>

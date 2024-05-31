@@ -1,4 +1,4 @@
-import { SHELTER_BASE_URL } from "./constants";
+import { SHELTER_BASE_URL } from "@/api/shelter/constants";
 
 const TODAY = new Date();
 TODAY.setDate(TODAY.getDate() - 7);

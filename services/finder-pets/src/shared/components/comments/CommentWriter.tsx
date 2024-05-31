@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import Spacing from "../Spacing";
-import UserAndCreateAt from "../UserAndCreateAt";
-import CommentRegisterButton from "./CommentRegisterButton";
 import * as s from "./CommentsStyle.css";
+
+import Spacing from "@/shared/c/spacing/Spacing";
+import UserAndCreateAt from "@/shared/c/nav/UserAndCreateAt";
+import CommentRegisterButton from "@/shared/components/comments/CommentRegisterButton";
+
+import { useState } from "react";
 
 const CommentWriter = () => {
   const [text, setText] = useState("");
@@ -23,14 +25,14 @@ const CommentWriter = () => {
           height={28}
         />
       </div>
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <textarea
         className={s.commentWriterTextArea}
         onChange={handleWriterTextChange}
         value={text}
       />
       <CommentRegisterButton comment={text} setText={setText} />
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
     </div>
   );
 };

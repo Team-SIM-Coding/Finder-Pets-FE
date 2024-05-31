@@ -1,5 +1,5 @@
-import { vars } from "@design-system/themes";
 import * as s from "./style.css";
+import { vars } from "@design-system/themes";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 type Props = {

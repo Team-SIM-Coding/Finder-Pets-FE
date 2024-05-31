@@ -1,7 +1,8 @@
-import { trimText } from "@/utils/trimText";
 import * as s from "./ListStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
+
+import { trimText } from "@/utils/trimText";
 
 interface Props {
   label: string;

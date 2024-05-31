@@ -3,14 +3,17 @@ import * as s from "./ListStyle.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
+import HighLightTag from "@/components/list/HighLightTag";
+import ListInfoDescription from "@/components/list/ListInfoDescription";
+
 import { Board } from "@/models/board";
 import { FinderPet } from "@/models/finder";
 import { ShelterPet } from "@/models/shelter";
+
 import { formatDate } from "@/utils/format/formatDate";
 import { trimText } from "@/utils/trimText";
+
 import { usePathname } from "next/navigation";
-import HighLightTag from "./HighLightTag";
-import ListInfoDescription from "./ListInfoDescription";
 
 type PetInfo = FinderPet | ShelterPet;
 
@@ -41,7 +44,7 @@ const ListInfoBox = ({ info }: Props) => {
 
   const petInfo = (info as ShelterPet)?.careAddr
     ? normalizeShelterPetData(info as ShelterPet)
-    : info;
+    : { ...info, isCompleted: true };
 
   if (!info) {
     return (
@@ -56,23 +59,37 @@ const ListInfoBox = ({ info }: Props) => {
       <Flex justify="space-around">
         {hasPetInfo(petInfo) && (
           <>
-            <HighLightTag text={trimText(petInfo.area, 4)} color="#FDD78D" />
+            {petInfo.isCompleted ? (
+              <HighLightTag text="완료" color="#878787" />
+            ) : (
+              <HighLightTag text={trimText(petInfo.area, 4)} color="#FDD78D" />
+            )}
             <HighLightTag text={petInfo.animal} color="#7C80E4" />
             <HighLightTag text={trimText(petInfo.kind, 5)} color="#F18FE2" />
           </>
         )}
         {!COMMUNITY_PATHS.includes(path) && hasPetInfo(petInfo) && (
-          <HighLightTag text={petInfo.gender === "M" ? "수컷" : "암컷"} color="#52FF00" />
+          <HighLightTag
+            text={
+              petInfo.gender === "M" ? "수컷" : petInfo.gender === "F" ? "암컷" : petInfo.gender
+            }
+            color="#52FF00"
+          />
         )}
       </Flex>
       {!COMMUNITY_PATHS.includes(path) && (
         <div className={s.infoDescriptionWrap}>
           {hasPetInfo(petInfo) && (
             <>
-              <ListInfoDescription label="체중" text={`${petInfo.weight} Kg`} />
-              <ListInfoDescription label="특징" text={petInfo.description} />
-              <ListInfoDescription label="구조장소" text={petInfo.area} />
-              <ListInfoDescription label="공고기간" text={formatDate(petInfo.created_at)} />
+              <ListInfoDescription
+                label="체중"
+                text={
+                  String(petInfo.weight)?.includes("Kg") ? petInfo?.weight : petInfo?.weight + " Kg"
+                }
+              />
+              <ListInfoDescription label="특징" text={petInfo?.description} />
+              <ListInfoDescription label="구조장소" text={petInfo?.area} />
+              <ListInfoDescription label="공고기간" text={formatDate(petInfo?.created_at)} />
             </>
           )}
         </div>

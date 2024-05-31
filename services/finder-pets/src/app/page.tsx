@@ -1,11 +1,17 @@
+import * as cs from "@/styles/common.css";
+
 import MainInfoList from "@/components/home/MainInfoList";
-import * as cs from "@/shared/styles/common.css";
+
+import MainSkeletonList from "@/shared/c/skeleton/MainSkeletonList";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
     <main>
       <section className={cs.sectionStyle}>
-        <MainInfoList />
+        <Suspense fallback={<MainSkeletonList item_length={2} />}>
+          <MainInfoList />
+        </Suspense>
       </section>
     </main>
   );

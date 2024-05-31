@@ -1,15 +1,10 @@
 "use client";
+
 import { useEffect } from "react";
 
 interface Props {
   address: string;
   initialLevel?: number;
-}
-
-declare global {
-  interface Window {
-    kakao: Kakao;
-  }
 }
 
 const KakaoMap = ({ address, initialLevel = 3 }: Props) => {
@@ -28,25 +23,27 @@ const KakaoMap = ({ address, initialLevel = 3 }: Props) => {
         const map = new window.kakao.maps.Map(container, options);
 
         const geocoder = new window.kakao.maps.services.Geocoder();
-        console.log(geocoder);
         geocoder.addressSearch(address, (result, status) => {
           if (status === window.kakao.maps.services.Status.OK) {
-            console.log(result);
             let coords;
             if (result[0].road_address) {
               coords = new window.kakao.maps.LatLng(
-                parseFloat(result[0]?.road_address.y),
-                parseFloat(result[0]?.road_address.x),
+                parseFloat(result[0].road_address.y),
+                parseFloat(result[0].road_address.x),
+              );
+            } else {
+              coords = new window.kakao.maps.LatLng(
+                parseFloat(result[0].y),
+                parseFloat(result[0].x),
               );
             }
-            coords = new window.kakao.maps.LatLng(parseFloat(result[0].y), parseFloat(result[0].x));
             const marker = new window.kakao.maps.Marker({
               map,
               position: coords,
             });
             map.setCenter(coords);
           } else {
-            console.error("Geocoder failed due to: " + status);
+            throw new Error(`Geocoder failed due to: ${status}`);
           }
         });
 

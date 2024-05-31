@@ -1,10 +1,12 @@
 "use client";
 
-import { Dispatch, SetStateAction, useState } from "react";
-import Spacing from "../Spacing";
-import UserAndCreateAt from "../UserAndCreateAt";
-import CommentUpdateAndCancelButtons from "./CommentUpdateAndCancelButtons";
 import * as s from "./CommentsStyle.css";
+
+import Spacing from "@/shared/c/spacing/Spacing";
+import UserAndCreateAt from "@/shared/c/nav/UserAndCreateAt";
+import CommentUpdateAndCancelButtons from "@/shared/components/comments/CommentUpdateAndCancelButtons";
+
+import { Dispatch, SetStateAction, useState } from "react";
 
 interface Props {
   comment: string;
@@ -30,7 +32,7 @@ const CommentUpdater = ({ comment, comment_id, setIsUpdate, setIsOpenTextBox }: 
           height={28}
         />
       </div>
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <textarea
         className={s.commentWriterTextArea}
         onChange={handleWriterTextChange}
@@ -43,7 +45,7 @@ const CommentUpdater = ({ comment, comment_id, setIsUpdate, setIsOpenTextBox }: 
         setIsUpdate={setIsUpdate}
         setIsOpenTextBox={setIsOpenTextBox}
       />
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
     </div>
   );
 };

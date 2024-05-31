@@ -1,14 +1,17 @@
 "use client";
-import * as s from "./CommentsStyle.css";
-import * as cs from "@/shared/styles/common.css";
 
+import * as cs from "@/styles/common.css";
+import * as s from "./CommentsStyle.css";
+
+import { Button } from "@design-system/react-components-button";
 import { Flex } from "@design-system/react-components-layout";
-import { useParams, usePathname } from "next/navigation";
+
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 
 import useAlertContext from "@/hooks/useAlertContext";
-import { Button } from "@design-system/react-components-button";
+
+import { useParams, usePathname } from "next/navigation";
 import { Dispatch, SetStateAction } from "react";
-import AlertMainTextBox from "../alert/AlertMainTextBox";
 
 export const PATH_TYPE: Record<string, string> = {
   "/finder/lost": "lost",
@@ -50,7 +53,6 @@ const CommentUpdateAndCancelButtons = ({
 
     if (response.ok) {
       const data = await response.json();
-      console.log("댓글이 수정 되었습니다.", data);
       open({
         width: "300px",
         height: "200px",
@@ -60,12 +62,12 @@ const CommentUpdateAndCancelButtons = ({
         onRightButtonClick: () => {
           setText("");
           setIsUpdate(false);
+          setIsOpenTextBox(false);
           close();
         },
       });
     } else {
       const data = await response.json();
-      console.log("댓글 수정이 실패 되었습니다.", data);
     }
   };
 

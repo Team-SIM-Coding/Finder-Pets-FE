@@ -3,6 +3,7 @@ import { createVar, style } from "@vanilla-extract/css";
 import { f } from "./functions";
 
 export const spacingHeightVar = createVar();
+export const spacingMarginVar = createVar();
 export const spacingWidthVar = createVar();
 
 export const sectionStyle = style([
@@ -61,4 +62,5 @@ export const linkTextButton = style({
 export const spacingStyle = style({
   width: spacingWidthVar,
   height: spacingHeightVar,
+  marginTop: spacingMarginVar,
 });

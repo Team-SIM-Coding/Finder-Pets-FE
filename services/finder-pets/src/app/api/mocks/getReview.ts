@@ -1,4 +1,5 @@
 import { Board } from "@/models/board";
+
 import { HttpHandler, HttpResponse, http } from "msw";
 
 const reviews: Board[] = JSON.parse(localStorage.getItem("reviews") || "[]");
@@ -23,10 +24,22 @@ export const getReview: HttpHandler = http.get("/api/review/:id", async ({ param
   }
 });
 
+export const fetchReviews = async () => {
+  const response = await fetch("/api/review");
+
+  if (!response.ok) {
+    throw new Error("재회 후기 리스트 조회에 실패했습니다.");
+  }
+
+  return response.json();
+};
+
 export const fetchReview = async (reviewId: string[] | string): Promise<Board> => {
   const response = await fetch(`/api/review/${reviewId}`);
+
   if (!response.ok) {
     throw new Error("재회 후기 게시물 정보 조회에 실패했습니다.");
   }
+
   return response.json();
 };

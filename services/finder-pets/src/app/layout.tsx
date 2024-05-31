@@ -1,14 +1,18 @@
 import "@/shared/styles";
 
-import React from "react";
+import NavBarBottom from "@/shared/c/nav/NavBarBottom";
+import NavBarTop from "@/shared/c/nav/NavBarTop";
+import ProtectedRoute from "@/shared/c/protected/ProtectedRoute";
+import { MSWProvider } from "@/shared/components/MSWProvider";
+
+import { AlertContextProvider } from "@/contexts/AlertContext";
+
+import Providers from "@/react-query/Providers";
+import RecoilRootProvider from "@/recoil/RecoilRootProvider";
 
 import type { Metadata } from "next";
-import NavBarTop from "@/shared/components/NavBarTop";
-import NavBarBottom from "@/shared/components/NavBarBottom";
-import { MSWProvider } from "@/shared/components/MSWProvider";
-import RecoilRootProvider from "@/recoil/RecoilRootProvider";
-import { AlertContextProvider } from "@/contexts/AlertContext";
-import Providers from "@/react-query/Providers";
+import React from "react";
+import KakaoScript from "@/shared/c/kakao-share/KakaoScript";
 
 export const metadata: Metadata = {
   title: "찾아줄개",
@@ -24,13 +28,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <RecoilRootProvider>
               <AlertContextProvider>
                 <NavBarTop />
-                {children}
+                <ProtectedRoute>{children}</ProtectedRoute>
               </AlertContextProvider>
             </RecoilRootProvider>
             <NavBarBottom />
           </MSWProvider>
         </Providers>
       </body>
+      <KakaoScript />
     </html>
   );
 }

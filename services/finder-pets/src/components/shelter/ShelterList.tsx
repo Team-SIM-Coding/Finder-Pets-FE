@@ -1,12 +1,17 @@
 "use client";
 
-import { getShelterPetList } from "@/app/api/shelter/shelterApi";
-import usePetList from "@/hooks/usePetList";
-import { ShelterPet, ShelterPetResponseResponse } from "@/models/shelter";
 import { VisibilityLoader } from "@/shared/components/VisibilityLoader";
+import ListBox from "@/components/list/ListBox";
+
+import { getShelterPetList } from "@/api/shelter/shelterApi";
+
+import usePetList from "@/hooks/usePetList";
+
+import { ShelterPet, ShelterPetResponseResponse } from "@/models/shelter";
+
 import { flattenShelterData } from "@/utils/data/flattenShelterData";
+
 import { useCallback, useMemo } from "react";
-import ListBox from "../list/ListBox";
 
 export interface FetchResponse {
   response: ShelterPetResponseResponse;
@@ -48,8 +53,6 @@ const ShelterList = ({ filter }: Props) => {
       );
     });
   }, [filter, flatData]);
-
-  console.log(filter);
 
   const handleFetchNextPage = useCallback(() => {
     if (!isFetchingNextPage && hasNextPage) {

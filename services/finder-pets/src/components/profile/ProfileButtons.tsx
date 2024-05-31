@@ -1,9 +1,9 @@
 "use client";
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
 import useAlertContext from "@/hooks/useAlertContext";
 import authState from "@/recoil/authAtom";
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 
 import { Button } from "@design-system/react-components-button";
@@ -42,7 +42,7 @@ const ProfileButtons = () => {
 
   return (
     <Flex direction="column" justify="center" align="center">
-      <Spacing height="12px" />
+      <Spacing margin="12px" />
       <Button className={cs.defaultButton} form="profile-form" type="submit">
         저장
       </Button>
@@ -50,7 +50,7 @@ const ProfileButtons = () => {
         로그아웃
       </Button>
       <Button className={cs.whiteButton}>회원탈퇴</Button>
-      <Spacing height="24px" />
+      <Spacing margin="24px" />
     </Flex>
   );
 };

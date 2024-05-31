@@ -1,16 +1,20 @@
-import { IComment } from "./comment";
-import { Image } from "./image";
-import { Pet } from "./pet";
+import { IComment } from "@/models/comment";
+import { Image } from "@/models/image";
+import { Pet } from "@/models/pet";
 
 export interface FinderPet extends Pet {
   pet_id?: string;
   my_pet_id?: string;
   date?: string;
   area?: string;
+  zonecode?: string;
+  address?: string;
+  detail_address?: string;
   created_at?: string;
   like_count?: number;
   phone?: string;
   description?: string;
   images?: Image[] | undefined;
   comments?: IComment[];
+  isCompleted?: boolean;
 }

@@ -1,18 +1,23 @@
 "use client";
-import * as cs from "@/shared/styles/common.css";
 
-import Spacing from "@/shared/components/Spacing";
-import InputField from "@/shared/components/auth/InputField";
-import { useState } from "react";
-import FindPasswordResult from "./FindPasswordResult";
-import { useRouter } from "next/navigation";
-import useAlertContext from "@/hooks/useAlertContext";
-import { FindPasswordFormData, findPasswordSchema } from "@/utils/validation/auth";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import * as cs from "@/styles/common.css";
+
+import Spacing from "@/shared/c/spacing/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
-import { useSetRecoilState } from "recoil";
+import InputField from "@/shared/components/auth/InputField";
+import FindPasswordResult from "@/components/auth/FindPasswordResult";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
 import authState from "@/recoil/authAtom";
+import { useSetRecoilState } from "recoil";
+
+import { FindPasswordFormData, findPasswordSchema } from "@/utils/validation/auth";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
 const FindPasswordMain = () => {
   const [isFoundPassword, setIsFoundPassword] = useState(false);
@@ -42,10 +47,8 @@ const FindPasswordMain = () => {
     });
 
     if (response.ok) {
-      const data = await response.json();
       setIsFoundPassword(true);
       setAuthStateValue((prev) => ({ ...prev, isCompletedFindPassword: true }));
-      console.log("비밀번호 찾기 성공:", data.email);
     } else {
       const error = await response.json();
       const errorStatus = response.status;
@@ -78,14 +81,13 @@ const FindPasswordMain = () => {
           close();
         },
       });
-      console.error("비밀번호 찾기 실패:", error.message);
     }
   };
 
   return (
     <FormProvider {...methods}>
       <form id="find-password-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="40px" />
+        <Spacing margin="40px" />
         {!isFoundPassword && (
           <>
             <InputField<FindPasswordFormData> name="email" label="아이디" />

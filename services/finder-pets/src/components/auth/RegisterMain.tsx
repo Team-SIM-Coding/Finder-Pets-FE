@@ -1,18 +1,23 @@
 "use client";
-import * as cs from "@/shared/styles/common.css";
 
-import Spacing from "@/shared/components/Spacing";
+import * as cs from "@/styles/common.css";
+
+import Spacing from "@/shared/c/spacing/Spacing";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import InputField from "@/shared/components/auth/InputField";
-import { v4 as uuid } from "uuid";
+
+import useAlertContext from "@/hooks/useAlertContext";
 
 import { RegisterFormData, registerSchema } from "@/utils/validation/auth";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { useEffect } from "react";
-import useAlertContext from "@/hooks/useAlertContext";
-import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { v4 as uuid } from "uuid";
+import { useRouter } from "next/navigation";
 
 const RegisterMain = () => {
+  const router = useRouter();
   const { open, close } = useAlertContext();
 
   const methods = useForm<RegisterFormData>({
@@ -51,7 +56,17 @@ const RegisterMain = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("회원가입 성공:", data);
+        open({
+          width: "300px",
+          height: "200px",
+          title: "회원가입 완료",
+          main: <AlertMainTextBox text="회원가입이 완료되었습니다." />,
+          rightButtonStyle: cs.defaultButton,
+          onRightButtonClick: () => {
+            router.push("/login");
+            close();
+          },
+        });
       } else {
         const contentType = response.headers.get("Content-Type");
         if (contentType?.includes("application/json")) {
@@ -67,25 +82,21 @@ const RegisterMain = () => {
               onRightButtonClick: () => {
                 close();
               },
-              onBackDropClick: () => {
-                close();
-              },
             });
           }
         } else {
           const errorText = await response.text();
-          console.error("회원가입 실패 - HTML 오류 페이지:", errorText);
         }
       }
     } catch (networkError) {
-      console.error("회원가입 실패 - 네트워크 오류:", networkError);
+      throw new Error("회원가입 실패 - 네트워크 오류");
     }
   };
 
   return (
     <FormProvider {...methods}>
       <form id="register-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="40px" />
+        <Spacing margin="40px" />
         <InputField<RegisterFormData> label="아이디" name="email" />
         <InputField<RegisterFormData> type="password" label="비밀번호" name="password" />
         <InputField<RegisterFormData>
@@ -95,7 +106,7 @@ const RegisterMain = () => {
         />
         <InputField<RegisterFormData> label="이름" name="name" />
         <InputField<RegisterFormData> label="휴대폰 번호" name="phone" />
-        <Spacing height="20px" />
+        <Spacing margin="20px" />
       </form>
     </FormProvider>
   );

@@ -15,6 +15,8 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
+    'plugin:import/typescript',
+    'plugin:import/recommended',
   ],
   plugins: ["react", "@typescript-eslint", "react-hooks", "jsx-a11y"],
   rules: {
@@ -33,11 +35,17 @@ module.exports = {
       },
     ],
     "storybook/prefer-pascal-case": "off",
+    'import/no-unresolved': 'off',
+    'import/export': 'off',
   },
   ignorePatterns: ["**/dist/**/*", ".eslintrc.js"],
   settings: {
     "import/resolver": {
-      typescript: {},
+      node: {},
+      typescript: {
+        directory: './src'
+      },
     },
+    'import/parsers': { '@typescript-eslint/parser': ['.ts', '.tsx'] },
   },
 };

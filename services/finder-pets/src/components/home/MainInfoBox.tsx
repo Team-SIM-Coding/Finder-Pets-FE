@@ -1,16 +1,21 @@
 "use client";
 
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 import * as s from "./MainStyle.css";
 
-import { fetchLostPets } from "@/app/api/mocks/getLostPet";
-import { FinderPet } from "@/models/finder";
-import MainSwiperBox from "@/shared/components/swiper/MainSwiperBox";
 import { Flex } from "@design-system/react-components-layout";
-import { useQuery } from "@tanstack/react-query";
+
+import MainSwiperBox from "@/shared/components/swiper/MainSwiperBox";
+
+import { fetchLostPets } from "@/api/mocks/getLostPet";
+import { fetchSightedPets } from "@/api/mocks/getSightedPet";
+
+import { FinderPet } from "@/models/finder";
+
+import { useSuspenseQuery } from "@tanstack/react-query";
+
 import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
-import { fetchSightedPets } from "@/app/api/mocks/getSightedPet";
 
 interface Props {
   title: string;
@@ -18,7 +23,7 @@ interface Props {
 }
 
 const MainInfoBox = ({ title, type }: Props) => {
-  const { data } = useQuery<FinderPet[], Error>({
+  const { data } = useSuspenseQuery<FinderPet[], Error>({
     queryKey: [type === "lost" ? "lost-pets" : "sighted-pets"],
     queryFn: type === "lost" ? fetchLostPets : fetchSightedPets,
   });

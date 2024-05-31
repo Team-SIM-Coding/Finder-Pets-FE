@@ -1,11 +1,12 @@
 "use client";
+
 import * as s from "./TabStyle.css";
-
-import { usePathname } from "next/navigation";
-
-import { Flex } from "@design-system/react-components-layout";
 import { vars } from "@design-system/themes";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
+
+import { Flex } from "@design-system/react-components-layout";
+
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 interface Props {

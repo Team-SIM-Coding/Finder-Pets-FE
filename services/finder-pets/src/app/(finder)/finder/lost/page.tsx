@@ -1,12 +1,17 @@
+import ListBoxSkeletonList from "@/shared/c/skeleton/ListBoxSkeletonList";
 import LostPetList from "@/components/lost/LostPetList";
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
+
+import { Suspense } from "react";
 
 const Lost = () => {
   return (
     <section>
-      <Spacing height="142px" />
-      <LostPetList />
-      <Spacing height="60px" />
+      <Spacing margin="142px" />
+      <Suspense fallback={<ListBoxSkeletonList item_length={7} />}>
+        <LostPetList />
+      </Suspense>
+      <Spacing margin="60px" />
     </section>
   );
 };

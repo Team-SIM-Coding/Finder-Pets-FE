@@ -1,6 +1,8 @@
-import { HttpHandler, HttpResponse, http } from "msw";
-import { AnyPost, isBoard, isFinderPet, storagePaths } from "./postComment";
+import { AnyPost, isBoard, isFinderPet, storagePaths } from "@/api/mocks/postComment";
+
 import { IComment } from "@/models/comment";
+
+import { HttpHandler, HttpResponse, http } from "msw";
 
 const createUpdateCommentHandler = (storageKey: string): HttpHandler => {
   return http.put(`/api/${storageKey}/:id/comment/update`, async ({ request, params }) => {

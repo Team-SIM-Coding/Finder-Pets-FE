@@ -1,17 +1,20 @@
 "use client";
-import * as cs from "@/shared/styles/common.css";
 
-import Spacing from "@/shared/components/Spacing";
+import * as cs from "@/styles/common.css";
+
+import Spacing from "@/shared/c/spacing/Spacing";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import InputField from "@/shared/components/auth/InputField";
-import FindIdResult from "./FindIdResult";
+import FindIdResult from "@/components/auth/FindIdResult";
 
+import useAlertContext from "@/hooks/useAlertContext";
+
+import { FindIdFormData, findIdSchema } from "@/utils/validation/auth";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { FindIdFormData, findIdSchema } from "@/utils/validation/auth";
-import { zodResolver } from "@hookform/resolvers/zod";
-import useAlertContext from "@/hooks/useAlertContext";
-import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
-import { useRouter } from "next/navigation";
 
 const FindIdMain = () => {
   const [isFoundId, setIsFoundId] = useState(false);
@@ -44,7 +47,6 @@ const FindIdMain = () => {
       const data = await response.json();
       setEmail(data.email);
       setIsFoundId(true);
-      console.log("아이디 찾기 성공:", data.email);
     } else {
       const error = await response.json();
       const errorStatus = response.status;
@@ -77,14 +79,13 @@ const FindIdMain = () => {
           close();
         },
       });
-      console.error("아이디 찾기 실패:", error.message);
     }
   };
 
   return (
     <FormProvider {...methods}>
       <form id="find-id-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="40px" />
+        <Spacing margin="40px" />
         {!isFoundId && (
           <>
             <InputField<FindIdFormData> name="name" label="이름" />

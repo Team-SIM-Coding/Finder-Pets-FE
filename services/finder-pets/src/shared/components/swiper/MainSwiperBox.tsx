@@ -8,6 +8,7 @@ import { Navigation, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import MainItemBox from "@/components/home/MainItemBox";
+
 import { FinderPet } from "@/models/finder";
 
 interface Props {

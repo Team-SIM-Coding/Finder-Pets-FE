@@ -1,1 +1,1 @@
-export * as f from './f.css';
+export * as f from "./f.css";

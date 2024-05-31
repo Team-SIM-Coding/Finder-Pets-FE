@@ -1,18 +1,24 @@
 "use client";
-import * as cs from "@/shared/styles/common.css";
+
+import * as cs from "@/styles/common.css";
 import * as s from "./CommentsStyle.css";
+import { CiMenuKebab } from "react-icons/ci";
 
 import { Flex } from "@design-system/react-components-layout";
 
 import useAlertContext from "@/hooks/useAlertContext";
+
 import { Image } from "@/models/image";
+
+import UserAndCreateAt from "@/shared/c/nav/UserAndCreateAt";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+import { PATH_TYPE } from "@/shared/components/comments/CommentUpdateAndCancelButtons";
+import CommentUpdater from "@/shared/components/comments/CommentUpdater";
+
 import { useParams, usePathname } from "next/navigation";
-import { useState } from "react";
-import { CiMenuKebab } from "react-icons/ci";
-import UserAndCreateAt from "../UserAndCreateAt";
-import AlertMainTextBox from "../alert/AlertMainTextBox";
-import { PATH_TYPE } from "./CommentUpdateAndCancelButtons";
-import CommentUpdater from "./CommentUpdater";
+import { useEffect, useRef, useState } from "react";
+import { useRecoilValue } from "recoil";
+import authState from "@/recoil/authAtom";
 
 interface Props {
   user_image: Image;
@@ -26,6 +32,7 @@ const Comment = ({ user_image, user_name, comment_id, created_at, comment }: Pro
   const [isUpdate, setIsUpdate] = useState(false);
   const { id } = useParams();
   const [isOpenTextBox, setIsOpenTextBox] = useState(false);
+  const { isLoggedIn } = useRecoilValue(authState);
 
   const path = usePathname();
   const parts = path.split("/");
@@ -34,9 +41,29 @@ const Comment = ({ user_image, user_name, comment_id, created_at, comment }: Pro
   const { open, close } = useAlertContext();
 
   const storageKey = PATH_TYPE[extractedPath];
+  const commentBoxRef = useRef<HTMLDivElement>(null);
 
   const handleMenuKebabClick = () => {
     setIsOpenTextBox((prev) => !prev);
+  };
+
+  const handleOpenDeletePopUp = () => {
+    open({
+      width: "300px",
+      height: "200px",
+      title: "댓글 삭제",
+      main: <AlertMainTextBox text="댓글을 삭제 하시겠습니까?" />,
+      leftButtonLabel: "취소",
+      leftButtonStyle: cs.whiteButton,
+      rightButtonStyle: cs.defaultButton,
+      onLeftButtonClick: () => {
+        close();
+      },
+      onRightButtonClick: () => {
+        handleDeleteComment();
+        close();
+      },
+    });
   };
 
   const handleDeleteComment = async () => {
@@ -48,7 +75,6 @@ const Comment = ({ user_image, user_name, comment_id, created_at, comment }: Pro
 
     if (response.ok) {
       const data = await response.json();
-      console.log("댓글이 삭제 되었습니다.", data);
       open({
         width: "300px",
         height: "200px",
@@ -61,12 +87,29 @@ const Comment = ({ user_image, user_name, comment_id, created_at, comment }: Pro
       });
     } else {
       const data = await response.json();
-      console.log("댓글 삭제가 실패 되었습니다.", data);
     }
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (commentBoxRef.current && !commentBoxRef.current.contains(event.target as Node)) {
+      setIsOpenTextBox(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpenTextBox) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpenTextBox]);
+
   return (
-    <div className={s.commentWrap}>
+    <div className={s.commentWrap} ref={commentBoxRef}>
       {!isUpdate && (
         <>
           <Flex justify="space-between" align="center" className={s.CommentBoxWrap}>
@@ -77,7 +120,7 @@ const Comment = ({ user_image, user_name, comment_id, created_at, comment }: Pro
               width={48}
               height={48}
             />
-            <CiMenuKebab className={s.iconStyle} onClick={handleMenuKebabClick} />
+            {isLoggedIn && <CiMenuKebab className={s.iconStyle} onClick={handleMenuKebabClick} />}
             {isOpenTextBox && (
               <Flex
                 direction="column"
@@ -91,7 +134,7 @@ const Comment = ({ user_image, user_name, comment_id, created_at, comment }: Pro
                 >
                   수정
                 </span>
-                <span className={s.deleteAndModifyText} onClick={handleDeleteComment}>
+                <span className={s.deleteAndModifyText} onClick={handleOpenDeletePopUp}>
                   삭제
                 </span>
               </Flex>

@@ -1,22 +1,27 @@
 "use client";
 
-import { v4 as uuid } from "uuid";
-import { getShelterPetList } from "@/app/api/shelter/shelterApi";
-import usePetList from "@/hooks/usePetList";
-import { ShelterPet } from "@/models/shelter";
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import DetailHeader from "@/shared/components/detail/DetailHeader";
 import DetailMain from "@/shared/components/detail/DetailMain";
 import DetailMainHeader from "@/shared/components/detail/DetailMainHeader";
 import DetailSection from "@/shared/components/detail/DetailSection";
 import ImageSwiperBox from "@/shared/components/swiper/ImageSwiperBox";
+import ShelterDetailDescription from "@/components/shelter/ShelterDetailDescription";
+import ShelterDetailMainHeaderLeft from "@/components/shelter/ShelterDetailMainHeaderLeft";
+import ShelterDetailMainHeaderRight from "@/components/shelter/ShelterDetailMainHeaderRight";
+
+import { getShelterPetList } from "@/api/shelter/shelterApi";
+
+import usePetList from "@/hooks/usePetList";
+
 import { Image } from "@/models/image";
+import { ShelterPet } from "@/models/shelter";
+
 import { flattenShelterData } from "@/utils/data/flattenShelterData";
 import { formatDate } from "@/utils/format/formatDate";
+
 import { useParams } from "next/navigation";
-import ShelterDetailDescription from "./ShelterDetailDescription";
-import ShelterDetailMainHeaderLeft from "./ShelterDetailMainHeaderLeft";
-import ShelterDetailMainHeaderRight from "./ShelterDetailMainHeaderRight";
+import { v4 as uuid } from "uuid";
 
 const ShelterDetailBox = () => {
   const { id } = useParams();
@@ -48,7 +53,7 @@ const ShelterDetailBox = () => {
                   <ShelterDetailMainHeaderRight info={formatDate(filterData.noticeSdt) as string} />
                 }
               />
-              <Spacing height="12px" />
+              <Spacing margin="12px" />
             </>
           }
           images={<ImageSwiperBox images={imageUrls} width={330} height={214} />}

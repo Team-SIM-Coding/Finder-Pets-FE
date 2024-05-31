@@ -1,18 +1,23 @@
 "use client";
+
 import * as cs from "@/shared/styles/common.css";
 
-import useAlertContext from "@/hooks/useAlertContext";
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import InputField from "@/shared/components/auth/InputField";
+import ResetPasswordResult from "@/components/auth/ResetPasswordResult";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import authState from "@/recoil/authAtom";
+import { useSetRecoilState } from "recoil";
+
 import { ResetPasswordFormData, resetPasswordSchema } from "@/utils/validation/auth";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import ResetPasswordResult from "./ResetPasswordResult";
-import { useSetRecoilState } from "recoil";
-import authState from "@/recoil/authAtom";
 
 const ResetPasswordMain = () => {
   const [isResetPassword, setIsResetPassword] = useState(false);
@@ -47,7 +52,6 @@ const ResetPasswordMain = () => {
       const data = await response.json();
       setIsResetPassword(true);
       setAuthStateValue((prev) => ({ ...prev, isCompletedResetPassword: true }));
-      console.log("비밀번호 재설정 성공:", data);
     } else {
       const error = await response.json();
       const errorStatus = response.status;
@@ -80,14 +84,13 @@ const ResetPasswordMain = () => {
           close();
         },
       });
-      console.error("비밀번호 재설정 실패:", error.message);
     }
   };
 
   return (
     <FormProvider {...methods}>
       <form id="reset-password-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="40px" />
+        <Spacing margin="40px" />
         {!isResetPassword && (
           <>
             <InputField<ResetPasswordFormData> name="email" label="아이디" />

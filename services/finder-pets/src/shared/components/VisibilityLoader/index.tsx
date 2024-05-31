@@ -1,11 +1,13 @@
 "use client";
 
+import * as s from "./style.css";
+
+import { Spinner } from "@/shared/components/Spinner";
+
 import {
   UseIntersectionObserverProps,
   useIntersectionObserver,
 } from "@/hooks/useIntersectionObserver";
-import { Spinner } from "@/shared/components/Spinner";
-import * as s from "./style.css";
 
 type Props = {
   children?: React.ReactNode;

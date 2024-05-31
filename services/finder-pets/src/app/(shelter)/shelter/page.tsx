@@ -1,16 +1,17 @@
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
+import Spacing from "@/shared/c/spacing/Spacing";
 import ShelterListBox from "@/components/shelter/ShelterListBox";
-import Spacing from "@/shared/components/Spacing";
+
 import { FilterProvider } from "@/contexts/FilterContext";
 
 const Shelter = () => {
   return (
     <section className={cs.sectionStyle}>
       <FilterProvider>
-        <Spacing height="30px" />
+        <Spacing margin="30px" />
         <ShelterListBox />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
       </FilterProvider>
     </section>
   );

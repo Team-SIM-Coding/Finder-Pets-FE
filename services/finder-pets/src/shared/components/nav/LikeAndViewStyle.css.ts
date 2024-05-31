@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { f } from "../styles/functions";
+import { f } from "../../styles/functions";
 
 export const likeAndViewBarWrap = style([f.pRelative]);
 
@@ -28,7 +28,6 @@ export const deleteAndModifyBox = style([
     right: "20px",
     top: "10px",
     width: "60px",
-    height: "60px",
     padding: "8px 12px",
     backgroundColor: "white",
     border: "1px solid #DFDFDF",
@@ -38,6 +37,8 @@ export const deleteAndModifyBox = style([
 ]);
 
 export const deleteAndModifyText = style({
+  color: "black",
   fontSize: "12px",
   cursor: "pointer",
+  textDecoration: "none",
 });

@@ -1,36 +1,22 @@
 "use client";
 
-import { waitForMSWActivation } from "@/shared/mocks/waitForWorkerActivation";
-import { useEffect, useState } from "react";
-import ListBox from "../list/ListBox";
+import ListBox from "@/components/list/ListBox";
+
+import { fetchReviews } from "@/api/mocks/getReview";
+
 import { Board } from "@/models/board";
 
+import { useSuspenseQuery } from "@tanstack/react-query";
+
 const ReUnionReviewsList = () => {
-  const [reviews, setReviews] = useState<Board[]>([]);
-
-  const fetchReviews = async () => {
-    const response = await fetch("/api/review");
-
-    if (response.ok) {
-      const data = await response.json();
-      setReviews(data);
-      console.log("재회 후기 리스트 조회 성공 : ", data);
-    } else {
-      const data = await response.json();
-      console.log("재회 후기 리스트 조회 실패 : ", data);
-    }
-  };
-
-  useEffect(() => {
-    (async () => {
-      waitForMSWActivation();
-      fetchReviews();
-    })();
-  }, []);
+  const { data } = useSuspenseQuery<Board[], Error>({
+    queryKey: ["reunion-reviews"],
+    queryFn: fetchReviews,
+  });
 
   return (
     <ul>
-      {reviews.map((review) => (
+      {data.map((review) => (
         <ListBox key={review.board_id} list_info={review} />
       ))}
     </ul>

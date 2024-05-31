@@ -1,22 +1,26 @@
 "use client";
+
 import * as es from "@/shared/components/editor/EditorStyle.css";
-import * as cs from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
 import { Flex } from "@design-system/react-components-layout";
 import { v4 as uuid } from "uuid";
 
-import Spacing from "@/shared/components/Spacing";
-import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
-import EditorInputField from "@/shared/components/editor/EditorInputField";
-import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
-import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";
-import { useEffect, useState } from "react";
-import useAlertContext from "@/hooks/useAlertContext";
-import { useRouter } from "next/navigation";
-import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
-import { CommunityBoardRegisterFormData, communityBoardSchema } from "@/utils/validation/community";
-import { zodResolver } from "@hookform/resolvers/zod";
+import Spacing from "@/shared/c/spacing/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";
+import EditorInputField from "@/shared/components/editor/EditorInputField";
+import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
+import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import { CommunityBoardRegisterFormData, communityBoardSchema } from "@/utils/validation/community";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
 
 const defaultValues = {
   category: "review",
@@ -95,8 +99,6 @@ const CommunityRegisterMain = () => {
     const { category, ...formDataWithoutCategory } = data;
     const formData = { ...formDataWithoutCategory, board_id: randomId, images, create_at: today };
 
-    console.log("data", data);
-
     const response = await fetch(
       `/api/${category === "review" ? "review" : "pet-story"}/register`,
       {
@@ -121,22 +123,20 @@ const CommunityRegisterMain = () => {
           close();
         },
       });
-      console.log(`${categoryName} 게시물 등록 완료 : `, data);
     } else {
       const data = await response.json();
-      console.log(`${categoryName} 게시물 등록 실패 : `, data);
     }
   };
 
   return (
     <FormProvider {...methods}>
       <form id="community-register-form" onSubmit={handleSubmit(onSubmit)}>
-        <Spacing height="24px" />
+        <Spacing margin="24px" />
         <EditorSelectTab name="category" label="카테고리" className={es.editorSelectStyle}>
           <option value="lost">재회 후기</option>
           <option value="sighted">반려 이야기</option>
         </EditorSelectTab>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           <EditorSelectTab name="area" label="지역1" className={es.editorSelectStyle}>
             <option value="all">모든 지역</option>
@@ -157,7 +157,7 @@ const CommunityRegisterMain = () => {
             </EditorSelectTab>
           )}
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           <EditorSelectTab name="animal" label="동물" className={es.editorSelectStyle}>
             <option value="all">모든 동물</option>
@@ -174,7 +174,7 @@ const CommunityRegisterMain = () => {
             ))}
           </EditorSelectTab>
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
           <EditorSelectTab name="gender" label="성별" className={es.editorSelectStyle}>
             <option value="default">미확인</option>
@@ -183,15 +183,15 @@ const CommunityRegisterMain = () => {
           </EditorSelectTab>
           <EditorInputField name="weight" label="몸무게" className={es.editorInputSmallStyle} />
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField name="title" label="제목" className={es.editorInputMediumStyle} />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorTextAreaField
           name="description"
           label="글쓰기"
           className={es.editorTextAreaLargeStyle}
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorImageRegisterForm />
       </form>
     </FormProvider>

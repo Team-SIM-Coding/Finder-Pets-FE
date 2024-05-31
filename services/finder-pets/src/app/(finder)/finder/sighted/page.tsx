@@ -1,12 +1,17 @@
+import ListBoxSkeletonList from "@/shared/c/skeleton/ListBoxSkeletonList";
+import Spacing from "@/shared/c/spacing/Spacing";
 import SightedPetList from "@/components/sighted/SightedPetList";
-import Spacing from "@/shared/components/Spacing";
+
+import { Suspense } from "react";
 
 const Sighted = () => {
   return (
     <section>
-      <Spacing height="142px" />
-      <SightedPetList />
-      <Spacing height="60px" />
+      <Spacing margin="142px" />
+      <Suspense fallback={<ListBoxSkeletonList item_length={7} />}>
+        <SightedPetList />
+      </Suspense>
+      <Spacing margin="60px" />
     </section>
   );
 };

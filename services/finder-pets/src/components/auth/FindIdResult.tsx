@@ -1,13 +1,15 @@
 "use client";
+import * as cs from "@/styles/common.css";
 import * as s from "./AuthStyle.css";
-import * as cs from "@/shared/styles/common.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
-import Spacing from "@/shared/components/Spacing";
-import { useCallback } from "react";
-import useAlertContext from "@/hooks/useAlertContext";
+import Spacing from "@/shared/c/spacing/Spacing";
 import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import { useCallback } from "react";
 
 interface Props {
   email: string;
@@ -30,7 +32,6 @@ const FindIdResult = ({ email }: Props) => {
         },
       });
     } catch (err) {
-      console.error("클립보드 복사 실패:", err);
       open({
         width: "300px",
         height: "200px",
@@ -45,9 +46,9 @@ const FindIdResult = ({ email }: Props) => {
 
   return (
     <Flex direction="column" align="start">
-      <Spacing height="20px" />
+      <Spacing margin="20px" />
       <h2 className={s.subHeader}>회원님의 아이디입니다.</h2>
-      <Spacing height="20px" />
+      <Spacing margin="20px" />
       <Flex>
         <span className={s.labelTextStyle}>아이디 : </span>
         <p className={s.foundIdText} onClick={copyToClipboard}>

@@ -1,7 +1,5 @@
 "use client";
 
-import { fetchLostPet } from "@/app/api/mocks/getLostPet";
-import { FinderPet } from "@/models/finder";
 import CommentWriter from "@/shared/components/comments/CommentWriter";
 import CommentsList from "@/shared/components/comments/CommentsList";
 import CommentsSection from "@/shared/components/comments/CommentsSection";
@@ -10,11 +8,17 @@ import DetailMain from "@/shared/components/detail/DetailMain";
 import DetailMainHeader from "@/shared/components/detail/DetailMainHeader";
 import DetailSection from "@/shared/components/detail/DetailSection";
 import ImageSwiperBox from "@/shared/components/swiper/ImageSwiperBox";
+import LostDetailDescription from "@/components/lost/LostDetailDescription";
+import LostDetailMainHeaderLeft from "@/components/lost/LostDetailMainHeaderLeft";
+import LostDetailMainHeaderRight from "@/components/lost/LostDetailMainHeaderRight";
+
+import { fetchLostPet } from "@/api/mocks/getLostPet";
+
+import { FinderPet } from "@/models/finder";
+
 import { useQuery } from "@tanstack/react-query";
+
 import { useParams } from "next/navigation";
-import LostDetailDescription from "./LostDetailDescription";
-import LostDetailMainHeaderLeft from "./LostDetailMainHeaderLeft";
-import LostDetailMainHeaderRight from "./LostDetailMainHeaderRight";
 
 const LostDetailBox = () => {
   const { id } = useParams();
@@ -23,8 +27,6 @@ const LostDetailBox = () => {
     queryKey: ["lost-pet", id],
     queryFn: () => fetchLostPet(id),
   });
-
-  console.log(data?.images);
 
   const createdAt = data?.created_at as string;
 

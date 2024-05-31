@@ -1,23 +1,28 @@
 "use client";
+
 import * as es from "@/shared/components/editor/EditorStyle.css";
 import * as cs from "@/shared/styles/common.css";
 
 import { Flex } from "@design-system/react-components-layout";
 
-import useAlertContext from "@/hooks/useAlertContext";
-import { MyPet } from "@/models/pet";
-import Spacing from "@/shared/components/Spacing";
+import Spacing from "@/shared/c/spacing/Spacing";
+import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 import EditorCheckBoxField from "@/shared/components/editor/EditorCheckBoxField";
 import EditorImageRegisterForm from "@/shared/components/editor/EditorImageRegisterForm";
 import EditorInputField from "@/shared/components/editor/EditorInputField";
 import EditorSelectTab from "@/shared/components/editor/EditorSelectTab";
 import EditorTextAreaField from "@/shared/components/editor/EditorTextAreaField";
+
+import useAlertContext from "@/hooks/useAlertContext";
+
+import { MyPet } from "@/models/pet";
+
 import { MyPetRegisterFormData, myPetSchema } from "@/utils/validation/my-pet";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
-import AlertMainTextBox from "@/shared/components/alert/AlertMainTextBox";
 
 interface Props {
   pet_info: MyPet;
@@ -86,8 +91,6 @@ const MyPetProfileMain = ({ pet_info }: Props) => {
       pet_image: { img_id: "pet2", url: "/images/pet4.jpeg" },
     };
 
-    console.log("data", formData);
-
     const response = await fetch(`/api/my-pets/update/${pet_info.my_pet_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -107,10 +110,8 @@ const MyPetProfileMain = ({ pet_info }: Props) => {
           close();
         },
       });
-      console.log("나의 반려 동물 수정 완료 : ", data);
     } else {
       const data = await response.json();
-      console.log("나의 반려 동물 수정 실패 : ", data);
     }
   };
 
@@ -123,83 +124,56 @@ const MyPetProfileMain = ({ pet_info }: Props) => {
           label="이름"
           className={es.editorInputMediumStyle}
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField<MyPetRegisterFormData>
           name="birth_day"
           label="생일"
           className={es.editorInputMediumStyle}
           type="date"
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField<MyPetRegisterFormData>
           name="adoption_day"
           label="입양일"
           className={es.editorInputMediumStyle}
           type="date"
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
-          {pet_info.animal ? (
-            <EditorInputField<MyPetRegisterFormData>
-              name="animal"
-              label="동물"
-              className={es.editorInputSmallStyle}
-              value={pet_info.animal}
-            />
-          ) : (
-            <EditorSelectTab<MyPetRegisterFormData>
-              name="animal"
-              label="동물"
-              className={es.editorSelectStyle}
-            >
-              <option value="all">모든 동물</option>
-              <option value="개">개</option>
-              <option value="고양이">고양이</option>
-              <option value="기타">기타</option>
-            </EditorSelectTab>
-          )}
-          {pet_info.kind ? (
-            <EditorInputField<MyPetRegisterFormData>
-              name="kind"
-              label="품종"
-              className={es.editorInputSmallStyle}
-              value={pet_info.kind}
-            />
-          ) : (
-            <EditorSelectTab<MyPetRegisterFormData>
-              name="kind"
-              label="품종"
-              className={es.editorSelectStyle}
-            >
-              <option value="all">모든 품종</option>
-              {kinds.map((kind) => (
-                <option key={kind} value={kind}>
-                  {kind}
-                </option>
-              ))}
-            </EditorSelectTab>
-          )}
+          <EditorSelectTab<MyPetRegisterFormData>
+            name="animal"
+            label="동물"
+            className={es.editorSelectStyle}
+          >
+            <option value="all">모든 동물</option>
+            <option value="개">개</option>
+            <option value="고양이">고양이</option>
+            <option value="기타">기타</option>
+          </EditorSelectTab>
+          <EditorSelectTab<MyPetRegisterFormData>
+            name="kind"
+            label="품종"
+            className={es.editorSelectStyle}
+          >
+            <option value="all">모든 품종</option>
+            {kinds.map((kind) => (
+              <option key={kind} value={kind}>
+                {kind}
+              </option>
+            ))}
+          </EditorSelectTab>
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <Flex>
-          {pet_info.gender ? (
-            <EditorInputField<MyPetRegisterFormData>
-              name="gender"
-              label="성별"
-              className={es.editorInputSmallStyle}
-              value={pet_info.gender === "M" ? "수컷" : "암컷"}
-            />
-          ) : (
-            <EditorSelectTab<MyPetRegisterFormData>
-              name="gender"
-              label="성별"
-              className={es.editorSelectStyle}
-            >
-              <option value="default">미확인</option>
-              <option value="M">수컷</option>
-              <option value="F">암컷</option>
-            </EditorSelectTab>
-          )}
+          <EditorSelectTab<MyPetRegisterFormData>
+            name="gender"
+            label="성별"
+            className={es.editorSelectStyle}
+          >
+            <option value="default">미확인</option>
+            <option value="수컷">수컷</option>
+            <option value="암컷">암컷</option>
+          </EditorSelectTab>
           <EditorInputField<MyPetRegisterFormData>
             name="weight"
             label="몸무게"
@@ -207,25 +181,25 @@ const MyPetProfileMain = ({ pet_info }: Props) => {
             value={pet_info.weight?.toString()}
           />
         </Flex>
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorInputField<MyPetRegisterFormData>
           name="color"
           label="털색"
           className={es.editorInputSmallStyle}
           value={pet_info.color}
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorCheckBoxField<MyPetRegisterFormData> name="is_neutering" label="중성화 여부" />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorCheckBoxField<MyPetRegisterFormData> name="is_adoption" label="보호소 입양 여부" />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
         <EditorTextAreaField<MyPetRegisterFormData>
           name="intro"
           label="소개"
           className={es.editorTextAreaStyle}
           value={pet_info.intro}
         />
-        <Spacing height="12px" />
+        <Spacing margin="12px" />
       </form>
     </FormProvider>
   );

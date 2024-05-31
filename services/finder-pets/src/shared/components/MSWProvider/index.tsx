@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { isMocking } from "../../constants";
+import LoadingSpinner from "@/shared/components/loading/LoadingSpinner";
+
 import { initMocking } from "../../mocks";
-import LoadingSpinner from "../loading/LoadingSpinner";
+import { isMocking } from "../../constants";
+
+import { useEffect, useState } from "react";
 
 export const MSWProvider = ({ children }: { children: React.ReactNode }) => {
   const [isReady, setIsReady] = useState(!isMocking());
@@ -18,7 +20,7 @@ export const MSWProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [isReady]);
 
-  if (!isReady) return <LoadingSpinner text="Mock Sever 실행 중.." />;
+  if (!isReady) return <LoadingSpinner text="Mock Sever 실행 중.." height="100vh" />;
 
   return children;
 };

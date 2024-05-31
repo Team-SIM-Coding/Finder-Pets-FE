@@ -1,4 +1,5 @@
 import { PasswordResetRequest, User } from "@/models/user";
+
 import { HttpHandler, HttpResponse, http } from "msw";
 
 const users: User[] = JSON.parse(localStorage.getItem("users") || "[]");

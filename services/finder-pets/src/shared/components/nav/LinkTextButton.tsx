@@ -1,4 +1,4 @@
-import * as s from "@/shared/styles/common.css";
+import * as cs from "@/styles/common.css";
 
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ interface Props {
 
 const LinkTextButton = ({ href, text }: Props) => {
   return (
-    <Link href={href} className={s.linkTextButton}>
+    <Link href={href} className={cs.linkTextButton}>
       {text}
     </Link>
   );
