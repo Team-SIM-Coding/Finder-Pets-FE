@@ -17,8 +17,11 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { requestRegister } from "@/api/auth/requestRegister";
 import { useRouter } from "next/navigation";
+import { requestCheckId } from "@/api/auth/requestCheckId";
+import useGetToken from "@/hooks/useGetToken";
 
 const RegisterMain = () => {
+  const { token } = useGetToken();
   const { open, close } = useAlertContext();
   const router = useRouter();
 
@@ -72,7 +75,21 @@ const RegisterMain = () => {
 
   const onSubmit: SubmitHandler<RegisterFormData> = async (data, event) => {
     event?.preventDefault();
-    registerMutation.mutate(data);
+
+    const { isChecked } = await requestCheckId(data.email);
+
+    if (isChecked) {
+      open({
+        width: "300px",
+        height: "200px",
+        title: "회원가입 실패",
+        main: <AlertMainTextBox text="중복된 이메일이 존재합니다." />,
+        rightButtonStyle: cs.defaultButton,
+        onRightButtonClick: close,
+      });
+    } else {
+      registerMutation.mutate(data);
+    }
   };
 
   return (

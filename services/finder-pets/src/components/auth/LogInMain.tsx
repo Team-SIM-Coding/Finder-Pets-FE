@@ -18,6 +18,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { setLocalToken, setRefreshLocalToken } from "@/utils/localToken";
 
 const LogInMain = () => {
   const [authStateValue, setAuthStateValue] = useRecoilState(authState);
@@ -38,7 +39,9 @@ const LogInMain = () => {
 
   const loginMutation = useMutation({
     mutationFn: (data: LogInFormData) => requestLogin(data),
-    onSuccess: () => {
+    onSuccess: (data) => {
+      setLocalToken(data.accessToken);
+      setRefreshLocalToken(data.refreshToken);
       setAuthStateValue((prev) => ({ ...prev, isLoggedIn: true }));
 
       open({
