@@ -118,7 +118,7 @@ const MyPetProfileMain = ({ pet_info }: Props) => {
   return (
     <FormProvider {...methods}>
       <form id="my-pet-form" onSubmit={handleSubmit(onSubmit)}>
-        <EditorImageRegisterForm pet_image={pet_info.pet_image} />
+        <EditorImageRegisterForm images={[]} />
         <EditorInputField<MyPetRegisterFormData>
           name="name"
           label="이름"

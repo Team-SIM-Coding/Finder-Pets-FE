@@ -23,8 +23,6 @@ export const finderPetSchema = petSchema.extend({
   zonecode: z.string().optional(),
   address: z.string().optional(),
   detail_address: z.string().optional(),
-  created_at: z.string().optional(),
-  like_count: z.number().optional(),
   phone: z
     .string()
     .regex(/^01([0 | 1 | 6 | 7 | 8 | 9])-([0-9]{3,4})-([0-9]{4})$/, {
@@ -32,7 +30,7 @@ export const finderPetSchema = petSchema.extend({
     })
     .optional(),
   description: z.string().optional(),
-  images: z.array(imageSchema).optional(),
+  pet_image: z.array(imageSchema).optional(),
 });
 
 export type FinderPetRegisterFormData = z.infer<typeof finderPetSchema>;

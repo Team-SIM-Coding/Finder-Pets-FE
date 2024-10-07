@@ -1,5 +1,6 @@
 interface CustomFetchOptions extends RequestInit {
   errorMessage?: string;
+  isMultipart?: boolean;
 }
 
 export const customRequest = async (
@@ -7,20 +8,21 @@ export const customRequest = async (
   token?: string,
   options: CustomFetchOptions = {},
 ) => {
-  const { errorMessage = "API 요청 실패", ...rest } = options;
+  const { errorMessage = "API 요청 실패", isMultipart, ...rest } = options;
 
   const headers: Record<string, string> = {
-    "Content-Type": "application/json",
     ...((rest.headers as Record<string, string>) || {}),
   };
 
   if (token) {
-    headers["Authorization"] = `bearer ${token}`;
+    headers["Authorization"] = `Bearer ${token}`;
   }
 
   const fetchOptions: RequestInit = {
     ...rest,
-    headers,
+    headers: isMultipart
+      ? { "Content-Type": "multipart/form-data", ...headers }
+      : { "Content-Type": "application/json", ...headers },
   };
 
   const response = await fetch(url, fetchOptions);

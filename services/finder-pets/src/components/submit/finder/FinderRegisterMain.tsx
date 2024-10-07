@@ -18,14 +18,14 @@ import { Pet } from "@/models/pet";
 
 import { FinderPetRegisterFormData, finderPetSchema } from "@/utils/validation/finder";
 
+import { requestRegisterLost } from "@/api/lost/requestRegisterLost";
+import useGetToken from "@/hooks/useGetToken";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import { FormProvider, SubmitHandler, useForm, useWatch } from "react-hook-form";
-import { v4 as uuid } from "uuid";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { fetchPostPet } from "@/api/mocks/postLostPet";
 
 interface Props {
   pet_info: Pet;
@@ -46,14 +46,14 @@ const defaultValues: FinderPetRegisterFormData = {
   zonecode: "",
   address: "",
   detail_address: "",
-  created_at: "",
-  like_count: 0,
   phone: "",
   description: "",
-  images: [],
+  pet_image: [],
 };
 
 const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
+  const { token } = useGetToken();
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [animals, setAnimals] = useState<{ [key: string]: string[] }>({});
   const [kinds, setKinds] = useState<string[]>([]);
 
@@ -92,8 +92,8 @@ const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
 
   const { handleSubmit, setValue } = methods;
 
-  const { mutate } = useMutation({
-    mutationFn: fetchPostPet,
+  const registerLostPetMutation = useMutation({
+    mutationFn: (data: FormData) => requestRegisterLost(data, token),
     onSuccess: (data) => {
       console.log(data);
       const categoryName = data.category === "lost" ? "실종" : "목격";
@@ -116,21 +116,34 @@ const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
     },
   });
 
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      const filesArray = Array.from(event.target.files);
+      setSelectedFiles(filesArray);
+    }
+  };
+
+  console.log(selectedFiles);
+
   const onSubmit: SubmitHandler<FinderPetRegisterFormData> = async (data, event) => {
     event?.preventDefault();
 
-    const randomId = uuid();
-    const images = [
-      { img_id: "img1", url: "/images/pet1.jpeg" },
-      { img_id: "img2", url: "/images/pet2.jpeg" },
-      { img_id: "img3", url: "/images/pet3.jpeg" },
-    ];
-    const area = data.address + " " + data.detail_address;
+    const formData = new FormData();
 
-    const formData = { ...data, pet_id: randomId, images, area };
-    const { category } = formData;
+    selectedFiles.forEach((file) => {
+      formData.append("pet_image", file);
+    });
 
-    mutate({ formData, category });
+    console.log(data);
+
+    const area = `${data.address} ${data.detail_address}`;
+    const { address, detail_address, ...requestData } = { ...data, area };
+
+    Object.entries(requestData).forEach(([key, value]) => {
+      formData.append(key, String(value));
+    });
+
+    registerLostPetMutation.mutate(formData);
   };
 
   const handleZipCodeButtonClick = () => {
@@ -249,7 +262,7 @@ const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
           className={es.editorTextAreaStyle}
         />
         <Spacing margin="12px" />
-        <EditorImageRegisterForm />
+        <EditorImageRegisterForm onFileChange={handleFileChange} images={selectedFiles} />
         <Spacing margin="12px" />
       </form>
     </FormProvider>

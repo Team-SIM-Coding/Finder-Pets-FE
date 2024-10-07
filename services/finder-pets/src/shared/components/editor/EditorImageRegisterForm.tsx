@@ -2,8 +2,6 @@
 
 import * as s from "./EditorStyle.css";
 
-import { Input } from "@design-system/react-components-input";
-
 import Spacing from "@/shared/c/spacing/Spacing";
 
 import { Image as ImageType } from "@/models/image";
@@ -11,23 +9,26 @@ import { Image as ImageType } from "@/models/image";
 import Image from "next/image";
 
 interface Props {
-  pet_image?: ImageType;
+  images?: File[];
+  onFileChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const EditorImageRegisterForm = ({ pet_image }: Props) => {
+const EditorImageRegisterForm = ({ images, onFileChange }: Props) => {
   return (
     <div className={s.imageRegisterFormWrap}>
-      {pet_image ? (
-        <>
-          <Image
-            src={pet_image.url}
-            alt="나의 반려동물 프로필 이미지"
-            width={200}
-            height={200}
-            className={s.imageRegisterMyPetImage}
-          />
-          <Spacing margin="12px" />
-        </>
+      {images && images?.length > 0 ? (
+        images.map((image, index) => (
+          <div key={index}>
+            <Image
+              src={URL.createObjectURL(image)}
+              alt="나의 반려동물 프로필 이미지"
+              width={200}
+              height={200}
+              className={s.imageRegisterMyPetImage}
+            />
+            <Spacing margin="12px" />
+          </div>
+        ))
       ) : (
         <>
           <div>
@@ -40,7 +41,12 @@ const EditorImageRegisterForm = ({ pet_image }: Props) => {
             />
           </div>
           <div className={s.imageRegisterFormFileInputWrap}>
-            <Input type="file" className={s.imageRegisterFormFileInput} />
+            <input
+              type="file"
+              className={s.imageRegisterFormFileInput}
+              multiple
+              onChange={onFileChange} // 파일 선택 시 handleFileChange 함수 호출
+            />
           </div>
         </>
       )}

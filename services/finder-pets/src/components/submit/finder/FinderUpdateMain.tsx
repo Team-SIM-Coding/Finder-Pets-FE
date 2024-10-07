@@ -32,6 +32,7 @@ interface Props {
 }
 
 const FinderUpdateMain = ({ type, pet_info, scriptUrl }: Props) => {
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [animals, setAnimals] = useState<{ [key: string]: string[] }>({});
   const [kinds, setKinds] = useState<string[]>([]);
 
@@ -67,11 +68,9 @@ const FinderUpdateMain = ({ type, pet_info, scriptUrl }: Props) => {
       zonecode: pet_info?.zonecode || "",
       address: pet_info?.address || "",
       detail_address: pet_info?.detail_address || "",
-      created_at: pet_info?.created_at || "",
-      like_count: pet_info?.like_count || 0,
       phone: pet_info?.phone || "",
       description: pet_info?.description || "",
-      images: pet_info?.images || [],
+      pet_image: pet_info?.images || [],
     },
   });
 
@@ -86,6 +85,13 @@ const FinderUpdateMain = ({ type, pet_info, scriptUrl }: Props) => {
       setKinds([]);
     }
   }, [selectedAnimal, animals]);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      const filesArray = Array.from(event.target.files);
+      setSelectedFiles(filesArray);
+    }
+  };
 
   const onSubmit: SubmitHandler<FinderPetRegisterFormData> = async (data, event) => {
     event?.preventDefault();
@@ -226,7 +232,7 @@ const FinderUpdateMain = ({ type, pet_info, scriptUrl }: Props) => {
           className={es.editorTextAreaStyle}
         />
         <Spacing margin="24px" />
-        <EditorImageRegisterForm />
+        <EditorImageRegisterForm onFileChange={handleFileChange} images={selectedFiles} />
       </form>
     </FormProvider>
   );
