@@ -12,15 +12,16 @@ import { useRecoilState } from "recoil";
 
 import { LogInFormData, loginSchema } from "@/utils/validation/auth";
 
+import { fetchLogin } from "@/api/auth/fetchLogin";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { User } from "@/models/user";
 
 const LogInMain = () => {
-  const router = useRouter();
   const [authStateValue, setAuthStateValue] = useRecoilState(authState);
+  const router = useRouter();
 
   const { open, close } = useAlertContext();
 
@@ -35,18 +36,10 @@ const LogInMain = () => {
 
   const { handleSubmit } = methods;
 
-  const onSubmit: SubmitHandler<LogInFormData> = async (data, event) => {
-    event?.preventDefault();
-
-    const response = await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      setAuthStateValue((prev) => ({ ...prev, isLoggedIn: true, userId: data.user_id }));
+  const loginMutation = useMutation({
+    mutationFn: (data: LogInFormData) => fetchLogin(data),
+    onSuccess: () => {
+      setAuthStateValue((prev) => ({ ...prev, isLoggedIn: true }));
 
       open({
         width: "300px",
@@ -55,33 +48,36 @@ const LogInMain = () => {
         main: <AlertMainTextBox text="로그인에 성공했습니다." />,
         rightButtonStyle: cs.defaultButton,
         onRightButtonClick: () => {
-          close();
           router.push("/");
+          close();
         },
         onBackDropClick: () => {
           close();
         },
       });
-    } else {
-      const error = await response.json();
-      const errorStatus = response.status;
+    },
+    onError: (error) => {
+      console.log(error);
+      open({
+        width: "300px",
+        height: "200px",
+        title: "로그인 실패",
+        main: <AlertMainTextBox text={error.message} />,
+        rightButtonStyle: cs.defaultButton,
+        onRightButtonClick: () => {
+          close();
+        },
+        onBackDropClick: () => {
+          close();
+        },
+      });
+    },
+  });
 
-      if (errorStatus === 401) {
-        open({
-          width: "300px",
-          height: "200px",
-          title: "로그인 실패",
-          main: <AlertMainTextBox text={error.message} />,
-          rightButtonStyle: cs.defaultButton,
-          onRightButtonClick: () => {
-            close();
-          },
-          onBackDropClick: () => {
-            close();
-          },
-        });
-      }
-    }
+  const onSubmit: SubmitHandler<LogInFormData> = async (data, event) => {
+    event?.preventDefault();
+
+    loginMutation.mutate(data);
   };
 
   useEffect(() => {
