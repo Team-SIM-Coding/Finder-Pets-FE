@@ -1,6 +1,6 @@
 import { LogInFormData } from "@/utils/validation/auth";
 
-export const fetchLogin = async (data: LogInFormData) => {
+export const requestLogin = async (data: LogInFormData) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/user/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

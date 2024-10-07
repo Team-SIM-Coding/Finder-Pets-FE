@@ -12,7 +12,7 @@ import { useRecoilState } from "recoil";
 
 import { LogInFormData, loginSchema } from "@/utils/validation/auth";
 
-import { fetchLogin } from "@/api/auth/fetchLogin";
+import { requestLogin } from "@/api/auth/requestLogin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -37,7 +37,7 @@ const LogInMain = () => {
   const { handleSubmit } = methods;
 
   const loginMutation = useMutation({
-    mutationFn: (data: LogInFormData) => fetchLogin(data),
+    mutationFn: (data: LogInFormData) => requestLogin(data),
     onSuccess: () => {
       setAuthStateValue((prev) => ({ ...prev, isLoggedIn: true }));
 

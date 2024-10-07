@@ -1,6 +1,6 @@
 import { RegisterFormData } from "@/utils/validation/auth";
 
-export const fetchRegister = async (data: RegisterFormData) => {
+export const requestRegister = async (data: RegisterFormData) => {
   const { confirmPassword, ...requestBody } = data;
 
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/user/register`, {

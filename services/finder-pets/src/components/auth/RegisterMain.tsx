@@ -15,7 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
-import { fetchRegister } from "@/api/auth/fetchRegister";
+import { requestRegister } from "@/api/auth/requestRegister";
 import { useRouter } from "next/navigation";
 
 const RegisterMain = () => {
@@ -42,7 +42,7 @@ const RegisterMain = () => {
   }, [confirmPassword, trigger]);
 
   const registerMutation = useMutation({
-    mutationFn: (data: RegisterFormData) => fetchRegister(data),
+    mutationFn: (data: RegisterFormData) => requestRegister(data),
     onSuccess: () => {
       open({
         width: "300px",
