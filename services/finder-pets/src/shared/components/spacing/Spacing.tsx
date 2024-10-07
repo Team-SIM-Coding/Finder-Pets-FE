@@ -1,3 +1,5 @@
+"use client";
+
 import * as cs from "@/styles/common.css";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 

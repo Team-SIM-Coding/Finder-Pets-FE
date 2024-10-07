@@ -10,15 +10,17 @@ import useAlertContext from "@/hooks/useAlertContext";
 
 import { RegisterFormData, registerSchema } from "@/utils/validation/auth";
 
+import useRedirect from "@/hooks/useRedirect";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { v4 as uuid } from "uuid";
+import { useMutation } from "@tanstack/react-query";
+import { fetchRegister } from "@/api/auth/fetchRegister";
 import { useRouter } from "next/navigation";
 
 const RegisterMain = () => {
-  const router = useRouter();
   const { open, close } = useAlertContext();
+  const router = useRouter();
 
   const methods = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
@@ -39,58 +41,38 @@ const RegisterMain = () => {
     trigger("confirmPassword");
   }, [confirmPassword, trigger]);
 
+  const registerMutation = useMutation({
+    mutationFn: (data: RegisterFormData) => fetchRegister(data),
+    onSuccess: () => {
+      open({
+        width: "300px",
+        height: "200px",
+        title: "회원가입 완료",
+        main: <AlertMainTextBox text="회원가입이 완료되었습니다." />,
+        rightButtonStyle: cs.defaultButton,
+        onRightButtonClick: () => {
+          router.push("/login");
+          close();
+        },
+      });
+    },
+    onError: (error) => {
+      open({
+        width: "300px",
+        height: "200px",
+        title: "회원가입 실패",
+        main: <AlertMainTextBox text={error.message} />,
+        rightButtonStyle: cs.defaultButton,
+        onRightButtonClick: () => {
+          close();
+        },
+      });
+    },
+  });
+
   const onSubmit: SubmitHandler<RegisterFormData> = async (data, event) => {
     event?.preventDefault();
-
-    const userData = {
-      user_id: uuid(),
-      ...data,
-    };
-
-    try {
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        open({
-          width: "300px",
-          height: "200px",
-          title: "회원가입 완료",
-          main: <AlertMainTextBox text="회원가입이 완료되었습니다." />,
-          rightButtonStyle: cs.defaultButton,
-          onRightButtonClick: () => {
-            router.push("/login");
-            close();
-          },
-        });
-      } else {
-        const contentType = response.headers.get("Content-Type");
-        if (contentType?.includes("application/json")) {
-          const error = await response.json();
-          const errorStatus = response.status;
-          if (errorStatus === 409) {
-            open({
-              width: "300px",
-              height: "200px",
-              title: "회원가입 실패",
-              main: <AlertMainTextBox text={error.message} />,
-              rightButtonStyle: cs.defaultButton,
-              onRightButtonClick: () => {
-                close();
-              },
-            });
-          }
-        } else {
-          const errorText = await response.text();
-        }
-      }
-    } catch (networkError) {
-      throw new Error("회원가입 실패 - 네트워크 오류");
-    }
+    registerMutation.mutate(data);
   };
 
   return (

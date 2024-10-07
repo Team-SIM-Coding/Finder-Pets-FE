@@ -1,3 +1,5 @@
+"use client";
+
 import * as s from "./SkeletonStyle.css";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import clsx from "clsx";
