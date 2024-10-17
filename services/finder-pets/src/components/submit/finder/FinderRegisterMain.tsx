@@ -130,19 +130,36 @@ const FinderRegisterMain = ({ pet_info, scriptUrl }: Props) => {
 
     const formData = new FormData();
 
+    // postCreate 객체를 JSON으로 변환하여 추가
+    const postCreate = {
+      // category: data.category,
+      animal: data.animal,
+      kind: data.kind,
+      gender: data.gender,
+      weight: data.weight,
+      color: data.color,
+      age: data.age,
+      is_neutering: data.is_neutering,
+      character: data.character,
+      date: data.date,
+      zonecode: data.zonecode,
+      address: data.address,
+      // detail_address: data.detail_address,
+      phone: data.phone,
+      description: data.description,
+    };
+
+    formData.append(
+      "postCreate",
+      new Blob([JSON.stringify(postCreate)], { type: "application/json" }),
+    );
+
+    // 선택한 파일들을 각각 추가
     selectedFiles.forEach((file) => {
-      formData.append("pet_image", file);
+      formData.append("files", file);
     });
 
-    console.log(data);
-
-    const area = `${data.address} ${data.detail_address}`;
-    const { address, detail_address, ...requestData } = { ...data, area };
-
-    Object.entries(requestData).forEach(([key, value]) => {
-      formData.append(key, String(value));
-    });
-
+    // API 요청
     registerLostPetMutation.mutate(formData);
   };
 

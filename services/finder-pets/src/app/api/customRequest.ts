@@ -15,14 +15,12 @@ export const customRequest = async (
   };
 
   if (token) {
-    headers["Authorization"] = `Bearer ${token}`;
+    headers["Authorization"] = `${token}`;
   }
 
   const fetchOptions: RequestInit = {
     ...rest,
-    headers: isMultipart
-      ? { "Content-Type": "multipart/form-data", ...headers }
-      : { "Content-Type": "application/json", ...headers },
+    headers: isMultipart ? { ...headers } : { "Content-Type": "application/json", ...headers },
   };
 
   const response = await fetch(url, fetchOptions);
